@@ -7,17 +7,17 @@
   
   <title>小程序的一些总结 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能 判断是否到达底部，进行数据加载，可以使用">
+  <meta name="description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影">
 <meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序的一些总结">
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能 判断是否到达底部，进行数据加载，可以使用">
-<meta property="og:updated_time" content="2018-04-03T03:21:21.000Z">
+<meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影">
+<meta property="og:updated_time" content="2018-04-03T17:27:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序的一些总结">
-<meta name="twitter:description" content="scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能 判断是否到达底部，进行数据加载，可以使用">
+<meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -86,12 +86,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
+        <p>学习小程序开发过程中的一些总结，持续更新ing</p>
+<ol>
 <li><code>scroll-view</code> 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽</li>
 <li><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整</li>
 <li>iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</li>
 <li>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</li>
 <li>判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</li>
+<li>使用 template 不要忘记传入 data</li>
 </ol>
 
       
