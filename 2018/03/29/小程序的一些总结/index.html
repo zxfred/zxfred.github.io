@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影">
-<meta property="og:updated_time" content="2018-04-08T03:27:47.000Z">
+<meta property="og:updated_time" content="2018-04-11T05:33:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序的一些总结">
 <meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽 line-height 需要比字号大一些，避免整行文字显示不完整 iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签 不应该频繁使用 setData ，不应该传入大量数据，否则会影">
@@ -94,13 +94,14 @@
 <li>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</li>
 <li>判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</li>
 <li>使用 template 不要忘记传入 data</li>
-<li>异步 ajax ，把后执行的放在先执行的 success 中</li>
+<li>指定 ajax 的先后顺序，把后执行的放在先执行的 success 中</li>
+<li>多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjfqxqja50006cztiipq3sjo4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjfunt2ro0003g0s66156qmro" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -174,6 +175,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/10/工作一个月后-我的感受是这样/">工作一个月后, 我的感受是这样</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/08/关于头号玩家/">关于头号玩家</a>
           </li>
         
@@ -187,10 +192,6 @@
         
           <li>
             <a href="/2018/03/30/外边距折叠的几种情况与解决办法/">外边距折叠的几种情况与解决办法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/30/Javascript 中的 this/">Javascript 中的 this</a>
           </li>
         
       </ul>
