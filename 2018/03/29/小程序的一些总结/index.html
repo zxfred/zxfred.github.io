@@ -7,18 +7,18 @@
   
   <title>小程序的一些总结 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否">
+  <meta name="description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
 <meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序的一些总结">
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否">
+<meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
 <meta property="og:image" content="http://zxfred.github.io/2018/03/29/img/2.png">
-<meta property="og:updated_time" content="2018-04-16T10:00:38.000Z">
+<meta property="og:updated_time" content="2018-04-16T13:18:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序的一些总结">
-<meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否">
+<meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
 <meta name="twitter:image" content="http://zxfred.github.io/2018/03/29/img/2.png">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
@@ -89,6 +89,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>学习小程序开发过程中的一些总结，持续更新ing</p>
+<p>###小Tips</p>
 <ol>
 <li><p><code>scroll-view</code> 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽</p>
 </li>
@@ -115,6 +116,11 @@
 </li>
 <li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
 </li>
+</ol>
+<p>###业务相关</p>
+<ol>
+<li>奇怪的 inajax 问题，红包页用某账号会请求两次，但无相关代码，initPage 里面增加 inajax 判断后解决</li>
+<li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
 </ol>
 
       
