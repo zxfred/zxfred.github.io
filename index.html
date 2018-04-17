@@ -550,7 +550,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/小程序的一些总结/">小程序的一些总结</a>
+      <a class="article-title" href="/2018/03/29/小程序的一些总结/">小程序相关总结</a>
     </h1>
   
 
@@ -591,6 +591,7 @@
 <ol>
 <li>奇怪的 inajax 问题，红包页用某账号会请求两次，但无相关代码，initPage 里面增加 inajax 判断后解决</li>
 <li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
+<li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
 </ol>
 
       
