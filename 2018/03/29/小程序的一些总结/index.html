@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
 <meta property="og:image" content="http://zxfred.github.io/2018/03/29/img/2.png">
-<meta property="og:updated_time" content="2018-04-17T09:05:31.000Z">
+<meta property="og:updated_time" content="2018-04-19T05:27:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序相关总结">
 <meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
@@ -109,6 +109,8 @@
 </li>
 <li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，外部 card 宽度从 50% 改为定宽可以解决</p>
 <p><img src="../img/2.png" alt="2"></p>
+</li>
+<li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能使用</p>
 </li>
 <li><p>（基础）判断平台并修改样式的时候要注意 CSS 选择器优先级的问题，多个标签比少标签的优先级要高</p>
 </li>
