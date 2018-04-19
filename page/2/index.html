@@ -61,85 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-小程序的一些总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/29/小程序的一些总结/" class="article-date">
-  <time datetime="2018-03-29T08:25:34.000Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/小程序的一些总结/">小程序相关总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学习小程序开发过程中的一些总结，持续更新ing</p>
-<p>###小Tips</p>
-<ol>
-<li><p><code>scroll-view</code> 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽</p>
-</li>
-<li><p><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整</p>
-</li>
-<li><p>iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</p>
-</li>
-<li><p>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</p>
-</li>
-<li><p>判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
-</li>
-<li><p>使用 template 不要忘记传入 data</p>
-</li>
-<li><p>指定 ajax 的先后顺序，把后执行的放在先执行的 success 中</p>
-</li>
-<li><p>多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
-</li>
-<li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，外部 card 宽度从 50% 改为定宽可以解决</p>
-<p><img src="../img/2.png" alt="2"></p>
-</li>
-<li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
-</li>
-<li><p>(部分?)安卓手机不支持 rgba 格式的透明背景</p>
-</li>
-<li><p>（基础）判断平台并修改样式的时候要注意 CSS 选择器优先级的问题，多个标签比少标签的优先级要高</p>
-</li>
-<li><p>商品标签在 iPhone 6/7 和 iPhone 6p/7p 不同尺寸屏幕上，内部文字不垂直居中，可以适当增加1-2rpx 行高</p>
-</li>
-<li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
-</li>
-</ol>
-<p>###业务相关</p>
-<ol>
-<li>奇怪的 inajax 问题，红包页用某账号会请求两次，但无相关代码，initPage 里面增加 inajax 判断后解决</li>
-<li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
-<li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
-<li>接口正确性判断只需要判断 errorCode 不用判断 errorMsg</li>
-<li>他人新建开发分支需要 git pull 一下本机才能显示</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjg31mib70006t2s6wroacgk9" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-我使用的Mac软件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/28/我使用的Mac软件/" class="article-date">
@@ -456,10 +377,6 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
-            <a href="/2018/04/19/boostnote/">(no title)</a>
-          </li>
-        
-          <li>
             <a href="/2018/04/17/种草清单/">种草清单</a>
           </li>
         
@@ -473,6 +390,10 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/04/08/关于头号玩家/">关于头号玩家</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/02/彻底理解-JavaScript-里的闭包/">彻底理解 JavaScript 里的闭包</a>
           </li>
         
       </ul>
