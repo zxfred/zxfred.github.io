@@ -7,16 +7,16 @@
   
   <title>Vue文档学习总结 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值。  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  实例属性： vm.$data ​">
+  <meta name="description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含单个表达式，所以语句和流控制不能生效  12345&amp;lt;!-- 完整语">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue文档学习总结">
-<meta property="og:url" content="http://zxfred.github.io/2018/04/22/关于Vue的一些总结/index.html">
+<meta property="og:url" content="http://zxfred.github.io/2018/04/22/Vue文档学习总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值。  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  实例属性： vm.$data ​">
-<meta property="og:updated_time" content="2018-04-24T02:17:33.000Z">
+<meta property="og:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含单个表达式，所以语句和流控制不能生效  12345&amp;lt;!-- 完整语">
+<meta property="og:updated_time" content="2018-04-25T08:52:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue文档学习总结">
-<meta name="twitter:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值。  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  实例属性： vm.$data ​">
+<meta name="twitter:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含单个表达式，所以语句和流控制不能生效  12345&amp;lt;!-- 完整语">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -63,9 +63,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-关于Vue的一些总结" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Vue文档学习总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/22/关于Vue的一些总结/" class="article-date">
+    <a href="/2018/04/22/Vue文档学习总结/" class="article-date">
   <time datetime="2018-04-22T10:43:06.000Z" itemprop="datePublished">2018-04-22</time>
 </a>
     
@@ -86,20 +86,29 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>只有当实例被创建时 <code>data</code> 中存在的属性才是<strong>响应式</strong>的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值。</p>
+<li><p>只有当实例被创建时 <code>data</code> 中存在的属性才是<strong>响应式</strong>的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值</p>
 </li>
 <li><p>使用 <code>Object.freeze()</code>，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化</p>
 </li>
-<li><p>实例属性：</p>
-<p>vm.$data</p>
-<p>​</p>
+<li><p>对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含<strong>单个表达式</strong>，所以语句和流控制不能生效</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-bind:href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a :href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a @click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果完全相同。然而，不同的是<strong>计算属性基于它们的依赖进行缓存</strong>，多次访问计算属性会立即返回之前的计算结果，而不必再次执行函数</p>
+</li>
+<li><p>v-bind 绑定 class 绑定的数据对象不必内联定义在模板里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: true,</span><br><span class="line">    &apos;text-danger&apos;: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>​</p>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/关于Vue的一些总结/" data-id="cjgd5m77r0003o6s60omcgvd3" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjgev3yqu000045s6uls82fj1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -175,7 +184,7 @@
           </li>
         
           <li>
-            <a href="/2018/04/22/关于Vue的一些总结/">Vue文档学习总结</a>
+            <a href="/2018/04/22/Vue文档学习总结/">Vue文档学习总结</a>
           </li>
         
           <li>
