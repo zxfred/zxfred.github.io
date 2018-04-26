@@ -141,6 +141,7 @@
 <li><p>父组件调用子组件方法，html中引入子组件之后，设置一个组件id，如</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;recommend ref=&quot;recommend&quot;&gt;&lt;/recommend&gt;</span><br></pre></td></tr></table></figure>
 <p>之后访问 <code>this.$refs.recommend</code> 即为子组件对象</p>
+<p>PS: 调用方法要在 mounted 之后而不是 created 之后</p>
 </li>
 </ol>
 
