@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/04/22/Vue文档学习总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含单个表达式，所以语句和流控制不能生效  12345&amp;lt;!-- 完整语">
-<meta property="og:updated_time" content="2018-04-25T08:52:49.000Z">
+<meta property="og:updated_time" content="2018-04-26T08:20:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue文档学习总结">
 <meta name="twitter:description" content="只有当实例被创建时 data 中存在的属性才是响应式的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值  使用 Object.freeze()，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化  对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含单个表达式，所以语句和流控制不能生效  12345&amp;lt;!-- 完整语">
@@ -101,8 +101,11 @@
 <li><p>v-bind 绑定 class 绑定的数据对象不必内联定义在模板里</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: true,</span><br><span class="line">    &apos;text-danger&apos;: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>​</p>
+<li><p>路由页 webpack 懒加载页面语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Index = <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'@/pages/index.vue'</span>], () =&gt; &#123;</span><br><span class="line">      resolve(<span class="built_in">require</span>(<span class="string">'@/pages/index.vue'</span>))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
 </li>
+<li></li>
 </ol>
 
       
