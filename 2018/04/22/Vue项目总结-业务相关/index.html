@@ -7,16 +7,16 @@
   
   <title>Vue项目总结 - 业务相关 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码">
+  <meta name="description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码 和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue项目总结 - 业务相关">
 <meta property="og:url" content="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码">
-<meta property="og:updated_time" content="2018-04-26T12:08:18.000Z">
+<meta property="og:description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码 和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接">
+<meta property="og:updated_time" content="2018-04-28T15:03:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue项目总结 - 业务相关">
-<meta name="twitter:description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码">
+<meta name="twitter:description" content="使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局 mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码 和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -88,6 +88,7 @@
         <ol>
 <li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
 <li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
+<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
 </ol>
 
       
