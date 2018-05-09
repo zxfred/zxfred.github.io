@@ -93,7 +93,9 @@
 <h4 id="方法四："><a href="#方法四：" class="headerlink" title="方法四："></a>方法四：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp4 = <span class="built_in">Date</span>.now()</span><br></pre></td></tr></table></figure>
 <p>方法一获取的时间戳精确到秒（后三位为000），方法二与三是获取的时间戳精确到毫秒。方法四是ES5后支持。</p>
 <p>####获取指定格式的时间戳：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Date(&quot;2018-05-09 00:00:00&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2018-05-09 00:00:00"</span>);</span><br></pre></td></tr></table></figure>
+<p>这种以 - 分割的格式在 Safari 下不支持，会返回 NaN 或者 Invalid Date，可用2018/05/09这种日期格式</p>
+
       
     </div>
     <footer class="article-footer">
