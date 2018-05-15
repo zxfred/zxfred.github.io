@@ -5,21 +5,19 @@
   
 
   
-  <title>小程序相关总结 | Acidic Accident</title>
+  <title>小程序的一些总结 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
 <meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小程序相关总结">
+<meta property="og:title" content="小程序的一些总结">
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
-<meta property="og:image" content="http://zxfred.github.io/2018/03/29/img/2.png">
-<meta property="og:updated_time" content="2018-04-19T05:56:53.000Z">
+<meta property="og:updated_time" content="2018-05-15T09:16:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序相关总结">
+<meta name="twitter:title" content="小程序的一些总结">
 <meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
-<meta name="twitter:image" content="http://zxfred.github.io/2018/03/29/img/2.png">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -80,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      小程序相关总结
+      小程序的一些总结
     </h1>
   
 
@@ -108,7 +106,6 @@
 <li><p>多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
 </li>
 <li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，外部 card 宽度从 50% 改为定宽可以解决</p>
-<p><img src="../img/2.png" alt="2"></p>
 </li>
 <li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
 </li>
