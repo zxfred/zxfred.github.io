@@ -61,6 +61,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-75team-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/75team-设计模式/" class="article-date">
+  <time datetime="2018-05-21T03:30:29.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/75team-设计模式/">75team - 设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>思考：</p>
+<ul>
+<li>我们为什么要设计/抽象，它的本质是什么</li>
+<li>JavaScript 有什么特点，什么样的设计模式适合这门语言</li>
+<li>了解“逻辑”背后的信息比如：满足什么需求？解决什么问题？变化会多频繁？有什么痛点？</li>
+</ul>
+<p>（世面上JS设计模式的书基本都在扯淡，很多设计模式是不适合JS的）</p>
+<h3 id="模式1：Behavior"><a href="#模式1：Behavior" class="headerlink" title="模式1：Behavior"></a>模式1：Behavior</h3><ul>
+<li>在交互需求出发设计一组“动作行为”</li>
+<li>在主体对象上应用和扩展这些行为</li>
+<li>为什么这么做？</li>
+</ul>
+<p>实例1：图片预览（可切换到上一张下一张图片）</p>
+<p>分析：Behavior 模式：自定义 preview 行为</p>
+<p>思考与练习：</p>
+<ol>
+<li>如果图片要动态加载，怎么修改 setPreviewBehavior?</li>
+<li>如果要兼容旧的浏览器，如IE7，如何处理？</li>
+<li>为上一张、下一张图片切换添加动画</li>
+</ol>
+<p>实例2：选取图片，自定义 setSelectionBehavior 行为</p>
+<h3 id="模式2：Adapter"><a href="#模式2：Adapter" class="headerlink" title="模式2：Adapter"></a>模式2：Adapter</h3><ul>
+<li>针对不同底层实现提供统一的外部接口</li>
+<li>让业务层面的代码可以适应不同的底层实现</li>
+</ul>
+<p>即针对不同的状况进行<strong>判断</strong></p>
+<p>Behavior + Adaptor</p>
+<h3 id="模式3：Observer（观察者，解耦作用）"><a href="#模式3：Observer（观察者，解耦作用）" class="headerlink" title="模式3：Observer（观察者，解耦作用）"></a>模式3：Observer（观察者，解耦作用）</h3><p>Web开发最核心的就是事件驱动，事件是一个异步模型，所以observer（观察者模式）很重要</p>
+<p>Observer 用于</p>
+<ul>
+<li>同步多个对象的状态变化</li>
+<li>解耦各个对象之间的依赖</li>
+</ul>
+<p>实例3：同步滚动</p>
+<p>不使用观察者模式（耦合）的方法</p>
+<p>图1</p>
+<p>增加排斥其他函数调用的方法（避免两个窗口相互调用）（和这个设计模式无关）</p>
+<p>图2</p>
+<p>使用观察者模式：</p>
+<p>增加watchBy的方法（被观察）</p>
+<p>图 3-1 3-2</p>
+<p>练习：添加 preview 与 editor 的反向同步</p>
+<h3 id="模式4：Mediator（中介者）"><a href="#模式4：Mediator（中介者）" class="headerlink" title="模式4：Mediator（中介者）"></a>模式4：Mediator（中介者）</h3><ul>
+<li>将命令传递给所有订阅者</li>
+<li>与所有订阅者之间维持依赖关系</li>
+<li>从而让订阅者彼此之间相互独立</li>
+</ul>
+<p>上一个例子，改用 pub/sub</p>
+<h3 id="模式5：Composite（复合模式）"><a href="#模式5：Composite（复合模式）" class="headerlink" title="模式5：Composite（复合模式）"></a>模式5：Composite（复合模式）</h3><ul>
+<li>对已有组件/库/功能的组合使用</li>
+<li>提升代码复用性的最常用手段</li>
+</ul>
+<p>实例：命令式连续动画</p>
+<p>练习：完善动画例子，增加其他特效动画支持，自己将一些基础组件合成为高级组件</p>
+<h3 id="模式6：Partial-Application"><a href="#模式6：Partial-Application" class="headerlink" title="模式6：Partial Application"></a>模式6：Partial Application</h3><ul>
+<li>部分应用/固化参数</li>
+</ul>
+<p>实例：resolve path 拼接字符串作为路径，node跨平台，如果直接拼，在windows下会有错误（windows路径用反斜杠）</p>
+<p>实例：Logging time 在每个日志上打上时间戳</p>
+<h3 id="模式7：Decorate（装饰器）"><a href="#模式7：Decorate（装饰器）" class="headerlink" title="模式7：Decorate（装饰器）"></a>模式7：Decorate（装饰器）</h3><ul>
+<li><p>在原有 API 基础上增加额外的功能</p>
+</li>
+<li><p>不改变底层库的基础上扩展功能的一种模式</p>
+<p>（不要直接在一些库上修改代码）</p>
+</li>
+</ul>
+<p>实例：让函数只被调用一次</p>
+<p>图4</p>
+<p>实例：debounce 鼠标停下的时候让小鸟到鼠标位置</p>
+<p>如果不增加 debounce，小鸟会卡住</p>
+<h3 id="模式8：Proxy（代理模式）"><a href="#模式8：Proxy（代理模式）" class="headerlink" title="模式8：Proxy（代理模式）"></a>模式8：Proxy（代理模式）</h3><ul>
+<li>保持原有 API 功能不变，改变执行过程和结果</li>
+<li>不改变底层库的基础上获得不同执行结果的手段</li>
+</ul>
+<p>实例：拦截异步数据</p>
+<p>情景：前端构建完毕，后端服务接口还没有开发好，这时需要调试</p>
+<p>图5</p>
+<p>实例：mouse 代理 touch 事件</p>
+<p>情景：PC端模拟移动端调试</p>
+<h3 id="模式9：Aspect（切面）"><a href="#模式9：Aspect（切面）" class="headerlink" title="模式9：Aspect（切面）"></a>模式9：Aspect（切面）</h3><ul>
+<li>对代码的执行过程进行监测和修改</li>
+<li>不改变代码主体执行流程的基础上控制执行过程</li>
+</ul>
+<p>系统/环境默认的一些可控制点</p>
+<p>实例：创建切面修改 Swipable</p>
+<p>针对封装好的组件没有接口的情况</p>
+<p>实例：performance.watch 监控性能</p>
+<h4 id="Decorate、Proxy-和-Aspect三者联系："><a href="#Decorate、Proxy-和-Aspect三者联系：" class="headerlink" title="Decorate、Proxy 和 Aspect三者联系："></a>Decorate、Proxy 和 Aspect三者联系：</h4><ul>
+<li>Decorate 强调的是声明和定义</li>
+<li>Proxy 强调的是功能</li>
+<li>Aspect 强调的是运行过程</li>
+</ul>
+<p>动态语言，可以用 Decorate 来实现 Proxy 和 Aspect</p>
+<h3 id="模式10：-Lazy-load-（懒加载）"><a href="#模式10：-Lazy-load-（懒加载）" class="headerlink" title="模式10： Lazy load （懒加载）"></a>模式10： Lazy load （懒加载）</h3><ul>
+<li>一些加载好事的资源进行分段、异步加载</li>
+<li>前端提升性能，减少响应用户的时间</li>
+<li>某些情况下减少网页流量和带宽消耗</li>
+</ul>
+<p>实例：懒加载图片</p>
+<p>前四张图是 src ，后面三张是 data-src</p>
+<p>图6</p>
+<p>总结</p>
+<p>图7</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjhfp0zmc0001l8s6xfz81gxo" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-75team-服务器与HTTP基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/21/75team-服务器与HTTP基础/" class="article-date">
@@ -208,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjhfoz31w0000k8s6177xz7a4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjhfp0zm80000l8s6ozz8jhsw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -263,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjhfoz3260005k8s6rtgrw27w" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjhfp0zmk0006l8s65t9ectlx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -311,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjhfoz3240003k8s6u88c6ret" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjhfp0zmh0004l8s687fq1f1p" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -414,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjhfoz3200001k8s6k3n08pdc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjhfp0zme0002l8s6dx1gjk6h" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -482,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjhfoz32i000bk8s63qzkakgq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjhfp0zmt000dl8s654g7g6lx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -535,7 +674,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjhfoz32l000fk8s6sx8bnzi2" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjhfp0zmw000gl8s6bj1e1aiz" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -600,7 +739,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjhfoz3290007k8s6a31yiber" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjhfp0zmm0008l8s64enqzkw8" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -643,7 +782,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhfoz32a0008k8s65ku7ku3v" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhfp0zmn0009l8s6rq8d8bvk" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -710,58 +849,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhfoz32o000jk8s62awnce89" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhfp0zmy000kl8s6vju2rz7j" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/01/URL的组成部分/" class="article-date">
-  <time datetime="2018-04-01T10:58:34.000Z" itemprop="datePublished">2018-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/URL的组成部分/">URL的组成部分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="../img/1.png" alt=""></p>
-<p>一个完整的URL包括以下几部分：</p>
-<ol>
-<li>协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。</li>
-<li>域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。</li>
-<li>端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口。</li>
-<li>虚拟目录部分（Path）：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。</li>
-<li>文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名。</li>
-<li>锚部分（Query）：从“#”开始到最后，都是锚部分。锚部分也不是一个URL必须的部分。</li>
-<li>参数部分（Hash）：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjhfoz3280006k8s616lzbczb" class="article-share-link">Teilen</a>
-      
-      
     </footer>
   </div>
   
@@ -819,6 +911,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/21/75team-设计模式/">75team - 设计模式</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/21/75team-服务器与HTTP基础/">75team - 服务器与HTTP基础</a>
           </li>
         
@@ -832,10 +928,6 @@
         
           <li>
             <a href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/08/netstat 的基本用法/">netstat 的基本用法</a>
           </li>
         
       </ul>
