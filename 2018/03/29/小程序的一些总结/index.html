@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
-<meta property="og:updated_time" content="2018-05-15T09:16:45.000Z">
+<meta property="og:updated_time" content="2018-05-21T03:20:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序的一些总结">
 <meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
@@ -117,10 +117,23 @@
 </li>
 <li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
 </li>
+<li><p>小程序内嵌 web-view 刷新方法：小程序自带的原生API只能用于刷新小程序页面，不能刷新 web-view 页面。</p>
+<ul>
+<li><p>最好的方法：使用 wx:if 给 web-view 绑定一个 boolean 变量，利用 if 会刷新 dom 节点的性质，更新 boolean（先false再true）会使 web-view 页面刷新。</p>
+<p>问题：目前没有发现问题</p>
+</li>
+<li><p>不完美的方法：在需要刷新页面的时候，先将 url 变量变成空字符串，再重新赋值。</p>
+<p>问题：在网页模拟器上，后退会出现url为空时候的错误页，但在iOS真机上正常</p>
+</li>
+<li><p>不要使用的方法：web-view 页面会在 url 改变的时候刷新，可以通过更改url的方式（如尾部增加一个时间戳作为参数）使页面刷新。</p>
+<p>问题：iOS系统中每次后退时会回到上一个页面，多次跳转时要点击多次后退，使用体验差</p>
+</li>
+</ul>
+</li>
 </ol>
 <p>###业务相关</p>
 <ol>
-<li>奇怪的 inajax 问题，红包页用某账号会请求两次，但无相关代码，initPage 里面增加 inajax 判断后解决</li>
+<li>奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决</li>
 <li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
 <li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
 <li>接口正确性判断只需要判断 errorCode 不用判断 errorMsg</li>
@@ -141,11 +154,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/29/我为什么开始用微信运动?/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/30/Javascript 中的 this/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          我为什么开始用微信运动?
+          Javascript 中的 this
         
       </div>
     </a>
@@ -172,7 +185,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
     </div>
   </div>
 
@@ -182,7 +195,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 20px;">微信小程序</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+      <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 20px;">微信小程序</a>
     </div>
   </div>
 
