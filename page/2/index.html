@@ -398,6 +398,18 @@
 </li>
 <li><p>收集 formid 时，如需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</p>
 </li>
+<li><p>如何禁止页面滚动：</p>
+<p>不用下拉刷新的方法：</p>
+<ul>
+<li>整个布局用<code>&lt;scroll-view&gt;</code>作为根节点，绑定 scroll-view 的 scroll-y 属性<code>&lt;scroll-view scroll-y=&quot;false&quot;&gt;</code></li>
+<li>样式文件中设置 Page 的 overflow-y 属性值为hidden</li>
+<li>样式文件中设置 scroll-view 的 height 属性值为100%</li>
+</ul>
+<p>使用下拉刷新的方法：</p>
+<ul>
+<li>在外层添加一个view：<code>&lt;view class=&#39;page&#39; style=&#39;height:;overflow:;&#39;&gt;</code> 然后动态算出设备高度</li>
+</ul>
+</li>
 </ol>
 <p>###业务相关</p>
 <ol>
