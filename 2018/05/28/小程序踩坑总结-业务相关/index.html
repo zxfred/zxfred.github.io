@@ -5,14 +5,18 @@
   
 
   
-  <title>Tag: linux | Acidic Accident</title>
+  <title>小程序踩坑总结 - 业务相关 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Acidic Accident">
-<meta property="og:url" content="http://zxfred.github.io/tags/linux/index.html">
+  <meta name="description" content="遇事不决三板斧：  重启开发者工具 ​   奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决 loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug 一般页面请求多个异步接口，避免闪动都会做 hack 接口正确性判断只需要判断 errorCode 不用判断 errorM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序踩坑总结 - 业务相关">
+<meta property="og:url" content="http://zxfred.github.io/2018/05/28/小程序踩坑总结-业务相关/index.html">
 <meta property="og:site_name" content="Acidic Accident">
+<meta property="og:description" content="遇事不决三板斧：  重启开发者工具 ​   奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决 loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug 一般页面请求多个异步接口，避免闪动都会做 hack 接口正确性判断只需要判断 errorCode 不用判断 errorM">
+<meta property="og:updated_time" content="2018-05-28T07:31:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Acidic Accident">
+<meta name="twitter:title" content="小程序踩坑总结 - 业务相关">
+<meta name="twitter:description" content="遇事不决三板斧：  重启开发者工具 ​   奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决 loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug 一般页面请求多个异步接口，避免闪动都会做 hack 接口正确性判断只需要判断 errorCode 不用判断 errorM">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -59,40 +63,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/08/netstat 的基本用法/" class="archive-article-date">
-  <time datetime="2018-05-08T02:05:22.000Z" itemprop="datePublished">May 8</time>
+        <section id="main"><article id="post-小程序踩坑总结-业务相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/28/小程序踩坑总结-业务相关/" class="article-date">
+  <time datetime="2018-05-28T07:30:36.000Z" itemprop="datePublished">2018-05-28</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/08/netstat 的基本用法/">netstat 的基本用法</a>
+    <h1 class="article-title" itemprop="name">
+      小程序踩坑总结 - 业务相关
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>遇事不决三板斧：</p>
+<ul>
+<li>重启开发者工具</li>
+<li>​</li>
+</ul>
+<ol>
+<li>奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决</li>
+<li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
+<li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
+<li>接口正确性判断只需要判断 errorCode 不用判断 errorMsg</li>
+<li>他人新建开发分支需要 git pull 一下本机才能显示</li>
+<li>收集 formid 时如果需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</li>
+<li>统一后端处理的数据<ul>
+<li>（英文原版书）是否显示原价</li>
+<li>评分（会处理成整数或带0.5的小数）</li>
+</ul>
+</li>
+<li>测试方面如果出现代码不是最新的情况，删除所有代码，重新更新</li>
+<li>坑：某 ajax 请求（首页feed）如果接口错误，在开发者工具上返回200，但在真机上返回302，不会执行 success 和 fail，只会执行 complete </li>
+</ol>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/28/小程序踩坑总结-业务相关/" data-id="cjhpxqlrb000j7ls6zbp6qwzc" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/25/Mac急救办法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Mac急救办法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

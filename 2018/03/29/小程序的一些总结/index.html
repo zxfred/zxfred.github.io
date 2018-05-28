@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/03/29/小程序的一些总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
-<meta property="og:updated_time" content="2018-05-28T06:04:14.000Z">
+<meta property="og:updated_time" content="2018-05-28T07:30:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序的一些总结">
 <meta name="twitter:description" content="学习小程序开发过程中的一些总结，持续更新ing ###小Tips  scroll-view 标签需要在内部再套一层块级 container 标签，并设置 container 足够宽  line-height 需要比字号大一些，避免整行文字显示不完整  iPhone 下显示正常，安卓机下显示错误的问题，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应">
@@ -145,27 +145,11 @@
 </ul>
 </li>
 </ol>
-<p>###业务相关</p>
-<ol>
-<li>奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决</li>
-<li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
-<li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
-<li>接口正确性判断只需要判断 errorCode 不用判断 errorMsg</li>
-<li>他人新建开发分支需要 git pull 一下本机才能显示</li>
-<li>收集 formid 时如果需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</li>
-<li>统一后端处理的数据<ul>
-<li>（英文原版书）是否显示原价</li>
-<li>评分（会处理成整数或带0.5的小数）</li>
-</ul>
-</li>
-<li>测试方面如果出现代码不是最新的情况，删除所有代码，重新更新</li>
-<li>坑：某 ajax 请求（首页feed）如果接口错误，在开发者工具上返回200，但在真机上返回302，不会执行 success 和 fail，只会执行 complete </li>
-</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhlduibv000dfzs6ldq7f0z9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhpxqlr7000e7ls6zz7djvqw" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -239,6 +223,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/28/小程序踩坑总结-业务相关/">小程序踩坑总结 - 业务相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/25/Mac急救办法/">Mac急救办法</a>
           </li>
         
@@ -252,10 +240,6 @@
         
           <li>
             <a href="/2018/05/21/75team-服务器与HTTP基础/">75team - 服务器与HTTP基础</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/21/Linux命令基础/">Linux命令基础</a>
           </li>
         
       </ul>

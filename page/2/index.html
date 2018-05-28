@@ -61,6 +61,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Vue文档学习总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/22/Vue文档学习总结/" class="article-date">
+  <time datetime="2018-04-22T10:43:06.000Z" itemprop="datePublished">2018-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/Vue文档学习总结/">Vue文档学习总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>只有当实例被创建时 <code>data</code> 中存在的属性才是<strong>响应式</strong>的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值</p>
+</li>
+<li><p>使用 <code>Object.freeze()</code>，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化</p>
+</li>
+<li><p>对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含<strong>单个表达式</strong>，所以语句和流控制不能生效</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-bind:href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a :href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a @click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果完全相同。然而，不同的是<strong>计算属性基于它们的依赖进行缓存</strong>，多次访问计算属性会立即返回之前的计算结果，而不必再次执行函数</p>
+</li>
+<li><p>v-bind 绑定 class 绑定的数据对象不必内联定义在模板里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: true,</span><br><span class="line">    &apos;text-danger&apos;: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由页 webpack 懒加载页面语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Index = <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'@/pages/index.vue'</span>], () =&gt; &#123;</span><br><span class="line">      resolve(<span class="built_in">require</span>(<span class="string">'@/pages/index.vue'</span>))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父组件调用子组件方法，html中引入子组件之后，设置一个组件id，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;recommend ref=&quot;recommend&quot;&gt;&lt;/recommend&gt;</span><br></pre></td></tr></table></figure>
+<p>之后访问 <code>this.$refs.recommend</code> 即为子组件对象</p>
+<p>PS: 调用方法要在 mounted 之后而不是 created 之后</p>
+</li>
+<li><p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjhpxqlqw00077ls6cug2cjwo" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Vue项目总结-业务相关" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/22/Vue项目总结-业务相关/" class="article-date">
@@ -92,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhlduibs000bfzs6d1ae0rcj" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhpxqlr5000b7ls6wmzvgrqx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -159,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhlduic3000pfzs6qsc8je07" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhpxqlre000n7ls6naxoc15b" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -208,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjhlduibm0009fzs6yhdo0tgk" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjhpxqlr3000a7ls65tqxyqw4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -303,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjhlduic0000kfzs6cwwssghs" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjhpxqlra000i7ls6x1fjl8sa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -363,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjhlduibk0007fzs6g2ec70tu" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjhpxqlqt00047ls6munycqdw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -454,27 +519,11 @@
 </ul>
 </li>
 </ol>
-<p>###业务相关</p>
-<ol>
-<li>奇怪的 inajax 问题，红包页用特定账号会请求两次，initPage 里面增加 inajax 判断后解决</li>
-<li>loading 可以写在 onload 生命周期里，toast 需要写在 onshow 里面，因为切换页面时会产生一些bug</li>
-<li>一般页面请求多个异步接口，避免闪动都会做 hack</li>
-<li>接口正确性判断只需要判断 errorCode 不用判断 errorMsg</li>
-<li>他人新建开发分支需要 git pull 一下本机才能显示</li>
-<li>收集 formid 时如果需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</li>
-<li>统一后端处理的数据<ul>
-<li>（英文原版书）是否显示原价</li>
-<li>评分（会处理成整数或带0.5的小数）</li>
-</ul>
-</li>
-<li>测试方面如果出现代码不是最新的情况，删除所有代码，重新更新</li>
-<li>坑：某 ajax 请求（首页feed）如果接口错误，在开发者工具上返回200，但在真机上返回302，不会执行 success 和 fail，只会执行 complete </li>
-</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhlduibv000dfzs6ldq7f0z9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhpxqlr7000e7ls6zz7djvqw" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -552,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjhlduic2000nfzs6ufynfnp0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjhpxqlrf000p7ls61651ff3w" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -606,7 +655,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjhlduibt000cfzs6f4j1xtz8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjhpxqlr6000c7ls64qtefcnq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -704,7 +753,7 @@ $ git commit -m &quot;remove test.txt&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjhlduibd0001fzs636geheaq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjhpxqlqs00037ls62sygmhw0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -764,6 +813,10 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
+            <a href="/2018/05/28/小程序踩坑总结-业务相关/">小程序踩坑总结 - 业务相关</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/25/Mac急救办法/">Mac急救办法</a>
           </li>
         
@@ -777,10 +830,6 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/05/21/75team-服务器与HTTP基础/">75team - 服务器与HTTP基础</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/21/Linux命令基础/">Linux命令基础</a>
           </li>
         
       </ul>
