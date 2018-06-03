@@ -61,6 +61,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS3新特性兼容方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/09/CSS3新特性兼容方法/" class="article-date">
+  <time datetime="2018-05-09T02:09:00.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###边框</p>
+<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><p>低版本的chrome:<code>-webkit-border-radius:10px;</code><br>低版本的firefox:<code>-moz-border-radius:10px;</code><br>IE6/7/8:引入ie-css3兼容文件,不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius" target="_blank" rel="noopener">border-radius</a></p>
+<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>低版本的chrome:<code>-webkit-box-shadow:10px 10px 5px #888;</code><br>低版本的firefox:<code>-moz-box-shadow:10px 10px 5px #888;</code><br>IE6/7/8:</p>
+<ul>
+<li><p>方法一:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:dXImageTransform.Microsoft.DropShadow(color=#888888,offX=10,offY=10,positives=true);</span><br></pre></td></tr></table></figure>
+<p>缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.Shadow(color=&apos;#0099ff&apos;, Direction=&apos;120&apos;, Strength=&apos;10&apos;);</span><br></pre></td></tr></table></figure>
+<p>类似于投影效果，缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法三(推荐)、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc)</code><br>缺点：不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">box-shadow</a></p>
+</li>
+</ul>
+<h4 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h4><p>低版本的chrome:<code>-webkit-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的firefox:<code>-moz-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的Opera:<code>-o-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>IE未解决<br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image" target="_blank" rel="noopener">border-image</a>,<a href="http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml" target="_blank" rel="noopener">border-image</a></p>
+<p>###背景</p>
+<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><p>低版本的chrome:<code>-webkit-background-size:10px 10px 5px #888; //不支持background简写</code><br>低版本的firefox:<code>-moz-background-size:10px 10px 5px #888;</code><br>IE8：</p>
+<ul>
+<li><p>方法一(推荐)、引入backgroundsize.min.htc兼容文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.size &#123;</span><br><span class="line">width: 400px;</span><br><span class="line">height: 400px;</span><br><span class="line">margin: 20px auto 0;</span><br><span class="line">background:  green url(img/1.jpg) no-repeat scroll center 0;</span><br><span class="line">background-size: cover;</span><br><span class="line">-ms-behavior: url(js/backgroundsize.min.htc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二、针对IE8的hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .size&#123;</span><br><span class="line">        -ms-filter: &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&apos;img/1.jpg&apos;, sizingMethod=&apos;scale&apos;)&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">    //该函数只能模仿cover值,IE8下效果与IE9/10稍有不同,图片占满背景大小且不超出</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size" target="_blank" rel="noopener">background-size</a></p>
+</li>
+</ul>
+<h4 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h4><p>firefox4.0以下：<code>-moz-background-origin:padding | border; //没有content</code><br>IE8下background-origin默认为padding-box</p>
+<p>详情参阅<a href="http://www.jb51.net/css/34219.html" target="_blank" rel="noopener">background-origin</a></p>
+<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><p>firefox4.0以下：<code>-moz-background-clip:padding | border; //没有content</code><br>IE8下background-clip默认为padding-box</p>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><p>低版本的chrome:<code>-webkit-text-shadow:1px 1px 1px #000;</code><br>低版本的firefox:<code>-moz-text-shadow:1px 1px 1px #000;</code><br>IE6/7/8:</p>
+<ul>
+<li>方法一、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc);</code></li>
+<li>方法二、 <code>filter:shadow(color=blue,direction=225)</code>,direction表示投影角度</li>
+</ul>
+<p>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a></p>
+<h4 id="word-wrap"><a href="#word-wrap" class="headerlink" title="word-wrap"></a>word-wrap</h4><p>现代浏览器几乎都支持</p>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><h4 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-font-face" target="_blank" rel="noopener">@font-face</a></p>
+<h3 id="2D3D转换"><a href="#2D3D转换" class="headerlink" title="2D3D转换"></a>2D3D转换</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.transform&#123;</span><br><span class="line">    -webkit-transform: x,y;</span><br><span class="line">    -moz-transform: x,y;</span><br><span class="line">    -ms-transform: x,y;</span><br><span class="line">    -o-transform: x,y;</span><br><span class="line">    transform: x,y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE8及以下：用IE滤镜</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    filter:fliph;//水平翻转相当于transform:rotateY(180deg)</span><br><span class="line">    filter:flipv;//垂直翻转相当于transform:rotateX(180deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-transform" target="_blank" rel="noopener">transform</a></p>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  -webkit-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -moz-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -o-transition: all .5s ease-in-out 1s;</span><br><span class="line">  transition: all .5s ease-in-out 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE9以及更早的版本，不支持 transition 属性。<br>详情参阅<a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="noopener">transition</a></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="animation-keyframes"><a href="#animation-keyframes" class="headerlink" title="animation \ @keyframes"></a>animation \ @keyframes</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下不支持<br>详情参阅<a href="http://www.w3cplus.com/content/css3-animation" target="_blank" rel="noopener">animation</a></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="linear-gradient-radial-gradient"><a href="#linear-gradient-radial-gradient" class="headerlink" title="linear-gradient radial-gradient"></a>linear-gradient radial-gradient</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下可使用 IE 滤镜处理:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&apos;#000000&apos;,endColorstr=&apos;#ffffff&apos;);</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank" rel="noopener">gradient</a></p>
+<h4 id="rgba-r-g-b-a"><a href="#rgba-r-g-b-a" class="headerlink" title="rgba(r,g,b,a)"></a>rgba(r,g,b,a)</h4><p>IE6/7/8不支持使用 rgba 模式实现透明度，可使用 IE 滤镜处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);</span><br></pre></td></tr></table></figure>
+<p>使用后我们又发现了个小问题，IE9下颜色更深一点，仔细研究发现在IE9下rgba颜色和IE滤镜都能被识别，所以被覆盖了颜色就更深一点<br>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);&#125;</span><br><span class="line">:root .demo&#123;filter:none;background-color:rgba(255,0,0,.2);&#125;//IE8及以下不识别</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.cnblogs.com/jesse131/p/4771611.html" target="_blank" rel="noopener">IE8下兼容rgba颜色的半透明背景</a></p>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>低版本的chrome:-webkit- 或者 -webkit-box-flex<br>低版本的firefox：-moz-box-flex:1;<br>IE10:-ms-flex:1;<br>box-flex效果类似于过渡版本和新版本的flex属性；<br>详情参阅<a href="http://www.webclks.com/archives/3035" target="_blank" rel="noopener">flex</a></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>可以通过box-orient:horizontal + box-direction:normal 达到新版本 flex-direction:row 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:row-reverse 的效果；<br>可以通过box-orient:vertical + box-direction:normal 达到新版本 flex-direction:column 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:column-reverse 的效果；<br>box-lines效果类似于过渡版本和新版本的flex-wrap属性</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">justify-content</a></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>低版本的chrome：-webkit-</p>
+<p>box-pack效果等同于过渡版本的flex-pack属性和新版本的justify-content属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-content</a></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>低版本的chrome：-webkit-</p>
+<p>box-align效果等同于过渡版本的flex-align属性和新版本的align-items属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-items</a></p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>低版本的chrome：-webkit-<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-self</a></p>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>低版本的chrome：-webkit-</p>
+<p>box-oridinal-group效果等同于过渡版本的flex-order属性和新版本的order属性；<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">order</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
+<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h4><p>IE全不兼容</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjhz1zpls0009crjbyxy5v4nj" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-netstat 的基本用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/08/netstat 的基本用法/" class="article-date">
@@ -119,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjhrvcon9000mc9jeswn0dl3a" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjhz1zpm0000ecrjbkfg1obw0" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -172,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjhrvcona000nc9je9bcwnrz4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjhz1zpm7000qcrjbebo16l24" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -237,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjhrvcon4000ec9je4ey9j5e3" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjhz1zplz000dcrjbonj84jph" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -280,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhrvcon6000hc9jeo76n4ba9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjhz1zpm2000hcrjbqfiwol5m" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -347,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhrvcond000sc9jemc1dmp9z" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjhz1zpma000ucrjbtq7fn394" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -396,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjhrvcon5000fc9jejr5nfn9d" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjhz1zplr0008crjbk2b82uxn" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -491,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjhrvcon8000jc9jegccbh99t" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjhz1zpm5000ncrjbu942omg9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -551,7 +654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjhrvcomz000ac9jewyq4lt80" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjhz1zpm3000icrjbktzjoese" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -645,87 +748,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhrvcond000rc9je7pklkmv4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/29/小程序的一些总结/" data-id="cjhz1zpm8000scrjbuyh8tvqf" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-我使用的Mac软件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/28/我使用的Mac软件/" class="article-date">
-  <time datetime="2018-03-28T10:32:48.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/我使用的Mac软件/">Mac 软件推荐</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>持续更新中…</p>
-<ul>
-<li>Cyberduck - 连接工具</li>
-<li>Postman - 请求发送工具，用来调试接口</li>
-<li>Sequel Pro - MySQL 数据库管理</li>
-<li><del>MindNode - 简洁的思维导图</del> OmniGraffle - 能画思维导图和流程图等等</li>
-<li>Charles - 抓包</li>
-<li>iTerm2 + oh-my-zsh - 命令行</li>
-<li>PxCook - 标注与切图</li>
-<li>Sketch - UI设计相关</li>
-<li>Github Desktop - 官方出品的 Git 工具</li>
-<li>Cornerstone - SVN 管理</li>
-<li>LICEcap - 屏幕截取 GIF</li>
-<li>Go2Shell - 命令行中 cd 到当前文件夹</li>
-<li>Tuxera Disk Manager - 磁盘格式支持</li>
-<li>Spectacle - 快速屏幕分区</li>
-<li>TeamViewer - 视频会议、远程协助</li>
-<li>Alfred 3 - 命令启动神器</li>
-<li>Snipaste - 屏幕截图</li>
-<li>Aria2GUI - 下载工具</li>
-<li>The Unachiver - rar等格式解压缩</li>
-<li>Unsplash Wallpapers - 壁纸</li>
-<li>Scroll Reverser - 滚轮反转</li>
-<li>Wunderlist - 清单</li>
-<li>TablePlus - 数据库连接</li>
-<li>Disk Drill - 数据恢复</li>
-</ul>
-<h4 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h4><ul>
-<li>VS Code - 简洁而强大</li>
-<li>WebStorm - 智能提示很好用</li>
-<li>PyCharm - Python 宇宙第一神器</li>
-<li>Typora - 写 Markdown</li>
-</ul>
-<h4 id="Adobe-全家桶"><a href="#Adobe-全家桶" class="headerlink" title="Adobe 全家桶"></a>Adobe 全家桶</h4><ul>
-<li>Photoshop</li>
-<li>Lightroom</li>
-<li>Premiere Pro</li>
-<li>Illustrator</li>
-<li>Bridge</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjhrvcone000vc9jewv8j45hx" class="article-share-link">Teilen</a>
-      
-      
     </footer>
   </div>
   
@@ -770,7 +797,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -781,6 +808,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/06/04/记录我的梦境/">记录我的梦境</a>
+          </li>
         
           <li>
             <a href="/2018/05/29/CSS3中没见过的高级属性/">CSS3中没见过的高级属性</a>
@@ -796,10 +827,6 @@
         
           <li>
             <a href="/2018/05/25/Mac急救办法/">Mac急救办法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/24/零散的笔记/">零散的笔记</a>
           </li>
         
       </ul>
