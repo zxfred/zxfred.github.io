@@ -61,6 +61,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-getElement和query两类获取DOM方式的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/" class="article-date">
+  <time datetime="2018-06-11T04:05:55.000Z" itemprop="datePublished">2018-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/11/getElement和query两类获取DOM方式的区别/">getElement和query两类获取DOM方式的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###获取 DOM 对象有很多种方法，将常用的分为 getElement 和 query 两类</p>
+<ul>
+<li>getElementById、getElementsByTagName、getElementsByClassName等</li>
+<li>querySelector、querySelectorAll </li>
+</ul>
+<p>####getElementsByTagName()</p>
+<ul>
+<li>是document对象特有的函数，只能通过其来调用该方法</li>
+<li>返回一个HTMLCollection集合</li>
+<li>返回元素的顺序是它们在文档中的顺序</li>
+<li>传递给 getElementsByTagName() 方法的字符串可以不区分大小写</li>
+</ul>
+<p>####getElementsByClassName()</p>
+<ul>
+<li>返回作为 NodeList 对象，代表一个有顺序的节点列表</li>
+</ul>
+<p>####querySelector() 与 querySelectorAll() </p>
+<ul>
+<li>返回匹配指定 <strong>CSS 选择器 </strong>元素</li>
+<li>该方法只返回匹配指定选择器的第一个元素。如要返回所有匹配元素，需要使用 querySelectorAll() 方法</li>
+<li>querySelector() 是按css规范来实现的，所以传入的字符串中第一个字符不能是数字</li>
+</ul>
+<p>####其他</p>
+<ul>
+<li>query方法出来的元素及元素数组是静态的，不会随着文档操作而改变</li>
+<li>getElement这类方法选出的元素是动态的</li>
+<li>getElement这类方法性能比较好，query则比较方便</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cji9wixeu000e7as6kfyi3agv" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-记录我的梦境" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/04/记录我的梦境/" class="article-date">
@@ -87,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cjhz1zpm4000lcrjbvhg6ewkl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cji9wixf4000u7as6i359403c" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -138,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjhz1zplu000acrjb5t840fdc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cji9wixel00057as6ac7dpmtf" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -214,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjhz1zplj0001crjbk8l58n75" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cji9wixeg00027as63whndngh" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -286,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/28/小程序踩坑总结-业务相关/" data-id="cjhz1zpm6000ocrjbciwv1ssv" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/28/小程序踩坑总结-业务相关/" data-id="cji9wixf0000m7as6igwzz6tb" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -345,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjhz1zplx000bcrjboxtvhpuy" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cji9wixep000a7as6cq5qso7c" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -384,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/24/零散的笔记/" data-id="cjhz1zpmd000xcrjby7bgyldd" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/24/零散的笔记/" data-id="cji9wixf6000y7as6eurbngma" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -523,7 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjhz1zpll0002crjbr7i5si8b" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cji9wixee00017as66475rnnn" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -680,7 +744,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjhz1zpld0000crjbv7kq42de" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cji9wixeb00007as6ec4dwkx4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -735,55 +799,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjhz1zplp0005crjbr291anim" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaScript获取时间戳" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/09/JavaScript获取时间戳/" class="article-date">
-  <time datetime="2018-05-09T07:05:21.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/JavaScript获取时间戳/">JavaScript获取时间戳</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####获取当前时间戳：</p>
-<p>#####方法一：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp1 = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br></pre></td></tr></table></figure>
-<p>#####方法二：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp2 = (<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf();</span><br></pre></td></tr></table></figure>
-<p>#####方法三：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp3 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br></pre></td></tr></table></figure>
-<h4 id="方法四："><a href="#方法四：" class="headerlink" title="方法四："></a>方法四：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp4 = <span class="built_in">Date</span>.now()</span><br></pre></td></tr></table></figure>
-<p>方法一获取的时间戳精确到秒（后三位为000），方法二与三是获取的时间戳精确到毫秒。方法四是ES5后支持。</p>
-<p>####获取指定格式的时间戳：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2018-05-09 00:00:00"</span>);</span><br></pre></td></tr></table></figure>
-<p>这种以 - 分割的格式在 Safari 下不支持，会返回 NaN 或者 Invalid Date，可用2018/05/09这种日期格式</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjhz1zplo0004crjbmeez9w3q" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cji9wixem00067as6er4m69a0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -843,6 +859,10 @@
       <ul>
         
           <li>
+            <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/">getElement和query两类获取DOM方式的区别</a>
+          </li>
+        
+          <li>
             <a href="/2018/06/04/记录我的梦境/">记录我的梦境</a>
           </li>
         
@@ -856,10 +876,6 @@
         
           <li>
             <a href="/2018/05/28/小程序踩坑总结-业务相关/">小程序踩坑总结 - 业务相关</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/25/Mac急救办法/">Mac急救办法</a>
           </li>
         
       </ul>
