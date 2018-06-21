@@ -7,17 +7,17 @@
   
   <title>二叉树与二叉查找树 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点">
+  <meta name="description" content="##树 基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点 一个节点到另一个节点的一组边称为路径 每个节点都有一个与之相关的值，称为键值或键  树的层次根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的深度 二叉树与二叉查找树概">
 <meta name="keywords" content="算法与数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树与二叉查找树">
 <meta property="og:url" content="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点">
-<meta property="og:updated_time" content="2018-06-21T09:50:18.048Z">
+<meta property="og:description" content="##树 基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点 一个节点到另一个节点的一组边称为路径 每个节点都有一个与之相关的值，称为键值或键  树的层次根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的深度 二叉树与二叉查找树概">
+<meta property="og:updated_time" content="2018-06-21T14:30:13.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树与二叉查找树">
-<meta name="twitter:description" content="基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点">
+<meta name="twitter:description" content="##树 基本概念 一棵树最上面的节点成为根节点 如果一个节点下面链接多个节点，那么该节点称为父节点，它下面的节点称为子节点 一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为叶子节点 一个节点到另一个节点的一组边称为路径 每个节点都有一个与之相关的值，称为键值或键  树的层次根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的深度 二叉树与二叉查找树概">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -86,11 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li>一棵树最上面的节点成为<strong><u>根节点</u></strong></li>
-<li>如果一个节点下面链接多个节点，那么该节点称为<strong><u>父节点</u></strong>，它下面的节点称为<strong><u>子节点</u></strong></li>
-<li>一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为<strong><u>叶子节点</u></strong></li>
+        <p>##树</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>一棵树最上面的节点成为<strong>根节点</strong></li>
+<li>如果一个节点下面链接多个节点，那么该节点称为<strong>父节点</strong>，它下面的节点称为<strong>子节点</strong></li>
+<li>一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为<strong>叶子节点</strong></li>
+<li>一个节点到另一个节点的一组边称为<strong>路径</strong></li>
+<li>每个节点都有一个与之相关的值，称为<strong>键值</strong>或<strong>键</strong></li>
 </ul>
+<h3 id="树的层次"><a href="#树的层次" class="headerlink" title="树的层次"></a>树的层次</h3><p>根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的<strong>深度</strong></p>
+<h2 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h2><p>概念：<strong>左节点</strong>与<strong>右节点</strong></p>
+<p>二叉查找树：较小的值保存在左节点，较大的值保存在右节点，这样查找的效率很高，对于数值型和非数值型的数据都是这样</p>
 
       
     </div>
