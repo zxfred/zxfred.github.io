@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,184 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-零散的笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/24/零散的笔记/" class="article-date">
+  <time datetime="2018-05-24T03:04:55.000Z" itemprop="datePublished">2018-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/24/零散的笔记/">零散的笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pkill node 关闭 node 进程</p>
+<p>CGI，Common Gateway Interface。运行在服务器上的一段程序，提供同客户端HTML页面的接口</p>
+<p>CSS transition 多个属性：<code>transition: transform .7s ease-in-out，width .7s ease-in-out;</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/24/零散的笔记/" data-id="cjiq5di9n0018t8zcdwd4ngrt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-75team-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/75team-设计模式/" class="article-date">
+  <time datetime="2018-05-21T03:30:29.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/75team-设计模式/">75team - 设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>思考：</p>
+<ul>
+<li>我们为什么要设计/抽象，它的本质是什么</li>
+<li>JavaScript 有什么特点，什么样的设计模式适合这门语言</li>
+<li>了解“逻辑”背后的信息比如：满足什么需求？解决什么问题？变化会多频繁？有什么痛点？</li>
+</ul>
+<p>（世面上JS设计模式的书基本都在扯淡，很多设计模式是不适合JS的）</p>
+<h3 id="模式1：Behavior"><a href="#模式1：Behavior" class="headerlink" title="模式1：Behavior"></a>模式1：Behavior</h3><ul>
+<li>在交互需求出发设计一组“动作行为”</li>
+<li>在主体对象上应用和扩展这些行为</li>
+<li>为什么这么做？</li>
+</ul>
+<p>实例1：图片预览（可切换到上一张下一张图片）</p>
+<p>分析：Behavior 模式：自定义 preview 行为</p>
+<p>思考与练习：</p>
+<ol>
+<li>如果图片要动态加载，怎么修改 setPreviewBehavior?</li>
+<li>如果要兼容旧的浏览器，如IE7，如何处理？</li>
+<li>为上一张、下一张图片切换添加动画</li>
+</ol>
+<p>实例2：选取图片，自定义 setSelectionBehavior 行为</p>
+<h3 id="模式2：Adapter"><a href="#模式2：Adapter" class="headerlink" title="模式2：Adapter"></a>模式2：Adapter</h3><ul>
+<li>针对不同底层实现提供统一的外部接口</li>
+<li>让业务层面的代码可以适应不同的底层实现</li>
+</ul>
+<p>即针对不同的状况进行<strong>判断</strong></p>
+<p>Behavior + Adaptor</p>
+<h3 id="模式3：Observer（观察者，解耦作用）"><a href="#模式3：Observer（观察者，解耦作用）" class="headerlink" title="模式3：Observer（观察者，解耦作用）"></a>模式3：Observer（观察者，解耦作用）</h3><p>Web开发最核心的就是事件驱动，事件是一个异步模型，所以observer（观察者模式）很重要</p>
+<p>Observer 用于</p>
+<ul>
+<li>同步多个对象的状态变化</li>
+<li>解耦各个对象之间的依赖</li>
+</ul>
+<p>实例3：同步滚动</p>
+<p>不使用观察者模式（耦合）的方法</p>
+<p>图1</p>
+<p>增加排斥其他函数调用的方法（避免两个窗口相互调用）（和这个设计模式无关）</p>
+<p>图2</p>
+<p>使用观察者模式：</p>
+<p>增加watchBy的方法（被观察）</p>
+<p>图 3-1 3-2</p>
+<p>练习：添加 preview 与 editor 的反向同步</p>
+<h3 id="模式4：Mediator（中介者）"><a href="#模式4：Mediator（中介者）" class="headerlink" title="模式4：Mediator（中介者）"></a>模式4：Mediator（中介者）</h3><ul>
+<li>将命令传递给所有订阅者</li>
+<li>与所有订阅者之间维持依赖关系</li>
+<li>从而让订阅者彼此之间相互独立</li>
+</ul>
+<p>上一个例子，改用 pub/sub</p>
+<h3 id="模式5：Composite（复合模式）"><a href="#模式5：Composite（复合模式）" class="headerlink" title="模式5：Composite（复合模式）"></a>模式5：Composite（复合模式）</h3><ul>
+<li>对已有组件/库/功能的组合使用</li>
+<li>提升代码复用性的最常用手段</li>
+</ul>
+<p>实例：命令式连续动画</p>
+<p>练习：完善动画例子，增加其他特效动画支持，自己将一些基础组件合成为高级组件</p>
+<h3 id="模式6：Partial-Application"><a href="#模式6：Partial-Application" class="headerlink" title="模式6：Partial Application"></a>模式6：Partial Application</h3><ul>
+<li>部分应用/固化参数</li>
+</ul>
+<p>实例：resolve path 拼接字符串作为路径，node跨平台，如果直接拼，在windows下会有错误（windows路径用反斜杠）</p>
+<p>实例：Logging time 在每个日志上打上时间戳</p>
+<h3 id="模式7：Decorate（装饰器）"><a href="#模式7：Decorate（装饰器）" class="headerlink" title="模式7：Decorate（装饰器）"></a>模式7：Decorate（装饰器）</h3><ul>
+<li><p>在原有 API 基础上增加额外的功能</p>
+</li>
+<li><p>不改变底层库的基础上扩展功能的一种模式</p>
+<p>（不要直接在一些库上修改代码）</p>
+</li>
+</ul>
+<p>实例：让函数只被调用一次</p>
+<p>图4</p>
+<p>实例：debounce 鼠标停下的时候让小鸟到鼠标位置</p>
+<p>如果不增加 debounce，小鸟会卡住</p>
+<h3 id="模式8：Proxy（代理模式）"><a href="#模式8：Proxy（代理模式）" class="headerlink" title="模式8：Proxy（代理模式）"></a>模式8：Proxy（代理模式）</h3><ul>
+<li>保持原有 API 功能不变，改变执行过程和结果</li>
+<li>不改变底层库的基础上获得不同执行结果的手段</li>
+</ul>
+<p>实例：拦截异步数据</p>
+<p>情景：前端构建完毕，后端服务接口还没有开发好，这时需要调试</p>
+<p>图5</p>
+<p>实例：mouse 代理 touch 事件</p>
+<p>情景：PC端模拟移动端调试</p>
+<h3 id="模式9：Aspect（切面）"><a href="#模式9：Aspect（切面）" class="headerlink" title="模式9：Aspect（切面）"></a>模式9：Aspect（切面）</h3><ul>
+<li>对代码的执行过程进行监测和修改</li>
+<li>不改变代码主体执行流程的基础上控制执行过程</li>
+</ul>
+<p>系统/环境默认的一些可控制点</p>
+<p>实例：创建切面修改 Swipable</p>
+<p>针对封装好的组件没有接口的情况</p>
+<p>实例：performance.watch 监控性能</p>
+<h4 id="Decorate、Proxy-和-Aspect三者联系："><a href="#Decorate、Proxy-和-Aspect三者联系：" class="headerlink" title="Decorate、Proxy 和 Aspect三者联系："></a>Decorate、Proxy 和 Aspect三者联系：</h4><ul>
+<li>Decorate 强调的是声明和定义</li>
+<li>Proxy 强调的是功能</li>
+<li>Aspect 强调的是运行过程</li>
+</ul>
+<p>动态语言，可以用 Decorate 来实现 Proxy 和 Aspect</p>
+<h3 id="模式10：-Lazy-load-（懒加载）"><a href="#模式10：-Lazy-load-（懒加载）" class="headerlink" title="模式10： Lazy load （懒加载）"></a>模式10： Lazy load （懒加载）</h3><ul>
+<li>一些加载好事的资源进行分段、异步加载</li>
+<li>前端提升性能，减少响应用户的时间</li>
+<li>某些情况下减少网页流量和带宽消耗</li>
+</ul>
+<p>实例：懒加载图片</p>
+<p>前四张图是 src ，后面三张是 data-src</p>
+<p>图6</p>
+<p>总结</p>
+<p>图7</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjiq5di8n0001t8zck82kczmf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-75team-服务器与HTTP基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -208,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjiod8pc80000qcs6dzoz22oq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjiq5di8i0000t8zchpdgp3e8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjiod8pcr000bqcs6qbhbc8x9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjiq5di8y000at8zcgjm6cpu3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjiod8pco000aqcs6llpf3fng" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjiq5di8w0007t8zci93p0w8m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -414,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjiod8pck0005qcs6ycjkfff6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjiq5di8u0005t8zc6cylisxl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjiod8pd1000oqcs6by0dg9nl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjiq5di9b000pt8zc91oygjch" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -535,7 +713,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjiod8pd6000vqcs6e8udetge" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序webview嵌入h5问题总结及解决办法/" data-id="cjiq5di9g000ut8zcpq3jsds4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -600,7 +778,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjiod8pcx000gqcs6t8vj0i68" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjiq5di93000et8zcl1a2dg4d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -643,7 +821,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjiod8pcx000hqcs6zc7jcuqw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue项目总结-业务相关/" data-id="cjiq5di97000jt8zcborz9pht" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -655,125 +833,11 @@
 
 
   
-    <article id="post-彻底理解-JavaScript-里的闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/02/彻底理解-JavaScript-里的闭包/" class="article-date">
-  <time datetime="2018-04-02T14:56:00.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/彻底理解-JavaScript-里的闭包/">彻底理解 JavaScript 里的闭包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h2><p>闭包创建一个词法作用域，这个作用域里面的变量被引用之后可以在这个词法作用域外面被自由访问，是一个函数和声明该函数的词法环境的组合。</p>
-<p>还有一种说法，闭包就是引用了自由变量的函数，这个自由变量与函数一同存在，即使脱离了创建它的环境。所以你常看到的说闭包就是绑定了上下文环境的函数。</p>
-<p>在下面的介绍中，我还是比较偏向闭包是一个函数和声明该函数的词法环境的组合这种解释，所以也会基于这种解释去阐述。</p>
-<h2 id="JS里面的闭包"><a href="#JS里面的闭包" class="headerlink" title="JS里面的闭包"></a>JS里面的闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  function say() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">  return say;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myHello = sayHello(&apos;abby&apos;);</span><br><span class="line">myHello(); // Hello,abby</span><br></pre></td></tr></table></figure>
-<p>上面这段代码，其实就形成了一个闭包，其中在 sayHello 这个函数里面定义的函数 say 和其声明它的词法环境就形成了一个闭包，因为它引用了sayHello 里面定义的一个变量 str，并且将 say 这个函数 return 了出去，这样在 sayHello 这个函数的外面也能访问它里面定义的变量 str，就好像 say 这个函数和这个变量绑定了一样。</p>
-<p>看到这里可能会疑问为什么在外部还能访问到这个变量呢，因为在有些语言中，一般认为函数的局部变量只在函数的执行期间可访问。说到这里又不得不说到执行环境，其实当执行到<code>let myHello = sayHello(&#39;fred&#39;);</code>这段代码的时候按理会销毁掉 sayHello()的执行环境，但是这里却没有，原因是因为 sayHello() 返回的是一个函数，这个函数里面的 str 引用了外部的变量 str,如果销毁了就找不到了，因此 sayHello() 这个函数的执行环境会一直在内存中，所以闭包会增加内存开销。</p>
-<p><strong>例子1: 闭包并不是一定需要 return 某个函数</strong></p>
-<p>虽然常见的闭包都是 return 出来一个函数，但是闭包并不一定非要 return，return 出一个函数只是为了能在作用域范围之外访问一个变量，我们用另一种方式也能做到，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let say;</span><br><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  say = function() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myHello = sayHello(&apos;fred&apos;);</span><br><span class="line">say(); // Hello,fred</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，say和声明它的词法环境其实也形成了一个闭包，在它的作用域里面持有了 sayHello 这个函数里面定义的 str 变量的引用，因此也能在 str 变量定义的作用域之外访问它。只要弄清楚闭包的本质即可。</p>
-<p>但是在 JS 里面，最常用的形成闭包的方式便是在一个函数里面嵌套另一个函数，另一个函数持有父作用域里面定义的变量。</p>
-<p><strong>例子2: 同一个调用函数生成同一个闭包环境，在里面声明的所有函数同时具有这个环境里面自由变量的引用。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let get, up, down</span><br><span class="line">function setUp() &#123;</span><br><span class="line">  let number = 20</span><br><span class="line">  get = function() &#123;</span><br><span class="line">    console.log(number);</span><br><span class="line">  &#125;</span><br><span class="line">  up = function() &#123;</span><br><span class="line">    number += 3</span><br><span class="line">  &#125;</span><br><span class="line">  down = function() &#123;</span><br><span class="line">    number -=2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">setUp();</span><br><span class="line">get(); // 20</span><br><span class="line">up();</span><br><span class="line">down();</span><br><span class="line">get(); // 21</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，我们用setUp这个函数生成了一个闭包环境，在这个环境里面的三个函数共享了这个环境里面的 number 变量的引用，因此都可以对 number 进行操作。</p>
-<p><strong>例子3: 每一个调用函数都会创建不同的闭包环境。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  let array = [1, 2];</span><br><span class="line">  return function(num) &#123;</span><br><span class="line">    array.push(num);</span><br><span class="line">    console.log(`array:$&#123;array&#125;`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myClosure = newClosure();</span><br><span class="line">let yourClosure = newClosure();</span><br><span class="line">myClosure(3); // array:1,2,3</span><br><span class="line">yourClosure(4); // array:1,2,4</span><br><span class="line">myClosure(5); // array:1,2,3,5</span><br></pre></td></tr></table></figure>
-<p>上面这个例子里面， myClosure 和 yourClosure 的赋值语句，也就是 newClosure 这个函数被调用了两次，因此创建了两个不同的闭包环境，因此里面的变量是互不影响的。</p>
-<p><strong>例子4: 在循环里面创建闭包</strong></p>
-<p>在 let 被引入之前，一个常见的错误就是在循环中创建闭包，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 5个5</span><br></pre></td></tr></table></figure>
-<p>打印的结果大家也知道是5个5，因为 setTimeout 里面的函数保持对 i 的引用，在setTimeout的回调函数被执行的时候这个循环早已经执行完成。</p>
-<p>如何才能得到我们想要的01234，在这里有两种做法。</p>
-<p>一种是 <strong>创建一个新的闭包对象，这样每个闭包对象里面的变量就互不影响</strong>。例如下面的代码种每次 log(i)都会创建不同的闭包对象，所有的回调函数不会指向同一个环境。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function log(i) &#123;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(log(i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>另一种做法就是使用自执行函数，外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是不会被循环改变的。写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    (function(e) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)(i)  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>还是 <code>let</code> 省事，所以赶紧拥抱 es6 吧。</p>
-<p>本文转载自知乎专栏：<a href="https://zhuanlan.zhihu.com/luckyabby" target="_blank" rel="noopener">一只萌媛的自我修炼</a></p>
-<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/31864924" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31864924</a> </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjiod8pda0013qcs6d0d5c87y" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/01/URL的组成部分/" class="article-date">
-  <time datetime="2018-04-01T10:58:34.000Z" itemprop="datePublished">2018-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/URL的组成部分/">URL的组成部分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="../img/1.png" alt=""></p>
-<p>一个完整的URL包括以下几部分：</p>
-<ol>
-<li>协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。</li>
-<li>域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。</li>
-<li>端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口。</li>
-<li>虚拟目录部分（Path）：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。</li>
-<li>文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名。</li>
-<li>锚部分（Query）：从“#”开始到最后，都是锚部分。锚部分也不是一个URL必须的部分。</li>
-<li>参数部分（Hash）：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjiod8pcu000eqcs6a8mphtl8" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -797,14 +861,14 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 20px;">微信小程序</a> <a href="/tags/算法与数据结构/" style="font-size: 10px;">算法与数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 20px;">微信小程序</a> <a href="/tags/算法与数据结构/" style="font-size: 15px;">算法与数据结构</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -814,9 +878,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/06/22/栈/">栈</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/22/队列/">队列</a>
+          </li>
         
           <li>
             <a href="/2018/06/21/二叉树与二叉查找树/">二叉树与二叉查找树</a>
@@ -828,14 +900,6 @@
         
           <li>
             <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/">getElement和query两类获取DOM方式的区别</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/04/记录我的梦境/">记录我的梦境</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/29/CSS3中没见过的高级属性/">CSS3中没见过的高级属性</a>
           </li>
         
       </ul>
