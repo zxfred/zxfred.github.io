@@ -5,20 +5,18 @@
   
 
   
-  <title>URL的组成部分 | Acidic Accident</title>
+  <title>React Native 环境搭建 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个完整的URL包括以下几部分：  协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。 域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。 端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分">
+  <meta name="description" content="开发平台：macOS  App平台：Android / iOS  安装node  brew install node   安装 react-native-cli  npm i -g react-native-cli   安装 Java JDK 版本 8 或以上  安装 Android Studio  Android SDK Android SDK Platform Performance (Int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="URL的组成部分">
-<meta property="og:url" content="http://zxfred.github.io/2018/04/01/URL的组成部分/index.html">
+<meta property="og:title" content="React Native 环境搭建">
+<meta property="og:url" content="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="一个完整的URL包括以下几部分：  协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。 域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。 端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分">
-<meta property="og:image" content="http://zxfred.github.io/2018/04/01/img/1.png">
-<meta property="og:updated_time" content="2018-04-02T14:18:29.000Z">
+<meta property="og:description" content="开发平台：macOS  App平台：Android / iOS  安装node  brew install node   安装 react-native-cli  npm i -g react-native-cli   安装 Java JDK 版本 8 或以上  安装 Android Studio  Android SDK Android SDK Platform Performance (Int">
+<meta property="og:updated_time" content="2018-07-05T09:07:45.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="URL的组成部分">
-<meta name="twitter:description" content="一个完整的URL包括以下几部分：  协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。 域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。 端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分">
-<meta name="twitter:image" content="http://zxfred.github.io/2018/04/01/img/1.png">
+<meta name="twitter:title" content="React Native 环境搭建">
+<meta name="twitter:description" content="开发平台：macOS  App平台：Android / iOS  安装node  brew install node   安装 react-native-cli  npm i -g react-native-cli   安装 Java JDK 版本 8 或以上  安装 Android Studio  Android SDK Android SDK Platform Performance (Int">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -65,10 +63,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-React-Native-环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/01/URL的组成部分/" class="article-date">
-  <time datetime="2018-04-01T10:58:34.000Z" itemprop="datePublished">2018-04-01</time>
+    <a href="/2018/07/05/React-Native-环境搭建/" class="article-date">
+  <time datetime="2018-07-05T09:06:39.000Z" itemprop="datePublished">2018-07-05</time>
 </a>
     
   </div>
@@ -79,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      URL的组成部分
+      React Native 环境搭建
     </h1>
   
 
@@ -87,22 +85,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="../img/1.png" alt=""></p>
-<p>一个完整的URL包括以下几部分：</p>
+        <p>开发平台：macOS </p>
+<p>App平台：Android / iOS</p>
 <ol>
-<li>协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。</li>
-<li>域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。</li>
-<li>端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口。</li>
-<li>虚拟目录部分（Path）：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。</li>
-<li>文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名。</li>
-<li>锚部分（Query）：从“#”开始到最后，都是锚部分。锚部分也不是一个URL必须的部分。</li>
-<li>参数部分（Hash）：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</li>
+<li><p>安装node</p>
+<ul>
+<li><code>brew install node</code></li>
+</ul>
+</li>
+<li><p>安装 react-native-cli</p>
+<ul>
+<li><code>npm i -g react-native-cli</code></li>
+</ul>
+</li>
+<li><p>安装 Java JDK 版本 8 或以上</p>
+</li>
+<li><p>安装 Android Studio</p>
+<ul>
+<li><code>Android SDK</code></li>
+<li><code>Android SDK Platform</code></li>
+<li><code>Performance (Intel ® HAXM)</code></li>
+<li><code>Android Virtual Device</code></li>
+</ul>
+</li>
+<li><p>安装安卓 SDK - Android 6.0 (Marshmallow) </p>
+<ul>
+<li><code>Google APIs</code></li>
+<li><code>Android SDK Platform 23</code></li>
+<li><code>Intel x86 Atom_64 System Image</code></li>
+<li><code>Google APIs Intel x86 Atom_64 System Image</code></li>
+</ul>
+</li>
+<li><p>SDK Tools</p>
+<ul>
+<li><code>23.0.1</code></li>
+</ul>
+</li>
+<li><p>配置环境变量（使用其他 shell 需要改相应的 shell 配置）</p>
+<ul>
+<li><code>$HOME/.bash_profile</code></li>
+<li><code>export ANDROID_HOME=$HOME/Library/Android/sdk</code></li>
+<li><code>export PATH=$PATH:$ANDROID_HOME/tools</code></li>
+<li><code>export PATH=$PATH:$ANDROID_HOME/tools/bin</code></li>
+<li><code>export PATH=$PATH:$ANDROID_HOME/platform-tools</code></li>
+</ul>
+<p>使用 <code>echo $PATH</code> 和 <code>echo $ANDROID_HOME</code> 检测</p>
+</li>
+<li><p>建立 React Native 程序</p>
+<p><code>react-native init myProject</code></p>
+</li>
+<li><p>使用 Android Studio 建立一个安卓手机模拟器</p>
+<p>使用 <code>adb devices</code> 查看模拟器</p>
+</li>
+<li><p>运行项目</p>
+<p><code>cd myProject</code><br><code>react-native run-android</code></p>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjj8bvvi1000fixs68j3p25fw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjj8bvvi0000eixs6cvi9rkg8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -111,19 +154,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/04/02/彻底理解-JavaScript-里的闭包/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          彻底理解 JavaScript 里的闭包
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/30/外边距折叠的几种情况与解决办法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/03/Web安全之XSS攻防/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">外边距折叠的几种情况与解决办法</div>
+      <div class="article-nav-title">Web安全之XSS攻防</div>
     </a>
   
 </nav>

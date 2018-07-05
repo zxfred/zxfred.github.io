@@ -5,19 +5,15 @@
   
 
   
-  <title>CSS3中的transform详解 | Acidic Accident</title>
+  <title>Web安全之XSS攻防 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转载自：https://www.cnblogs.com/afighter/p/5726888.html  一、变形-旋转 ratate() 函数 通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。 例：transform:rotate(-20deg)">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSS3中的transform详解">
-<meta property="og:url" content="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Web安全之XSS攻防">
+<meta property="og:url" content="http://zxfred.github.io/2018/07/03/Web安全之XSS攻防/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="转载自：https://www.cnblogs.com/afighter/p/5726888.html  一、变形-旋转 ratate() 函数 通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。 例：transform:rotate(-20deg)">
-<meta property="og:updated_time" content="2018-05-29T03:04:49.000Z">
+<meta property="og:updated_time" content="2018-07-03T12:00:51.428Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS3中的transform详解">
-<meta name="twitter:description" content="转载自：https://www.cnblogs.com/afighter/p/5726888.html  一、变形-旋转 ratate() 函数 通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。 例：transform:rotate(-20deg)">
+<meta name="twitter:title" content="Web安全之XSS攻防">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -64,10 +60,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-CSS3中的transform详解" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Web安全之XSS攻防" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/29/CSS3中的transform详解/" class="article-date">
-  <time datetime="2018-05-29T02:55:58.000Z" itemprop="datePublished">2018-05-29</time>
+    <a href="/2018/07/03/Web安全之XSS攻防/" class="article-date">
+  <time datetime="2018-07-03T12:00:51.000Z" itemprop="datePublished">2018-07-03</time>
 </a>
     
   </div>
@@ -78,7 +74,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS3中的transform详解
+      Web安全之XSS攻防
     </h1>
   
 
@@ -86,72 +82,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>转载自：<a href="https://www.cnblogs.com/afighter/p/5726888.html" target="_blank" rel="noopener">https://www.cnblogs.com/afighter/p/5726888.html</a></p>
-<hr>
-<p><strong>一、变形-旋转 ratate() 函数</strong></p>
-<p>通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为<strong>正值</strong>，元素相对原点中心<strong>顺时针</strong>旋转；如果这个值为<strong>负值</strong>，元素相对原点中心<strong>逆时针</strong>旋转。</p>
-<p>例：transform:rotate(-20deg) </p>
-<hr>
-<p><strong>二、变形- 扭曲 skew()函数</strong></p>
-<p>扭曲skew()函数能够让元素<strong>倾斜显示</strong>。它可以将一个对象以其中心位置围绕着<strong>X轴</strong>和<strong>Y轴</strong>按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变</p>
-<p>元素的形状。skew()函数不会旋转，而只会改变元素的形状。</p>
-<ul>
-<li>一个参数：表示水平方向的倾斜角度；</li>
-<li>两个参数：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度</li>
-</ul>
-<p>分3种情况</p>
-<p> transform:skewX(30deg) </p>
-<p> transform:skewY(10deg) </p>
-<p> transform:skew(-45deg) </p>
-<hr>
-<p> <strong>三、变形-缩放 scale() 函数</strong></p>
-<p>让元素根据中心原点对对象进行缩放。 <strong>scale()</strong>的取值默认的值为1，当值设置为<strong>0.01</strong>到<strong>0.99</strong>之间时，作用使一个元素缩小；而任何大于或等于<strong>1.01</strong>的值，作用是让元素放大。</p>
-<p>也分3种情况：</p>
-<p>transform:scale(x,y)  使元素水平方向和垂直方向同时缩放</p>
-<p>transform:scale(x)  X轴缩放</p>
-<p> transform:scale(y)  Y轴缩放</p>
-<hr>
-<p> <strong>四、变形-位移 translate() 函数</strong></p>
-<p><strong>translate()函数</strong>可以将元素向指定的方向移动，类似于position中的<strong>relative</strong>。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上</p>
-<p>的任何Web组件。</p>
-<p>分为三种情况：</p>
-<p>transform:translate(x,y)  使元素水平方向和垂直方向同时移动</p>
-<p> transform:translate(x)  使元素水平方向移动</p>
-<p> transform:translate(y)  使元素垂直方向移动</p>
-<hr>
-<p> <strong>五、变形-原点 transform-origin</strong></p>
-<p>任何一个元素都有一个中心点，默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p>
-<p>在没有重置transform-origin改变元素原点位置的情况下，CSS变形进行的旋转、位移、缩放，扭曲等操作都是<strong>以元素自己中心位置进行变形</strong>。但很多时候，我们可以通过</p>
-<p>transform-origin 来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</p>
-<p>transform-origin 取值和元素设置背景中的background-position取值类似(也可以是具体的像素值)。</p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjj8bvvhp0003ixs6a6enskw4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/Web安全之XSS攻防/" data-id="cjj8bvvi3000iixs6sjsj6urd" class="article-share-link">Teilen</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/05/29/CSS3中没见过的高级属性/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/05/React-Native-环境搭建/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          CSS3中没见过的高级属性
+          React Native 环境搭建
         
       </div>
     </a>
   
   
-    <a href="/2018/05/25/Mac急救办法/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/07/03/小程序开发总结（持续更新）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Mac急救办法</div>
+      <div class="article-nav-title">小程序开发总结（持续更新）</div>
     </a>
   
 </nav>
