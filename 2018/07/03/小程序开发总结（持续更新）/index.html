@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/07/03/小程序开发总结（持续更新）/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
-<meta property="og:updated_time" content="2018-07-03T04:11:31.824Z">
+<meta property="og:updated_time" content="2018-07-18T02:56:13.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序开发总结（持续更新）">
 <meta name="twitter:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
@@ -140,6 +140,8 @@
 <ul>
 <li>在外层添加一个view：<code>&lt;view class=&quot;page&quot; style=&quot;height: ; overflow: ;&quot;&gt;</code> 然后动态算出设备高度</li>
 </ul>
+</li>
+<li><p>【不只是小程序的问题】：JavaScript会自动取消数值类型后面无意义的0，导致解析JSON之后数值位数不一致，建议转换成字符串，或者在数据较少的时候统一toFixed</p>
 </li>
 </ol>
 
