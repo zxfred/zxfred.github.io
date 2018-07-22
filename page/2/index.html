@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,99 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-二叉树与二叉查找树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/21/二叉树与二叉查找树/" class="article-date">
+  <time datetime="2018-06-21T09:43:10.000Z" itemprop="datePublished">2018-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/21/二叉树与二叉查找树/">二叉树与二叉查找树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##树</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>一棵树最上面的节点成为<strong>根节点</strong></li>
+<li>如果一个节点下面链接多个节点，那么该节点称为<strong>父节点</strong>，它下面的节点称为<strong>子节点</strong></li>
+<li>一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为<strong>叶子节点</strong></li>
+<li>一个节点到另一个节点的一组边称为<strong>路径</strong></li>
+<li>每个节点都有一个与之相关的值，称为<strong>键值</strong>或<strong>键</strong></li>
+</ul>
+<h3 id="树的层次"><a href="#树的层次" class="headerlink" title="树的层次"></a>树的层次</h3><p>根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的<strong>深度</strong></p>
+<h2 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>左节点</strong>与<strong>右节点</strong></li>
+<li>二叉查找树（BST）：较小的值保存在左节点，较大的值保存在右节点，这样查找的效率很高，对于数值型和非数值型的数据都是这样</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">data, left, right</span>) </span>&#123; <span class="comment">// 新建节点</span></span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.left = left</span><br><span class="line">    <span class="keyword">this</span>.right = right</span><br><span class="line">    <span class="keyword">this</span>.show = show</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.date</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 二叉查找树</span></span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.insert = insert</span><br><span class="line">    <span class="keyword">this</span>.inOrder = inOrder</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">data</span>) </span>&#123; <span class="comment">// 增加节点</span></span><br><span class="line">    <span class="keyword">var</span> n = <span class="keyword">new</span> Node(data, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.root = n</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.root</span><br><span class="line">        <span class="keyword">var</span> parent</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            parent = current</span><br><span class="line">            <span class="keyword">if</span> (data &lt; current.data) &#123;</span><br><span class="line">                current = current.left</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.left = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                current = current.right</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.right = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="遍历二叉查找树"><a href="#遍历二叉查找树" class="headerlink" title="遍历二叉查找树"></a>遍历二叉查找树</h3><ul>
+<li>中序遍历：按节点上的键值，以升序访问查找树上所有节点</li>
+<li>前序遍历：先访问根节点，再以同样方式访问左子树和右子树</li>
+<li>后序遍历：先访问叶子节点，从左子树到右子树，再到根节点</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjjx0pvvu000q48zcu2upp5wm" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript立即执行函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/12/JavaScript立即执行函数/" class="article-date">
+  <time datetime="2018-06-12T01:33:55.000Z" itemprop="datePublished">2018-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/12/JavaScript立即执行函数/">JavaScript立即执行函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/06/12/JavaScript立即执行函数/" data-id="cjjx0pvvf000648zc4fleqzkw" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-getElement和query两类获取DOM方式的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -115,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjjvlgdxz000iinzcldhii22r" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjjx0pvvq000j48zcprdzzpge" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -154,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cjjvlgdyb0017inzc0y49pkr6" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cjjx0pvvz001148zceq0aef5u" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -205,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjjvlgdxi0002inzc58mfxcwn" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjjx0pvva000248zck31n533z" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -281,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjjvlgdxj0003inzcl2wyz9l5" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjjx0pvve000548zciozl14w5" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -340,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjjvlgdxu000binzc6om35ds1" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjjx0pvvm000e48zc370sw9mw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -479,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjjvlgdxc0000inzcryg6ffng" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjjx0pvv9000148zcz3zzf2m8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -636,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjjvlgdxg0001inzc1kntznmh" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjjx0pvv5000048zchvucaaet" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -691,158 +784,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjjvlgdxv000dinzcr3o2ji3k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaScript获取时间戳" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/09/JavaScript获取时间戳/" class="article-date">
-  <time datetime="2018-05-09T07:05:21.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/JavaScript获取时间戳/">JavaScript获取时间戳</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####获取当前时间戳：</p>
-<p>#####方法一：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp1 = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br></pre></td></tr></table></figure>
-<p>#####方法二：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp2 = (<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf();</span><br></pre></td></tr></table></figure>
-<p>#####方法三：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp3 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br></pre></td></tr></table></figure>
-<h4 id="方法四："><a href="#方法四：" class="headerlink" title="方法四："></a>方法四：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp4 = <span class="built_in">Date</span>.now()</span><br></pre></td></tr></table></figure>
-<p>方法一获取的时间戳精确到秒（后三位为000），方法二与三是获取的时间戳精确到毫秒。方法四是ES5后支持。</p>
-<p>####获取指定格式的时间戳：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2018-05-09 00:00:00"</span>);</span><br></pre></td></tr></table></figure>
-<p>这种以 - 分割的格式在 Safari 下不支持，会返回 NaN 或者 Invalid Date，可用2018/05/09这种日期格式</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjjvlgdxr000ainzcpfqyeto3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS3新特性兼容方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/09/CSS3新特性兼容方法/" class="article-date">
-  <time datetime="2018-05-09T02:09:00.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###边框</p>
-<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><p>低版本的chrome:<code>-webkit-border-radius:10px;</code><br>低版本的firefox:<code>-moz-border-radius:10px;</code><br>IE6/7/8:引入ie-css3兼容文件,不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius" target="_blank" rel="noopener">border-radius</a></p>
-<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>低版本的chrome:<code>-webkit-box-shadow:10px 10px 5px #888;</code><br>低版本的firefox:<code>-moz-box-shadow:10px 10px 5px #888;</code><br>IE6/7/8:</p>
-<ul>
-<li><p>方法一:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:dXImageTransform.Microsoft.DropShadow(color=#888888,offX=10,offY=10,positives=true);</span><br></pre></td></tr></table></figure>
-<p>缺点：阴影不能边缘模糊</p>
-</li>
-<li><p>方法二：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.Shadow(color=&apos;#0099ff&apos;, Direction=&apos;120&apos;, Strength=&apos;10&apos;);</span><br></pre></td></tr></table></figure>
-<p>类似于投影效果，缺点：阴影不能边缘模糊</p>
-</li>
-<li><p>方法三(推荐)、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc)</code><br>缺点：不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">box-shadow</a></p>
-</li>
-</ul>
-<h4 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h4><p>低版本的chrome:<code>-webkit-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的firefox:<code>-moz-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的Opera:<code>-o-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>IE未解决<br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image" target="_blank" rel="noopener">border-image</a>,<a href="http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml" target="_blank" rel="noopener">border-image</a></p>
-<p>###背景</p>
-<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><p>低版本的chrome:<code>-webkit-background-size:10px 10px 5px #888; //不支持background简写</code><br>低版本的firefox:<code>-moz-background-size:10px 10px 5px #888;</code><br>IE8：</p>
-<ul>
-<li><p>方法一(推荐)、引入backgroundsize.min.htc兼容文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.size &#123;</span><br><span class="line">width: 400px;</span><br><span class="line">height: 400px;</span><br><span class="line">margin: 20px auto 0;</span><br><span class="line">background:  green url(img/1.jpg) no-repeat scroll center 0;</span><br><span class="line">background-size: cover;</span><br><span class="line">-ms-behavior: url(js/backgroundsize.min.htc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法二、针对IE8的hack</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .size&#123;</span><br><span class="line">        -ms-filter: &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&apos;img/1.jpg&apos;, sizingMethod=&apos;scale&apos;)&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">    //该函数只能模仿cover值,IE8下效果与IE9/10稍有不同,图片占满背景大小且不超出</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size" target="_blank" rel="noopener">background-size</a></p>
-</li>
-</ul>
-<h4 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h4><p>firefox4.0以下：<code>-moz-background-origin:padding | border; //没有content</code><br>IE8下background-origin默认为padding-box</p>
-<p>详情参阅<a href="http://www.jb51.net/css/34219.html" target="_blank" rel="noopener">background-origin</a></p>
-<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><p>firefox4.0以下：<code>-moz-background-clip:padding | border; //没有content</code><br>IE8下background-clip默认为padding-box</p>
-<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><p>低版本的chrome:<code>-webkit-text-shadow:1px 1px 1px #000;</code><br>低版本的firefox:<code>-moz-text-shadow:1px 1px 1px #000;</code><br>IE6/7/8:</p>
-<ul>
-<li>方法一、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc);</code></li>
-<li>方法二、 <code>filter:shadow(color=blue,direction=225)</code>,direction表示投影角度</li>
-</ul>
-<p>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a></p>
-<h4 id="word-wrap"><a href="#word-wrap" class="headerlink" title="word-wrap"></a>word-wrap</h4><p>现代浏览器几乎都支持</p>
-<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><h4 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-font-face" target="_blank" rel="noopener">@font-face</a></p>
-<h3 id="2D3D转换"><a href="#2D3D转换" class="headerlink" title="2D3D转换"></a>2D3D转换</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.transform&#123;</span><br><span class="line">    -webkit-transform: x,y;</span><br><span class="line">    -moz-transform: x,y;</span><br><span class="line">    -ms-transform: x,y;</span><br><span class="line">    -o-transform: x,y;</span><br><span class="line">    transform: x,y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IE8及以下：用IE滤镜</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    filter:fliph;//水平翻转相当于transform:rotateY(180deg)</span><br><span class="line">    filter:flipv;//垂直翻转相当于transform:rotateX(180deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.w3cplus.com/content/css3-transform" target="_blank" rel="noopener">transform</a></p>
-<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  -webkit-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -moz-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -o-transition: all .5s ease-in-out 1s;</span><br><span class="line">  transition: all .5s ease-in-out 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IE9以及更早的版本，不支持 transition 属性。<br>详情参阅<a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="noopener">transition</a></p>
-<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="animation-keyframes"><a href="#animation-keyframes" class="headerlink" title="animation \ @keyframes"></a>animation \ @keyframes</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下不支持<br>详情参阅<a href="http://www.w3cplus.com/content/css3-animation" target="_blank" rel="noopener">animation</a></p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="linear-gradient-radial-gradient"><a href="#linear-gradient-radial-gradient" class="headerlink" title="linear-gradient radial-gradient"></a>linear-gradient radial-gradient</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下可使用 IE 滤镜处理:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&apos;#000000&apos;,endColorstr=&apos;#ffffff&apos;);</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank" rel="noopener">gradient</a></p>
-<h4 id="rgba-r-g-b-a"><a href="#rgba-r-g-b-a" class="headerlink" title="rgba(r,g,b,a)"></a>rgba(r,g,b,a)</h4><p>IE6/7/8不支持使用 rgba 模式实现透明度，可使用 IE 滤镜处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);</span><br></pre></td></tr></table></figure>
-<p>使用后我们又发现了个小问题，IE9下颜色更深一点，仔细研究发现在IE9下rgba颜色和IE滤镜都能被识别，所以被覆盖了颜色就更深一点<br>解决办法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);&#125;</span><br><span class="line">:root .demo&#123;filter:none;background-color:rgba(255,0,0,.2);&#125;//IE8及以下不识别</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.cnblogs.com/jesse131/p/4771611.html" target="_blank" rel="noopener">IE8下兼容rgba颜色的半透明背景</a></p>
-<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>低版本的chrome:-webkit- 或者 -webkit-box-flex<br>低版本的firefox：-moz-box-flex:1;<br>IE10:-ms-flex:1;<br>box-flex效果类似于过渡版本和新版本的flex属性；<br>详情参阅<a href="http://www.webclks.com/archives/3035" target="_blank" rel="noopener">flex</a></p>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>可以通过box-orient:horizontal + box-direction:normal 达到新版本 flex-direction:row 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:row-reverse 的效果；<br>可以通过box-orient:vertical + box-direction:normal 达到新版本 flex-direction:column 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:column-reverse 的效果；<br>box-lines效果类似于过渡版本和新版本的flex-wrap属性</p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">justify-content</a></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>低版本的chrome：-webkit-</p>
-<p>box-pack效果等同于过渡版本的flex-pack属性和新版本的justify-content属性；</p>
-<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-content</a></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>低版本的chrome：-webkit-</p>
-<p>box-align效果等同于过渡版本的flex-align属性和新版本的align-items属性；</p>
-<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-items</a></p>
-<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>低版本的chrome：-webkit-<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-self</a></p>
-<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>低版本的chrome：-webkit-</p>
-<p>box-oridinal-group效果等同于过渡版本的flex-order属性和新版本的order属性；<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">order</a></p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
-<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h4><p>IE全不兼容</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjjvlgdxm0005inzci5ctzhx5" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjjx0pvvl000d48zcyp0gla7p" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -856,7 +798,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -887,7 +829,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -897,9 +839,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
+          </li>
         
           <li>
             <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
@@ -911,14 +861,6 @@
         
           <li>
             <a href="/2018/07/11/一些CSS片段/">一些CSS片段</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/05/React-Native-环境搭建/">React Native 环境搭建</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/03/Web安全之XSS攻防/">Web安全之XSS攻防</a>
           </li>
         
       </ul>

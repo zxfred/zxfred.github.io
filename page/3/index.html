@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,157 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-JavaScript获取时间戳" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/09/JavaScript获取时间戳/" class="article-date">
+  <time datetime="2018-05-09T07:05:21.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/JavaScript获取时间戳/">JavaScript获取时间戳</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####获取当前时间戳：</p>
+<p>#####方法一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp1 = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br></pre></td></tr></table></figure>
+<p>#####方法二：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp2 = (<span class="keyword">new</span> <span class="built_in">Date</span>()).valueOf();</span><br></pre></td></tr></table></figure>
+<p>#####方法三：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp3 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br></pre></td></tr></table></figure>
+<h4 id="方法四："><a href="#方法四：" class="headerlink" title="方法四："></a>方法四：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timestamp4 = <span class="built_in">Date</span>.now()</span><br></pre></td></tr></table></figure>
+<p>方法一获取的时间戳精确到秒（后三位为000），方法二与三是获取的时间戳精确到毫秒。方法四是ES5后支持。</p>
+<p>####获取指定格式的时间戳：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2018-05-09 00:00:00"</span>);</span><br></pre></td></tr></table></figure>
+<p>这种以 - 分割的格式在 Safari 下不支持，会返回 NaN 或者 Invalid Date，可用2018/05/09这种日期格式</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjjx0pvvk000b48zc3jn1yb5g" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CSS3新特性兼容方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/09/CSS3新特性兼容方法/" class="article-date">
+  <time datetime="2018-05-09T02:09:00.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###边框</p>
+<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><p>低版本的chrome:<code>-webkit-border-radius:10px;</code><br>低版本的firefox:<code>-moz-border-radius:10px;</code><br>IE6/7/8:引入ie-css3兼容文件,不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius" target="_blank" rel="noopener">border-radius</a></p>
+<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>低版本的chrome:<code>-webkit-box-shadow:10px 10px 5px #888;</code><br>低版本的firefox:<code>-moz-box-shadow:10px 10px 5px #888;</code><br>IE6/7/8:</p>
+<ul>
+<li><p>方法一:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:dXImageTransform.Microsoft.DropShadow(color=#888888,offX=10,offY=10,positives=true);</span><br></pre></td></tr></table></figure>
+<p>缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.Shadow(color=&apos;#0099ff&apos;, Direction=&apos;120&apos;, Strength=&apos;10&apos;);</span><br></pre></td></tr></table></figure>
+<p>类似于投影效果，缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法三(推荐)、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc)</code><br>缺点：不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">box-shadow</a></p>
+</li>
+</ul>
+<h4 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h4><p>低版本的chrome:<code>-webkit-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的firefox:<code>-moz-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的Opera:<code>-o-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>IE未解决<br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image" target="_blank" rel="noopener">border-image</a>,<a href="http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml" target="_blank" rel="noopener">border-image</a></p>
+<p>###背景</p>
+<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><p>低版本的chrome:<code>-webkit-background-size:10px 10px 5px #888; //不支持background简写</code><br>低版本的firefox:<code>-moz-background-size:10px 10px 5px #888;</code><br>IE8：</p>
+<ul>
+<li><p>方法一(推荐)、引入backgroundsize.min.htc兼容文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.size &#123;</span><br><span class="line">width: 400px;</span><br><span class="line">height: 400px;</span><br><span class="line">margin: 20px auto 0;</span><br><span class="line">background:  green url(img/1.jpg) no-repeat scroll center 0;</span><br><span class="line">background-size: cover;</span><br><span class="line">-ms-behavior: url(js/backgroundsize.min.htc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二、针对IE8的hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .size&#123;</span><br><span class="line">        -ms-filter: &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&apos;img/1.jpg&apos;, sizingMethod=&apos;scale&apos;)&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">    //该函数只能模仿cover值,IE8下效果与IE9/10稍有不同,图片占满背景大小且不超出</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size" target="_blank" rel="noopener">background-size</a></p>
+</li>
+</ul>
+<h4 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h4><p>firefox4.0以下：<code>-moz-background-origin:padding | border; //没有content</code><br>IE8下background-origin默认为padding-box</p>
+<p>详情参阅<a href="http://www.jb51.net/css/34219.html" target="_blank" rel="noopener">background-origin</a></p>
+<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><p>firefox4.0以下：<code>-moz-background-clip:padding | border; //没有content</code><br>IE8下background-clip默认为padding-box</p>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><p>低版本的chrome:<code>-webkit-text-shadow:1px 1px 1px #000;</code><br>低版本的firefox:<code>-moz-text-shadow:1px 1px 1px #000;</code><br>IE6/7/8:</p>
+<ul>
+<li>方法一、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc);</code></li>
+<li>方法二、 <code>filter:shadow(color=blue,direction=225)</code>,direction表示投影角度</li>
+</ul>
+<p>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a></p>
+<h4 id="word-wrap"><a href="#word-wrap" class="headerlink" title="word-wrap"></a>word-wrap</h4><p>现代浏览器几乎都支持</p>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><h4 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-font-face" target="_blank" rel="noopener">@font-face</a></p>
+<h3 id="2D3D转换"><a href="#2D3D转换" class="headerlink" title="2D3D转换"></a>2D3D转换</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.transform&#123;</span><br><span class="line">    -webkit-transform: x,y;</span><br><span class="line">    -moz-transform: x,y;</span><br><span class="line">    -ms-transform: x,y;</span><br><span class="line">    -o-transform: x,y;</span><br><span class="line">    transform: x,y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE8及以下：用IE滤镜</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    filter:fliph;//水平翻转相当于transform:rotateY(180deg)</span><br><span class="line">    filter:flipv;//垂直翻转相当于transform:rotateX(180deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-transform" target="_blank" rel="noopener">transform</a></p>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  -webkit-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -moz-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -o-transition: all .5s ease-in-out 1s;</span><br><span class="line">  transition: all .5s ease-in-out 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE9以及更早的版本，不支持 transition 属性。<br>详情参阅<a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="noopener">transition</a></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="animation-keyframes"><a href="#animation-keyframes" class="headerlink" title="animation \ @keyframes"></a>animation \ @keyframes</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下不支持<br>详情参阅<a href="http://www.w3cplus.com/content/css3-animation" target="_blank" rel="noopener">animation</a></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="linear-gradient-radial-gradient"><a href="#linear-gradient-radial-gradient" class="headerlink" title="linear-gradient radial-gradient"></a>linear-gradient radial-gradient</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下可使用 IE 滤镜处理:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&apos;#000000&apos;,endColorstr=&apos;#ffffff&apos;);</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank" rel="noopener">gradient</a></p>
+<h4 id="rgba-r-g-b-a"><a href="#rgba-r-g-b-a" class="headerlink" title="rgba(r,g,b,a)"></a>rgba(r,g,b,a)</h4><p>IE6/7/8不支持使用 rgba 模式实现透明度，可使用 IE 滤镜处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);</span><br></pre></td></tr></table></figure>
+<p>使用后我们又发现了个小问题，IE9下颜色更深一点，仔细研究发现在IE9下rgba颜色和IE滤镜都能被识别，所以被覆盖了颜色就更深一点<br>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);&#125;</span><br><span class="line">:root .demo&#123;filter:none;background-color:rgba(255,0,0,.2);&#125;//IE8及以下不识别</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.cnblogs.com/jesse131/p/4771611.html" target="_blank" rel="noopener">IE8下兼容rgba颜色的半透明背景</a></p>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>低版本的chrome:-webkit- 或者 -webkit-box-flex<br>低版本的firefox：-moz-box-flex:1;<br>IE10:-ms-flex:1;<br>box-flex效果类似于过渡版本和新版本的flex属性；<br>详情参阅<a href="http://www.webclks.com/archives/3035" target="_blank" rel="noopener">flex</a></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>可以通过box-orient:horizontal + box-direction:normal 达到新版本 flex-direction:row 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:row-reverse 的效果；<br>可以通过box-orient:vertical + box-direction:normal 达到新版本 flex-direction:column 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:column-reverse 的效果；<br>box-lines效果类似于过渡版本和新版本的flex-wrap属性</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">justify-content</a></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>低版本的chrome：-webkit-</p>
+<p>box-pack效果等同于过渡版本的flex-pack属性和新版本的justify-content属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-content</a></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>低版本的chrome：-webkit-</p>
+<p>box-align效果等同于过渡版本的flex-align属性和新版本的align-items属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-items</a></p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>低版本的chrome：-webkit-<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-self</a></p>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>低版本的chrome：-webkit-</p>
+<p>box-oridinal-group效果等同于过渡版本的flex-order属性和新版本的order属性；<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">order</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
+<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h4><p>IE全不兼容</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjjx0pvvi000a48zc16lmsezt" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-netstat 的基本用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -119,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjjvlgdy1000kinzcoe4o2net" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjjx0pvvt000o48zcunu9j8wu" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -169,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjjvlgdy6000uinzcn3xf44p8" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjjx0pvvy000z48zcd5cvbh5t" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
@@ -234,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjjvlgdy3000ninzc805api28" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjjx0pvvr000l48zc8riegr4e" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -301,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjjvlgdya0015inzcf2swkj62" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjjx0pvw3001948zc89gy4ebp" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -350,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjjvlgdxy000ginzcdg52qvqj" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjjx0pvvo000g48zcpfwwakhq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -445,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjjvlgdy5000sinzco2ncxabe" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjjx0pvvw000v48zcnsdtgda0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -505,7 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjjvlgdxx000finzc8s4fimuw" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjjx0pvvp000h48zcvqvkell2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -581,159 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjjvlgdy7000winzc60mkaqcy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-module-exports与exports-export与export-default之间的关系和区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" class="article-date">
-  <time datetime="2018-03-27T11:03:43.000Z" itemprop="datePublished">2018-03-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/">module.exports与exports, export与export default之间的关系和区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先我们要明白一个前提，CommonJS模块规范和ES6模块规范完全是两种不同的概念。</p>
-<h2 id="CommonJS模块规范"><a href="#CommonJS模块规范" class="headerlink" title="CommonJS模块规范"></a>CommonJS模块规范</h2><p><strong>Node</strong>应用由模块组成，采用CommonJS模块规范。</p>
-<p>根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p>
-<p>CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var x = 5;</span><br><span class="line">var addX = function (value) &#123;</span><br><span class="line">  return value + x;</span><br><span class="line">&#125;;</span><br><span class="line">module.exports.x = x;</span><br><span class="line">module.exports.addX = addX;</span><br></pre></td></tr></table></figure>
-<p>上面代码通过module.exports输出变量x和函数addX。</p>
-<p>require方法用于加载模块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var example = require(&apos;./example.js&apos;);</span><br><span class="line"></span><br><span class="line">console.log(example.x); // 5</span><br><span class="line">console.log(example.addX(1)); // 6</span><br></pre></td></tr></table></figure>
-<h3 id="exports-与-module-exports"><a href="#exports-与-module-exports" class="headerlink" title="exports 与 module.exports"></a>exports 与 module.exports</h3><p>为了方便，Node为每个模块提供一个exports变量，指向module.exports。这等同在每个模块头部，有一行这样的命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var exports = module.exports;</span><br></pre></td></tr></table></figure>
-<p>于是我们可以直接在 exports 对象上添加方法，表示对外输出的接口，如同在module.exports上添加一样。注意，不能直接将exports变量指向一个值，因为这样等于切断了exports与module.exports的联系。</p>
-<h2 id="ES6模块规范"><a href="#ES6模块规范" class="headerlink" title="ES6模块规范"></a>ES6模块规范</h2><p>不同于CommonJS，ES6使用 export 和 import 来导出、导入模块。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// profile.js</span><br><span class="line">var firstName = &apos;Michael&apos;;</span><br><span class="line">var lastName = &apos;Jackson&apos;;</span><br><span class="line">var year = 1958;</span><br><span class="line"></span><br><span class="line">export &#123;firstName, lastName, year&#125;;</span><br></pre></td></tr></table></figure>
-<p>需要特别注意的是，export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 写法一</span><br><span class="line">export var m = 1;</span><br><span class="line"></span><br><span class="line">// 写法二</span><br><span class="line">var m = 1;</span><br><span class="line">export &#123;m&#125;;</span><br><span class="line"></span><br><span class="line">// 写法三</span><br><span class="line">var n = 1;</span><br><span class="line">export &#123;n as m&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="export-default-命令"><a href="#export-default-命令" class="headerlink" title="export default 命令"></a>export default 命令</h3><p>使用export default命令，为模块指定默认输出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// export-default.js</span><br><span class="line">export default function () &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相关链接：<br>CommonJS规范，<a href="http://javascript.ruanyifeng.com/nodejs/module.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/nodejs/module.html</a><br>ES6 Module 的语法，<a href="http://es6.ruanyifeng.com/#docs/module" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/module</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjjvlgdy0000jinzcy0emswgj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Git的常用命令及使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/20/Git的常用命令及使用/" class="article-date">
-  <time datetime="2018-03-20T10:44:00.000Z" itemprop="datePublished">2018-03-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/20/Git的常用命令及使用/">Git的常用命令及使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ol>
-<li><code>git init</code>初始化</li>
-<li><code>git add &lt;file&gt;</code> 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下</li>
-<li><code>git commit -m</code> 提交所有修改，后面加改动记录，<code>commit</code> 之后暂存区就清空了</li>
-<li><code>git status</code> 查看工作区状态，看看是否有文件修改过</li>
-<li><code>git diff</code> 查看difference，看看修改内容</li>
-</ol>
-<h2 id="时空穿梭"><a href="#时空穿梭" class="headerlink" title="时空穿梭"></a>时空穿梭</h2><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p><code>git reset --hard commit_id</code> 在版本的历史之间穿梭</p>
-<ul>
-<li><code>HEAD</code> 代表当前版本， <code>HEAD^</code> 是当前版本的上个版本，可行的写法 <code>HEAD^^</code> <code>HEAD~100</code></li>
-<li><code>commit_id</code> 是一次提交产生的id<br><code>git log</code> 查看提交历史，以便确定要回退到曾经的哪个版本 <code>git reflog</code> 回退版本之后，未来版本不会出现在日志中，使用这个命令查看命令历史，以便确定要回到未来的哪个版本</li>
-</ul>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在<strong>工作区的修改全部撤销</strong>，这里有两种情况：</p>
-<ul>
-<li>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
-<li>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。 总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态<br><code>git checkout -- file</code>命令中的<code>\--</code>很重要，没有<code>\--</code>，就变成了“切换到另一个分支”的命令 命令<code>git reset HEAD file</code> 除了回退版本，还可以把暂存区的修改撤销掉（unstage），重新放回工作区</li>
-</ul>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>一般情况下，你通常直接在文件管理器中或者用<code>rm</code>命令把没用的文件删了，Git知道你删除了文件，因此，工作区和版本库就不一致了。</p>
-<ul>
-<li>一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code></li>
-</ul>
-<pre><code>$ git rm test.txt
-$ git commit -m &quot;remove test.txt&quot;
-</code></pre><ul>
-<li>另一种情况是删错了，因为版本库里还有，所以可以很轻松地把误删的文件恢复到最新版本</li>
-</ul>
-<pre><code>$ git checkout -- test.txt
-</code></pre><h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="前期设置"><a href="#前期设置" class="headerlink" title="前期设置"></a>前期设置</h3><ol>
-<li>创建SSH Key：在用户主目录下，看看有没有.ssh目录以及这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</li>
-</ol>
-<pre><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
-</code></pre><ol>
-<li>登陆GitHub，打开“Account settings”，“SSH Keys”页面： 然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容：点“Add Key”，你就应该看到已经添加的Key</li>
-</ol>
-<h3 id="添加仓库"><a href="#添加仓库" class="headerlink" title="添加仓库"></a>添加仓库</h3><ol>
-<li>关联一个远程库</li>
-</ol>
-<pre><code>$ git remote add origin git@github.com:username/reponame.git
-</code></pre><ol>
-<li>删除已有的远程库</li>
-</ol>
-<pre><code>$ git remote rm origin
-</code></pre><ol>
-<li>推送暂存库内容到远程库的 master 分支</li>
-</ol>
-<pre><code>$ git push -u origin master
-</code></pre><p><strong>第一次</strong>推送的时候加上<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送到远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令</p>
-<ol>
-<li>查看当前的远程库信息</li>
-</ol>
-<pre><code>git remote -v
-</code></pre><ol>
-<li>用命令<code>git clone</code> 把远程库克隆到本地库</li>
-</ol>
-<pre><code>$ git clone git@github.com:username/reponame.git
-</code></pre><ol>
-<li>SSH警告： 第一次使用Git的<code>clone</code>或者<code>push</code>命令连接GitHub时，会得到一个警告：输入<code>yes</code>回车即可，Git把GitHub的Key添加到本机的一个信任列表里</li>
-</ol>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
-<li>查看分支：<code>git branch</code></li>
-<li>创建分支：<code>git branch &lt;name&gt;</code></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjjvlgdxo0007inzc4cf3gpfy" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjjx0pvvz001348zcokonl02u" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -747,7 +746,7 @@ $ git commit -m &quot;remove test.txt&quot;
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -778,7 +777,7 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -788,9 +787,17 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
+          </li>
         
           <li>
             <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
@@ -802,14 +809,6 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/07/11/一些CSS片段/">一些CSS片段</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/05/React-Native-环境搭建/">React Native 环境搭建</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/03/Web安全之XSS攻防/">Web安全之XSS攻防</a>
           </li>
         
       </ul>
