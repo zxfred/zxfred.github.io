@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CSS文本两端对齐 | Acidic Accident</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="转载自：司徒正美blog 在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。 text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：  auto :允许浏览器用户代理确定使用的两端对齐法则 inter-word :通过增加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS文本两端对齐">
+<meta property="og:url" content="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/index.html">
+<meta property="og:site_name" content="Acidic Accident">
+<meta property="og:description" content="转载自：司徒正美blog 在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。 text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：  auto :允许浏览器用户代理确定使用的两端对齐法则 inter-word :通过增加">
+<meta property="og:updated_time" content="2018-07-24T11:37:54.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS文本两端对齐">
+<meta name="twitter:description" content="转载自：司徒正美blog 在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。 text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：  auto :允许浏览器用户代理确定使用的两端对齐法则 inter-word :通过增加">
+  
+    <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Acidic Accident</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CSS文本两端对齐" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/CSS文本两端对齐/" class="article-date">
+  <time datetime="2018-07-24T11:34:55.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS文本两端对齐
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html" target="_blank" rel="noopener">转载自：司徒正美blog</a></p>
+<p>在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。</p>
+<p>text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：</p>
+<ul>
+<li>auto :允许浏览器用户代理确定使用的两端对齐法则</li>
+<li>inter-word :通过增加字之间的空格对齐文本。该行为是对齐所有文本行最快的方法。它的两端对齐行为对段落的最后一行无效</li>
+<li>newspaper : 通过增加或减少字或字母之间的空格对齐文本。是用于拉丁文字母表两端对齐的最精确格式</li>
+<li>distribute :处理空格很像newspaper，适用于东亚文档。尤其是泰国</li>
+<li>distribute-all-lines :两端对齐行的方式与distribute相同，也同样不包含两段对齐段落的最后一行。适用于表意字文档</li>
+<li>inter-ideograph : 为表意字文本提供完全两端对齐。他增加或减少表意字和词间的空格</li>
+</ul>
+<p>但它最早是作为IE的私有实现，像text-overflow， overflow-x等，在FF很晚才实现，换言之有严格的兼容性问题。并且FF，chrome需要手动在汉字间插入空白或软换行标签才生效，在chrome遇到的阻力就更大了。</p>
+<p>究极方案：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test1</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">text-justify</span>:distribute-all-lines;<span class="comment">/*ie6-8*/</span></span><br><span class="line">    <span class="attribute">text-align-last</span>:justify;<span class="comment">/* ie9*/</span></span><br><span class="line">    <span class="attribute">-moz-text-align-last</span>:justify;<span class="comment">/*ff*/</span></span><br><span class="line">    <span class="attribute">-webkit-text-align-last</span>:justify;<span class="comment">/*chrome 20+*/</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123;<span class="comment">/* chrome*/</span></span><br><span class="line">      <span class="selector-class">.test1</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">          <span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">          <span class="attribute">display</span>: inline-block;</span><br><span class="line">          <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">          <span class="attribute">overflow</span>:hidden;</span><br><span class="line">          <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>所 在 地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>工 作 单 位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjjzmm74m0002kis6eo4v7pyy" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">浅析浏览器输入URL到页面输出执行流程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Fred Zhang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

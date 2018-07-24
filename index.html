@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,57 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-CSS文本两端对齐" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/CSS文本两端对齐/" class="article-date">
+  <time datetime="2018-07-24T11:34:55.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html" target="_blank" rel="noopener">转载自：司徒正美blog</a></p>
+<p>在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。</p>
+<p>text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：</p>
+<ul>
+<li>auto :允许浏览器用户代理确定使用的两端对齐法则</li>
+<li>inter-word :通过增加字之间的空格对齐文本。该行为是对齐所有文本行最快的方法。它的两端对齐行为对段落的最后一行无效</li>
+<li>newspaper : 通过增加或减少字或字母之间的空格对齐文本。是用于拉丁文字母表两端对齐的最精确格式</li>
+<li>distribute :处理空格很像newspaper，适用于东亚文档。尤其是泰国</li>
+<li>distribute-all-lines :两端对齐行的方式与distribute相同，也同样不包含两段对齐段落的最后一行。适用于表意字文档</li>
+<li>inter-ideograph : 为表意字文本提供完全两端对齐。他增加或减少表意字和词间的空格</li>
+</ul>
+<p>但它最早是作为IE的私有实现，像text-overflow， overflow-x等，在FF很晚才实现，换言之有严格的兼容性问题。并且FF，chrome需要手动在汉字间插入空白或软换行标签才生效，在chrome遇到的阻力就更大了。</p>
+<p>究极方案：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test1</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">text-justify</span>:distribute-all-lines;<span class="comment">/*ie6-8*/</span></span><br><span class="line">    <span class="attribute">text-align-last</span>:justify;<span class="comment">/* ie9*/</span></span><br><span class="line">    <span class="attribute">-moz-text-align-last</span>:justify;<span class="comment">/*ff*/</span></span><br><span class="line">    <span class="attribute">-webkit-text-align-last</span>:justify;<span class="comment">/*chrome 20+*/</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123;<span class="comment">/* chrome*/</span></span><br><span class="line">      <span class="selector-class">.test1</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">          <span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">          <span class="attribute">display</span>: inline-block;</span><br><span class="line">          <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">          <span class="attribute">overflow</span>:hidden;</span><br><span class="line">          <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>所 在 地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>工 作 单 位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjjzmm74m0002kis6eo4v7pyy" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-浅析浏览器输入URL到页面输出执行流程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -101,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjjy4t5xg000ysxs6f1wovspk" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjjzmm75e0016kis6zttatgro" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -143,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjjy4t5xe000ssxs64a8wjqvi" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjjzmm758000vkis6wzvjbg21" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -179,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/ES6常用知识点概述/" data-id="cjjy4t5wq0002sxs6p0y80b6r" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/ES6常用知识点概述/" data-id="cjjzmm74t0008kis6oigi44o8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -253,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjjy4t5xf000vsxs6yw6mvuk7" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjjzmm757000skis6fccmugjv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -296,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/高低频操作方法/" data-id="cjjy4t5xm001asxs6q6tokvlk" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/高低频操作方法/" data-id="cjjzmm75h001ekis6uu1paxba" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -335,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/11/一些CSS片段/" data-id="cjjy4t5x9000ksxs6bma7ze1s" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/11/一些CSS片段/" data-id="cjjzmm755000nkis6uol57zk2" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -446,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjjy4t5x5000fsxs6cjejlk5d" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjjzmm751000hkis6a6ai74g7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -482,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/Web安全之XSS攻防/" data-id="cjjy4t5x8000isxs6h62te2st" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/Web安全之XSS攻防/" data-id="cjjzmm752000jkis65fy8vmwx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -578,51 +629,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（持续更新）/" data-id="cjjy4t5xj0014sxs6dep3dysf" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（持续更新）/" data-id="cjjzmm75b0010kis6ztcd97c2" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-栈" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/22/栈/" class="article-date">
-  <time datetime="2018-06-22T15:43:27.000Z" itemprop="datePublished">2018-06-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/22/栈/">栈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>栈被称为一种后入先出(LIFO，last-in-first-out)的数据结构。</p>
-<p>任何不在栈顶的元素都无法访问</p>
-<p>为了得到栈底的元 素，必须先拿掉上面的元素。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjjy4t5xl0018sxs6akail2x5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
 
     </footer>
   </div>
@@ -635,7 +645,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -666,7 +676,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -676,9 +686,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
+          </li>
         
           <li>
             <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
@@ -694,10 +708,6 @@
         
           <li>
             <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/19/高低频操作方法/">高低频操作方法</a>
           </li>
         
       </ul>
