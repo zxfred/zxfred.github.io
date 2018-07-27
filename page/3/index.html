@@ -61,6 +61,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-75team-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/75team-设计模式/" class="article-date">
+  <time datetime="2018-05-21T03:30:29.000Z" itemprop="datePublished">2018-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/75team-设计模式/">75team - 设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>思考：</p>
+<ul>
+<li>我们为什么要设计/抽象，它的本质是什么</li>
+<li>JavaScript 有什么特点，什么样的设计模式适合这门语言</li>
+<li>了解“逻辑”背后的信息比如：满足什么需求？解决什么问题？变化会多频繁？有什么痛点？</li>
+</ul>
+<p>（世面上JS设计模式的书基本都在扯淡，很多设计模式是不适合JS的）</p>
+<h3 id="模式1：Behavior"><a href="#模式1：Behavior" class="headerlink" title="模式1：Behavior"></a>模式1：Behavior</h3><ul>
+<li>在交互需求出发设计一组“动作行为”</li>
+<li>在主体对象上应用和扩展这些行为</li>
+<li>为什么这么做？</li>
+</ul>
+<p>实例1：图片预览（可切换到上一张下一张图片）</p>
+<p>分析：Behavior 模式：自定义 preview 行为</p>
+<p>思考与练习：</p>
+<ol>
+<li>如果图片要动态加载，怎么修改 setPreviewBehavior?</li>
+<li>如果要兼容旧的浏览器，如IE7，如何处理？</li>
+<li>为上一张、下一张图片切换添加动画</li>
+</ol>
+<p>实例2：选取图片，自定义 setSelectionBehavior 行为</p>
+<h3 id="模式2：Adapter"><a href="#模式2：Adapter" class="headerlink" title="模式2：Adapter"></a>模式2：Adapter</h3><ul>
+<li>针对不同底层实现提供统一的外部接口</li>
+<li>让业务层面的代码可以适应不同的底层实现</li>
+</ul>
+<p>即针对不同的状况进行<strong>判断</strong></p>
+<p>Behavior + Adaptor</p>
+<h3 id="模式3：Observer（观察者，解耦作用）"><a href="#模式3：Observer（观察者，解耦作用）" class="headerlink" title="模式3：Observer（观察者，解耦作用）"></a>模式3：Observer（观察者，解耦作用）</h3><p>Web开发最核心的就是事件驱动，事件是一个异步模型，所以observer（观察者模式）很重要</p>
+<p>Observer 用于</p>
+<ul>
+<li>同步多个对象的状态变化</li>
+<li>解耦各个对象之间的依赖</li>
+</ul>
+<p>实例3：同步滚动</p>
+<p>不使用观察者模式（耦合）的方法</p>
+<p>图1</p>
+<p>增加排斥其他函数调用的方法（避免两个窗口相互调用）（和这个设计模式无关）</p>
+<p>图2</p>
+<p>使用观察者模式：</p>
+<p>增加watchBy的方法（被观察）</p>
+<p>图 3-1 3-2</p>
+<p>练习：添加 preview 与 editor 的反向同步</p>
+<h3 id="模式4：Mediator（中介者）"><a href="#模式4：Mediator（中介者）" class="headerlink" title="模式4：Mediator（中介者）"></a>模式4：Mediator（中介者）</h3><ul>
+<li>将命令传递给所有订阅者</li>
+<li>与所有订阅者之间维持依赖关系</li>
+<li>从而让订阅者彼此之间相互独立</li>
+</ul>
+<p>上一个例子，改用 pub/sub</p>
+<h3 id="模式5：Composite（复合模式）"><a href="#模式5：Composite（复合模式）" class="headerlink" title="模式5：Composite（复合模式）"></a>模式5：Composite（复合模式）</h3><ul>
+<li>对已有组件/库/功能的组合使用</li>
+<li>提升代码复用性的最常用手段</li>
+</ul>
+<p>实例：命令式连续动画</p>
+<p>练习：完善动画例子，增加其他特效动画支持，自己将一些基础组件合成为高级组件</p>
+<h3 id="模式6：Partial-Application"><a href="#模式6：Partial-Application" class="headerlink" title="模式6：Partial Application"></a>模式6：Partial Application</h3><ul>
+<li>部分应用/固化参数</li>
+</ul>
+<p>实例：resolve path 拼接字符串作为路径，node跨平台，如果直接拼，在windows下会有错误（windows路径用反斜杠）</p>
+<p>实例：Logging time 在每个日志上打上时间戳</p>
+<h3 id="模式7：Decorate（装饰器）"><a href="#模式7：Decorate（装饰器）" class="headerlink" title="模式7：Decorate（装饰器）"></a>模式7：Decorate（装饰器）</h3><ul>
+<li><p>在原有 API 基础上增加额外的功能</p>
+</li>
+<li><p>不改变底层库的基础上扩展功能的一种模式</p>
+<p>（不要直接在一些库上修改代码）</p>
+</li>
+</ul>
+<p>实例：让函数只被调用一次</p>
+<p>图4</p>
+<p>实例：debounce 鼠标停下的时候让小鸟到鼠标位置</p>
+<p>如果不增加 debounce，小鸟会卡住</p>
+<h3 id="模式8：Proxy（代理模式）"><a href="#模式8：Proxy（代理模式）" class="headerlink" title="模式8：Proxy（代理模式）"></a>模式8：Proxy（代理模式）</h3><ul>
+<li>保持原有 API 功能不变，改变执行过程和结果</li>
+<li>不改变底层库的基础上获得不同执行结果的手段</li>
+</ul>
+<p>实例：拦截异步数据</p>
+<p>情景：前端构建完毕，后端服务接口还没有开发好，这时需要调试</p>
+<p>图5</p>
+<p>实例：mouse 代理 touch 事件</p>
+<p>情景：PC端模拟移动端调试</p>
+<h3 id="模式9：Aspect（切面）"><a href="#模式9：Aspect（切面）" class="headerlink" title="模式9：Aspect（切面）"></a>模式9：Aspect（切面）</h3><ul>
+<li>对代码的执行过程进行监测和修改</li>
+<li>不改变代码主体执行流程的基础上控制执行过程</li>
+</ul>
+<p>系统/环境默认的一些可控制点</p>
+<p>实例：创建切面修改 Swipable</p>
+<p>针对封装好的组件没有接口的情况</p>
+<p>实例：performance.watch 监控性能</p>
+<h4 id="Decorate、Proxy-和-Aspect三者联系："><a href="#Decorate、Proxy-和-Aspect三者联系：" class="headerlink" title="Decorate、Proxy 和 Aspect三者联系："></a>Decorate、Proxy 和 Aspect三者联系：</h4><ul>
+<li>Decorate 强调的是声明和定义</li>
+<li>Proxy 强调的是功能</li>
+<li>Aspect 强调的是运行过程</li>
+</ul>
+<p>动态语言，可以用 Decorate 来实现 Proxy 和 Aspect</p>
+<h3 id="模式10：-Lazy-load-（懒加载）"><a href="#模式10：-Lazy-load-（懒加载）" class="headerlink" title="模式10： Lazy load （懒加载）"></a>模式10： Lazy load （懒加载）</h3><ul>
+<li>一些加载好事的资源进行分段、异步加载</li>
+<li>前端提升性能，减少响应用户的时间</li>
+<li>某些情况下减少网页流量和带宽消耗</li>
+</ul>
+<p>实例：懒加载图片</p>
+<p>前四张图是 src ，后面三张是 data-src</p>
+<p>图6</p>
+<p>总结</p>
+<p>图7</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjk3sd6720005ans6chxorhds" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-75team-服务器与HTTP基础" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/21/75team-服务器与HTTP基础/" class="article-date">
@@ -208,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjjzmm74l0001kis6z4jacjyw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjk3sd66s0000ans6ues1jaf1" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -263,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjjzmm74y000ekis6tbz6wjb7" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjk3sd67b000dans6y8f2h833" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -311,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjjzmm74w000bkis683st6rsc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjk3sd67f000hans6nsjiwjb3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -414,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjjzmm74r0006kis6l0e4zlmc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjk3sd66w0001ans624fivfu2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -482,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjjzmm756000pkis6p9am78n4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjk3sd67i000mans6dpsqzmey" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -532,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjjzmm759000wkis6uk1a16m6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjk3sd67o000xans6pfc38ghs" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
@@ -597,7 +736,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjjzmm754000mkis619t3r8td" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjk3sd67h000lans69bs7j0vp" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
@@ -664,7 +803,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjjzmm75f0018kis6s0f8fxas" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjk3sd67s0016ans6s42yomow" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -713,102 +852,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjjzmm750000gkis6lv8vz2df" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-外边距折叠的几种情况与解决办法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/30/外边距折叠的几种情况与解决办法/" class="article-date">
-  <time datetime="2018-03-30T02:13:58.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/外边距折叠的几种情况与解决办法/">外边距折叠的几种情况与解决办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>外边距折叠的定义：</p>
-<blockquote>
-<p>外边距折叠就是块的顶部外边距和底部外边距有时被组合(折叠)为单个外边距，其大小是组合到其中的最大外边距，这种行为称为外边距塌陷(margin collapsing)</p>
-</blockquote>
-<h2 id="外边距折叠产生的情况"><a href="#外边距折叠产生的情况" class="headerlink" title="外边距折叠产生的情况"></a>外边距折叠产生的情况</h2><p>产生外边距折叠的情况一般分为以下三种：</p>
-<h4 id="1-块级父元素与其第一个-最后一个子元素"><a href="#1-块级父元素与其第一个-最后一个子元素" class="headerlink" title="1. 块级父元素与其第一个/最后一个子元素"></a>1. 块级父元素与其第一个/最后一个子元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  background: #cff;</span><br><span class="line">&#125;</span><br><span class="line">#div1&#123;</span><br><span class="line">	margin: 40px 0 25px 0;</span><br><span class="line">  	background: #999;</span><br><span class="line">&#125;</span><br><span class="line">#div2&#123;</span><br><span class="line">	margin: 20px 0 10px 0;</span><br><span class="line">	background: #cff;</span><br><span class="line">&#125;</span><br><span class="line">&lt;h1&gt;这是一个标题&lt;/h1&gt;</span><br><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">	&lt;div id=&quot;div2&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是:h1与div2之间的margin值是40px而不是想象中的60px。</p>
-<p>为什么会出现这种个情况呢？</p>
-<p>根据MDN，产生的原因就在于</p>
-<blockquote>
-<p>如果块级父元素中，不存在上边框、上内补、inline content、 清除浮动这四条属性(对于上边框和上内补，也可以说，当上边距及上内补宽度为0时),那么这个块级元素和其第一个子元素的上边距就会发生折叠。这个折叠之后的值在这里取的就是两者之间的最大值。</p>
-</blockquote>
-<p>对于块级元素与最后一个子元素的下边界发生的折叠也是同理的</p>
-<p>那折叠出来的值只有取最大嘛？别急，还有另外一些规则会在下面说慢慢说。</p>
-<h4 id="2-相邻的兄弟块级元素"><a href="#2-相邻的兄弟块级元素" class="headerlink" title="2. 相邻的兄弟块级元素"></a>2. 相邻的兄弟块级元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">	width:100px;</span><br><span class="line">	height:100px;</span><br><span class="line">	margin:40px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=&quot;div1&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; &gt;这是第二个块级盒子&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是两个div之间的边距是40px而不是80px，其实道理和刚刚一样</p>
-<h4 id="3-空块元素"><a href="#3-空块元素" class="headerlink" title="3. 空块元素"></a>3. 空块元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#div1,#div2 &#123;</span><br><span class="line">	margin:0px;</span><br><span class="line">&#125;</span><br><span class="line">#voidDiv &#123;</span><br><span class="line">	margin-top:40px;</span><br><span class="line">	margin-bottom:40px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=&quot;div1&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;voidDiv&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; &gt;这是第二个块级盒子&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是div1与div2之间的边距是40px而不是80px。</p>
-<p>根据MDN，产生的原因就在于</p>
-<blockquote>
-<p>如果存在一个空的块级元素，其 border、padding、inline content、height、min-height都不存在，那么此时上下边距就会发生折叠</p>
-</blockquote>
-<h3 id="外边距折叠的计算"><a href="#外边距折叠的计算" class="headerlink" title="外边距折叠的计算"></a>外边距折叠的计算</h3><p>外边距折叠的计算一般是以下三种方法</p>
-<ul>
-<li>如果两个外边距都为正数，那么取其中较大的数</li>
-<li>如果一个为正数一个为负数，那么取它们的代数和</li>
-<li>如果两个都为负数，那么取它们其中绝对值大的数</li>
-</ul>
-<h3 id="如何解决外边距折叠"><a href="#如何解决外边距折叠" class="headerlink" title="如何解决外边距折叠"></a>如何解决外边距折叠</h3><h4 id="1-对于父子级块状元素"><a href="#1-对于父子级块状元素" class="headerlink" title="1. 对于父子级块状元素"></a>1. 对于父子级块状元素</h4><p>既然知道了外边距折叠产生的条件，那么解决办法也随之产生<br>对于父子级块状元素解决外边距折叠的方法一般分为三大类</p>
-<ul>
-<li>给父级块级元素设置border-top，我一般是设置为：border-top:1px solid transparent</li>
-<li>给父级块级元素设置一个padding-top,这个值就根据自己的布局来定吧。</li>
-<li>最后一种方法，是给父级块级元素触发一个BFC(Block formatting contexts-块级格式上下文)</li>
-</ul>
-<p>那问题又来了，BFC又是什么呢？</p>
-<h4 id="初识BFC"><a href="#初识BFC" class="headerlink" title="初识BFC"></a>初识BFC</h4><p>w3c规范中的BFC定义：</p>
-<blockquote>
-<p>浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的BFC（块级格式上下文）。<br>在BFC中，盒子从顶端开始垂直地一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin 值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。</p>
-</blockquote>
-<p>其实简单点说BFC就是一个不受外部布局影响的一个箱子。</p>
-<p>具体怎么触发BFC呢？一般触发BFC的条件包括：</p>
-<ul>
-<li>浮动元素：float除了none之外</li>
-<li>用position绝对定位的元素，以及fixed固定定位的元素</li>
-<li>display: inline-block等</li>
-<li>overflow：除了visiable</li>
-</ul>
-<h4 id="2-对于兄弟级块状元素"><a href="#2-对于兄弟级块状元素" class="headerlink" title="2. 对于兄弟级块状元素"></a>2. 对于兄弟级块状元素</h4><p>对于兄弟级块状元素，解决的方法一般有两种：</p>
-<ul>
-<li>直接只写一边的margin例如都是margin-top或者都是margin-bottom，用过最简单的方法，直接就避免了塌陷。</li>
-<li>给两个块状元素形成两个不同的BFC，触发的方法一般用是 overflow: hidden;</li>
-</ul>
-<h4 id="3-对于空块状元素"><a href="#3-对于空块状元素" class="headerlink" title="3. 对于空块状元素"></a>3. 对于空块状元素</h4><p>对于空的块状元素，解决的方法就很多，列举以下几种：</p>
-<ul>
-<li>设置border</li>
-<li>设置padding</li>
-<li>设置inline-block等等方法都可以</li>
-</ul>
-<p>来源：<a href="https://zhuanlan.zhihu.com/p/25876599" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25876599</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjjzmm75a000ykis6crszzgqe" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjk3sd67g000jans6p4pamqiv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -868,6 +912,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/27/Promise解读/">Promise解读</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
           </li>
         
@@ -881,10 +929,6 @@
         
           <li>
             <a href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
           </li>
         
       </ul>

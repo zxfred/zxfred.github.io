@@ -5,14 +5,18 @@
   
 
   
-  <title>Acidic Accident</title>
+  <title>Promise解读 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Acidic Accident">
-<meta property="og:url" content="http://zxfred.github.io/index.html">
+  <meta name="description" content="一、Promise的身世1、Promise历史 Promise 是异步编程的一种解决方案，比我们传统的回调函数、事件更加合理，最早由社区提出并实现，ES6觉得很ok，就写进了语言标准中，统一了语法，并且提供了原生的Promise对象。 所谓的Promise，其实就是一个容器，里面保存着未来才会结束的事件（通常是一个异步操作）的结果，从javascript的语法上讲就是一个对象，从里面能获取异步操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise解读">
+<meta property="og:url" content="http://zxfred.github.io/2018/07/27/Promise解读/index.html">
 <meta property="og:site_name" content="Acidic Accident">
+<meta property="og:description" content="一、Promise的身世1、Promise历史 Promise 是异步编程的一种解决方案，比我们传统的回调函数、事件更加合理，最早由社区提出并实现，ES6觉得很ok，就写进了语言标准中，统一了语法，并且提供了原生的Promise对象。 所谓的Promise，其实就是一个容器，里面保存着未来才会结束的事件（通常是一个异步操作）的结果，从javascript的语法上讲就是一个对象，从里面能获取异步操作">
+<meta property="og:updated_time" content="2018-07-27T09:29:47.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Acidic Accident">
+<meta name="twitter:title" content="Promise解读">
+<meta name="twitter:description" content="一、Promise的身世1、Promise历史 Promise 是异步编程的一种解决方案，比我们传统的回调函数、事件更加合理，最早由社区提出并实现，ES6觉得很ok，就写进了语言标准中，统一了语法，并且提供了原生的Promise对象。 所谓的Promise，其实就是一个容器，里面保存着未来才会结束的事件（通常是一个异步操作）的结果，从javascript的语法上讲就是一个对象，从里面能获取异步操作">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Promise解读" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Promise解读" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/27/Promise解读/" class="article-date">
   <time datetime="2018-07-27T09:29:07.000Z" itemprop="datePublished">2018-07-27</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/27/Promise解读/">Promise解读</a>
+    <h1 class="article-title" itemprop="name">
+      Promise解读
     </h1>
   
 
@@ -166,498 +168,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-CSS文本两端对齐" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/24/CSS文本两端对齐/" class="article-date">
-  <time datetime="2018-07-24T11:34:55.000Z" itemprop="datePublished">2018-07-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
-    </h1>
+    <a href="/2018/07/24/CSS文本两端对齐/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">CSS文本两端对齐</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html" target="_blank" rel="noopener">转载自：司徒正美blog</a></p>
-<p>在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。</p>
-<p>text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：</p>
-<ul>
-<li>auto :允许浏览器用户代理确定使用的两端对齐法则</li>
-<li>inter-word :通过增加字之间的空格对齐文本。该行为是对齐所有文本行最快的方法。它的两端对齐行为对段落的最后一行无效</li>
-<li>newspaper : 通过增加或减少字或字母之间的空格对齐文本。是用于拉丁文字母表两端对齐的最精确格式</li>
-<li>distribute :处理空格很像newspaper，适用于东亚文档。尤其是泰国</li>
-<li>distribute-all-lines :两端对齐行的方式与distribute相同，也同样不包含两段对齐段落的最后一行。适用于表意字文档</li>
-<li>inter-ideograph : 为表意字文本提供完全两端对齐。他增加或减少表意字和词间的空格</li>
-</ul>
-<p>但它最早是作为IE的私有实现，像text-overflow， overflow-x等，在FF很晚才实现，换言之有严格的兼容性问题。并且FF，chrome需要手动在汉字间插入空白或软换行标签才生效，在chrome遇到的阻力就更大了。</p>
-<p>究极方案：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test1</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">text-justify</span>:distribute-all-lines;<span class="comment">/*ie6-8*/</span></span><br><span class="line">    <span class="attribute">text-align-last</span>:justify;<span class="comment">/* ie9*/</span></span><br><span class="line">    <span class="attribute">-moz-text-align-last</span>:justify;<span class="comment">/*ff*/</span></span><br><span class="line">    <span class="attribute">-webkit-text-align-last</span>:justify;<span class="comment">/*chrome 20+*/</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123;<span class="comment">/* chrome*/</span></span><br><span class="line">      <span class="selector-class">.test1</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">          <span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">          <span class="attribute">display</span>: inline-block;</span><br><span class="line">          <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">          <span class="attribute">overflow</span>:hidden;</span><br><span class="line">          <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>所 在 地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>工 作 单 位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjk3sd6740007ans6x11r1vdw" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-浅析浏览器输入URL到页面输出执行流程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" class="article-date">
-  <time datetime="2018-07-23T10:31:13.000Z" itemprop="datePublished">2018-07-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概念速览"><a href="#概念速览" class="headerlink" title="概念速览"></a>概念速览</h3><p>URL(uniform resource location) : 统一资源定位符,用来作为互联网上各种资源的标识符，可理解为 身份证号 。</p>
-<p>URL的基本结构: 协议名称 :// 服务器所在域名或者IP地址 : 端口号 / 所要访问的文件路径</p>
-<p>注意点:浏览器为了保证安全性,设定了跨域保护策略, 即窗口之间的通信必须满足使用相同协议, 相同域或者子域, 相同端口, 因此深入理解URL各组成部分的含义有助于我们判断两个窗口之间是否能互相通信。</p>
-<p>IP(Internet Protocol) :互联网中设备间进行通信都要遵从的一种协议,它规定了每台设备都要有且唯一的IP地址,用来标识自己在互联网中的地址。格式通常为<a href="https://link.zhihu.com/?target=http%3A//XXX.XXX.XXX.XXX" target="_blank" rel="noopener">http://XXX.XXX.XXX.XXX</a>，不同网段下IP地址的范围也不同。如有兴趣者,请自行百度。</p>
-<p>域名(Domain Name) :由于IP协议规定的纯数字IP地址在日常中难以记忆,因此人们便产生使用更加常见,好记的字符标识设备的地址,域名应运而生。一个域名就是一个更加容易记忆的目标主机的地址标识符。例如:百度的域名就为<a href="https://link.zhihu.com/?target=http%3A//www.baidu.com" target="_blank" rel="noopener">百度一下，你就知道</a>,实际对应的IP地址为119.75.217.109</p>
-<p>DNS(Domain Name System): 互联网中实际定位设备时还是使用IP地址来定位,因此产生了DNS,一种专门用来将域名转换为IP地址的协议,提供该协议服务的服务器就叫DNS服务器。</p>
-<p>HTTP(HyberText Transfer Protocol) : 超文本传输协议，万维网中传输超文本都要遵从的一个协议,可以理解为HTML文件的传输就是靠它。</p>
-<h2 id="解答部分"><a href="#解答部分" class="headerlink" title="解答部分"></a>解答部分</h2><h3 id="地址解析阶段"><a href="#地址解析阶段" class="headerlink" title="地址解析阶段"></a>地址解析阶段</h3><p>用户在浏览器端输入URL后,浏览器先做第一件事情就是找到目标域名的IP地址,大致经过以下几个阶段:</p>
-<p>1.查询 浏览器端的DNS缓存 中是否有目标域名的相关信息。<br>2.查询 本机的host文件 中是否有目标域名的信息。<br>3.查询本地的 路由器中的DNS缓存 中是否有目标域名的信息。<br>4.查询 ISP(互联网服务提供商,例如电信,移动)中的DNS服务器 中是否有目标域名的信息。<br>5.查询 根域名服务器 是否有目标域名的信息,如果没有,则传至 子域名服务器 进行查询， 以此递推 。<br>6.查询到目标IP地址后,则开始建立 TCP 三次握手 ,与目标服务器建立连接。<br>7.通过 HTTP 协议向目标主机发送请求。</p>
-<h3 id="请求处理及响应阶段"><a href="#请求处理及响应阶段" class="headerlink" title="请求处理及响应阶段"></a>请求处理及响应阶段</h3><p>1.服务器端接受到请求后,根据路由将url中的地址进行重定向到服务器程序上的目标文件。</p>
-<p>2.此处涉及到后台的MVC架构,大致如下:<br>URL中的文件地址部分经过服务器上的路由程序重定向到对应的控制器(controller)对象,控制器对象根据URL中指定的操作执行相关的逻辑并调用目标数据的模型(Model)对象,模型对象与数据库交互完成目标操作后,控制器将模型中反馈的数据填充到视图中。</p>
-<p>3.视图部分(通常是HTML页面)作为HTTP响应发送到浏览器端。</p>
-<h3 id="视图解析阶段"><a href="#视图解析阶段" class="headerlink" title="视图解析阶段"></a>视图解析阶段</h3><p>1.浏览器开始解析目标HTML文件,执行流的顺序为自上而下。<br>2.HTML解析器将HTML结构转换为基础的DOM(文档对象模型),构建DOM树完成后,触发DomContendLoaded事件。<br>3.CSS解析器将CSS解析为CSSOM(层叠样式表对象模型),一棵仅含有样式信息的树。<br>4.CSSOM和DOM开始合并构成渲染树,每个节点开始包含具体的样式信息。<br>5.计算渲染树中个各个节点的位置信息,即布局阶段。<br>6.将布局后的渲染树显示到界面上。</p>
-<p>注:图片等外部资源在解析阶段被加载，加载完毕后触发load事件</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjk3sd67t0019ans698a69wk3" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于&amp;&amp;和||返回值的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/22/关于&&和||返回值的问题/" class="article-date">
-  <time datetime="2018-07-22T15:46:04.000Z" itemprop="datePublished">2018-07-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In the simplest terms:</p>
-<p>The <code>||</code> operator returns the first truthy value, and if none are truthy, it returns the last value (which is a falsy value).</p>
-<p>The <code>&amp;&amp;</code> operator returns the first falsy value, and if none are falsy, it return the last value (which is a truthy value).</p>
-<p>最简单的方式：</p>
-<p><code>||</code>返回的是第一个为true的值，如果所有的都不为true，它返回最后一个值（转换为boolean为false）</p>
-<p><code>&amp;&amp;</code>返回的是第一个为false的值，如果所有的都不为false，它返回最后一个值（转换为boolean为true）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjk3sd67m000uans6phr39ekc" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ES6常用知识点概述" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/22/ES6常用知识点概述/" class="article-date">
-  <time datetime="2018-07-22T15:43:09.000Z" itemprop="datePublished">2018-07-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/ES6常用知识点概述/" data-id="cjk3sd6730006ans6dr71yoj7" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-回调函数是什么" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/21/回调函数是什么/" class="article-date">
-  <time datetime="2018-07-21T15:53:42.000Z" itemprop="datePublished">2018-07-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是回调"><a href="#什么是回调" class="headerlink" title="什么是回调?"></a>什么是回调?</h2><p><strong>简单地说:</strong> 一个回调函数，就是在另外一个函数（通常是异步的）执行完之后再执行的函数，因而被命名为——回调。</p>
-<p><strong>更进一步地说:</strong> 在JavaScript中，函数是对象。正因如此，一个函数可以被其他函数作为参数（传入），也能被其他函数作为返回值返回。这种函数（译者注：起码要满足如下条件之一：1.接受一个或多个函数作为参数，2.将一个函数作为返回值返回）被称为高阶函数。任何函数，只要它作为参数传入且随后被调用，都可称之为回调函数。</p>
-<p>看起来很复杂的样子，但别急，让我们往下看一些例子。</p>
-<blockquote>
-<p>这篇文章首发于<a href="https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced" target="_blank" rel="noopener">codeburst.io</a>且获得了作者授权转载。如果你喜欢阅读， 为什么不去看看Brandon的<a href="https://codeburst.io/@bmorelli25" target="_blank" rel="noopener">其他文章</a>呢？如果你想提高你的JavaScript技巧，可以前往SitePoint Premium参加我们的<a href="https://www.sitepoint.com/premium/courses/introduction-to-javascript-2908" target="_blank" rel="noopener">JavaScript入门</a>课程。</p>
-</blockquote>
-<h2 id="为什么需要回调函数"><a href="#为什么需要回调函数" class="headerlink" title="为什么需要回调函数?"></a>为什么需要回调函数?</h2><p>这是由于一个十分重要的原因 —— JavaScript是一门事件驱动的语言。这就意味着，JavaScript会持续监听事件且一直往下执行，而不会在事件响应前一直挂起。让我们一起看看下面这个简单的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function first()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function second()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line">second();</span><br></pre></td></tr></table></figure>
-<p>正如你所料，函数first会首先执行，函数second会在之后执行——控制台会打印如下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">// 2</span><br></pre></td></tr></table></figure>
-<p>看起来是符合我们的预期。</p>
-<p>但如果函数first包含有一些不会立即执行的代码呢？例如，我们需要发送一个请求并等待它的响应呢？我们使用<code>setTimeout</code>去模拟这种场景，<code>setTimeout</code>是原生JavaScript方法，允许你在特定时间后调用一个函数。我们通过延迟500毫秒后再执行函数来模拟发送请求。代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function first()&#123;</span><br><span class="line">  // Simulate a code delay</span><br><span class="line">  setTimeout( function()&#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">  &#125;, 500 );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function second()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line">second();</span><br></pre></td></tr></table></figure>
-<p>你现在不太需要立即搞懂<code>setTimeout()</code>的原理（如果你很好奇，我们有这<a href="https://www.sitepoint.com/jquery-settimeout-function-examples/" target="_blank" rel="noopener">主题相关的文章</a>）。（现在）最重要的是我们将<code>console.log(1);</code> 延迟500毫秒执行。那么，当我们执行这两个函数（<code>first</code>和<code>second</code>）时，会发生什么呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first();</span><br><span class="line">second();</span><br><span class="line">// 2</span><br><span class="line">// 1</span><br></pre></td></tr></table></figure>
-<p>尽管我们先调用函数first，但会先打印出<code>2</code>。</p>
-<p>这并不是JavaScript不按照我们的想法去顺序执行函数，而是JavaScript会继续执行函数second,而不是等待函数fitst执行完（再去执行函数second）。</p>
-<p>那么为何让你看这个（例子）呢？是因为你不能期望Javascript都是执行完一个函数后再去执行下一个函数。而回调函数是确保代码按次序正确执行的一种方法。</p>
-<h2 id="创造一个回调函数"><a href="#创造一个回调函数" class="headerlink" title="创造一个回调函数"></a>创造一个回调函数</h2><p>好了，让我们少啰嗦，一起来创造一个回调函数吧！</p>
-<p>首先，打开你浏览器的控制台（Windows/Linux和系统可以按下Ctrl + Shift + J，Mac则按下Cmd + Option + J）。然后把以下的函数输入到控制台内：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们创建了一个名为<code>doHomework</code>的函数。而我们的函数需要传入一个变量才能工作。可以往控制台中输入以下代码调用（该函数）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doHomework(&apos;math&apos;);</span><br><span class="line">// Alerts: Starting my math homework.</span><br></pre></td></tr></table></figure>
-<p>现在我们把回调函数添加进去吧。<code>doHomework</code>需要添加多一个参数，回调函数会作为最后一个参数传入，并在执行<code>doHomework</code>时调用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject, callback) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">  callback();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doHomework(&apos;math&apos;, function() &#123;</span><br><span class="line">  alert(&apos;Finished my homework&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="试着在JS-Bin上执行上述代码"><a href="#试着在JS-Bin上执行上述代码" class="headerlink" title="试着在JS Bin上执行上述代码"></a>试着在JS Bin上执行上述代码</h3><p><a href="https://jsbin.com/xedeyuc/2/embed?js,console" target="_blank" rel="noopener">JS Bin</a></p>
-<p>正如你所看到的，当你在控制台输入上述代码后，陆续会有两个告示框弹出：首先是：‘Starting homework’，然后是‘Finished homework’。</p>
-<p>然而回调函数不一定要在函数调用时完整传入。你可以将回调函数定义在其他地方，如以下代码所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject, callback) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">  callback();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function alertFinished()&#123;</span><br><span class="line">  alert(&apos;Finished my homework&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doHomework(&apos;math&apos;, alertFinished);</span><br></pre></td></tr></table></figure>
-<h3 id="在JS-Bin上执行上述例子"><a href="#在JS-Bin上执行上述例子" class="headerlink" title="在JS Bin上执行上述例子:"></a>在JS Bin上执行上述例子:</h3><p><a href="https://jsbin.com/hagaqiy/embed?js,console" target="_blank" rel="noopener">JavaScript中什么是回调函数？</a></p>
-<p>执行的结果与之前的例子是完全一致的，但代码的组织却有一点不同。正如你所见，在<code>doHomework</code>函数调用时，<code>alertFinished</code>作为它的一个参数被传入！</p>
-<h2 id="一个真实的例子"><a href="#一个真实的例子" class="headerlink" title="一个真实的例子"></a>一个真实的例子</h2><p>上星期，我发布了一篇名为<a href="https://codeburst.io/build-a-simple-twitter-bot-with-node-js-in-just-38-lines-of-code-ed92db9eb078" target="_blank" rel="noopener">《如何用38行代码创造一个推特机器人》</a>的文章。那篇文章中，代码是通过使用推特的API来工作的。当你发请求去一个API时，你必须等待响应内容返回后才能继续工作。这是一个说明如何使用回调函数的很好例子。请求API时发送的请求代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T.get(&apos;search/tweets&apos;, params, function(err, data, response) &#123;</span><br><span class="line">  if(!err)&#123;</span><br><span class="line">    // This is where the magic will happen</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>T.get</code> 的意思只是往推特发送一个GET请求。</li>
-<li>当发送请求去<code>‘search/tweets’</code>时，（请求函数）接受三个参数，第一个参数是请求地址，<code>params</code>是第二个参数，代表搜索相关的参数，而最后一个则是一个匿名的回调函数。</li>
-</ul>
-<p>在这里，回调函数是十分重要的，因为我们需要等待服务器返回数据后，才能继续执行余下代码。我们并不知道我们请求API后，服务器是否成功地返回数据。因此，当我们通过GET请求请求<code>search/tweets</code>后，会等待服务器返回信息。一旦推特（的服务器）返回相应数据，我们的回调函数将会执行。推特服务器会返回一个<code>err</code> (error) 对象或一个<code>response</code>对象给我们。在我们的回调函数中，我们使用条件判断语句<code>if()</code>（判断是否有错误对象存在）来确定请求是否成功，（判断成功）之后再根据返回的数据进行下一步操作。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjk3sd67p0011ans6kl48vjri" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-高低频操作方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/19/高低频操作方法/" class="article-date">
-  <time datetime="2018-07-19T14:18:54.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/高低频操作方法/">高低频操作方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="8位模式"><a href="#8位模式" class="headerlink" title="8位模式"></a>8位模式</h2><p>复制两个图层，下面的命名为Low，上面命名为High</p>
-<h3 id="低频"><a href="#低频" class="headerlink" title="低频"></a>低频</h3><p>高斯模糊，低频模糊的越多，高频涵盖的信息越多，反过来模糊得越少，高频的信息相对少，一般模糊到材质细节看不到为止</p>
-<h3 id="高频"><a href="#高频" class="headerlink" title="高频"></a>高频</h3><p>图层选low，混合选择减去，不透明度100%，缩放2，补偿值128</p>
-<p>高频的混合模式设定为线性光</p>
-<p>把两个图层合并为一个组</p>
-<p>低频操作：</p>
-<p>高频层操作：仿制图章工具，样本：当前图层</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/高低频操作方法/" data-id="cjk3sd67x001gans6409bq00m" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-一些CSS片段" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/11/一些CSS片段/" class="article-date">
-  <time datetime="2018-07-11T12:07:34.000Z" itemprop="datePublished">2018-07-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/11/一些CSS片段/">一些CSS片段</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###取消滚动条，在overflow的元素上使用伪类样式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">::-webkit-scrollbar</span>&#123; <span class="attribute">display</span>: none; &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="文字内容撑开父元素且居中"><a href="#文字内容撑开父元素且居中" class="headerlink" title="文字内容撑开父元素且居中"></a>文字内容撑开父元素且居中</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.parent</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.children</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18</span>rpx;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/11/一些CSS片段/" data-id="cjk3sd67m000tans689n9ljrf" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-React-Native-环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/05/React-Native-环境搭建/" class="article-date">
-  <time datetime="2018-07-05T09:06:39.000Z" itemprop="datePublished">2018-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/React-Native-环境搭建/">React Native 环境搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##平台</p>
-<p>开发平台：macOS </p>
-<p>App平台：Android / iOS</p>
-<p><strong>Tips：建议不要用 create-react-native-app 和 expo 搭建，国内用户可能产生网络问题，无法创建新项目（至少我遇到了）</strong></p>
-<p>##环境搭建</p>
-<ol>
-<li><p>安装node</p>
-<ul>
-<li><code>brew install node</code></li>
-</ul>
-</li>
-<li><p>安装 react-native-cli</p>
-<ul>
-<li><code>npm i -g react-native-cli</code></li>
-</ul>
-</li>
-<li><p>安装 Java JDK 版本 8 或以上</p>
-</li>
-<li><p>安装 Android Studio</p>
-<ul>
-<li><code>Android SDK</code></li>
-<li><code>Android SDK Platform</code></li>
-<li><code>Performance (Intel ® HAXM)</code></li>
-<li><code>Android Virtual Device</code></li>
-</ul>
-</li>
-<li><p>安装安卓 SDK - Android 6.0 (Marshmallow) </p>
-<ul>
-<li><code>Google APIs</code></li>
-<li><code>Android SDK Platform 23</code></li>
-<li><code>Intel x86 Atom_64 System Image</code></li>
-<li><code>Google APIs Intel x86 Atom_64 System Image</code></li>
-</ul>
-</li>
-<li><p>SDK Tools</p>
-<ul>
-<li><code>23.0.1</code></li>
-</ul>
-</li>
-<li><p>配置环境变量（使用其他 shell 需要改相应的 shell 配置）</p>
-<ul>
-<li><code>$HOME/.bash_profile</code></li>
-<li><code>export ANDROID_HOME=$HOME/Library/Android/sdk</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/tools</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/tools/bin</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/platform-tools</code></li>
-</ul>
-<p>使用 <code>echo $PATH</code> 和 <code>echo $ANDROID_HOME</code> 检测</p>
-</li>
-<li><p>建立 React Native 程序</p>
-<p><code>react-native init myProject</code></p>
-</li>
-<li><p>使用 Android Studio 建立一个安卓手机模拟器</p>
-<p>使用 <code>adb devices</code> 查看模拟器</p>
-</li>
-<li><p>运行项目</p>
-<p><code>cd myProject</code><br><code>react-native run-android</code></p>
-</li>
-</ol>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>###真机上运行时可能会遇到白屏的情况</p>
-<p>找到并开启<code>悬浮窗权限</code></p>
-<p>###Android 5.0及以上(API 21+)的安卓设备上</p>
-<p>设备连接USB数据线到电脑，并开启USB调试，运行<code>adb reverse tcp:8081 tcp:8081</code></p>
-<h3 id="Android-5-0以下，通过Wi-Fi连接本地开发服务器"><a href="#Android-5-0以下，通过Wi-Fi连接本地开发服务器" class="headerlink" title="Android 5.0以下，通过Wi-Fi连接本地开发服务器"></a>Android 5.0以下，通过Wi-Fi连接本地开发服务器</h3><ol>
-<li>确保你的电脑和手机设备在<strong>同一个Wi-Fi环境</strong>下。</li>
-<li>在设备上运行你的React Native应用。</li>
-<li>你应该会看到一个“红屏”错误提示。这是正常的，下面的步骤会解决这个报错</li>
-<li>摇晃设备，或者运行<code>adb shell input keyevent 82</code>，可以打开<strong>开发者菜单</strong></li>
-<li>点击进入<code>Dev Settings</code></li>
-<li>点击<code>Debug server host for device</code></li>
-<li>输入你电脑的IP地址和端口号（譬如10.0.1.1:8081）。<strong>在Mac上</strong>，你可以在系统设置/网络里找查询你的IP地址。<strong>在Windows上</strong>，打开命令提示符并输入<code>ipconfig</code>来查询你的IP地址。<strong>在Linux上</strong>你可以在终端中输入<code>ifconfig</code>来查询你的IP地址。</li>
-<li>回到<strong>开发者菜单</strong>然后选择<code>Reload JS</code></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjk3sd67c000eans6m2ck5rpp" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Web安全之XSS攻防" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/03/Web安全之XSS攻防/" class="article-date">
-  <time datetime="2018-07-03T12:00:51.000Z" itemprop="datePublished">2018-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/03/Web安全之XSS攻防/">Web安全之XSS攻防</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/Web安全之XSS攻防/" data-id="cjk3sd67h000kans60ncvj3o3" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         

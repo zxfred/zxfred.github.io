@@ -61,6 +61,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序开发总结（持续更新）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/03/小程序开发总结（持续更新）/" class="article-date">
+  <time datetime="2018-07-03T04:00:34.000Z" itemprop="datePublished">2018-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/03/小程序开发总结（持续更新）/">小程序开发总结（持续更新）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小程序开发学习过程中的一些总结：</p>
+<ol>
+<li><p><code>scroll-view</code> 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽</p>
+</li>
+<li><p>iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</p>
+</li>
+<li><p>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</p>
+</li>
+<li><p>判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
+</li>
+<li><p>使用 template 不要忘记传入 data</p>
+</li>
+<li><p>指定 ajax 的先后顺序，把后执行的放在先执行的 success 中</p>
+</li>
+<li><p><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整，多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
+</li>
+<li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，暂时将外部 card 宽度从 50% 改为定宽解决，应该仍有其他解决方法</p>
+</li>
+<li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
+</li>
+<li><p>（部分?）安卓手机不支持 rgba 格式的透明背景</p>
+</li>
+<li><p>（基础）判断平台并修改样式的时候要注意 CSS 选择器优先级的问题，多个标签比少标签的优先级要高</p>
+</li>
+<li><p>商品标签在 iPhone 6/7 和 iPhone 6p/7p 不同尺寸屏幕上，内部文字不垂直居中，可以适当增加1-2rpx 行高</p>
+</li>
+<li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
+</li>
+<li><p>小程序内嵌 web-view 刷新方法：小程序自带的原生API只能用于刷新小程序页面，不能刷新 web-view 页面。</p>
+<ul>
+<li><p>最好的方法：使用 wx:if 给 web-view 绑定一个 boolean 变量，利用 if 会刷新 dom 节点的性质，更新 boolean（先false再true）会使 web-view 页面刷新。</p>
+<p>问题：目前没有发现问题</p>
+</li>
+<li><p>不完美的方法：在需要刷新页面的时候，先将 url 变量变成空字符串，再重新赋值。</p>
+<p>问题：在网页模拟器上，后退会出现url为空时候的错误页，但在iOS真机上正常</p>
+</li>
+<li><p>不要使用的方法：web-view 页面会在 url 改变的时候刷新，可以通过更改url的方式（如尾部增加一个时间戳作为参数）使页面刷新。</p>
+<p>问题：iOS系统中每次后退时会回到上一个页面，多次跳转时要点击多次后退，使用体验差</p>
+</li>
+</ul>
+</li>
+<li><p>收集 formid 时若需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</p>
+</li>
+<li><p>如何禁止页面滚动：</p>
+<p>不用下拉刷新的方法：</p>
+<ul>
+<li>整个布局用<code>&lt;scroll-view&gt;</code>作为根节点，绑定 scroll-view 的 scroll-y 属性<code>&lt;scroll-view scroll-y=&quot;false&quot;&gt;</code></li>
+<li>样式文件中设置 Page 的 overflow-y 属性值为hidden</li>
+<li>样式文件中设置 scroll-view 的 height 属性值为100%</li>
+</ul>
+<p>使用下拉刷新的方法：</p>
+<ul>
+<li>在外层添加一个view：<code>&lt;view class=&quot;page&quot; style=&quot;height: ; overflow: ;&quot;&gt;</code> 然后动态算出设备高度</li>
+</ul>
+</li>
+<li><p>【不只是小程序的问题】：JavaScript会自动取消数值类型后面无意义的0，导致解析JSON之后数值位数不一致，建议转换成字符串，或者在数据较少的时候统一toFixed</p>
+</li>
+<li><p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（持续更新）/" data-id="cjk3sd67r0014ans6ys50e9sy" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-栈" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/22/栈/" class="article-date">
@@ -90,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjjzmm75d0014kis6727c5y67" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjk3sd67q0013ans6pz4tworq" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -130,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjjzmm75g001dkis6jrqg9dlq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjk3sd67v001bans68kpa1qsh" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -187,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjjzmm756000rkis6lgthnyjm" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjk3sd67k000qans6rs1roopr" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -225,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/12/JavaScript立即执行函数/" data-id="cjjzmm74x000ckis6mpettssc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/12/JavaScript立即执行函数/" data-id="cjk3sd679000bans61uzw9mq7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -289,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjjzmm753000kkis697y7ff6j" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjk3sd67k000pans6cgc6ab10" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -328,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cjjzmm75f001akis6unon8gqm" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/04/记录我的梦境/" data-id="cjk3sd67w001eans63sclqgxi" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -379,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjjzmm74n0003kis6rurnwzjs" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjk3sd66y0002ans6y6x2nvy1" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -455,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjjzmm74o0004kis6sbzftwt6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjk3sd66z0003ans6hu615201" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -514,146 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjjzmm74z000fkis68fvzq3nu" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-75team-设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/75team-设计模式/" class="article-date">
-  <time datetime="2018-05-21T03:30:29.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/21/75team-设计模式/">75team - 设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>思考：</p>
-<ul>
-<li>我们为什么要设计/抽象，它的本质是什么</li>
-<li>JavaScript 有什么特点，什么样的设计模式适合这门语言</li>
-<li>了解“逻辑”背后的信息比如：满足什么需求？解决什么问题？变化会多频繁？有什么痛点？</li>
-</ul>
-<p>（世面上JS设计模式的书基本都在扯淡，很多设计模式是不适合JS的）</p>
-<h3 id="模式1：Behavior"><a href="#模式1：Behavior" class="headerlink" title="模式1：Behavior"></a>模式1：Behavior</h3><ul>
-<li>在交互需求出发设计一组“动作行为”</li>
-<li>在主体对象上应用和扩展这些行为</li>
-<li>为什么这么做？</li>
-</ul>
-<p>实例1：图片预览（可切换到上一张下一张图片）</p>
-<p>分析：Behavior 模式：自定义 preview 行为</p>
-<p>思考与练习：</p>
-<ol>
-<li>如果图片要动态加载，怎么修改 setPreviewBehavior?</li>
-<li>如果要兼容旧的浏览器，如IE7，如何处理？</li>
-<li>为上一张、下一张图片切换添加动画</li>
-</ol>
-<p>实例2：选取图片，自定义 setSelectionBehavior 行为</p>
-<h3 id="模式2：Adapter"><a href="#模式2：Adapter" class="headerlink" title="模式2：Adapter"></a>模式2：Adapter</h3><ul>
-<li>针对不同底层实现提供统一的外部接口</li>
-<li>让业务层面的代码可以适应不同的底层实现</li>
-</ul>
-<p>即针对不同的状况进行<strong>判断</strong></p>
-<p>Behavior + Adaptor</p>
-<h3 id="模式3：Observer（观察者，解耦作用）"><a href="#模式3：Observer（观察者，解耦作用）" class="headerlink" title="模式3：Observer（观察者，解耦作用）"></a>模式3：Observer（观察者，解耦作用）</h3><p>Web开发最核心的就是事件驱动，事件是一个异步模型，所以observer（观察者模式）很重要</p>
-<p>Observer 用于</p>
-<ul>
-<li>同步多个对象的状态变化</li>
-<li>解耦各个对象之间的依赖</li>
-</ul>
-<p>实例3：同步滚动</p>
-<p>不使用观察者模式（耦合）的方法</p>
-<p>图1</p>
-<p>增加排斥其他函数调用的方法（避免两个窗口相互调用）（和这个设计模式无关）</p>
-<p>图2</p>
-<p>使用观察者模式：</p>
-<p>增加watchBy的方法（被观察）</p>
-<p>图 3-1 3-2</p>
-<p>练习：添加 preview 与 editor 的反向同步</p>
-<h3 id="模式4：Mediator（中介者）"><a href="#模式4：Mediator（中介者）" class="headerlink" title="模式4：Mediator（中介者）"></a>模式4：Mediator（中介者）</h3><ul>
-<li>将命令传递给所有订阅者</li>
-<li>与所有订阅者之间维持依赖关系</li>
-<li>从而让订阅者彼此之间相互独立</li>
-</ul>
-<p>上一个例子，改用 pub/sub</p>
-<h3 id="模式5：Composite（复合模式）"><a href="#模式5：Composite（复合模式）" class="headerlink" title="模式5：Composite（复合模式）"></a>模式5：Composite（复合模式）</h3><ul>
-<li>对已有组件/库/功能的组合使用</li>
-<li>提升代码复用性的最常用手段</li>
-</ul>
-<p>实例：命令式连续动画</p>
-<p>练习：完善动画例子，增加其他特效动画支持，自己将一些基础组件合成为高级组件</p>
-<h3 id="模式6：Partial-Application"><a href="#模式6：Partial-Application" class="headerlink" title="模式6：Partial Application"></a>模式6：Partial Application</h3><ul>
-<li>部分应用/固化参数</li>
-</ul>
-<p>实例：resolve path 拼接字符串作为路径，node跨平台，如果直接拼，在windows下会有错误（windows路径用反斜杠）</p>
-<p>实例：Logging time 在每个日志上打上时间戳</p>
-<h3 id="模式7：Decorate（装饰器）"><a href="#模式7：Decorate（装饰器）" class="headerlink" title="模式7：Decorate（装饰器）"></a>模式7：Decorate（装饰器）</h3><ul>
-<li><p>在原有 API 基础上增加额外的功能</p>
-</li>
-<li><p>不改变底层库的基础上扩展功能的一种模式</p>
-<p>（不要直接在一些库上修改代码）</p>
-</li>
-</ul>
-<p>实例：让函数只被调用一次</p>
-<p>图4</p>
-<p>实例：debounce 鼠标停下的时候让小鸟到鼠标位置</p>
-<p>如果不增加 debounce，小鸟会卡住</p>
-<h3 id="模式8：Proxy（代理模式）"><a href="#模式8：Proxy（代理模式）" class="headerlink" title="模式8：Proxy（代理模式）"></a>模式8：Proxy（代理模式）</h3><ul>
-<li>保持原有 API 功能不变，改变执行过程和结果</li>
-<li>不改变底层库的基础上获得不同执行结果的手段</li>
-</ul>
-<p>实例：拦截异步数据</p>
-<p>情景：前端构建完毕，后端服务接口还没有开发好，这时需要调试</p>
-<p>图5</p>
-<p>实例：mouse 代理 touch 事件</p>
-<p>情景：PC端模拟移动端调试</p>
-<h3 id="模式9：Aspect（切面）"><a href="#模式9：Aspect（切面）" class="headerlink" title="模式9：Aspect（切面）"></a>模式9：Aspect（切面）</h3><ul>
-<li>对代码的执行过程进行监测和修改</li>
-<li>不改变代码主体执行流程的基础上控制执行过程</li>
-</ul>
-<p>系统/环境默认的一些可控制点</p>
-<p>实例：创建切面修改 Swipable</p>
-<p>针对封装好的组件没有接口的情况</p>
-<p>实例：performance.watch 监控性能</p>
-<h4 id="Decorate、Proxy-和-Aspect三者联系："><a href="#Decorate、Proxy-和-Aspect三者联系：" class="headerlink" title="Decorate、Proxy 和 Aspect三者联系："></a>Decorate、Proxy 和 Aspect三者联系：</h4><ul>
-<li>Decorate 强调的是声明和定义</li>
-<li>Proxy 强调的是功能</li>
-<li>Aspect 强调的是运行过程</li>
-</ul>
-<p>动态语言，可以用 Decorate 来实现 Proxy 和 Aspect</p>
-<h3 id="模式10：-Lazy-load-（懒加载）"><a href="#模式10：-Lazy-load-（懒加载）" class="headerlink" title="模式10： Lazy load （懒加载）"></a>模式10： Lazy load （懒加载）</h3><ul>
-<li>一些加载好事的资源进行分段、异步加载</li>
-<li>前端提升性能，减少响应用户的时间</li>
-<li>某些情况下减少网页流量和带宽消耗</li>
-</ul>
-<p>实例：懒加载图片</p>
-<p>前四张图是 src ，后面三张是 data-src</p>
-<p>图6</p>
-<p>总结</p>
-<p>图7</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjjzmm74h0000kis68ft25gt6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjk3sd67d000fans6oi1r6cvx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -713,6 +672,10 @@
       <ul>
         
           <li>
+            <a href="/2018/07/27/Promise解读/">Promise解读</a>
+          </li>
+        
+          <li>
             <a href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
           </li>
         
@@ -726,10 +689,6 @@
         
           <li>
             <a href="/2018/07/22/ES6常用知识点概述/">ES6常用知识点概述</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
           </li>
         
       </ul>
