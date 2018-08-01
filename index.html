@@ -61,6 +61,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-如何快速上手 vim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/如何快速上手 vim/" class="article-date">
+  <time datetime="2018-08-01T07:01:40.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如何快速学会 vim 呢？</p>
+<blockquote>
+<p>默认编辑器设为 vim，删掉其他一切编辑器，明天上线。</p>
+</blockquote>
+<p>以下是能够在零配置下快速使用 vim 的一系列步骤，只需要多加练习，便能快速熟练使用 vim。 <strong>无他，唯手熟尔。</strong></p>
+<h2 id="快速移动"><a href="#快速移动" class="headerlink" title="快速移动"></a>快速移动</h2><p><strong>快速移动是 vim 的重中之重，比一切插件都要重要</strong>。也是下编辑和修改的基础。</p>
+<ul>
+<li><p><strong>上(k)下(j)左(h)右(l)</strong> 移动，需要注意，禁止使用上下左右箭头 如果需要移动数行，可以在操作前加数字。如 <code>10j</code> 代表往下移动十行。 <strong>通过数字与操作结合，这是 vim 的思想。</strong></p>
+</li>
+<li><p>减少上一步的左右移动，效率太低，使用 <code>b, B, w, W</code> 代替 <code>b</code> 指 back a word，退回一个单词。<code>w</code> 指 forward a word，前进一个单词。 <code>B</code> 指 back a WORD，退回一个大单词。<code>w</code> 指 forward a WORD，前进一个大单词。</p>
+<blockquote>
+<p>其中，word 以及 WORD 的区别，以一个示例说明。 hello.world 有三个 word (‘hello’, ‘.’, ‘world’)，却只有一个 WORD。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>f, F, t, T</code> 进行更为精细的左右移动控制 <code>f</code> 指 find a character，快速移动到下一个字符的位置，<code>F</code> 指向前查找。结合 <code>b, w</code> 实现快速左右移动。 <code>t</code> 指 tail a character，快速移动到下一个字符位置的前一个字符，<code>T</code> 指向前查找。</p>
+</li>
+<li><p>使用 <code>0, $</code> 进行行首行尾移动</p>
+</li>
+<li><p>使用 <code>%</code> 快速移动到配对字符 如从左括号快速移动到右括号，左引号快速移动到右引号，在编码中最为常用！</p>
+</li>
+<li><p>使用 <code>&lt;Ctrl-d&gt;，&lt;Ctrl-u&gt;</code> 进行大范围上下移动 <code>&lt;Ctrl-d&gt;</code> 往下移动半页，<code>&lt;Ctrl-u&gt;</code> 往上移动半页。</p>
+<blockquote>
+<p>也可以使用 <code>&lt;Ctrl-f&gt;, &lt;Ctrl-b&gt;</code> 进行整页移动。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>gg, G</code> 进行首行尾行移动</p>
+</li>
+<li><p><code>:128</code> 表示快速定位到 128 行</p>
+</li>
+</ul>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><p>vim 的编辑在 <code>Insert Mode</code>，以上的快速移动是在 <code>Normal Mode</code>。编辑文本需要首先进入 <code>Insert Mode</code>。</p>
+<p><code>i, I, a, A, o, O</code> 进入 <code>Insert Mode</code>。</p>
+<p><code>i</code> 指 insert text，在该光标前进行编辑，<code>I</code> 指在行首进行编辑。 <code>a</code> 指 append text，在该光标后进行编辑，<code>A</code> 指在行尾进行编辑。 <code>o</code> 指 append text，在该光标后一行进行编辑，<code>O</code> 指在光标前一行进行编辑。</p>
+<p>个人习惯，<code>i, A, o, O</code> 用的多一些，<code>I, a</code> 基本不用。</p>
+<p><code>Esc</code> 以及 <code>&lt;Ctrl-[&gt;</code> 都可以退出 <code>Insert Mode</code>。</p>
+<p>个人习惯使用 <code>&lt;Ctrl-[&gt;</code>，一来 <code>Esc</code> 过远，二来在一些编辑器中 <code>Esc</code> 容易与其它热键冲突。</p>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><p>删除也可以在 <code>Insert Mode</code> 使用 <code>delete</code> 键进行手动删除，不过效率太低，建议一般在 <code>Normal Mode</code> 进行删除，刚进入 vim 的状态便是 <code>Normal Mode</code>。</p>
+<ul>
+<li><p>使用 <code>x(dl)</code> 删除特定字符 可以结合 <code>x</code> 以及上述所讲的快速移动，删掉光标下的特定字符</p>
+<p>在括号里标注 <code>l</code>，意指 <code>x</code> 为 <code>dl</code> 的简写。</p>
+<p><strong>d 指 delete，表示删除，是所有修改操作的基础。dl 由 d 和 l 两个操作组成，代表删掉光标右侧的字符，同理，dh 代表删掉光标左侧的字符，这是所有删除的基本形式，也是 vim 的核心思想。</strong></p>
+</li>
+<li><p>使用 <code>daw</code> 删除特定单词</p>
+<p><code>daw</code> 指 <code>delete a word</code>，表示删除特定单词。同样也可以使用 <code>db, dw</code> 来删除单词。</p>
+</li>
+<li><p>使用 <code>dt, df</code> 加特定字符，删掉字符前的文本</p>
+</li>
+<li><p>使用 <code>di(, da(</code> 删除特定符号内的文本，如删除括号，引号中的文本</p>
+<p><code>di(</code> 指 <code>delete in (</code>，不会删掉括号。<code>da(</code> 指 <code>delete a (</code>，会连同括号一同删掉。同理还有 <code>di&#39;</code>，<code>di&quot;</code> 等，在编码中最为常用！</p>
+</li>
+<li><p>使用 <code>D (d$)</code> 删除掉该字符以后的所有文本</p>
+</li>
+<li><p>使用 <code>dd</code> 删掉整行</p>
+</li>
+<li><p><strong>把以上操作的所有 d 替换为 c，表示删除后进入编辑模式</strong></p>
+<p><code>c</code> 指 <code>change</code>，表示删除，如 <code>d</code> 一样，是 vim 的基本动词</p>
+</li>
+<li><p>使用 <code>r</code> 加特定字符，表示使用特定字符代替原有字符</p>
+</li>
+</ul>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul>
+<li><p>使用 <code>:Ex (Explore)</code> 浏览目录</p>
+<p>定位到文件所在行，回车进入指定文件</p>
+</li>
+<li><p>使用 <code>ls</code> 列出缓冲列表</p>
+<p>缓冲列表中保存最近使用文件，行头有标号</p>
+</li>
+<li><p>使用 <code>bn</code> 进入最近使用文件</p>
+<p><code>bn</code> 指 <code>buffer next</code>，进入缓冲列表的下个缓冲，即最近一次使用文件</p>
+</li>
+<li><p>使用 <code>b [N]</code> 进入缓冲列表中标号为 N 的文件</p>
+<p><code>b 10</code> 指 <code>buffer 10</code>，进入缓冲列表，即最近一次使用文件</p>
+</li>
+<li><p>使用 <code>sbn, vbn</code> 在新窗口打开最近使用文件</p>
+<p><code>s</code> 指 <code>split</code>，水平方向。 <code>v</code> 指 <code>vertical</code>，垂直方向。</p>
+</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>基本操作指查找，替换，撤销，重做，复制，粘贴，保存等</p>
+<ul>
+<li><p><code>/{pattern}</code> 查找 <code>/</code> 后加需要查找的词或者正则表达式进行查询，<code>n</code> 向下查询，<code>N</code> 向上查询。</p>
+</li>
+<li><p><code>:s/aa/bb/g</code> 替换 <code>s</code> 指 <code>substitute</code> 的缩写，替换，<code>g</code> 代表全局替换。</p>
+</li>
+<li><p><code>u</code> 撤销 <code>u</code> 指 <code>undo</code> 的缩写，撤销。可与数字结合进行多次撤销。</p>
+</li>
+<li><p><code>&lt;Ctrl-r&gt;</code> 重做</p>
+</li>
+<li><p><code>yy</code> 复制整行 <code>y</code> 指 <code>yank</code>，复制。使 <code>y</code> 与快速移动结合起来，可以使用多种情况的复制，如复制括号中内容，复制引号中内容。</p>
+<p>复制时，会把当前内容置入寄存器，使用 <code>:reg</code> 查看寄存器列表。</p>
+</li>
+<li><p><code>p</code> 粘贴 <code>p</code> 指 <code>paste</code>，粘贴。</p>
+</li>
+<li><p><code>&quot;*y</code> 复制内容至系统剪切板</p>
+<p><code>:reg</code> 会列出寄存器列表，<code>&quot;*</code> 寄存器代表系统剪切板()，所以以上就是把内容放到系统剪切板。</p>
+<p>如果寄存器列表中没有该寄存器，则 vim 不支持系统剪切板，也可以使用命令 <code>vim --version | grep clipboard</code>。</p>
+</li>
+<li><p><code>&quot;*p</code> 粘贴系统剪切板中内容</p>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>关于配置，推荐一下 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Famix%2Fvimrc" target="_blank" rel="noopener">amix/vimrc</a> ，在 github 上超过一万四千颗星。</p>
+<p>另外，再推荐下作者的配置 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fshfshanyue%2Fvim-config" target="_blank" rel="noopener">shfshanyue/vim-config</a>，其中有一些插件，如 <code>emmet</code> 和 <code>typescript</code>非常适合前端开发。</p>
+<hr>
+<p>转载自：<a href="https://juejin.im/post/5b602e1951882569fd288446" target="_blank" rel="noopener">https://juejin.im/post/5b602e1951882569fd288446</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjkat969v000wozs6g44v1k95" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20个强大的正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/31/20个强大的正则表达式/" class="article-date">
@@ -135,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjk9dn16i0001uxs64idhu1wq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjkat96960002ozs6o8prtod7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -244,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjk9dn173000huxs6hjs5edty" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjkat969m000hozs6krcau3f5" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -295,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjk9dn16r0007uxs6n1m6i06o" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjkat969b0006ozs6c6ei4mb9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -345,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjk9dn17o0018uxs6d43n7i6j" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjkat96a3001eozs62wcfowb9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -387,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjk9dn17j0010uxs6gu6e8kb5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjkat96a00016ozs6nmqk3p7r" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -423,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/ES6常用知识点概述/" data-id="cjk9dn16u000auxs6m1ngem7d" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/ES6常用知识点概述/" data-id="cjkat969d0008ozs621yveej0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -497,7 +636,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjk9dn17e000uuxs6nrp1cb4l" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjkat969v000xozs6we961vaj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -540,7 +679,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/高低频操作方法/" data-id="cjk9dn17t001guxs6ptz831sx" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/高低频操作方法/" data-id="cjkat96a5001hozs6hibz1vqv" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -579,120 +718,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/11/一些CSS片段/" data-id="cjk9dn17b000ruxs6tz5p6yyu" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/11/一些CSS片段/" data-id="cjkat969s000rozs61s9x59d4" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-React-Native-环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/05/React-Native-环境搭建/" class="article-date">
-  <time datetime="2018-07-05T09:06:39.000Z" itemprop="datePublished">2018-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/React-Native-环境搭建/">React Native 环境搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##平台</p>
-<p>开发平台：macOS </p>
-<p>App平台：Android / iOS</p>
-<p><strong>Tips：建议不要用 create-react-native-app 和 expo 搭建，国内用户可能产生网络问题，无法创建新项目（至少我遇到了）</strong></p>
-<p>##环境搭建</p>
-<ol>
-<li><p>安装node</p>
-<ul>
-<li><code>brew install node</code></li>
-</ul>
-</li>
-<li><p>安装 react-native-cli</p>
-<ul>
-<li><code>npm i -g react-native-cli</code></li>
-</ul>
-</li>
-<li><p>安装 Java JDK 版本 8 或以上</p>
-</li>
-<li><p>安装 Android Studio</p>
-<ul>
-<li><code>Android SDK</code></li>
-<li><code>Android SDK Platform</code></li>
-<li><code>Performance (Intel ® HAXM)</code></li>
-<li><code>Android Virtual Device</code></li>
-</ul>
-</li>
-<li><p>安装安卓 SDK - Android 6.0 (Marshmallow) </p>
-<ul>
-<li><code>Google APIs</code></li>
-<li><code>Android SDK Platform 23</code></li>
-<li><code>Intel x86 Atom_64 System Image</code></li>
-<li><code>Google APIs Intel x86 Atom_64 System Image</code></li>
-</ul>
-</li>
-<li><p>SDK Tools</p>
-<ul>
-<li><code>23.0.1</code></li>
-</ul>
-</li>
-<li><p>配置环境变量（使用其他 shell 需要改相应的 shell 配置）</p>
-<ul>
-<li><code>$HOME/.bash_profile</code></li>
-<li><code>export ANDROID_HOME=$HOME/Library/Android/sdk</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/tools</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/tools/bin</code></li>
-<li><code>export PATH=$PATH:$ANDROID_HOME/platform-tools</code></li>
-</ul>
-<p>使用 <code>echo $PATH</code> 和 <code>echo $ANDROID_HOME</code> 检测</p>
-</li>
-<li><p>建立 React Native 程序</p>
-<p><code>react-native init myProject</code></p>
-</li>
-<li><p>使用 Android Studio 建立一个安卓手机模拟器</p>
-<p>使用 <code>adb devices</code> 查看模拟器</p>
-</li>
-<li><p>运行项目</p>
-<p><code>cd myProject</code><br><code>react-native run-android</code></p>
-</li>
-</ol>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>###真机上运行时可能会遇到白屏的情况</p>
-<p>找到并开启<code>悬浮窗权限</code></p>
-<p>###Android 5.0及以上(API 21+)的安卓设备上</p>
-<p>设备连接USB数据线到电脑，并开启USB调试，运行<code>adb reverse tcp:8081 tcp:8081</code></p>
-<h3 id="Android-5-0以下，通过Wi-Fi连接本地开发服务器"><a href="#Android-5-0以下，通过Wi-Fi连接本地开发服务器" class="headerlink" title="Android 5.0以下，通过Wi-Fi连接本地开发服务器"></a>Android 5.0以下，通过Wi-Fi连接本地开发服务器</h3><ol>
-<li>确保你的电脑和手机设备在<strong>同一个Wi-Fi环境</strong>下。</li>
-<li>在设备上运行你的React Native应用。</li>
-<li>你应该会看到一个“红屏”错误提示。这是正常的，下面的步骤会解决这个报错</li>
-<li>摇晃设备，或者运行<code>adb shell input keyevent 82</code>，可以打开<strong>开发者菜单</strong></li>
-<li>点击进入<code>Dev Settings</code></li>
-<li>点击<code>Debug server host for device</code></li>
-<li>输入你电脑的IP地址和端口号（譬如10.0.1.1:8081）。<strong>在Mac上</strong>，你可以在系统设置/网络里找查询你的IP地址。<strong>在Windows上</strong>，打开命令提示符并输入<code>ipconfig</code>来查询你的IP地址。<strong>在Linux上</strong>你可以在终端中输入<code>ifconfig</code>来查询你的IP地址。</li>
-<li>回到<strong>开发者菜单</strong>然后选择<code>Reload JS</code></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjk9dn174000iuxs64cwns4tv" class="article-share-link">Teilen</a>
-      
-      
     </footer>
   </div>
   
@@ -737,7 +767,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -748,6 +778,10 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
+          </li>
         
           <li>
             <a href="/2018/07/31/20个强大的正则表达式/">20个强大的正则表达式</a>
@@ -763,10 +797,6 @@
         
           <li>
             <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
           </li>
         
       </ul>
