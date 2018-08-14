@@ -61,6 +61,121 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
+  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/小程序嵌入Vue项目问题总结/">小程序嵌入Vue项目问题总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
+<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
+<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
+<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
+<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
+<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
+<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
+<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
+<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
+<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjkteye5d00133os6aravdooi" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue文档学习总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/22/Vue文档学习总结/" class="article-date">
+  <time datetime="2018-04-22T10:43:06.000Z" itemprop="datePublished">2018-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/Vue文档学习总结/">Vue文档学习总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>只有当实例被创建时 <code>data</code> 中存在的属性才是<strong>响应式</strong>的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值</p>
+</li>
+<li><p>使用 <code>Object.freeze()</code>，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化</p>
+</li>
+<li><p>对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含<strong>单个表达式</strong>，所以语句和流控制不能生效</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-bind:href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a :href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a @click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果完全相同。然而，不同的是<strong>计算属性基于它们的依赖进行缓存</strong>，多次访问计算属性会立即返回之前的计算结果，而不必再次执行函数</p>
+</li>
+<li><p>v-bind 绑定 class 绑定的数据对象不必内联定义在模板里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: true,</span><br><span class="line">    &apos;text-danger&apos;: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由页 webpack 懒加载页面语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Index = <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'@/pages/index.vue'</span>], () =&gt; &#123;</span><br><span class="line">      resolve(<span class="built_in">require</span>(<span class="string">'@/pages/index.vue'</span>))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父组件调用子组件方法，html中引入子组件之后，设置一个组件id，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;recommend ref=&quot;recommend&quot;&gt;&lt;/recommend&gt;</span><br></pre></td></tr></table></figure>
+<p>之后访问 <code>this.$refs.recommend</code> 即为子组件对象</p>
+<p>PS: 调用方法要在 mounted 之后而不是 created 之后</p>
+</li>
+<li><p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjkteye55000m3os6c3uwbrfn" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-彻底理解-JavaScript-里的闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/02/彻底理解-JavaScript-里的闭包/" class="article-date">
@@ -116,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjkat96a2001aozs614km2bt1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjkteye5k001j3os6mbk0r9pk" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -165,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjkat969p000lozs6912pp2wd" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjkteye52000i3os6hbkxpkfg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -260,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjkat969w000yozs6d16zervz" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjkteye5b000y3os6mndwwgzz" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -320,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjkat969q000nozs67o92ia87" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjkteye54000k3os6fcjvyi00" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -396,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjkat969z0014ozs6nl6do0q8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjkteye5g00183os6sccptszh" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -450,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjkat969s000qozs6zitr3dl0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjkteye57000p3os6n2j7gv6t" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -548,7 +663,7 @@ $ git commit -m &quot;remove test.txt&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjkat969h000bozs6a3pqydna" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjkteye4v000b3os6wlf2vopp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -608,6 +723,14 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
+            <a href="/2018/08/14/一个老项目的技术总结/">一个老项目的技术总结</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/07/屏蔽用户缩放/">屏蔽用户缩放</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
           </li>
         
@@ -617,14 +740,6 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/07/27/Promise解读/">Promise解读</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
           </li>
         
       </ul>
