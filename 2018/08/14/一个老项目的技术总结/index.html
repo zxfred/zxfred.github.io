@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/08/14/一个老项目的技术总结/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="iPhone切换不同环境（测试、ST、线上）的时候回出现老的单品页详情 echo 每次都要记得注释 ST环境的商品是完整的，但是测试环境的商品不完整，没法测试所有情况。出现问题后，在测试环境无法调试。 mapi上线困难，环境相互覆盖，多个项目同时开发的时候不好兼顾 PHP内嵌HTML的环境，JS使用单引号会报错 调试需要使用alert而不是console，alert有局限性 HTML数据源脏数据">
-<meta property="og:updated_time" content="2018-08-15T07:45:34.249Z">
+<meta property="og:updated_time" content="2018-08-15T07:46:28.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个老项目的技术总结">
 <meta name="twitter:description" content="iPhone切换不同环境（测试、ST、线上）的时候回出现老的单品页详情 echo 每次都要记得注释 ST环境的商品是完整的，但是测试环境的商品不完整，没法测试所有情况。出现问题后，在测试环境无法调试。 mapi上线困难，环境相互覆盖，多个项目同时开发的时候不好兼顾 PHP内嵌HTML的环境，JS使用单引号会报错 调试需要使用alert而不是console，alert有局限性 HTML数据源脏数据">
@@ -93,7 +93,8 @@
 <li>PHP内嵌HTML的环境，JS使用单引号会报错</li>
 <li>调试需要使用alert而不是console，alert有局限性</li>
 <li>HTML数据源脏数据，标签不闭合，内嵌样式，table混乱</li>
-<li>兼容 Android 4.4</li>
+<li>兼容 Android 4.4，webview的缓存问题，需要清空缓存再加载</li>
+<li>调用JSBridge，Android 和 iOS 返回的数据结构不一致</li>
 </ol>
 
       
