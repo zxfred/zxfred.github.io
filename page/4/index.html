@@ -61,563 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CSS3新特性兼容方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/09/CSS3新特性兼容方法/" class="article-date">
-  <time datetime="2018-05-09T02:09:00.000Z" itemprop="datePublished">2018-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###边框</p>
-<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><p>低版本的chrome:<code>-webkit-border-radius:10px;</code><br>低版本的firefox:<code>-moz-border-radius:10px;</code><br>IE6/7/8:引入ie-css3兼容文件,不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius" target="_blank" rel="noopener">border-radius</a></p>
-<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>低版本的chrome:<code>-webkit-box-shadow:10px 10px 5px #888;</code><br>低版本的firefox:<code>-moz-box-shadow:10px 10px 5px #888;</code><br>IE6/7/8:</p>
-<ul>
-<li><p>方法一:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:dXImageTransform.Microsoft.DropShadow(color=#888888,offX=10,offY=10,positives=true);</span><br></pre></td></tr></table></figure>
-<p>缺点：阴影不能边缘模糊</p>
-</li>
-<li><p>方法二：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.Shadow(color=&apos;#0099ff&apos;, Direction=&apos;120&apos;, Strength=&apos;10&apos;);</span><br></pre></td></tr></table></figure>
-<p>类似于投影效果，缺点：阴影不能边缘模糊</p>
-</li>
-<li><p>方法三(推荐)、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc)</code><br>缺点：不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">box-shadow</a></p>
-</li>
-</ul>
-<h4 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h4><p>低版本的chrome:<code>-webkit-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的firefox:<code>-moz-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的Opera:<code>-o-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>IE未解决<br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image" target="_blank" rel="noopener">border-image</a>,<a href="http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml" target="_blank" rel="noopener">border-image</a></p>
-<p>###背景</p>
-<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><p>低版本的chrome:<code>-webkit-background-size:10px 10px 5px #888; //不支持background简写</code><br>低版本的firefox:<code>-moz-background-size:10px 10px 5px #888;</code><br>IE8：</p>
-<ul>
-<li><p>方法一(推荐)、引入backgroundsize.min.htc兼容文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.size &#123;</span><br><span class="line">width: 400px;</span><br><span class="line">height: 400px;</span><br><span class="line">margin: 20px auto 0;</span><br><span class="line">background:  green url(img/1.jpg) no-repeat scroll center 0;</span><br><span class="line">background-size: cover;</span><br><span class="line">-ms-behavior: url(js/backgroundsize.min.htc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法二、针对IE8的hack</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .size&#123;</span><br><span class="line">        -ms-filter: &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&apos;img/1.jpg&apos;, sizingMethod=&apos;scale&apos;)&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">    //该函数只能模仿cover值,IE8下效果与IE9/10稍有不同,图片占满背景大小且不超出</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size" target="_blank" rel="noopener">background-size</a></p>
-</li>
-</ul>
-<h4 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h4><p>firefox4.0以下：<code>-moz-background-origin:padding | border; //没有content</code><br>IE8下background-origin默认为padding-box</p>
-<p>详情参阅<a href="http://www.jb51.net/css/34219.html" target="_blank" rel="noopener">background-origin</a></p>
-<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><p>firefox4.0以下：<code>-moz-background-clip:padding | border; //没有content</code><br>IE8下background-clip默认为padding-box</p>
-<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><p>低版本的chrome:<code>-webkit-text-shadow:1px 1px 1px #000;</code><br>低版本的firefox:<code>-moz-text-shadow:1px 1px 1px #000;</code><br>IE6/7/8:</p>
-<ul>
-<li>方法一、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc);</code></li>
-<li>方法二、 <code>filter:shadow(color=blue,direction=225)</code>,direction表示投影角度</li>
-</ul>
-<p>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a></p>
-<h4 id="word-wrap"><a href="#word-wrap" class="headerlink" title="word-wrap"></a>word-wrap</h4><p>现代浏览器几乎都支持</p>
-<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><h4 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-font-face" target="_blank" rel="noopener">@font-face</a></p>
-<h3 id="2D3D转换"><a href="#2D3D转换" class="headerlink" title="2D3D转换"></a>2D3D转换</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.transform&#123;</span><br><span class="line">    -webkit-transform: x,y;</span><br><span class="line">    -moz-transform: x,y;</span><br><span class="line">    -ms-transform: x,y;</span><br><span class="line">    -o-transform: x,y;</span><br><span class="line">    transform: x,y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IE8及以下：用IE滤镜</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    filter:fliph;//水平翻转相当于transform:rotateY(180deg)</span><br><span class="line">    filter:flipv;//垂直翻转相当于transform:rotateX(180deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.w3cplus.com/content/css3-transform" target="_blank" rel="noopener">transform</a></p>
-<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  -webkit-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -moz-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -o-transition: all .5s ease-in-out 1s;</span><br><span class="line">  transition: all .5s ease-in-out 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IE9以及更早的版本，不支持 transition 属性。<br>详情参阅<a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="noopener">transition</a></p>
-<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="animation-keyframes"><a href="#animation-keyframes" class="headerlink" title="animation \ @keyframes"></a>animation \ @keyframes</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下不支持<br>详情参阅<a href="http://www.w3cplus.com/content/css3-animation" target="_blank" rel="noopener">animation</a></p>
-<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="linear-gradient-radial-gradient"><a href="#linear-gradient-radial-gradient" class="headerlink" title="linear-gradient radial-gradient"></a>linear-gradient radial-gradient</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下可使用 IE 滤镜处理:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&apos;#000000&apos;,endColorstr=&apos;#ffffff&apos;);</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank" rel="noopener">gradient</a></p>
-<h4 id="rgba-r-g-b-a"><a href="#rgba-r-g-b-a" class="headerlink" title="rgba(r,g,b,a)"></a>rgba(r,g,b,a)</h4><p>IE6/7/8不支持使用 rgba 模式实现透明度，可使用 IE 滤镜处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);</span><br></pre></td></tr></table></figure>
-<p>使用后我们又发现了个小问题，IE9下颜色更深一点，仔细研究发现在IE9下rgba颜色和IE滤镜都能被识别，所以被覆盖了颜色就更深一点<br>解决办法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);&#125;</span><br><span class="line">:root .demo&#123;filter:none;background-color:rgba(255,0,0,.2);&#125;//IE8及以下不识别</span><br></pre></td></tr></table></figure>
-<p>详情参阅<a href="http://www.cnblogs.com/jesse131/p/4771611.html" target="_blank" rel="noopener">IE8下兼容rgba颜色的半透明背景</a></p>
-<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>低版本的chrome:-webkit- 或者 -webkit-box-flex<br>低版本的firefox：-moz-box-flex:1;<br>IE10:-ms-flex:1;<br>box-flex效果类似于过渡版本和新版本的flex属性；<br>详情参阅<a href="http://www.webclks.com/archives/3035" target="_blank" rel="noopener">flex</a></p>
-<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>可以通过box-orient:horizontal + box-direction:normal 达到新版本 flex-direction:row 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:row-reverse 的效果；<br>可以通过box-orient:vertical + box-direction:normal 达到新版本 flex-direction:column 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:column-reverse 的效果；<br>box-lines效果类似于过渡版本和新版本的flex-wrap属性</p>
-<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">justify-content</a></p>
-<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>低版本的chrome：-webkit-</p>
-<p>box-pack效果等同于过渡版本的flex-pack属性和新版本的justify-content属性；</p>
-<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-content</a></p>
-<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>低版本的chrome：-webkit-</p>
-<p>box-align效果等同于过渡版本的flex-align属性和新版本的align-items属性；</p>
-<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-items</a></p>
-<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>低版本的chrome：-webkit-<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-self</a></p>
-<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>低版本的chrome：-webkit-</p>
-<p>box-oridinal-group效果等同于过渡版本的flex-order属性和新版本的order属性；<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">order</a></p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
-<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h4><p>IE全不兼容</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjl0gjj7t0006kzzcgydlia4j" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-netstat 的基本用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/08/netstat 的基本用法/" class="article-date">
-  <time datetime="2018-05-08T02:05:22.000Z" itemprop="datePublished">2018-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/netstat 的基本用法/">netstat 的基本用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="1-列出所有连接"><a href="#1-列出所有连接" class="headerlink" title="1. 列出所有连接"></a>1. 列出所有连接</h3><p>最简单的命令：列出所有当前的连接。使用 -a 选项即可。</p>
-<p>该命令列出 tcp, udp 和 unix 协议下的所有连接。然而这些信息还不够详细，管理员往往需要查看某个协议或端口的具体连接情况。</p>
-<h3 id="2-只列出-TCP-或-UDP-协议的连接"><a href="#2-只列出-TCP-或-UDP-协议的连接" class="headerlink" title="2. 只列出 TCP 或 UDP 协议的连接"></a>2. 只列出 TCP 或 UDP 协议的连接</h3><p>列出 TCP 协议的连接，使用 <strong>-t</strong> 选项</p>
-<p>列出 UDP 协议的连接，使用 <strong>-u</strong> 选项</p>
-<p>会同时显示 IPv4 和 IPv6 的连接</p>
-<h3 id="3-禁用反向域名解析，加快查询速度"><a href="#3-禁用反向域名解析，加快查询速度" class="headerlink" title="3. 禁用反向域名解析，加快查询速度"></a>3. 禁用反向域名解析，加快查询速度</h3><p>默认情况下 netstat 会通过反向域名解析技术查找每个 IP 地址对应的主机名。这会降低查找速度。如果你觉得 IP 地址已经足够，而没有必要知道主机名，就使用 <strong>-n</strong> 选项禁用域名解析功能。</p>
-<h3 id="4-只列出监听中的连接"><a href="#4-只列出监听中的连接" class="headerlink" title="4. 只列出监听中的连接"></a>4. 只列出监听中的连接</h3><p>任何网络服务的后台进程都会打开一个<strong>端口</strong>，用于监听接入的请求。使用 <strong>-l</strong> 选项，可以看到处于监听状态连接，如果你想查看所有监听端口，去掉 <strong>-t</strong> 选项。如果你只想查看 UDP 端口，使用 <strong>-u</strong> 选项，代替 <strong>-t</strong> 选项。</p>
-<p>注意：不要使用 <strong>-a</strong> 选项，否则 netstat 会列出所有连接，而不仅仅是监听端口。</p>
-<h3 id="5-获取进程名、进程号以及用户-ID"><a href="#5-获取进程名、进程号以及用户-ID" class="headerlink" title="5. 获取进程名、进程号以及用户 ID"></a>5. 获取进程名、进程号以及用户 ID</h3><p>查看端口和连接的信息时，能查看到它们对应的进程名和进程号对系统管理员来说是非常有帮助的。举个栗子，Apache 的 httpd 服务开启80端口，如果你要查看 http 服务是否已经启动，或者 http 服务是由 apache 还是 nginx 启动的，这时候你可以看看进程名。</p>
-<p>使用 <strong>-p</strong> 选项查看进程信息</p>
-<p>使用 <strong>-p</strong> 选项时，netstat 必须运行在 root 权限之下，不然它就不能得到运行在 root 权限下的进程名，而很多服务包括 http 和 ftp 都运行在 root 权限之下。</p>
-<p>相比进程名和进程号而言，查看进程的拥有者会更有用。使用 <strong>-ep</strong> 选项可以同时查看进程名和用户名。这些额外的信息包括用户名和进程的索引节点号。这个命令对网管来说很有用。</p>
-<p><strong>注意</strong> - 假如你将 <strong>-n</strong> 和 <strong>-e</strong> 选项一起使用，User 列的属性就是用户的 ID 号，而不是用户名。</p>
-<h3 id="6-打印统计数据"><a href="#6-打印统计数据" class="headerlink" title="6. 打印统计数据"></a>6. 打印统计数据</h3><p>netstat <strong>-s</strong> 可以打印出网络统计数据，包括某个协议下的收发包数量。</p>
-<p>如果想只打印出 TCP 或 UDP 协议的统计数据，只要加上对应的选项（<strong>-t</strong> 和 <strong>-u</strong>）即可</p>
-<h3 id="7-显示内核路由信息"><a href="#7-显示内核路由信息" class="headerlink" title="7. 显示内核路由信息"></a>7. 显示内核路由信息</h3><p>使用 <strong>-r</strong> 选项打印内核路由信息。打印出来的信息与 route 命令输出的信息一样。</p>
-<p>我们也可以使用 <strong>-n</strong> 选项禁止域名解析。</p>
-<h3 id="8-打印网络接口"><a href="#8-打印网络接口" class="headerlink" title="8. 打印网络接口"></a>8. 打印网络接口</h3><p>打印网络接口信息，使用 <strong>-i</strong> 选项</p>
-<p>上面输出的信息比较原始。将 <strong>-e</strong> 选项和 <strong>-i</strong> 选项搭配使用，可以输出用户友好的信息</p>
-<h3 id="9-netstat-持续输出"><a href="#9-netstat-持续输出" class="headerlink" title="9. netstat 持续输出"></a>9. netstat 持续输出</h3><p>我们可以使用 netstat 的 <strong>-c</strong> 选项持续输出信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -ct</span><br></pre></td></tr></table></figure>
-<p>这个命令可持续输出 TCP 协议信息。</p>
-<h3 id="10-显示多播组信息"><a href="#10-显示多播组信息" class="headerlink" title="10. 显示多播组信息"></a>10. 显示多播组信息</h3><p>选项 <strong>-g</strong> 会输出 IPv4 和 IPv6 的多播组信息</p>
-<h2 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h2><h3 id="打印-active-状态的连接"><a href="#打印-active-状态的连接" class="headerlink" title="打印 active 状态的连接"></a>打印 active 状态的连接</h3><p>active 状态的套接字连接用 “ESTABLISHED” 字段表示，所以我们可以使用 grep 命令获得 active 状态的连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -atnp | grep ESTA</span><br><span class="line">(Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.)</span><br><span class="line">tcp        0      0 192.168.1.2:49156       173.255.230.5:80        ESTABLISHED 1691/chrome     </span><br><span class="line">tcp        0      0 192.168.1.2:33324       173.194.36.117:443      ESTABLISHED 1691/chrome</span><br></pre></td></tr></table></figure>
-<p>配合 watch 命令监视 active 状态的连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch -d -n0 &quot;netstat -atnp | grep ESTA&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="查看服务是否在运行"><a href="#查看服务是否在运行" class="headerlink" title="查看服务是否在运行"></a>查看服务是否在运行</h3><p>如果你想看看 http,smtp 或 ntp 服务是否在运行，使用 grep。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo netstat -aple | grep ntp</span><br><span class="line">udp        0      0 enlightened.local:ntp   *:*                                 root       17430       1789/ntpd       </span><br><span class="line">udp        0      0 localhost:ntp           *:*                                 root       17429       1789/ntpd       </span><br><span class="line">udp        0      0 *:ntp                   *:*                                 root       17422       1789/ntpd       </span><br><span class="line">udp6       0      0 fe80::216:36ff:fef8:ntp [::]:*                              root       17432       1789/ntpd       </span><br><span class="line">udp6       0      0 ip6-localhost:ntp       [::]:*                              root       17431       1789/ntpd       </span><br><span class="line">udp6       0      0 [::]:ntp                [::]:*                              root       17423       1789/ntpd       unix  2      [ ]         DGRAM                    17418    1789/ntpd</span><br></pre></td></tr></table></figure>
-<p>从这里可以看到 ntp 服务正在运行。使用 grep 命令你可以查看 http 或 smtp 或其它任何你想查看的服务。</p>
-<hr>
-<p>来源: <a href="http://www.binarytides.com/linux-netstat-command-examples/" target="_blank" rel="noopener">http://www.binarytides.com/linux-netstat-command-examples/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjl0gjj88000pkzzchce9al75" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
-  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/小程序嵌入Vue项目问题总结/">小程序嵌入Vue项目问题总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
-<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
-<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
-<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
-<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
-<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
-<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
-<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
-<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
-<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjl0gjj8h0017kzzcna5xa2aq" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Vue文档学习总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/22/Vue文档学习总结/" class="article-date">
-  <time datetime="2018-04-22T10:43:06.000Z" itemprop="datePublished">2018-04-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/22/Vue文档学习总结/">Vue文档学习总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>只有当实例被创建时 <code>data</code> 中存在的属性才是<strong>响应式</strong>的。如果之后需要一个属性，但是一开始它为空或不存在，那么可以设置初始值</p>
-</li>
-<li><p>使用 <code>Object.freeze()</code>，会阻止修改现有的属性，也意味着响应系统无法再_追踪_变化</p>
-</li>
-<li><p>对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持，每个绑定都只能包含<strong>单个表达式</strong>，所以语句和流控制不能生效</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-bind:href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a :href=&quot;url&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line">&lt;a v-on:click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line">&lt;a @click=&quot;doSomething&quot;&gt;...&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果完全相同。然而，不同的是<strong>计算属性基于它们的依赖进行缓存</strong>，多次访问计算属性会立即返回之前的计算结果，而不必再次执行函数</p>
-</li>
-<li><p>v-bind 绑定 class 绑定的数据对象不必内联定义在模板里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: true,</span><br><span class="line">    &apos;text-danger&apos;: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>路由页 webpack 懒加载页面语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Index = <span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">require</span>.ensure([<span class="string">'@/pages/index.vue'</span>], () =&gt; &#123;</span><br><span class="line">      resolve(<span class="built_in">require</span>(<span class="string">'@/pages/index.vue'</span>))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>父组件调用子组件方法，html中引入子组件之后，设置一个组件id，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;recommend ref=&quot;recommend&quot;&gt;&lt;/recommend&gt;</span><br></pre></td></tr></table></figure>
-<p>之后访问 <code>this.$refs.recommend</code> 即为子组件对象</p>
-<p>PS: 调用方法要在 mounted 之后而不是 created 之后</p>
-</li>
-<li><p>​</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/22/Vue文档学习总结/" data-id="cjl0gjj8b000tkzzc7gdvkp2m" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-彻底理解-JavaScript-里的闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/02/彻底理解-JavaScript-里的闭包/" class="article-date">
-  <time datetime="2018-04-02T14:56:00.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/彻底理解-JavaScript-里的闭包/">彻底理解 JavaScript 里的闭包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h2><p>闭包创建一个词法作用域，这个作用域里面的变量被引用之后可以在这个词法作用域外面被自由访问，是一个函数和声明该函数的词法环境的组合。</p>
-<p>还有一种说法，闭包就是引用了自由变量的函数，这个自由变量与函数一同存在，即使脱离了创建它的环境。所以你常看到的说闭包就是绑定了上下文环境的函数。</p>
-<p>在下面的介绍中，我还是比较偏向闭包是一个函数和声明该函数的词法环境的组合这种解释，所以也会基于这种解释去阐述。</p>
-<h2 id="JS里面的闭包"><a href="#JS里面的闭包" class="headerlink" title="JS里面的闭包"></a>JS里面的闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  function say() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">  return say;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myHello = sayHello(&apos;abby&apos;);</span><br><span class="line">myHello(); // Hello,abby</span><br></pre></td></tr></table></figure>
-<p>上面这段代码，其实就形成了一个闭包，其中在 sayHello 这个函数里面定义的函数 say 和其声明它的词法环境就形成了一个闭包，因为它引用了sayHello 里面定义的一个变量 str，并且将 say 这个函数 return 了出去，这样在 sayHello 这个函数的外面也能访问它里面定义的变量 str，就好像 say 这个函数和这个变量绑定了一样。</p>
-<p>看到这里可能会疑问为什么在外部还能访问到这个变量呢，因为在有些语言中，一般认为函数的局部变量只在函数的执行期间可访问。说到这里又不得不说到执行环境，其实当执行到<code>let myHello = sayHello(&#39;fred&#39;);</code>这段代码的时候按理会销毁掉 sayHello()的执行环境，但是这里却没有，原因是因为 sayHello() 返回的是一个函数，这个函数里面的 str 引用了外部的变量 str,如果销毁了就找不到了，因此 sayHello() 这个函数的执行环境会一直在内存中，所以闭包会增加内存开销。</p>
-<p><strong>例子1: 闭包并不是一定需要 return 某个函数</strong></p>
-<p>虽然常见的闭包都是 return 出来一个函数，但是闭包并不一定非要 return，return 出一个函数只是为了能在作用域范围之外访问一个变量，我们用另一种方式也能做到，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let say;</span><br><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  say = function() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myHello = sayHello(&apos;fred&apos;);</span><br><span class="line">say(); // Hello,fred</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，say和声明它的词法环境其实也形成了一个闭包，在它的作用域里面持有了 sayHello 这个函数里面定义的 str 变量的引用，因此也能在 str 变量定义的作用域之外访问它。只要弄清楚闭包的本质即可。</p>
-<p>但是在 JS 里面，最常用的形成闭包的方式便是在一个函数里面嵌套另一个函数，另一个函数持有父作用域里面定义的变量。</p>
-<p><strong>例子2: 同一个调用函数生成同一个闭包环境，在里面声明的所有函数同时具有这个环境里面自由变量的引用。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let get, up, down</span><br><span class="line">function setUp() &#123;</span><br><span class="line">  let number = 20</span><br><span class="line">  get = function() &#123;</span><br><span class="line">    console.log(number);</span><br><span class="line">  &#125;</span><br><span class="line">  up = function() &#123;</span><br><span class="line">    number += 3</span><br><span class="line">  &#125;</span><br><span class="line">  down = function() &#123;</span><br><span class="line">    number -=2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">setUp();</span><br><span class="line">get(); // 20</span><br><span class="line">up();</span><br><span class="line">down();</span><br><span class="line">get(); // 21</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，我们用setUp这个函数生成了一个闭包环境，在这个环境里面的三个函数共享了这个环境里面的 number 变量的引用，因此都可以对 number 进行操作。</p>
-<p><strong>例子3: 每一个调用函数都会创建不同的闭包环境。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  let array = [1, 2];</span><br><span class="line">  return function(num) &#123;</span><br><span class="line">    array.push(num);</span><br><span class="line">    console.log(`array:$&#123;array&#125;`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myClosure = newClosure();</span><br><span class="line">let yourClosure = newClosure();</span><br><span class="line">myClosure(3); // array:1,2,3</span><br><span class="line">yourClosure(4); // array:1,2,4</span><br><span class="line">myClosure(5); // array:1,2,3,5</span><br></pre></td></tr></table></figure>
-<p>上面这个例子里面， myClosure 和 yourClosure 的赋值语句，也就是 newClosure 这个函数被调用了两次，因此创建了两个不同的闭包环境，因此里面的变量是互不影响的。</p>
-<p><strong>例子4: 在循环里面创建闭包</strong></p>
-<p>在 let 被引入之前，一个常见的错误就是在循环中创建闭包，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 5个5</span><br></pre></td></tr></table></figure>
-<p>打印的结果大家也知道是5个5，因为 setTimeout 里面的函数保持对 i 的引用，在setTimeout的回调函数被执行的时候这个循环早已经执行完成。</p>
-<p>如何才能得到我们想要的01234，在这里有两种做法。</p>
-<p>一种是 <strong>创建一个新的闭包对象，这样每个闭包对象里面的变量就互不影响</strong>。例如下面的代码种每次 log(i)都会创建不同的闭包对象，所有的回调函数不会指向同一个环境。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function log(i) &#123;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(log(i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>另一种做法就是使用自执行函数，外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是不会被循环改变的。写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    (function(e) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)(i)  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>还是 <code>let</code> 省事，所以赶紧拥抱 es6 吧。</p>
-<p>本文转载自知乎专栏：<a href="https://zhuanlan.zhihu.com/luckyabby" target="_blank" rel="noopener">一只萌媛的自我修炼</a></p>
-<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/31864924" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31864924</a> </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解-JavaScript-里的闭包/" data-id="cjl0gjj8i0019kzzc2c60qgdm" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/01/URL的组成部分/" class="article-date">
-  <time datetime="2018-04-01T10:58:34.000Z" itemprop="datePublished">2018-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/URL的组成部分/">URL的组成部分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="../img/1.png" alt=""></p>
-<p>一个完整的URL包括以下几部分：</p>
-<ol>
-<li>协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。</li>
-<li>域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。</li>
-<li>端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口。</li>
-<li>虚拟目录部分（Path）：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。</li>
-<li>文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名。</li>
-<li>锚部分（Query）：从“#”开始到最后，都是锚部分。锚部分也不是一个URL必须的部分。</li>
-<li>参数部分（Hash）：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjl0gjj84000jkzzclpagewv8" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-外边距折叠的几种情况与解决办法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/30/外边距折叠的几种情况与解决办法/" class="article-date">
-  <time datetime="2018-03-30T02:13:58.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/外边距折叠的几种情况与解决办法/">外边距折叠的几种情况与解决办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>外边距折叠的定义：</p>
-<blockquote>
-<p>外边距折叠就是块的顶部外边距和底部外边距有时被组合(折叠)为单个外边距，其大小是组合到其中的最大外边距，这种行为称为外边距塌陷(margin collapsing)</p>
-</blockquote>
-<h2 id="外边距折叠产生的情况"><a href="#外边距折叠产生的情况" class="headerlink" title="外边距折叠产生的情况"></a>外边距折叠产生的情况</h2><p>产生外边距折叠的情况一般分为以下三种：</p>
-<h4 id="1-块级父元素与其第一个-最后一个子元素"><a href="#1-块级父元素与其第一个-最后一个子元素" class="headerlink" title="1. 块级父元素与其第一个/最后一个子元素"></a>1. 块级父元素与其第一个/最后一个子元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  background: #cff;</span><br><span class="line">&#125;</span><br><span class="line">#div1&#123;</span><br><span class="line">	margin: 40px 0 25px 0;</span><br><span class="line">  	background: #999;</span><br><span class="line">&#125;</span><br><span class="line">#div2&#123;</span><br><span class="line">	margin: 20px 0 10px 0;</span><br><span class="line">	background: #cff;</span><br><span class="line">&#125;</span><br><span class="line">&lt;h1&gt;这是一个标题&lt;/h1&gt;</span><br><span class="line">&lt;div id=&quot;div1&quot;&gt;</span><br><span class="line">	&lt;div id=&quot;div2&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是:h1与div2之间的margin值是40px而不是想象中的60px。</p>
-<p>为什么会出现这种个情况呢？</p>
-<p>根据MDN，产生的原因就在于</p>
-<blockquote>
-<p>如果块级父元素中，不存在上边框、上内补、inline content、 清除浮动这四条属性(对于上边框和上内补，也可以说，当上边距及上内补宽度为0时),那么这个块级元素和其第一个子元素的上边距就会发生折叠。这个折叠之后的值在这里取的就是两者之间的最大值。</p>
-</blockquote>
-<p>对于块级元素与最后一个子元素的下边界发生的折叠也是同理的</p>
-<p>那折叠出来的值只有取最大嘛？别急，还有另外一些规则会在下面说慢慢说。</p>
-<h4 id="2-相邻的兄弟块级元素"><a href="#2-相邻的兄弟块级元素" class="headerlink" title="2. 相邻的兄弟块级元素"></a>2. 相邻的兄弟块级元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">	width:100px;</span><br><span class="line">	height:100px;</span><br><span class="line">	margin:40px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=&quot;div1&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; &gt;这是第二个块级盒子&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是两个div之间的边距是40px而不是80px，其实道理和刚刚一样</p>
-<h4 id="3-空块元素"><a href="#3-空块元素" class="headerlink" title="3. 空块元素"></a>3. 空块元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#div1,#div2 &#123;</span><br><span class="line">	margin:0px;</span><br><span class="line">&#125;</span><br><span class="line">#voidDiv &#123;</span><br><span class="line">	margin-top:40px;</span><br><span class="line">	margin-bottom:40px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div id=&quot;div1&quot; &gt;这是第一个块级盒子&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;voidDiv&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; &gt;这是第二个块级盒子&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>测试的结果是div1与div2之间的边距是40px而不是80px。</p>
-<p>根据MDN，产生的原因就在于</p>
-<blockquote>
-<p>如果存在一个空的块级元素，其 border、padding、inline content、height、min-height都不存在，那么此时上下边距就会发生折叠</p>
-</blockquote>
-<h3 id="外边距折叠的计算"><a href="#外边距折叠的计算" class="headerlink" title="外边距折叠的计算"></a>外边距折叠的计算</h3><p>外边距折叠的计算一般是以下三种方法</p>
-<ul>
-<li>如果两个外边距都为正数，那么取其中较大的数</li>
-<li>如果一个为正数一个为负数，那么取它们的代数和</li>
-<li>如果两个都为负数，那么取它们其中绝对值大的数</li>
-</ul>
-<h3 id="如何解决外边距折叠"><a href="#如何解决外边距折叠" class="headerlink" title="如何解决外边距折叠"></a>如何解决外边距折叠</h3><h4 id="1-对于父子级块状元素"><a href="#1-对于父子级块状元素" class="headerlink" title="1. 对于父子级块状元素"></a>1. 对于父子级块状元素</h4><p>既然知道了外边距折叠产生的条件，那么解决办法也随之产生<br>对于父子级块状元素解决外边距折叠的方法一般分为三大类</p>
-<ul>
-<li>给父级块级元素设置border-top，我一般是设置为：border-top:1px solid transparent</li>
-<li>给父级块级元素设置一个padding-top,这个值就根据自己的布局来定吧。</li>
-<li>最后一种方法，是给父级块级元素触发一个BFC(Block formatting contexts-块级格式上下文)</li>
-</ul>
-<p>那问题又来了，BFC又是什么呢？</p>
-<h4 id="初识BFC"><a href="#初识BFC" class="headerlink" title="初识BFC"></a>初识BFC</h4><p>w3c规范中的BFC定义：</p>
-<blockquote>
-<p>浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的BFC（块级格式上下文）。<br>在BFC中，盒子从顶端开始垂直地一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin 值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。</p>
-</blockquote>
-<p>其实简单点说BFC就是一个不受外部布局影响的一个箱子。</p>
-<p>具体怎么触发BFC呢？一般触发BFC的条件包括：</p>
-<ul>
-<li>浮动元素：float除了none之外</li>
-<li>用position绝对定位的元素，以及fixed固定定位的元素</li>
-<li>display: inline-block等</li>
-<li>overflow：除了visiable</li>
-</ul>
-<h4 id="2-对于兄弟级块状元素"><a href="#2-对于兄弟级块状元素" class="headerlink" title="2. 对于兄弟级块状元素"></a>2. 对于兄弟级块状元素</h4><p>对于兄弟级块状元素，解决的方法一般有两种：</p>
-<ul>
-<li>直接只写一边的margin例如都是margin-top或者都是margin-bottom，用过最简单的方法，直接就避免了塌陷。</li>
-<li>给两个块状元素形成两个不同的BFC，触发的方法一般用是 overflow: hidden;</li>
-</ul>
-<h4 id="3-对于空块状元素"><a href="#3-对于空块状元素" class="headerlink" title="3. 对于空块状元素"></a>3. 对于空块状元素</h4><p>对于空的块状元素，解决的方法就很多，列举以下几种：</p>
-<ul>
-<li>设置border</li>
-<li>设置padding</li>
-<li>设置inline-block等等方法都可以</li>
-</ul>
-<p>来源：<a href="https://zhuanlan.zhihu.com/p/25876599" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25876599</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjl0gjj8c000ykzzca0sarqwv" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Javascript 中的 this" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/30/Javascript 中的 this/" class="article-date">
-  <time datetime="2018-03-29T16:10:20.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/Javascript 中的 this/">Javascript 中的 this</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先，this对象只会在一个函数中需要确定，如果是在全局域下，this永远为Global对象，在浏览器中通常就是window对象。而在javascript中，函数的调用一共有4种方式：</p>
-<h3 id="Function-Invocation-Pattern"><a href="#Function-Invocation-Pattern" class="headerlink" title="Function Invocation Pattern"></a>Function Invocation Pattern</h3><p>诸如<code>foo()</code>的调用形式被称为Function Invocation Pattern，是函数最直接的使用形式，注意这里的foo是作为单独的变量出现，而不是属性。在这种模式下，foo函数体中的this永远为Global对象，在浏览器中就是window对象。</p>
-<h3 id="Method-Invocation-Pattern"><a href="#Method-Invocation-Pattern" class="headerlink" title="Method Invocation Pattern"></a>Method Invocation Pattern</h3><p>诸如<code>foo.bar()</code>的调用形式被称为Method Invocation Pattern，注意其特点是被调用的函数作为一个对象的属性出现，必然会有“.”或者“[]”这样的关键符号。在这种模式下，bar函数体中的this永远为“.”或“[”前的那个对象，如上例中就一定是foo对象。</p>
-<h3 id="Constructor-Pattern"><a href="#Constructor-Pattern" class="headerlink" title="Constructor Pattern"></a>Constructor Pattern</h3><p><code>new foo()</code>这种形式的调用被称为Constructor Pattern，其关键字<code>new</code>就很能说明问题，非常容易识别。在这种模式下，foo函数内部的this永远是new foo()返回的对象。</p>
-<h3 id="Apply-Pattern"><a href="#Apply-Pattern" class="headerlink" title="Apply Pattern"></a>Apply Pattern</h3><p><code>foo.call(thisObject)</code>和<code>foo.apply(thisObject)</code>的形式被称为Apply Pattern，使用了内置的<code>call</code>和<code>apply</code>函数。在这种模式下，<code>call</code>和<code>apply</code>的第一个参数就是foo函数体内的this，如果thisObject是<code>null</code>或<code>undefined</code>，那么会变成Global对象。应用以上4种方式，确定一个函数是使用什么样的Pattern进行调用的，就能很容易确定this是什么。另外，this是永远不会延作用域链或原型链出现一个“查找”的过程的，只会在函数调用时就完全确认。</p>
-<p>每次函数被调用的时候就会产生一个新的 this。以下为实例：</p>
-<h2 id="1-作为普通函数在全局环境中被调用"><a href="#1-作为普通函数在全局环境中被调用" class="headerlink" title="1. 作为普通函数在全局环境中被调用"></a>1. 作为普通函数在全局环境中被调用</h2><p>在全局环境里面，this 永远指向 window，因此在全局环境里作为普通函数被调用的时候，this 也是指向 window(这里仅指在浏览器环境下，不考虑Node)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;Abby&apos;;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this); //window</span><br><span class="line">    console.log(this.name); //Abby</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
-<p>这里，fn 其实是作为 window 的一个方法被调用的，而 name 也是 window 的一个属性，因此 fn() 实际上就是 window.fn()。</p>
-<h2 id="2-作为对象的属性被调用"><a href="#2-作为对象的属性被调用" class="headerlink" title="2.作为对象的属性被调用"></a>2.作为对象的属性被调用</h2><p>如果函数作为一个对象的属性方法，并且被调用的时候，this 就指向这个对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;Jane&apos;;</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;Abby&apos;,</span><br><span class="line">    sayName: function() &#123;</span><br><span class="line">           console.log(this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var sayNameWin = person.sayName;</span><br><span class="line"></span><br><span class="line">person.sayName(); //Abby</span><br><span class="line">sayNameWin(); //Jane   作为 window 的方法被调用的</span><br></pre></td></tr></table></figure>
-<p>在这里，sayName 方法是作为 person 的一个属性方法被调用的，因此指向 person，但是 sayNameWin 方法却是作为 window 的一个属性方法被调用的，因此 console.log 的值是 Jane。我们再看一个变形。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var person1 = &#123;</span><br><span class="line">    name: &apos;Jane&apos;,</span><br><span class="line">    sayName: function() &#123;</span><br><span class="line">	   console.log(this.name)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person2 = &#123;</span><br><span class="line">    name: &apos;Abby&apos;,</span><br><span class="line">    sayName: person1.sayName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person2.sayName(); //Abby  作为 person2 的属性方法被调用</span><br></pre></td></tr></table></figure>
-<p><strong>但是当在在对象方法中再定义函数，这时候 this 又是 window</strong> 。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;Jane&apos;;</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;Abby&apos;,</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">        function fn()&#123;</span><br><span class="line">            console.log(this);      //window</span><br><span class="line">            console.log(this.name);    //Jane</span><br><span class="line">        &#125;</span><br><span class="line">        fn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person.sayName();</span><br></pre></td></tr></table></figure>
-<p>如果想让 this 指向 person 的话，只需要用 that 保存下来 this 的值即可，也可以使用 apply 等改变 this。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;Jane&apos;;</span><br><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;Abby&apos;,</span><br><span class="line">    sayName: function () &#123;</span><br><span class="line">    	var that = this;</span><br><span class="line">        function fn()&#123;</span><br><span class="line">            console.log(that);      //Object &#123;name: &quot;Abby&quot;&#125;</span><br><span class="line">            console.log(that.name);    //Abby</span><br><span class="line">        &#125;</span><br><span class="line">        fn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">person.sayName();</span><br></pre></td></tr></table></figure>
-<h2 id="3-作为构造函数被调用"><a href="#3-作为构造函数被调用" class="headerlink" title="3. 作为构造函数被调用"></a>3. 作为构造函数被调用</h2><p>作为构造函数被调用的时候，this 代表它即将 new 出来的对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    console.log(this);  //Person &#123;name: &quot;Abby&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person = new Person(&apos;Abby&apos;);</span><br><span class="line">console.log(person.name);  //Abby</span><br></pre></td></tr></table></figure>
-<p>如果不加 new,表示即作为普通函数调用，指向 window</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name) &#123;</span><br><span class="line">	this.name = name;</span><br><span class="line">	console.log(this);  //window</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person(&apos;Jane&apos;); </span><br><span class="line">console.log(window.name); //Jane</span><br></pre></td></tr></table></figure>
-<h2 id="4-作为-call-apply-bind-方法的调用"><a href="#4-作为-call-apply-bind-方法的调用" class="headerlink" title="4. 作为 call/apply/bind 方法的调用"></a>4. 作为 call/apply/bind 方法的调用</h2><p>作为 call/apply/bind 方法被调用的时候指向传入的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">    name: &apos;Abby&apos;</span><br><span class="line">&#125;;</span><br><span class="line">function fn() &#123;</span><br><span class="line">    console.log(this); //Object &#123;name: &quot;Abby&quot;&#125;</span><br><span class="line">    console.log(this.name); //Abby</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn.apply(person);</span><br></pre></td></tr></table></figure>
-<p> 本文转载自：<a href="https://zhuanlan.zhihu.com/p/26766112" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/26766112</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjl0gjj85000kkzzcxi29q0f7" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-我使用的Mac软件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/28/我使用的Mac软件/" class="article-date">
@@ -748,11 +191,109 @@
 
 
   
+    <article id="post-Git的常用命令及使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/20/Git的常用命令及使用/" class="article-date">
+  <time datetime="2018-03-20T10:44:00.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/20/Git的常用命令及使用/">Git的常用命令及使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><ol>
+<li><code>git init</code>初始化</li>
+<li><code>git add &lt;file&gt;</code> 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下</li>
+<li><code>git commit -m</code> 提交所有修改，后面加改动记录，<code>commit</code> 之后暂存区就清空了</li>
+<li><code>git status</code> 查看工作区状态，看看是否有文件修改过</li>
+<li><code>git diff</code> 查看difference，看看修改内容</li>
+</ol>
+<h2 id="时空穿梭"><a href="#时空穿梭" class="headerlink" title="时空穿梭"></a>时空穿梭</h2><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p><code>git reset --hard commit_id</code> 在版本的历史之间穿梭</p>
+<ul>
+<li><code>HEAD</code> 代表当前版本， <code>HEAD^</code> 是当前版本的上个版本，可行的写法 <code>HEAD^^</code> <code>HEAD~100</code></li>
+<li><code>commit_id</code> 是一次提交产生的id<br><code>git log</code> 查看提交历史，以便确定要回退到曾经的哪个版本 <code>git reflog</code> 回退版本之后，未来版本不会出现在日志中，使用这个命令查看命令历史，以便确定要回到未来的哪个版本</li>
+</ul>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在<strong>工作区的修改全部撤销</strong>，这里有两种情况：</p>
+<ul>
+<li>一种是<code>readme.txt</code>自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；</li>
+<li>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。 总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态<br><code>git checkout -- file</code>命令中的<code>\--</code>很重要，没有<code>\--</code>，就变成了“切换到另一个分支”的命令 命令<code>git reset HEAD file</code> 除了回退版本，还可以把暂存区的修改撤销掉（unstage），重新放回工作区</li>
+</ul>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>一般情况下，你通常直接在文件管理器中或者用<code>rm</code>命令把没用的文件删了，Git知道你删除了文件，因此，工作区和版本库就不一致了。</p>
+<ul>
+<li>一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code></li>
+</ul>
+<pre><code>$ git rm test.txt
+$ git commit -m &quot;remove test.txt&quot;
+</code></pre><ul>
+<li>另一种情况是删错了，因为版本库里还有，所以可以很轻松地把误删的文件恢复到最新版本</li>
+</ul>
+<pre><code>$ git checkout -- test.txt
+</code></pre><h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><h3 id="前期设置"><a href="#前期设置" class="headerlink" title="前期设置"></a>前期设置</h3><ol>
+<li>创建SSH Key：在用户主目录下，看看有没有.ssh目录以及这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</li>
+</ol>
+<pre><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre><ol>
+<li>登陆GitHub，打开“Account settings”，“SSH Keys”页面： 然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容：点“Add Key”，你就应该看到已经添加的Key</li>
+</ol>
+<h3 id="添加仓库"><a href="#添加仓库" class="headerlink" title="添加仓库"></a>添加仓库</h3><ol>
+<li>关联一个远程库</li>
+</ol>
+<pre><code>$ git remote add origin git@github.com:username/reponame.git
+</code></pre><ol>
+<li>删除已有的远程库</li>
+</ol>
+<pre><code>$ git remote rm origin
+</code></pre><ol>
+<li>推送暂存库内容到远程库的 master 分支</li>
+</ol>
+<pre><code>$ git push -u origin master
+</code></pre><p><strong>第一次</strong>推送的时候加上<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送到远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令</p>
+<ol>
+<li>查看当前的远程库信息</li>
+</ol>
+<pre><code>git remote -v
+</code></pre><ol>
+<li>用命令<code>git clone</code> 把远程库克隆到本地库</li>
+</ol>
+<pre><code>$ git clone git@github.com:username/reponame.git
+</code></pre><ol>
+<li>SSH警告： 第一次使用Git的<code>clone</code>或者<code>push</code>命令连接GitHub时，会得到一个警告：输入<code>yes</code>回车即可，Git把GitHub的Key添加到本机的一个信任列表里</li>
+</ol>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ol>
+<li>查看分支：<code>git branch</code></li>
+<li>创建分支：<code>git branch &lt;name&gt;</code></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjl0gjj7y000bkzzc2ke1y2vf" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
   </nav>
 
 </section>
@@ -766,7 +307,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序/">微信小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
     </div>
   </div>
 
@@ -776,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
     </div>
   </div>
 
@@ -810,11 +351,11 @@
           </li>
         
           <li>
-            <a href="/2018/08/07/屏蔽用户缩放/">屏蔽用户缩放</a>
+            <a href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
           </li>
         
           <li>
-            <a href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
+            <a href="/2018/07/31/20个强大的正则表达式/">20个强大的正则表达式</a>
           </li>
         
       </ul>
