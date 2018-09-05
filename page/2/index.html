@@ -122,9 +122,6 @@
         <h2 id="什么是回调"><a href="#什么是回调" class="headerlink" title="什么是回调?"></a>什么是回调?</h2><p><strong>简单地说:</strong> 一个回调函数，就是在另外一个函数（通常是异步的）执行完之后再执行的函数，因而被命名为——回调。</p>
 <p><strong>更进一步地说:</strong> 在JavaScript中，函数是对象。正因如此，一个函数可以被其他函数作为参数（传入），也能被其他函数作为返回值返回。这种函数（译者注：起码要满足如下条件之一：1.接受一个或多个函数作为参数，2.将一个函数作为返回值返回）被称为高阶函数。任何函数，只要它作为参数传入且随后被调用，都可称之为回调函数。</p>
 <p>看起来很复杂的样子，但别急，让我们往下看一些例子。</p>
-<blockquote>
-<p>这篇文章首发于<a href="https://codeburst.io/javascript-what-the-heck-is-a-callback-aba4da2deced" target="_blank" rel="noopener">codeburst.io</a>且获得了作者授权转载。如果你喜欢阅读， 为什么不去看看Brandon的<a href="https://codeburst.io/@bmorelli25" target="_blank" rel="noopener">其他文章</a>呢？如果你想提高你的JavaScript技巧，可以前往SitePoint Premium参加我们的<a href="https://www.sitepoint.com/premium/courses/introduction-to-javascript-2908" target="_blank" rel="noopener">JavaScript入门</a>课程。</p>
-</blockquote>
 <h2 id="为什么需要回调函数"><a href="#为什么需要回调函数" class="headerlink" title="为什么需要回调函数?"></a>为什么需要回调函数?</h2><p>这是由于一个十分重要的原因 —— JavaScript是一门事件驱动的语言。这就意味着，JavaScript会持续监听事件且一直往下执行，而不会在事件响应前一直挂起。让我们一起看看下面这个简单的例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function first()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function second()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line">second();</span><br></pre></td></tr></table></figure>
 <p>正如你所料，函数first会首先执行，函数second会在之后执行——控制台会打印如下结果：</p>
