@@ -179,9 +179,9 @@
 
 
   
-    <article id="post-一个老项目的技术总结" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-app新单品详情页踩坑总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/08/14/一个老项目的技术总结/" class="article-date">
+    <a href="/2018/08/14/app新单品详情页踩坑总结/" class="article-date">
   <time datetime="2018-08-14T07:56:03.000Z" itemprop="datePublished">2018-08-14</time>
 </a>
     
@@ -193,7 +193,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/14/一个老项目的技术总结/">一个老项目的技术总结</a>
+      <a class="article-title" href="/2018/08/14/app新单品详情页踩坑总结/">app新单品详情页踩坑总结</a>
     </h1>
   
 
@@ -201,25 +201,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>iPhone切换不同环境（测试、ST、线上）的时候回出现老的单品页详情</li>
+        <p>##开发</p>
+<ul>
+<li>PHP环境使用单引号会报错</li>
+<li>低版本移动端对于ES6的不兼容问题，ES6出现错误不会有任何提示</li>
 <li>echo 每次都要记得注释</li>
-<li>ST环境的商品是完整的，但是测试环境的商品不完整，没法测试所有情况。出现问题后，在测试环境无法调试。</li>
-<li>mapi上线困难，环境相互覆盖，多个项目同时开发的时候不好兼顾</li>
-<li>PHP内嵌HTML的环境，JS使用单引号会报错</li>
-<li>调试需要使用alert而不是console，alert有局限性</li>
-<li>HTML数据源脏数据，标签不闭合，内嵌样式，table混乱</li>
-<li>兼容 Android 4.4，webview的缓存问题，需要清空缓存再加载</li>
+</ul>
+<p>##调试</p>
+<ul>
+<li>真机调试需要使用alert而不是console，alert有局限性，Object object JSON.stringify</li>
+<li>JS出现问题，看不到报错，只能肉眼看和alert来debug</li>
 <li>调用JSBridge，Android 和 iOS 返回的数据结构不一致</li>
-<li>JS出现问题，没有报错，只能肉眼看和alert来debug</li>
-<li>低版本对于ES6的不兼容问题，这一条要和上一条结合，ES6出现错误之后，不会有任何的提示，真机测试</li>
-<li>​</li>
-</ol>
+<li>两种调试方法：Chrome inspect</li>
+</ul>
+<p>##部署</p>
+<ul>
+<li>mapi上线困难，修改麻烦</li>
+<li>环境相互覆盖，需要多个项目兼顾</li>
+</ul>
+<p>##测试</p>
+<ul>
+<li>ST环境的商品是完整的，但是测试环境的商品不完整，没法测试所有情况。出现问题后，在测试环境无法调试</li>
+<li>iPhone切换不同环境（测试、ST、线上）的时候回出现老的单品页详情</li>
+<li>兼容 Android 4.4，webview的缓存问题，需要清空缓存再加载</li>
+</ul>
+<h2 id="需要思考的问题"><a href="#需要思考的问题" class="headerlink" title="需要思考的问题"></a>需要思考的问题</h2><ul>
+<li>HTML数据源脏数据，标签不闭合，内嵌样式，table混乱</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/14/一个老项目的技术总结/" data-id="cjl0gjj88000okzzc0c1i1sfd" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjlqh1pnc0000mys6yutru2wl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -831,7 +844,7 @@
           </li>
         
           <li>
-            <a href="/2018/08/14/一个老项目的技术总结/">一个老项目的技术总结</a>
+            <a href="/2018/08/14/app新单品详情页踩坑总结/">app新单品详情页踩坑总结</a>
           </li>
         
           <li>
