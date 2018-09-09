@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -140,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/19/药丸新闻/" data-id="cjl0gjj8p001ikzzcikf22j35" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/19/药丸新闻/" data-id="cjl0gjj8p001ikzzcikf22j35" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/" data-id="cjl0gjj89000qkzzcxpgpgvl6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/" data-id="cjl0gjj89000qkzzcxpgpgvl6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,38 +213,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##开发</p>
-<ul>
-<li>PHP环境使用单引号会报错</li>
+        <h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ul>
 <li>低版本移动端对于ES6的不兼容问题，ES6出现错误不会有任何提示</li>
 <li>echo 每次都要记得注释</li>
+<li>VS Code 没有对 cls 模板的代码高亮支持</li>
+<li>只能使用双引号，单引号会被PHP解析</li>
+<li>PHP语句后面必须加分号</li>
+<li>获取资源使用HTTP协议</li>
 </ul>
-<p>##调试</p>
-<ul>
-<li>真机调试需要使用alert而不是console，alert有局限性，Object object JSON.stringify</li>
-<li>JS出现问题，看不到报错，只能肉眼看和alert来debug</li>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><ul>
+<li>真机调试需要使用alert而不是console，有局限性</li>
+<li>真机上查看不到报错信息，JS出现问题，看不到报错，只能肉眼看和alert来debug</li>
+<li>两种调试方法：安卓和iOS的手机连接浏览器调试</li>
+</ul>
+<h2 id="联调"><a href="#联调" class="headerlink" title="联调"></a>联调</h2><ul>
 <li>调用JSBridge，Android 和 iOS 返回的数据结构不一致</li>
-<li>两种调试方法：Chrome inspect</li>
+<li>起码准备安卓和iOS两部测试机</li>
+<li>客户端的改动需要重新打包，或者去平台下载最新的测试包</li>
+<li>双方对于对方的操作都不可见</li>
+<li>遇到问题及时沟通，因为没准不是你的bug</li>
 </ul>
-<p>##部署</p>
-<ul>
-<li>mapi上线困难，修改麻烦</li>
-<li>环境相互覆盖，需要多个项目兼顾</li>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ul>
+<li>远程连接开发机开发，提交git麻烦</li>
+<li>部署麻烦</li>
+<li>前后端不分离，一起在同一个分支上改动，容易造成混乱</li>
+<li>开发机资源有限，互相覆盖，代码丢失</li>
 </ul>
-<p>##测试</p>
-<ul>
-<li>ST环境的商品是完整的，但是测试环境的商品不完整，没法测试所有情况。出现问题后，在测试环境无法调试</li>
-<li>iPhone切换不同环境（测试、ST、线上）的时候回出现老的单品页详情</li>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><ul>
+<li>测试品较少，不能涵盖所有情况</li>
+<li>安卓切换不同环境的时候回出现老的单品页</li>
 <li>兼容 Android 4.4，webview的缓存问题，需要清空缓存再加载</li>
+<li>真机测试，mapi必须在测试环境，不得已使用vim在开发机上做临时修改</li>
+<li>频繁的环境切换，下载包、抓包、登录图形验证码，不停修改host</li>
 </ul>
 <h2 id="需要思考的问题"><a href="#需要思考的问题" class="headerlink" title="需要思考的问题"></a>需要思考的问题</h2><ul>
 <li>HTML数据源脏数据，标签不闭合，内嵌样式，table混乱</li>
+<li>JSBridge执行时机</li>
+<li>不同webview内核问题</li>
+<li>兼容性问题：低版本安卓、iOS</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjlqh1pnc0000mys6yutru2wl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjlqh1pnc0000mys6yutru2wl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjl0gjj8f0013kzzcuib6e9qq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjl0gjj8f0013kzzcuib6e9qq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -465,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjl0gjj7i0000kzzcmkyaa8kg" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjl0gjj7i0000kzzcmkyaa8kg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -574,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjl0gjj84000ikzzcf9wnhlp6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjl0gjj84000ikzzcf9wnhlp6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -625,7 +637,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjl0gjj7v0008kzzcdcgg0kx0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjl0gjj7v0008kzzcdcgg0kx0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -675,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjl0gjj8n001ekzzc8jc3mq8a" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjl0gjj8n001ekzzc8jc3mq8a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -717,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjl0gjj8e0010kzzcjlhf05km" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjl0gjj8e0010kzzcjlhf05km" class="article-share-link">Share</a>
       
       
     </footer>
@@ -788,7 +800,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjl0gjj8d000zkzzclsmxwbwo" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjl0gjj8d000zkzzclsmxwbwo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,7 +814,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -833,7 +845,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -843,7 +855,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
