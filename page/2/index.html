@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,56 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-浅析浏览器输入URL到页面输出执行流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" class="article-date">
+  <time datetime="2018-07-23T10:31:13.000Z" itemprop="datePublished">2018-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="概念速览"><a href="#概念速览" class="headerlink" title="概念速览"></a>概念速览</h3><p>URL(uniform resource location) : 统一资源定位符,用来作为互联网上各种资源的标识符，可理解为 身份证号 。</p>
+<p>URL的基本结构: 协议名称 :// 服务器所在域名或者IP地址 : 端口号 / 所要访问的文件路径</p>
+<p>注意点:浏览器为了保证安全性,设定了跨域保护策略, 即窗口之间的通信必须满足使用相同协议, 相同域或者子域, 相同端口, 因此深入理解URL各组成部分的含义有助于我们判断两个窗口之间是否能互相通信。</p>
+<p>IP(Internet Protocol) :互联网中设备间进行通信都要遵从的一种协议,它规定了每台设备都要有且唯一的IP地址,用来标识自己在互联网中的地址。格式通常为<a href="https://link.zhihu.com/?target=http%3A//XXX.XXX.XXX.XXX" target="_blank" rel="noopener">http://XXX.XXX.XXX.XXX</a>，不同网段下IP地址的范围也不同。如有兴趣者,请自行百度。</p>
+<p>域名(Domain Name) :由于IP协议规定的纯数字IP地址在日常中难以记忆,因此人们便产生使用更加常见,好记的字符标识设备的地址,域名应运而生。一个域名就是一个更加容易记忆的目标主机的地址标识符。例如:百度的域名就为<a href="https://link.zhihu.com/?target=http%3A//www.baidu.com" target="_blank" rel="noopener">百度一下，你就知道</a>,实际对应的IP地址为119.75.217.109</p>
+<p>DNS(Domain Name System): 互联网中实际定位设备时还是使用IP地址来定位,因此产生了DNS,一种专门用来将域名转换为IP地址的协议,提供该协议服务的服务器就叫DNS服务器。</p>
+<p>HTTP(HyberText Transfer Protocol) : 超文本传输协议，万维网中传输超文本都要遵从的一个协议,可以理解为HTML文件的传输就是靠它。</p>
+<h2 id="解答部分"><a href="#解答部分" class="headerlink" title="解答部分"></a>解答部分</h2><h3 id="地址解析阶段"><a href="#地址解析阶段" class="headerlink" title="地址解析阶段"></a>地址解析阶段</h3><p>用户在浏览器端输入URL后,浏览器先做第一件事情就是找到目标域名的IP地址,大致经过以下几个阶段:</p>
+<p>1.查询 浏览器端的DNS缓存 中是否有目标域名的相关信息。<br>2.查询 本机的host文件 中是否有目标域名的信息。<br>3.查询本地的 路由器中的DNS缓存 中是否有目标域名的信息。<br>4.查询 ISP(互联网服务提供商,例如电信,移动)中的DNS服务器 中是否有目标域名的信息。<br>5.查询 根域名服务器 是否有目标域名的信息,如果没有,则传至 子域名服务器 进行查询， 以此递推 。<br>6.查询到目标IP地址后,则开始建立 TCP 三次握手 ,与目标服务器建立连接。<br>7.通过 HTTP 协议向目标主机发送请求。</p>
+<h3 id="请求处理及响应阶段"><a href="#请求处理及响应阶段" class="headerlink" title="请求处理及响应阶段"></a>请求处理及响应阶段</h3><p>1.服务器端接受到请求后,根据路由将url中的地址进行重定向到服务器程序上的目标文件。</p>
+<p>2.此处涉及到后台的MVC架构,大致如下:<br>URL中的文件地址部分经过服务器上的路由程序重定向到对应的控制器(controller)对象,控制器对象根据URL中指定的操作执行相关的逻辑并调用目标数据的模型(Model)对象,模型对象与数据库交互完成目标操作后,控制器将模型中反馈的数据填充到视图中。</p>
+<p>3.视图部分(通常是HTML页面)作为HTTP响应发送到浏览器端。</p>
+<h3 id="视图解析阶段"><a href="#视图解析阶段" class="headerlink" title="视图解析阶段"></a>视图解析阶段</h3><p>1.浏览器开始解析目标HTML文件,执行流的顺序为自上而下。<br>2.HTML解析器将HTML结构转换为基础的DOM(文档对象模型),构建DOM树完成后,触发DomContendLoaded事件。<br>3.CSS解析器将CSS解析为CSSOM(层叠样式表对象模型),一棵仅含有样式信息的树。<br>4.CSSOM和DOM开始合并构成渲染树,每个节点开始包含具体的样式信息。<br>5.计算渲染树中个各个节点的位置信息,即布局阶段。<br>6.将布局后的渲染树显示到界面上。</p>
+<p>注:图片等外部资源在解析阶段被加载，加载完毕后触发load事件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjnhldzdh0019m3zc55b3lv1e" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-关于&amp;&amp;和||返回值的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -93,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjndzajjj000w9ms6dzal5fxe" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjnhldzd9000tm3zc3iun3f49" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -164,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjndzajjg000r9ms68t6n8x88" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjnhldzdb000xm3zc2d7lqkyg" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -305,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjndzajjr001c9ms6hhja0z6i" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjnhldzdj001em3zchg4bod8o" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -414,7 +464,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjndzajj9000h9ms62kyyl48e" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjnhldzd2000im3zclwtqaqtb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -510,7 +560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjndzajjk000z9ms6ukzefybs" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjnhldzdd0011m3zczq6y1zk6" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -551,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjndzajjn00139ms69n8s23av" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjnhldzdg0018m3zc6eyqxihm" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -591,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjndzajjp00199ms64xxut6p7" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjnhldzdi001cm3zcybo2xqwe" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -648,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjndzajje000o9ms6ajyrpq8y" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjnhldzd8000qm3zc8r8ec9jc" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -714,60 +764,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjndzajjc000l9ms6g2xbi76j" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjnhldzd5000mm3zc3l8817cs" class="article-share-link">Teilen</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS3中没见过的高级属性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/29/CSS3中没见过的高级属性/" class="article-date">
-  <time datetime="2018-05-29T09:38:18.000Z" itemprop="datePublished">2018-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/29/CSS3中没见过的高级属性/">CSS3中没见过的高级属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>-webkit-box-reflect</p>
-</li>
-<li><p>-webkit-touch-callout</p>
-<p>在iOS上，当你触摸并按住触摸的目标，比如一个链接，Safari浏览器将显示链接有关的系统默认菜单。这个属性可以让你禁用系统默认菜单。</p>
-</li>
-<li><p>user-select</p>
-<p>none：文本不能被选择</p>
-<p>text：可以选择文本</p>
-<p>all：当所有内容作为一个整体时可以被选择。如果双击或者在上下文上点击子元素，那么被选择的部分将是以该子元素向上回溯的最高祖先元素。</p>
-<p>element：可以选择文本，但选择范围受元素边界的约束​</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjndzajiu00019ms69x5i6dv2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
     </footer>
   </div>
   
@@ -779,7 +778,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -810,7 +809,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -820,9 +819,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/10/20/RNG失利之后/">RNG失利之后</a>
+          </li>
         
           <li>
             <a href="/2018/10/18/VSCode中vue文件不能Emmet解决方法/">VSCode中vue文件不能Emmet解决方法</a>
@@ -838,10 +841,6 @@
         
           <li>
             <a href="/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/">使用npm audit修复依赖中的安全性缺陷</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/14/app新单品详情页踩坑总结/">app新单品详情页踩坑总结</a>
           </li>
         
       </ul>
