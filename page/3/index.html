@@ -61,6 +61,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-getElement和query两类获取DOM方式的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/" class="article-date">
+  <time datetime="2018-06-11T04:05:55.000Z" itemprop="datePublished">2018-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/11/getElement和query两类获取DOM方式的区别/">getElement和query两类获取DOM方式的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###获取 DOM 对象有很多种方法，将常用的分为 getElement 和 query 两类</p>
+<ul>
+<li>getElementById、getElementsByTagName、getElementsByClassName等</li>
+<li>querySelector、querySelectorAll </li>
+</ul>
+<p>####getElementsByTagName()</p>
+<ul>
+<li>是document对象特有的函数，只能通过其来调用该方法</li>
+<li>返回一个HTMLCollection集合</li>
+<li>返回元素的顺序是它们在文档中的顺序</li>
+<li>传递给 getElementsByTagName() 方法的字符串可以不区分大小写</li>
+</ul>
+<p>####getElementsByClassName()</p>
+<ul>
+<li>返回作为 NodeList 对象，代表一个有顺序的节点列表</li>
+</ul>
+<p>####querySelector() 与 querySelectorAll() </p>
+<ul>
+<li>返回匹配指定 <strong>CSS 选择器 </strong>元素</li>
+<li>该方法只返回匹配指定选择器的第一个元素。如要返回所有匹配元素，需要使用 querySelectorAll() 方法</li>
+<li>querySelector() 是按css规范来实现的，所以传入的字符串中第一个字符不能是数字</li>
+</ul>
+<p>####其他</p>
+<ul>
+<li>query方法出来的元素及元素数组是静态的，不会随着文档操作而改变</li>
+<li>getElement这类方法选出的元素是动态的</li>
+<li>getElement这类方法性能比较好，query则比较方便</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjno48rql000n4ifyilsskhvk" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CSS3中没见过的高级属性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/29/CSS3中没见过的高级属性/" class="article-date">
@@ -100,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjnhldzcm0003m3zcvdhxidbr" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjno48rq400054ifywxcdhr3z" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -176,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjnhldzcn0004m3zch94a7gwo" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjno48rpz00014ifyy3er05pe" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -235,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjnhldzd0000gm3zcirb2cbd6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjno48rqe000f4ifyw57dhf8d" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -374,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjnhldzcl0002m3zcrzyx7n69" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjno48rq100024ifyvh4uvdl6" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -531,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjnhldzck0001m3zcmpxafijf" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjno48rq300044ifyapjhen8g" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -586,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjnhldzcy000em3zc4xmpq6wl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjno48rqc000d4ifydqt7ynrp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -634,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjnhldzcx000cm3zc0nfsacyv" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjno48rqb000c4ify9u03lsir" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -737,7 +801,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjnhldzcq0006m3zce5mznm9q" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjno48rq500064ifytkhyazos" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -805,60 +869,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjnhldzd7000pm3zcue5eey6b" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjno48rqm000p4ifyra1rn9fr" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
-  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/小程序嵌入Vue项目问题总结/">小程序嵌入Vue项目问题总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
-<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
-<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
-<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
-<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
-<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
-<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
-<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
-<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
-<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjnhldzdc000zm3zc0495bpuh" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
 
     </footer>
   </div>
@@ -917,6 +931,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/25/一文彻底搞清楚JavaScript中的require、import与export/">一文彻底搞清楚JavaScript中的require、import与export</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/20/RNG失利之后/">RNG失利之后</a>
           </li>
         
@@ -930,10 +948,6 @@
         
           <li>
             <a href="/2018/10/08/HTTP状态码详解/">HTTP状态码详解</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/">使用npm audit修复依赖中的安全性缺陷</a>
           </li>
         
       </ul>
