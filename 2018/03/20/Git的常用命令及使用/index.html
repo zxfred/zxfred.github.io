@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="基本命令 git init初始化 git add &amp;lt;file&amp;gt; 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下 git commit -m 提交所有修改，后面加改动记录，commit 之后暂存区就清空了 git status 查看工作区状态，看看是否有文件修改过 git diff 查看difference，看看修改内容  时空穿梭版本回退git reset --hard">
-<meta property="og:updated_time" content="2018-11-01T12:22:47.204Z">
+<meta property="og:updated_time" content="2018-11-05T12:27:14.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git的常用命令及使用">
 <meta name="twitter:description" content="基本命令 git init初始化 git add &amp;lt;file&amp;gt; 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下 git commit -m 提交所有修改，后面加改动记录，commit 之后暂存区就清空了 git status 查看工作区状态，看看是否有文件修改过 git diff 查看difference，看看修改内容  时空穿梭版本回退git reset --hard">
@@ -96,6 +96,8 @@
 <ul>
 <li><code>HEAD</code> 代表当前版本， <code>HEAD^</code> 是当前版本的上个版本，可行的写法 <code>HEAD^^</code> <code>HEAD~100</code></li>
 <li><code>commit_id</code> 是一次提交产生的id<br><code>git log</code> 查看提交历史，以便确定要回退到曾经的哪个版本 <code>git reflog</code> 回退版本之后，未来版本不会出现在日志中，使用这个命令查看命令历史，以便确定要回到未来的哪个版本</li>
+<li><code>--hard</code> 意思是不保留恢复的版本之后的所有修改，默认 <code>--soft</code> 意思是保留</li>
+<li><code>reset</code> 之后，如果想覆盖远程分支，执行 <code>push -f</code></li>
 </ul>
 <h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在<strong>工作区的修改全部撤销</strong>，这里有两种情况：</p>
 <ul>
@@ -217,10 +219,6 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
-            <a href="/2018/10/30/git删除本地分支/">git删除本地分支</a>
-          </li>
-        
-          <li>
             <a href="/2018/10/25/一文彻底搞清楚JavaScript中的require、import与export/">一文彻底搞清楚JavaScript中的require、import与export</a>
           </li>
         
@@ -234,6 +232,10 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/10/16/查询端口并关闭后台进程/">Mac OS查询端口并关闭后台进程</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/08/HTTP状态码详解/">HTTP状态码详解</a>
           </li>
         
       </ul>
