@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
-<meta property="og:updated_time" content="2018-11-03T15:42:01.245Z">
+<meta property="og:updated_time" content="2018-11-06T07:30:10.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序开发总结（更新ing）">
 <meta name="twitter:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
@@ -146,6 +146,8 @@
 <li><p>屏蔽触摸滑动事件：给元素添加属性 catchtouchmove=”preventTouchMove” 其中preventTouchMove 是空方法</p>
 </li>
 <li><p>圆形图片设置 border 可能会在 border 内部出现锯齿，影响样式， 可以在图片外部套一个略大于图片的标签，用背景色的方法解决</p>
+</li>
+<li><p>在A页面使用 setTimeout 的时候，方法</p>
 </li>
 </ol>
 
