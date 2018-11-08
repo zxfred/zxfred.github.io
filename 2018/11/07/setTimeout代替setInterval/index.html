@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="123456789101112let executeTimes = 0let intervalTime = 300setTimeout(function repeat() &amp;#123;    executeTimes++;        // do something        if(executeTimes &amp;lt; 50)&amp;#123;        setTimeout(repeat,in">
-<meta property="og:updated_time" content="2018-11-07T11:14:17.173Z">
+<meta property="og:updated_time" content="2018-11-08T14:35:07.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="setTimeout代替setInterval">
 <meta name="twitter:description" content="123456789101112let executeTimes = 0let intervalTime = 300setTimeout(function repeat() &amp;#123;    executeTimes++;        // do something        if(executeTimes &amp;lt; 50)&amp;#123;        setTimeout(repeat,in">
@@ -86,6 +86,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let executeTimes = 0</span><br><span class="line">let intervalTime = 300</span><br><span class="line"></span><br><span class="line">setTimeout(function repeat() &#123;</span><br><span class="line">    executeTimes++;</span><br><span class="line">    </span><br><span class="line">    // do something</span><br><span class="line">    </span><br><span class="line">    if(executeTimes &lt; 50)&#123;</span><br><span class="line">        setTimeout(repeat,intervalTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, intervalTime)</span><br></pre></td></tr></table></figure>
+<p>setInterval 有弊端，尽量避免使用</p>
+<ul>
+<li>无视代码错误</li>
+<li>无视网络延迟</li>
+<li>不保证执行</li>
+</ul>
+<p>如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给setTimeout。 不过，要注意的是JavaScript的计时器并不是非常精确[2]。因此你不可能得到绝对“平均”的延迟，即使使用setInterval也不行，原因很多（比如垃圾回收、JavaScript是单线程的，等等）。此外，当前浏览器也会将最小的超时时间固定在4ms到15ms之间。因此不要指望一点误差也没有。</p>
 
       
     </div>
