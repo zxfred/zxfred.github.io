@@ -7,17 +7,17 @@
   
   <title>小程序开发总结（更新ing） | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
+  <meta name="description" content="小程序开发学习过程中的一些总结：  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  scroll-view 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性  line-height 需要比字号大一些，避免整行文字显示">
 <meta name="keywords" content="微信小程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序开发总结（更新ing）">
 <meta property="og:url" content="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
-<meta property="og:updated_time" content="2018-11-09T04:07:10.824Z">
+<meta property="og:description" content="小程序开发学习过程中的一些总结：  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  scroll-view 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性  line-height 需要比字号大一些，避免整行文字显示">
+<meta property="og:updated_time" content="2018-11-10T15:23:16.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序开发总结（更新ing）">
-<meta name="twitter:description" content="小程序开发学习过程中的一些总结：  scroll-view 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscro">
+<meta name="twitter:description" content="小程序开发学习过程中的一些总结：  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  scroll-view 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性  line-height 需要比字号大一些，避免整行文字显示">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -88,27 +88,17 @@
       
         <p>小程序开发学习过程中的一些总结：</p>
 <ol>
-<li><p><code>scroll-view</code> 标签需要在内部再套一层块级标签，如 view ，并设置 container 足够宽</p>
-</li>
 <li><p>iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</p>
 </li>
 <li><p>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</p>
 </li>
-<li><p>判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
-</li>
-<li><p>使用 template 不要忘记传入 data</p>
-</li>
-<li><p>指定 ajax 的先后顺序，把后执行的放在先执行的 success 中</p>
+<li><p><code>scroll-view</code> 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
 </li>
 <li><p><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整，多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
 </li>
 <li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，暂时将外部 card 宽度从 50% 改为定宽解决，应该仍有其他解决方法</p>
 </li>
 <li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
-</li>
-<li><p>（部分?）安卓手机不支持 rgba 格式的透明背景</p>
-</li>
-<li><p>（基础）判断平台并修改样式的时候要注意 CSS 选择器优先级的问题，多个标签比少标签的优先级要高</p>
 </li>
 <li><p>商品标签在 iPhone 6/7 和 iPhone 6p/7p 不同尺寸屏幕上，内部文字不垂直居中，可以适当增加1-2rpx 行高</p>
 </li>
@@ -149,14 +139,14 @@
 </li>
 <li><p>在A页面使用 setTimeout 的时候，方法未执行前如果切换到其他 tab，方法不会被挂起而依然会被执行，开发时需要注意避免这种情况</p>
 </li>
-<li><p>iPhone 6, iOS 10.3 使用 font-weight: lighter 会出现渲染问题，字体非常细以至于失去本身的颜色</p>
+<li><p>iPhone 6, iOS 10.3 使用 font-weight: lighter 会出现渲染问题，字体非常细以至于失去本身的颜色，更新：iPhone 6, iOS 12+ 显示正常，推测是iOS版本问题</p>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjo72g8830014m7zcp80102fl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjoblnzpo000twdzc8xq91vlx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -230,6 +220,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/09/git反向操作解决冲突/">git反向操作解决冲突</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
           </li>
         
@@ -243,10 +237,6 @@
         
           <li>
             <a href="/2018/10/18/VSCode中vue文件不能Emmet解决方法/">VSCode中vue文件不能Emmet解决方法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/16/查询端口并关闭后台进程/">Mac OS查询端口并关闭后台进程</a>
           </li>
         
       </ul>
