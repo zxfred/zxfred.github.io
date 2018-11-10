@@ -7,13 +7,16 @@
   
   <title>git反向操作解决冲突 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="背景merge 某开发分支代码到 DEPLOY 分支（部署到服务器的分支，有其他开发分支代码），提示代码冲突，无法 merge（实际上没有冲突，git判断有误） 解决因为开发分支不能拉取 DEPLOY 分支代码（会把其他分支的东西拉下来），可以切换到 DEPLOY 分支，拉取开发分支，解决冲突再提交">
+<meta property="og:type" content="article">
 <meta property="og:title" content="git反向操作解决冲突">
 <meta property="og:url" content="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:updated_time" content="2018-11-09T08:19:04.173Z">
+<meta property="og:description" content="背景merge 某开发分支代码到 DEPLOY 分支（部署到服务器的分支，有其他开发分支代码），提示代码冲突，无法 merge（实际上没有冲突，git判断有误） 解决因为开发分支不能拉取 DEPLOY 分支代码（会把其他分支的东西拉下来），可以切换到 DEPLOY 分支，拉取开发分支，解决冲突再提交">
+<meta property="og:updated_time" content="2018-11-10T15:28:30.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git反向操作解决冲突">
+<meta name="twitter:description" content="背景merge 某开发分支代码到 DEPLOY 分支（部署到服务器的分支，有其他开发分支代码），提示代码冲突，无法 merge（实际上没有冲突，git判断有误） 解决因为开发分支不能拉取 DEPLOY 分支代码（会把其他分支的东西拉下来），可以切换到 DEPLOY 分支，拉取开发分支，解决冲突再提交">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -82,7 +85,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>merge 某开发分支代码到 DEPLOY 分支（部署到服务器的分支，有其他开发分支代码），提示代码冲突，无法 merge（实际上没有冲突，git判断有误）</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>因为开发分支不能拉取 DEPLOY 分支代码（会把其他分支的东西拉下来），可以切换到 DEPLOY 分支，拉取开发分支，解决冲突再提交</p>
+
       
     </div>
     <footer class="article-footer">

@@ -83,7 +83,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>merge 某开发分支代码到 DEPLOY 分支（部署到服务器的分支，有其他开发分支代码），提示代码冲突，无法 merge（实际上没有冲突，git判断有误）</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>因为开发分支不能拉取 DEPLOY 分支代码（会把其他分支的东西拉下来），可以切换到 DEPLOY 分支，拉取开发分支，解决冲突再提交</p>
+
       
     </div>
     <footer class="article-footer">
