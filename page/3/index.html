@@ -61,6 +61,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序开发总结（更新ing）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/03/小程序开发总结（更新ing）/" class="article-date">
+  <time datetime="2018-07-03T04:00:34.000Z" itemprop="datePublished">2018-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/03/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小程序开发学习过程中的一些总结：</p>
+<ol>
+<li><p>iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</p>
+</li>
+<li><p>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</p>
+</li>
+<li><p><code>scroll-view</code> 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
+</li>
+<li><p><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整，多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
+</li>
+<li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，暂时将外部 card 宽度从 50% 改为定宽解决，应该仍有其他解决方法</p>
+</li>
+<li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
+</li>
+<li><p>商品标签在 iPhone 6/7 和 iPhone 6p/7p 不同尺寸屏幕上，内部文字不垂直居中，可以适当增加1-2rpx 行高</p>
+</li>
+<li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
+</li>
+<li><p>小程序内嵌 web-view 刷新方法：小程序自带的原生API只能用于刷新小程序页面，不能刷新 web-view 页面。</p>
+<ul>
+<li><p>最好的方法：使用 wx:if 给 web-view 绑定一个 boolean 变量，利用 if 会刷新 dom 节点的性质，更新 boolean（先false再true）会使 web-view 页面刷新。</p>
+<p>问题：目前没有发现问题</p>
+</li>
+<li><p>不完美的方法：在需要刷新页面的时候，先将 url 变量变成空字符串，再重新赋值。</p>
+<p>问题：在网页模拟器上，后退会出现url为空时候的错误页，但在iOS真机上正常</p>
+</li>
+<li><p>不要使用的方法：web-view 页面会在 url 改变的时候刷新，可以通过更改url的方式（如尾部增加一个时间戳作为参数）使页面刷新。</p>
+<p>问题：iOS系统中每次后退时会回到上一个页面，多次跳转时要点击多次后退，使用体验差</p>
+</li>
+</ul>
+</li>
+<li><p>收集 formid 时若需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</p>
+</li>
+<li><p>如何禁止页面滚动：</p>
+<p>不用下拉刷新的方法：</p>
+<ul>
+<li>整个布局用<code>&lt;scroll-view&gt;</code>作为根节点，绑定 scroll-view 的 scroll-y 属性<code>&lt;scroll-view scroll-y=&quot;false&quot;&gt;</code></li>
+<li>样式文件中设置 Page 的 overflow-y 属性值为hidden</li>
+<li>样式文件中设置 scroll-view 的 height 属性值为100%</li>
+</ul>
+<p>使用下拉刷新的方法：</p>
+<ul>
+<li>在外层添加一个view：<code>&lt;view class=&quot;page&quot; style=&quot;height: ; overflow: ;&quot;&gt;</code> 然后动态算出设备高度</li>
+</ul>
+</li>
+<li><p>【不只是小程序的问题】：JavaScript会自动取消数值类型后面无意义的0，导致解析JSON之后数值位数不一致，建议转换成字符串，或者在数据较少的时候统一toFixed</p>
+</li>
+<li><p>屏蔽触摸滑动事件：给元素添加属性 catchtouchmove=”preventTouchMove” 其中preventTouchMove 是空方法</p>
+</li>
+<li><p>圆形图片设置 border 可能会在 border 内部出现锯齿，影响样式， 可以在图片外部套一个略大于图片的标签，用背景色的方法解决</p>
+</li>
+<li><p>在A页面使用 setTimeout 的时候，方法未执行前如果切换到其他 tab，方法不会被挂起而依然会被执行，开发时需要注意避免这种情况</p>
+</li>
+<li><p>iPhone 6, iOS 10.3 使用 font-weight: lighter 会出现渲染问题，字体非常细以至于失去本身的颜色，更新：iPhone 6, iOS 12+ 显示正常，推测是iOS版本问题</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjoicq41u0018uwfylhicx90j" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-栈" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/22/栈/" class="article-date">
@@ -90,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjogxqerg001br7zcr5mqmhz0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjoicq41t0017uwfytnjmp62e" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -130,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjogxqerh001er7zcjhwh7bax" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjoicq41z001guwfymqvt9auc" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -187,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjogxqer6000tr7zce6ohf0l5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjoicq41k000yuwfyeupswwpu" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -253,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjogxqer2000nr7zc5fuv74ux" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjoicq41f000ruwfyvw46ymsr" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -302,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjogxqeqf0003r7zcbdkdzuv5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjoicq3zp0001uwfytdu1i7dx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -378,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjogxqeqk0006r7zc94dbpb7p" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjoicq3zv0005uwfyvivpllpb" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -437,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjogxqeqw000gr7zcqlz1y8db" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjoicq404000fuwfy67nqej7m" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -576,7 +670,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjogxqeqe0002r7zcvp7rijwa" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjoicq3zr0002uwfybtmbhfcf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -733,62 +827,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjogxqeqc0001r7zcues3xql2" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Linux命令基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/Linux命令基础/" class="article-date">
-  <time datetime="2018-05-21T03:23:22.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/21/Linux命令基础/">Linux命令基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>mkdir 创建目录</p>
-<p>cd 切换目录</p>
-<p>mv 移动目录</p>
-<p>rm 删除目录</p>
-<p>ls 查看文件和文件夹</p>
-<p>touch 创建文件</p>
-<p>cp 复制文件</p>
-<p>cat 查看文件内容</p>
-<p>grep 过滤 -r 递归过滤目录</p>
-<p>| 管道</p>
-<p>echo 重定向</p>
-<h3 id="运维常用命令"><a href="#运维常用命令" class="headerlink" title="运维常用命令"></a>运维常用命令</h3><p>向目标地址发送 4 个 ping 包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 4 cloud.tencent.com</span><br></pre></td></tr></table></figure>
-<p>netstat 命令用于显示各种网络相关信息，如网络连接, 路由表, 接口状态等等</p>
-<p>列出所有处于监听状态的tcp端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lt</span><br></pre></td></tr></table></figure>
-<p>查看所有的端口信息, 包括 PID 和进程名称</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tulpn</span><br></pre></td></tr></table></figure>
-<p>过滤得到当前系统中的 ssh 进程信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep &apos;ssh&apos;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjogxqeqt000cr7zcr5763k6q" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjoicq3zw0006uwfyzsbxck2a" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -848,6 +887,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/15/JS打乱数组/">JS打乱数组</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/11/高程阅读知识点/">高程阅读知识点</a>
           </li>
         
@@ -861,10 +904,6 @@
         
           <li>
             <a href="/2018/10/25/一文彻底搞清楚JavaScript中的require、import与export/">一文彻底搞清楚JavaScript中的require、import与export</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/20/RNG失利之后/">RNG失利之后</a>
           </li>
         
       </ul>
