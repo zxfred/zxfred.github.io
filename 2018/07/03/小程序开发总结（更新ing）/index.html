@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="小程序开发学习过程中的一些总结：  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  scroll-view 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性  line-height 需要比字号大一些，避免整行文字显示">
-<meta property="og:updated_time" content="2018-11-10T15:23:16.355Z">
+<meta property="og:updated_time" content="2018-11-15T13:14:04.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小程序开发总结（更新ing）">
 <meta name="twitter:description" content="小程序开发学习过程中的一些总结：  iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签  不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能  scroll-view 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性  line-height 需要比字号大一些，避免整行文字显示">
@@ -140,6 +140,8 @@
 <li><p>在A页面使用 setTimeout 的时候，方法未执行前如果切换到其他 tab，方法不会被挂起而依然会被执行，开发时需要注意避免这种情况</p>
 </li>
 <li><p>iPhone 6, iOS 10.3 使用 font-weight: lighter 会出现渲染问题，字体非常细以至于失去本身的颜色，更新：iPhone 6, iOS 12+ 显示正常，推测是iOS版本问题</p>
+</li>
+<li><p>iOS的页面滑动回弹可能会引起样式bug，使用scroll-view屏蔽回弹可以解决</p>
 </li>
 </ol>
 
