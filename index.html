@@ -93,9 +93,8 @@
 <p>与之对应的传统的写法是： </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`document.forms[].name.value = `</span><span class="string">`"lee king"`</span><span class="string">`; `</span><span class="string">`document.forms[].address.value = `</span><span class="string">`"Peking"`</span><span class="string">`; `</span><span class="string">`document.forms[].zipcode.value = `</span><span class="string">`""`</span><span class="string">`; `</span></span><br></pre></td></tr></table></figure>
 <p>可以看出with语句的简洁明了，不过js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
-<p><a href="https://www.jb51.net/article/84065.htm#" target="_blank" rel="noopener">?</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`var`</span> <span class="string">`form = document.forms[]; `</span><span class="string">`form.name.value = `</span><span class="string">`"lee king"`</span><span class="string">`; `</span><span class="string">`form.address.value = `</span><span class="string">`"Peking"`</span><span class="string">`; `</span><span class="string">`form.zipcode.value = `</span><span class="string">`""`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
-<p>在高效代码开发中应该尽可能的避免使用with语句。</p>
+<p><strong>在高效代码开发中应该尽可能的避免使用with语句</strong></p>
 <p>在javascript中，函数也是对象。函数内部有一个只给javascript引擎访问的内部属性是[[scope]]，该属性包含了函数创建时的作用域中对象的集合，这个集合就叫做作用域链。 </p>
 <p>在函数创建时，它的作用域链中会填入一个全局对象，该全局对象包含了所有全局变量。当函数被执行时，会创建一个<strong>活动对象</strong>，该对象包含了函数所有局部变量、命名参数以及this，然后该对象会被推入作用域链的前端，当函数执行完毕，该对象也随之销毁。</p>
 <p>可以看到，全局变量会被活动对象推到作用域链的最后端，这也就是全局变量访问速度慢的原因</p>
