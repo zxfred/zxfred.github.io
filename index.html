@@ -61,6 +61,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript中的with语句" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/19/JavaScript中的with语句/" class="article-date">
+  <time datetime="2018-11-19T02:26:35.000Z" itemprop="datePublished">2018-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>本文转载自网络</strong></p>
+<p>JavaScript 有个 with 关键字，with 语句的原本用意是为逐级的对象访问提供命名空间式的速写方式。也就是在指定的代码区域，直接通过节点名称调用对象。</p>
+<p>with语句的作用是暂时改变作用域链、减少的重复输入。</p>
+<p>其语法结构为： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`with`</span><span class="string">`(object)&#123; `</span><span class="string">`//statements `</span><span class="string">`&#125;`</span></span><br></pre></td></tr></table></figure>
+<p>实例： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`with`</span><span class="string">`(document.forms[])&#123; `</span><span class="string">`name.value = `</span><span class="string">`"lee king"`</span><span class="string">`; `</span><span class="string">`address.value = `</span><span class="string">`"Peking"`</span><span class="string">`; `</span><span class="string">`zipcode.value = `</span><span class="string">`""`</span><span class="string">`; `</span><span class="string">`&#125;`</span></span><br></pre></td></tr></table></figure>
+<p>与之对应的传统的写法是： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`document.forms[].name.value = `</span><span class="string">`"lee king"`</span><span class="string">`; `</span><span class="string">`document.forms[].address.value = `</span><span class="string">`"Peking"`</span><span class="string">`; `</span><span class="string">`document.forms[].zipcode.value = `</span><span class="string">`""`</span><span class="string">`; `</span></span><br></pre></td></tr></table></figure>
+<p>可以看出with语句的简洁明了，不过js的解释器需要检查with块中的变量是否属于with包含的对象，这将使with语句执行速度大大下降，并且导致js语句很难被优化。为了兼顾速度与代码量可以找到一个比较折衷的方案：</p>
+<p><a href="https://www.jb51.net/article/84065.htm#" target="_blank" rel="noopener">?</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`var`</span> <span class="string">`form = document.forms[]; `</span><span class="string">`form.name.value = `</span><span class="string">`"lee king"`</span><span class="string">`; `</span><span class="string">`form.address.value = `</span><span class="string">`"Peking"`</span><span class="string">`; `</span><span class="string">`form.zipcode.value = `</span><span class="string">`""`</span><span class="string">`;`</span></span><br></pre></td></tr></table></figure>
+<p>在高效代码开发中应该尽可能的避免使用with语句。</p>
+<p>在javascript中，函数也是对象。函数内部有一个只给javascript引擎访问的内部属性是[[scope]]，该属性包含了函数创建时的作用域中对象的集合，这个集合就叫做作用域链。 </p>
+<p>在函数创建时，它的作用域链中会填入一个全局对象，该全局对象包含了所有全局变量。当函数被执行时，会创建一个<strong>活动对象</strong>，该对象包含了函数所有局部变量、命名参数以及this，然后该对象会被推入作用域链的前端，当函数执行完毕，该对象也随之销毁。</p>
+<p>可以看到，全局变量会被活动对象推到作用域链的最后端，这也就是全局变量访问速度慢的原因</p>
+<p>一般情况下，作用域链只会被with和catch语句影响。当使创建用with的时候，函数会创建一个新的活动对象，推到最前端，该对象就是with的对象。这就意味着所有的局部变量都处于第二个作用域链对象中去了，这也就是为什么要避免使用with的原因。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的with语句/" data-id="cjonpq0jd0008qjzc0mjolxix" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaScript获取字符长度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/15/JavaScript获取字符长度/" class="article-date">
@@ -98,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjoicqwgx000evvfy60xrs7cb" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjonpq0jh000bqjzcqlknmm15" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -155,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjoijr7w700002mfyl2h631vs" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjonpq0jo000jqjzcb2317v3i" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -196,11 +251,11 @@
 <h3 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h3><ul>
 <li>定义变量或函数有权访问的其他数据</li>
 </ul>
-
+<h3 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/11/高程阅读知识点/" data-id="cjoicqwhq001lvvfydikqc515" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/11/高程阅读知识点/" data-id="cjonpq0kf001mqjzc2folyosp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -238,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjoicqwh8000qvvfy5hzq39q5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjonpq0jw000uqjzcbxadkxu0" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -282,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjoicqwhb000tvvfyrvsdqrpq" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjonpq0jy000yqjzch9di7niy" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -509,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjoin114y0001u4fymt1voptg" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjonpq0kc001hqjzc8ecls67y" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -548,7 +603,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/20/RNG失利之后/" data-id="cjoicqwh2000jvvfyzkmevgqx" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/20/RNG失利之后/" data-id="cjonpq0jr000nqjzcavo9zhwa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -586,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/18/VSCode中vue文件不能Emmet解决方法/" data-id="cjoicqwh6000nvvfym41c6qf8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/18/VSCode中vue文件不能Emmet解决方法/" data-id="cjonpq0jt000qqjzcpofcggo9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -623,240 +678,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/16/查询端口并关闭后台进程/" data-id="cjoicqwhl001avvfyxpy8reug" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HTTP状态码详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/08/HTTP状态码详解/" class="article-date">
-  <time datetime="2018-10-08T09:31:40.000Z" itemprop="datePublished">2018-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/HTTP状态码详解/">HTTP状态码详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <table>
-<thead>
-<tr>
-<th>状态代码</th>
-<th>状态信息</th>
-<th style="text-align:left">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100</td>
-<td>Continue</td>
-<td style="text-align:left">初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Switching Protocols</td>
-<td style="text-align:left">服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>200</td>
-<td>OK</td>
-<td style="text-align:left">一切正常，对GET和POST请求的应答文档跟在后面。</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created</td>
-<td style="text-align:left">服务器已经创建了文档，Location头给出了它的URL。</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Accepted</td>
-<td style="text-align:left">已经接受请求，但处理尚未完成。</td>
-</tr>
-<tr>
-<td>203</td>
-<td>Non-Authoritative Information</td>
-<td style="text-align:left">文档已经正常地返回，但一些应答头可能不正确，因为使用的是文档的拷贝（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>204</td>
-<td>No Content</td>
-<td style="text-align:left">没有新文档，浏览器应该继续显示原来的文档。如果用户定期地刷新页面，而Servlet可以确定用户文档足够新，这个状态代码是很有用的。</td>
-</tr>
-<tr>
-<td>205</td>
-<td>Reset Content</td>
-<td style="text-align:left">没有新的内容，但浏览器应该重置它所显示的内容。用来强制浏览器清除表单输入内容（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>206</td>
-<td>Partial Content</td>
-<td style="text-align:left">客户发送了一个带有Range头的GET请求，服务器完成了它（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Multiple Choices</td>
-<td style="text-align:left">客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Moved Permanently</td>
-<td style="text-align:left">客户请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL。</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Found</td>
-<td style="text-align:left">类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。注意，在HTTP1.0中对应的状态信息是“Moved Temporatily”。出现该状态代码时，浏览器能够自动访问新的URL，因此它是一个很有用的状态代码。注意这个状态代码有时候可以和301替换使用。例如，如果浏览器错误地请求<a href="http://host/~user（缺少了后面的斜杠），有的服务器" target="_blank" rel="noopener">http://host/~user（缺少了后面的斜杠），有的服务器</a> 返回301，有的则返回302。严格地说，我们只能假定只有当原来的请求是GET时浏览器才会自动重定向。请参见307。</td>
-</tr>
-<tr>
-<td>303</td>
-<td>See Other</td>
-<td style="text-align:left">类似于301/302，不同之处在于，如果原来的请求是POST，Location头指定的重定向目标文档应该通过GET提取（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Not Modified</td>
-<td style="text-align:left">客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告 诉客户，原来缓冲的文档还可以继续使用。</td>
-</tr>
-<tr>
-<td>305</td>
-<td>Use Proxy</td>
-<td style="text-align:left">客户请求的文档应该通过Location头所指明的代理服务器提取（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>307</td>
-<td>Temporary Redirect</td>
-<td style="text-align:left">和302 （Found）相同。许多浏览器会错误地响应302应答进行重定向，即使原来的请求是POST，即使它实际上只能在POST请求的应答是303时才能重定 向。由于这个原因，HTTP 1.1新增了307，以便更加清除地区分几个状态代码：当出现303应答时，浏览器可以跟随重定向的GET和POST请求；如果是307应答，则浏览器只 能跟随对GET请求的重定向。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-<td style="text-align:left">请求出现语法错误。</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-<td style="text-align:left">客户试图未经授权访问受密码保护的页面。应答中会包含一个WWW-Authenticate头，浏览器据此显示用户名字/密码对话框，然后在填 写合适的Authorization头后再次发出请求。</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden</td>
-<td style="text-align:left">资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td style="text-align:left">无法找到指定位置的资源。这也是一个常用的应答。</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed</td>
-<td style="text-align:left">请求方法（GET、POST、HEAD、DELETE、PUT、TRACE等）对指定的资源不适用。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable</td>
-<td style="text-align:left">指定的资源已经找到，但它的MIME类型和客户在Accpet头中所指定的不兼容（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>407</td>
-<td>Proxy Authentication Required</td>
-<td style="text-align:left">类似于401，表示客户必须先经过代理服务器的授权。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>408</td>
-<td>Request Timeout</td>
-<td style="text-align:left">在服务器许可的等待时间内，客户一直没有发出任何请求。客户可以在以后重复同一请求。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>409</td>
-<td>Conflict</td>
-<td style="text-align:left">通常和PUT请求有关。由于请求和资源的当前状态相冲突，因此请求不能成功。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone</td>
-<td style="text-align:left">所请求的文档已经不再可用，而且服务器不知道应该重定向到哪一个地址。它和404的不同在于，返回407表示文档永久地离开了指定的位置，而 404表示由于未知的原因文档不可用。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>411</td>
-<td>Length Required</td>
-<td style="text-align:left">服务器不能处理请求，除非客户发送一个Content-Length头。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>412</td>
-<td>Precondition Failed</td>
-<td style="text-align:left">请求头中指定的一些前提条件失败（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>413</td>
-<td>Request Entity Too Large</td>
-<td style="text-align:left">目标文档的大小超过服务器当前愿意处理的大小。如果服务器认为自己能够稍后再处理该请求，则应该提供一个Retry-After头（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>414</td>
-<td>Request URI Too Long</td>
-<td style="text-align:left">URI太长（HTTP 1.1新）。</td>
-</tr>
-<tr>
-<td>416</td>
-<td>Requested Range Not Satisfiable</td>
-<td style="text-align:left">服务器不能满足客户在请求中指定的Range头。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td style="text-align:left">服务器遇到了意料不到的情况，不能完成客户的请求。</td>
-</tr>
-<tr>
-<td>501</td>
-<td>Not Implemented</td>
-<td style="text-align:left">服务器不支持实现请求所需要的功能。例如，客户发出了一个服务器不支持的PUT请求。</td>
-</tr>
-<tr>
-<td>502</td>
-<td>Bad Gateway</td>
-<td style="text-align:left">服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable</td>
-<td style="text-align:left">服务器由于维护或者负载过重未能应答。例如，Servlet可能在数据库连接池已满的情况下返回503。服务器返回503时可以提供一个 Retry-After头。</td>
-</tr>
-<tr>
-<td>504</td>
-<td>Gateway Timeout</td>
-<td style="text-align:left">由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。（HTTP 1.1新）</td>
-</tr>
-<tr>
-<td>505</td>
-<td>HTTP Version Not Supported</td>
-<td style="text-align:left">服务器不支持请求中所指明的HTTP版本。（HTTP 1.1新）</td>
-</tr>
-</tbody>
-</table>
-<p>转自：<a href="http://www.daqianduan.com/4280.html" target="_blank" rel="noopener">大前端</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/08/HTTP状态码详解/" data-id="cjoicqwgv000bvvfybqldmcoz" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/16/查询端口并关闭后台进程/" data-id="cjonpq0kc001gqjzcwukfzquc" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -894,7 +716,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
     </div>
   </div>
 
@@ -916,6 +738,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/15/JavaScript获取字符长度/">JavaScript获取字符长度</a>
           </li>
         
@@ -929,10 +755,6 @@
         
           <li>
             <a href="/2018/11/09/git反向操作解决冲突/">git反向操作解决冲突</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
           </li>
         
       </ul>

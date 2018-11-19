@@ -61,6 +61,239 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-HTTP状态码详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/08/HTTP状态码详解/" class="article-date">
+  <time datetime="2018-10-08T09:31:40.000Z" itemprop="datePublished">2018-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/08/HTTP状态码详解/">HTTP状态码详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th>状态代码</th>
+<th>状态信息</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Continue</td>
+<td style="text-align:left">初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Switching Protocols</td>
+<td style="text-align:left">服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td style="text-align:left">一切正常，对GET和POST请求的应答文档跟在后面。</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td style="text-align:left">服务器已经创建了文档，Location头给出了它的URL。</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted</td>
+<td style="text-align:left">已经接受请求，但处理尚未完成。</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Non-Authoritative Information</td>
+<td style="text-align:left">文档已经正常地返回，但一些应答头可能不正确，因为使用的是文档的拷贝（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>204</td>
+<td>No Content</td>
+<td style="text-align:left">没有新文档，浏览器应该继续显示原来的文档。如果用户定期地刷新页面，而Servlet可以确定用户文档足够新，这个状态代码是很有用的。</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Reset Content</td>
+<td style="text-align:left">没有新的内容，但浏览器应该重置它所显示的内容。用来强制浏览器清除表单输入内容（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Partial Content</td>
+<td style="text-align:left">客户发送了一个带有Range头的GET请求，服务器完成了它（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Multiple Choices</td>
+<td style="text-align:left">客户请求的文档可以在多个位置找到，这些位置已经在返回的文档内列出。如果服务器要提出优先选择，则应该在Location应答头指明。</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td style="text-align:left">客户请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL。</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td style="text-align:left">类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。注意，在HTTP1.0中对应的状态信息是“Moved Temporatily”。出现该状态代码时，浏览器能够自动访问新的URL，因此它是一个很有用的状态代码。注意这个状态代码有时候可以和301替换使用。例如，如果浏览器错误地请求<a href="http://host/~user（缺少了后面的斜杠），有的服务器" target="_blank" rel="noopener">http://host/~user（缺少了后面的斜杠），有的服务器</a> 返回301，有的则返回302。严格地说，我们只能假定只有当原来的请求是GET时浏览器才会自动重定向。请参见307。</td>
+</tr>
+<tr>
+<td>303</td>
+<td>See Other</td>
+<td style="text-align:left">类似于301/302，不同之处在于，如果原来的请求是POST，Location头指定的重定向目标文档应该通过GET提取（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td style="text-align:left">客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告 诉客户，原来缓冲的文档还可以继续使用。</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy</td>
+<td style="text-align:left">客户请求的文档应该通过Location头所指明的代理服务器提取（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>307</td>
+<td>Temporary Redirect</td>
+<td style="text-align:left">和302 （Found）相同。许多浏览器会错误地响应302应答进行重定向，即使原来的请求是POST，即使它实际上只能在POST请求的应答是303时才能重定 向。由于这个原因，HTTP 1.1新增了307，以便更加清除地区分几个状态代码：当出现303应答时，浏览器可以跟随重定向的GET和POST请求；如果是307应答，则浏览器只 能跟随对GET请求的重定向。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td style="text-align:left">请求出现语法错误。</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td style="text-align:left">客户试图未经授权访问受密码保护的页面。应答中会包含一个WWW-Authenticate头，浏览器据此显示用户名字/密码对话框，然后在填 写合适的Authorization头后再次发出请求。</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td style="text-align:left">资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td style="text-align:left">无法找到指定位置的资源。这也是一个常用的应答。</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td style="text-align:left">请求方法（GET、POST、HEAD、DELETE、PUT、TRACE等）对指定的资源不适用。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td style="text-align:left">指定的资源已经找到，但它的MIME类型和客户在Accpet头中所指定的不兼容（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>407</td>
+<td>Proxy Authentication Required</td>
+<td style="text-align:left">类似于401，表示客户必须先经过代理服务器的授权。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>408</td>
+<td>Request Timeout</td>
+<td style="text-align:left">在服务器许可的等待时间内，客户一直没有发出任何请求。客户可以在以后重复同一请求。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+<td style="text-align:left">通常和PUT请求有关。由于请求和资源的当前状态相冲突，因此请求不能成功。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone</td>
+<td style="text-align:left">所请求的文档已经不再可用，而且服务器不知道应该重定向到哪一个地址。它和404的不同在于，返回407表示文档永久地离开了指定的位置，而 404表示由于未知的原因文档不可用。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>411</td>
+<td>Length Required</td>
+<td style="text-align:left">服务器不能处理请求，除非客户发送一个Content-Length头。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>412</td>
+<td>Precondition Failed</td>
+<td style="text-align:left">请求头中指定的一些前提条件失败（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>413</td>
+<td>Request Entity Too Large</td>
+<td style="text-align:left">目标文档的大小超过服务器当前愿意处理的大小。如果服务器认为自己能够稍后再处理该请求，则应该提供一个Retry-After头（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>414</td>
+<td>Request URI Too Long</td>
+<td style="text-align:left">URI太长（HTTP 1.1新）。</td>
+</tr>
+<tr>
+<td>416</td>
+<td>Requested Range Not Satisfiable</td>
+<td style="text-align:left">服务器不能满足客户在请求中指定的Range头。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td style="text-align:left">服务器遇到了意料不到的情况，不能完成客户的请求。</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Not Implemented</td>
+<td style="text-align:left">服务器不支持实现请求所需要的功能。例如，客户发出了一个服务器不支持的PUT请求。</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td style="text-align:left">服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td style="text-align:left">服务器由于维护或者负载过重未能应答。例如，Servlet可能在数据库连接池已满的情况下返回503。服务器返回503时可以提供一个 Retry-After头。</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout</td>
+<td style="text-align:left">由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。（HTTP 1.1新）</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version Not Supported</td>
+<td style="text-align:left">服务器不支持请求中所指明的HTTP版本。（HTTP 1.1新）</td>
+</tr>
+</tbody>
+</table>
+<p>转自：<a href="http://www.daqianduan.com/4280.html" target="_blank" rel="noopener">大前端</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/10/08/HTTP状态码详解/" data-id="cjonpq0jn000hqjzc6x7w4ile" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-使用npm-audit修复依赖中的安全性缺陷" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/" class="article-date">
@@ -92,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/" data-id="cjoicqwhe000xvvfymglw3fsp" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/16/使用npm-audit修复依赖中的安全性缺陷/" data-id="cjonpq0jz000zqjzcmqmtfbvh" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -167,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjoicqwh6000ovvfyjjanwpx6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjonpq0jv000tqjzcp3bjbbba" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -304,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjoicqwhi0014vvfyvel9q0jr" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjonpq0k50014qjzcvmndm7uw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -388,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjoicqwge0000vvfyqfl7t1ym" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjonpq0iz0000qjzcqgv4eoye" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -497,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjoicqwh3000kvvfyghbfgu2j" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjonpq0jt000pqjzcuhxnw0dd" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -548,7 +781,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjoicqwgr0007vvfya31fm6dg" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjonpq0jb0006qjzceq46bd7r" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -598,7 +831,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjoicqwhn001evvfynz4k0m8b" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjonpq0ke001kqjzc9ia9sgy8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -640,7 +873,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjoicqwhf0010vvfy3xktn2x8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjonpq0k80019qjzcwzzmth8l" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -711,148 +944,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjoicqwhg0011vvfyvs0xlljm" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-药丸新闻" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/19/药丸新闻/" class="article-date">
-  <time datetime="2018-07-19T06:11:30.000Z" itemprop="datePublished">2018-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/药丸新闻/">药丸新闻</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="20180812"><a href="#20180812" class="headerlink" title="20180812"></a>20180812</h2><ul>
-<li>《生食三文鱼》团体标准发布，虹鳟等被归入三文鱼</li>
-</ul>
-<h2 id="20180819"><a href="#20180819" class="headerlink" title="20180819"></a>20180819</h2><ul>
-<li>在“什么值得买”手机app上搜索“避孕套”，得到的结果是：“根据相关法律法规和政策，搜索结果未予展示”</li>
-</ul>
-<h2 id="20180825"><a href="#20180825" class="headerlink" title="20180825"></a>20180825</h2><ul>
-<li>3个月内滴滴再发命案，温州乐清一名23岁女子被奸杀，受害人曾向朋友发出两次求救信息</li>
-</ul>
-<h2 id="20180828"><a href="#20180828" class="headerlink" title="20180828"></a>20180828</h2><ul>
-<li><del>上海黑社会大哥刘海龙砍人被反杀，受害者可能会被判防卫过当</del> 见20180901新闻</li>
-</ul>
-<ul>
-<li>微博网友＠七点半的独角戏写了一条关于百度的段子，只存在了不到三天就被屏蔽，今日被百度起诉索赔500万</li>
-</ul>
-<h2 id="20180829"><a href="#20180829" class="headerlink" title="20180829"></a>20180829</h2><ul>
-<li>中国队在亚运会英雄联盟项目夺金，大陆却全面禁播，众多主播直播被封直播间</li>
-</ul>
-<p>##20180830</p>
-<ul>
-<li>合伙企业征税由20%提高为35%，众多企业需补过去多年未交税款</li>
-<li>教育部控制网游，理由为预防未成年人近视</li>
-</ul>
-<p>##20180831</p>
-<ul>
-<li><a href="http://it.sohu.com/20180824/n547385484.shtml" target="_blank" rel="noopener">喜马拉雅推出党建版小雅AI音箱 拓展行业定制赛道</a></li>
-</ul>
-<h2 id="20180901"><a href="#20180901" class="headerlink" title="20180901"></a>20180901</h2><ul>
-<li><strong>不药丸新闻</strong>：警方通报昆山砍人案：于海明行为属于正当防卫</li>
-<li>网上发表“恶臭你支”等辱华言论的厦大“精日”女研究生田佳良被开除党籍退学</li>
-</ul>
-<h2 id="20180902"><a href="#20180902" class="headerlink" title="20180902"></a>20180902</h2><ul>
-<li>为抗议强迫转私校，湖南耒阳学生家长大规模游行示威遭镇压</li>
-</ul>
-<h2 id="20180903"><a href="#20180903" class="headerlink" title="20180903"></a>20180903</h2><ul>
-<li>斯里兰卡总统透露，x送给他一笔20亿元人民币的礼物</li>
-</ul>
-<h2 id="20180904"><a href="#20180904" class="headerlink" title="20180904"></a>20180904</h2><ul>
-<li>西安交大阳光海蓝城小学刚装修完就使用，多名学生入学过敏流鼻血</li>
-<li>滴滴代驾司机工作期间身亡，公司承诺的120万保单缩水成1万</li>
-</ul>
-<h2 id="20180906"><a href="#20180906" class="headerlink" title="20180906"></a>20180906</h2><ul>
-<li><del>新华社：榨菜、二锅头受青睐，实质是消费理念提升的表现</del> 见20180908</li>
-</ul>
-<h2 id="20180907"><a href="#20180907" class="headerlink" title="20180907"></a>20180907</h2><ul>
-<li>中国央视主持刘芳菲丈夫离奇死亡案开庭。九名吉林延边检察官涉嫌刑讯逼供致死刘芳菲丈夫香港富商刘希泳，刘被限制人身自由前，无任何犯罪证据，人离奇失踪半年后死亡。</li>
-</ul>
-<h2 id="20180908"><a href="#20180908" class="headerlink" title="20180908"></a>20180908</h2><ul>
-<li>浙江大学社会学系冯钢否认称榨菜受青睐为消费升级，近期未接受新华社采访</li>
-</ul>
-<h2 id="20180909"><a href="#20180909" class="headerlink" title="20180909"></a>20180909</h2><ul>
-<li>国外科技媒体发现华为四款手机跑分作弊，3DMark删除多款华为手机成绩</li>
-</ul>
-<h2 id="20180910"><a href="#20180910" class="headerlink" title="20180910"></a>20180910</h2><ul>
-<li>上海一300万粉丝网红遛狗不栓狗绳，因狗与其母殴打辱骂32周孕妇，致其高危早产入院</li>
-</ul>
-<h2 id="20180911"><a href="#20180911" class="headerlink" title="20180911"></a>20180911</h2><ul>
-<li>国家卫健委“三定”方案出炉，计划生育司全部撤销</li>
-</ul>
-<h2 id="20180912"><a href="#20180912" class="headerlink" title="20180912"></a>20180912</h2><ul>
-<li>自如委托无资质机构出空气质检报告被立案调查，自如CEO遭打脸</li>
-</ul>
-<h2 id="20180913"><a href="#20180913" class="headerlink" title="20180913"></a>20180913</h2><ul>
-<li>北京出台公积金贷款、提取新政：增加“认房又认贷”、“缴存额度与缴存年限挂钩”、“异地购房不能随意提取等规则</li>
-<li>反骨乐队发布通知，因不可抗力因素，乐队在上海和苏州的演出临时改名为正骨乐队，因有关部门不让出现“反”字</li>
-</ul>
-<h2 id="20180914"><a href="#20180914" class="headerlink" title="20180914"></a>20180914</h2><ul>
-<li>《人民公敌》9月6日在北京大剧院首演，演出接近尾声时，台上的演员与台下的观众展开了一场对话，现场有人喊出：〝因为中国的媒体也不讲真话〞、〝因为我们的政府一样不负责任〞，而遭停演。</li>
-</ul>
-<h2 id="20180915"><a href="#20180915" class="headerlink" title="20180915"></a>20180915</h2><ul>
-<li>有网友反映称，河南商水县谭庄镇大曹小学营养餐质量低下，尽管学校公示的菜品种类繁多，但学生盛到碗中的只有半碗素面</li>
-<li>IHDT映速微博：华为2018年9月5日举行的产品发布会使用大屏底图涉嫌抄袭其原创《Prometheus》</li>
-<li>英国歌手Dua Lipa上海演唱会，疑似因带有彩虹元素而被严格管制，现场不许站立，多名歌迷被保安粗暴拖拽殴打并带离演唱会现场</li>
-<li>北京中医药大学东直门医院针灸科发表论文论证“量子纠缠”，认为孩子有病，给母亲扎针灸可以治疗</li>
-</ul>
-<h2 id="20180916"><a href="#20180916" class="headerlink" title="20180916"></a>20180916</h2><ul>
-<li>中国一家游客斯德哥尔摩因预定错误欲在酒店大厅过夜，违反酒店规定被强制驱逐，这家游客在警察面前撒泼、假摔、耍无赖，并在微博发文控诉，引发舆论热议，后文章被指出多处失实</li>
-</ul>
-<h2 id="20180917"><a href="#20180917" class="headerlink" title="20180917"></a>20180917</h2><ul>
-<li>国家民族事务委员会网站2012年一篇《解放军309医院器官移植中心倾情服务藏族患者》中提到，该院曾优先为藏族患者配型手术</li>
-</ul>
-<h2 id="20180918"><a href="#20180918" class="headerlink" title="20180918"></a>20180918</h2><ul>
-<li>亚马逊旗下的流行游戏直播平台 Twitch 从 9 月 17 日起被屏蔽，方法是 DNS 污染</li>
-</ul>
-<h2 id="20180922"><a href="#20180922" class="headerlink" title="20180922"></a>20180922</h2><ul>
-<li>鲁山一初中生强奸未成年少女，当地检察官接入调解，双方“冰释前嫌”</li>
-</ul>
-<h2 id="20180923"><a href="#20180923" class="headerlink" title="20180923"></a>20180923</h2><ul>
-<li>湖南城市学院新生称“一辈子都不可能爱国”被取消入学资格</li>
-</ul>
-<h2 id="20180924"><a href="#20180924" class="headerlink" title="20180924"></a>20180924</h2><ul>
-<li>人社部：党要领导工人共同管理民企、共享民企发展利润</li>
-</ul>
-<h2 id="20180926"><a href="#20180926" class="headerlink" title="20180926"></a>20180926</h2><ul>
-<li>依据有关部门整改要求，凤凰新闻App、手机凤凰网即日起至10月10日停更整改，此时距财经网已经消失半个月</li>
-</ul>
-<h2 id="20181004"><a href="#20181004" class="headerlink" title="20181004"></a>20181004</h2><ul>
-<li>江苏省税务局近日对范冰冰将及其担任法人代表的企业等将追缴共近8.9亿罚款。由于范冰冰属于首次被税务机关按偷税予以行政处罚且此前未因逃避缴纳税款受过刑事处罚，在规定期限内缴纳罚金，依法不予追究刑事责任。经纪人牟某因隐匿、销毁账目，犯罪被抓</li>
-</ul>
-<h2 id="20181007"><a href="#20181007" class="headerlink" title="20181007"></a>20181007</h2><ul>
-<li>【央行降准1个百分点 释放约7500亿元增量资金】中国人民银行决定，从2018年10月15日起，下调大型商业银行、股份制商业银行、城市商业银行、非县域农村商业银行、外资银行人民币存款准备金率1个百分点，放水7500亿资金</li>
-</ul>
-<h2 id="20181012"><a href="#20181012" class="headerlink" title="20181012"></a>20181012</h2><ul>
-<li>2018年10月11日，A股三大指数全线暴跌。其中，上证综指下跌142.38点，跌幅5.22%，收于2583.46点，创近4年新低；深证成指下跌6.07%，收于7524.09点；创业板指下跌6.30%，收于1261.88点。当天的盘面上，各大板块全线皆墨。沪深两市近3500只个股中，1056只个股将近跌停（跌幅超过9.90%）；仅72只个股红盘。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjoicqwhp001jvvfynfv3k988" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjonpq0k40012qjzceasud473" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -890,7 +982,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
     </div>
   </div>
 
@@ -912,6 +1004,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/15/JavaScript获取字符长度/">JavaScript获取字符长度</a>
           </li>
         
@@ -925,10 +1021,6 @@
         
           <li>
             <a href="/2018/11/09/git反向操作解决冲突/">git反向操作解决冲突</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
           </li>
         
       </ul>
