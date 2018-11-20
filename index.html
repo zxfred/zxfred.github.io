@@ -61,6 +61,142 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JavaScript中的执行环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/19/JavaScript中的执行环境/" class="article-date">
+  <time datetime="2018-11-19T13:04:40.000Z" itemprop="datePublished">2018-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文转载自知乎：@柳兮</p>
+<h2 id="什么是执行环境"><a href="#什么是执行环境" class="headerlink" title="什么是执行环境"></a><strong>什么是执行环境</strong></h2><p>JavaScript是一个单线程语言，意味着同一时间只能执行一个任务。当JavaScript解释器初始化执行代码时， 它首先默认进入全局执行环境（execution context），从此刻开始，函数的每次调用都会创建一个新的执行环境。</p>
+<h2 id="执行环境的分类"><a href="#执行环境的分类" class="headerlink" title="执行环境的分类"></a><strong>执行环境的分类</strong></h2><ul>
+<li>全局环境——JavaScript代码运行时首次进入的环境。</li>
+<li>函数环境——当函数被调用时，会进入当前函数中执行代码。</li>
+<li>Eval——eval内部的文本被执行时(因为eval不被鼓励使用，此处不做详细介绍)。</li>
+</ul>
+<h2 id="执行环境栈"><a href="#执行环境栈" class="headerlink" title="执行环境栈"></a><strong>执行环境栈</strong></h2><p>当JavaScript代码执行的时候，会进入不同的执行环境，这些执行环境会构成了一个执行环境栈（Execution context stack，ECS）。栈底永远都是全局上下文，而栈顶就是当前正在执行的上下文。</p>
+<p>代码在执行过程时遇到以上三种执行环境的代码时，都会生成一个对应的执行环境，压入执行环境栈中，当栈顶的上下文执行完毕之后，会自动出栈。下面用一个例子说明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    fn2();</span><br><span class="line">&#125;</span><br><span class="line">fn1();</span><br></pre></td></tr></table></figure>
+<p>第一步，全局执行环境入栈。</p>
+<p>第二步，遇到fn1(),执行代码，创建自己的执行环境，入栈。</p>
+<p>第三步，fn1的上下文入栈之后，接着执行其中的代码，遇到fn2()，创建自己的执行环境，入栈。</p>
+<p>第四步，在fn2的执行环境中未创建新的执行环境，代码执行完毕之后,fn2的执行环境出栈。</p>
+<p>第五步，fn2的执行环境出栈之后，继续执行fn1r的可执行代码，也未创建新的执行环境，出栈。这个时候栈中只剩下全局执行环境了。</p>
+<p><strong>有5个需要记住的关键点，关于执行栈（调用栈）：</strong></p>
+<ul>
+<li>单线程。</li>
+<li>同步执行。所有的执行环境都得等到栈顶的执行之后才能顺序执行</li>
+<li>只有一个全局执行环境。</li>
+<li>函数上下文是无限制的。</li>
+<li>每次函数被调用时都会创建新的执行环境，包括调用自己。</li>
+</ul>
+<h2 id="深入了解执行环境"><a href="#深入了解执行环境" class="headerlink" title="深入了解执行环境"></a><strong>深入了解执行环境</strong></h2><h3 id="执行环境的构成"><a href="#执行环境的构成" class="headerlink" title="执行环境的构成"></a><strong>执行环境的构成</strong></h3><p>可以将每个执行环境抽象为一个对象并有三个属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">executionContextObj = &#123;</span><br><span class="line">    scopeChain: &#123; <span class="comment">/* 变量对象（variableObject）+ 所有父执行环境的变量对象*/</span> &#125;, </span><br><span class="line">    variableObject: &#123; <span class="comment">/*函数 arguments/参数，内部变量和函数声明 */</span> &#125;, </span><br><span class="line">    <span class="keyword">this</span>: &#123;&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行环境的产生</p>
+<p>在JavaScript解释器内部，每次调用执行环境，分为两个阶段：</p>
+<p><strong>创建阶段(此时函数被调用，但未执行内部代码)：</strong></p>
+<ul>
+<li>设置[[Scope]]属性的值</li>
+<li>设置变量对象VO，创建变量，函数和参数。</li>
+<li>设置this的值。</li>
+</ul>
+<p><strong>激活/代码执行阶段：</strong></p>
+<p>在当前上下文上运行/解释函数代码，并随着代码一行行执行指派变量的值和函数的引用。</p>
+<h4 id="创建阶段"><a href="#创建阶段" class="headerlink" title="创建阶段"></a><strong>创建阶段</strong></h4><p>1.根据函数的参数，创建并初始化arguments object。</p>
+<p>2.扫描上下文的函数声明：对于找到的函数声明，将函数名和函数引用存入VO中，如果VO中已经有同名函数，那么就进行覆盖。</p>
+<p>3.扫面上下文的变量声明：对于找到的每个变量声明，将变量名存入VO中，并且将变量的值初始化为undefined。如果变量的名字已经在变量对象里存在，不会进行任何操作并继续扫描。</p>
+<p><strong>要记住：函数扫描是在变量之前。</strong></p>
+<p>让我们举一个栗子来说明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'abby'</span>;</span><br><span class="line">    <span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person(<span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>首先，当我调用person(20)的时候，创建的状态是这样:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fooExecutionContext = &#123;</span><br><span class="line">    scopeChain: &#123; ... &#125;,</span><br><span class="line">    variableObject: &#123;</span><br><span class="line">        <span class="built_in">arguments</span>: &#123;</span><br><span class="line">            <span class="number">0</span>: <span class="number">20</span>,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        age: <span class="number">20</span>,</span><br><span class="line">        getAge: pointer to <span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>),</span></span><br><span class="line"><span class="function">        <span class="title">name</span>: <span class="title">undefined</span>,</span></span><br><span class="line"><span class="function">        <span class="title">getName</span>: <span class="title">undefined</span>,</span></span><br><span class="line"><span class="function">    &#125;,</span></span><br><span class="line"><span class="function">    <span class="title">this</span>: </span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>刚创建的时候，首先是指出函数的引用，然后按顺序对变量进行定义，初始化为undefined。当创建完成之后，执行流进入函数并且在上下文中运行/解释代码，指定函数的引用和变量的值，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fooExecutionContext = &#123;</span><br><span class="line">    scopeChain: &#123; ... &#125;,</span><br><span class="line">    variableObject: &#123;</span><br><span class="line">        <span class="built_in">arguments</span>: &#123;</span><br><span class="line">            <span class="number">0</span>: <span class="number">20</span>,</span><br><span class="line">            length: <span class="number">1</span></span><br><span class="line">        &#125;,</span><br><span class="line">        age: <span class="number">20</span>,</span><br><span class="line">        getAge: pointer to <span class="function"><span class="keyword">function</span> <span class="title">getAge</span>(<span class="params"></span>),</span></span><br><span class="line"><span class="function">        <span class="title">name</span>: '<span class="title">Abby</span>',</span></span><br><span class="line"><span class="function">        <span class="title">getName</span>: <span class="title">pointer</span> <span class="title">to</span> <span class="title">function</span> <span class="title">getName</span>(<span class="params"></span>),</span></span><br><span class="line"><span class="function">    &#125;,</span></span><br><span class="line"><span class="function">    <span class="title">this</span>: </span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="提升（Hoisting）"><a href="#提升（Hoisting）" class="headerlink" title="提升（Hoisting）"></a><strong>提升（Hoisting）</strong></h2><p>很多书上只说了变量提升是将变量提至当前上下文的最顶端，却未说明原因，现在理解了执行环境的创建、激活阶段，由此也可以解释函数、变量的提升了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> name); <span class="comment">// function</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> another); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'Abby'</span>,</span><br><span class="line">        another = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'Lucky'</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Abby'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> name); <span class="comment">// string</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> another); <span class="comment">// function</span></span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+<p><strong>此时的创建阶段的过程是:</strong></p>
+<p>1.函数name和其引用被存入到VO之中。</p>
+<p>2.变量name发现在VO之中存在同名的属性，因此忽略。</p>
+<p>3.变量another存入到VO之中，并赋值为undefined。(这也是函数表达式不会提升的原因)</p>
+<p><strong>此时代码从上到下执行的时候激活阶段的过程是:</strong></p>
+<p>1.console.log(typeof name); 此时name在VO中是函数。</p>
+<p>2.console.log(typeof another); 此时another在VO中的值是undefined。</p>
+<p>3.指出函数name的引用。</p>
+<p>4.将name赋值为’hello’。</p>
+<p>5.将another赋值为函数表达式的值。</p>
+<p>6.console.log(typeof name); 此时的name由于被函数被字符串赋值覆盖因此是string类型。</p>
+<p>7.console.log(typeof another); 此时的another被赋值成函数表达式因此是function类型。</p>
+<p>因此理解执行环境之后也就很好理解了为什么我们能在name声明之前访问它，为什么之后的name的类型值发生了变化，为什么another第一次打印的时候是undefined等等问题了。</p>
+<hr>
+<p>参考资料：<br><a href="http://link.zhihu.com/?target=http%3A//davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank" rel="noopener">what-is-the-execution-context-in-javascript</a><br><a href="http://link.zhihu.com/?target=http%3A//yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/" target="_blank" rel="noopener">了解JavaScript的执行上下文</a><br><a href="http://link.zhihu.com/?target=http%3A//jibbering.com/faq/notes/closures/%23clIRExSc" target="_blank" rel="noopener">Identifier Resolution, Execution Contexts and scope chains</a><br><a href="http://link.zhihu.com/?target=http%3A//www.jianshu.com/p/a6d37c77e8db" target="_blank" rel="noopener">前端基础进阶（二）：执行上下文详细图解</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的执行环境/" data-id="cjop2jbrx000b0yzcgar1vq97" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript拷贝数组" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/19/JavaScript拷贝数组/" class="article-date">
+  <time datetime="2018-11-19T09:33:59.000Z" itemprop="datePublished">2018-11-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript拷贝数组/" data-id="cjop2jbs1000j0yzca8f8pwj2" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-JavaScript中的with语句" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/19/JavaScript中的with语句/" class="article-date">
@@ -103,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的with语句/" data-id="cjonpq0jd0008qjzc0mjolxix" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的with语句/" data-id="cjop2jbrv000a0yzcdwl5gu5d" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -152,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjonpq0jh000bqjzcqlknmm15" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjop2jbs0000g0yzcpr0zkxnl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -209,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjonpq0jo000jqjzcb2317v3i" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjop2jbrz000f0yzcbcopq332" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -254,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/11/高程阅读知识点/" data-id="cjonpq0kf001mqjzc2folyosp" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/11/高程阅读知识点/" data-id="cjop2jbts001r0yzcajpgeerq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -292,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjonpq0jw000uqjzcbxadkxu0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjop2jbsa000x0yzcdnk3tosx" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -336,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjonpq0jy000yqjzch9di7niy" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjop2jbta00120yzcbh0tm5q9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -563,7 +699,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjonpq0kc001hqjzc8ecls67y" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjop2jbtm001f0yzcc11iclkm" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -602,82 +738,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/20/RNG失利之后/" data-id="cjonpq0jr000nqjzcavo9zhwa" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-VSCode中vue文件不能Emmet解决方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/18/VSCode中vue文件不能Emmet解决方法/" class="article-date">
-  <time datetime="2018-10-18T02:39:19.000Z" itemprop="datePublished">2018-10-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/18/VSCode中vue文件不能Emmet解决方法/">VSCode中vue文件不能Emmet解决方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在 setting.json 中插入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;emmet.triggerExpansionOnTab&quot;: true,</span><br><span class="line">&quot;emmet.showAbbreviationSuggestions&quot;: true,</span><br><span class="line">&quot;emmet.showExpandedAbbreviation&quot;: &quot;always&quot;,</span><br><span class="line">&quot;emmet.includeLanguages&quot;: &#123;</span><br><span class="line">    &quot;vue-html&quot;: &quot;html&quot;,</span><br><span class="line">    &quot;vue&quot;: &quot;html&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/18/VSCode中vue文件不能Emmet解决方法/" data-id="cjonpq0jt000qqjzcpofcggo9" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-查询端口并关闭后台进程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/16/查询端口并关闭后台进程/" class="article-date">
-  <time datetime="2018-10-16T05:48:04.000Z" itemprop="datePublished">2018-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/16/查询端口并关闭后台进程/">Mac OS查询端口并关闭后台进程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>找到对应的PID</span><br><span class="line">lsof -i:端口号</span><br><span class="line"><span class="meta">#</span>关闭进程</span><br><span class="line">kill -9 PID</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/16/查询端口并关闭后台进程/" data-id="cjonpq0kc001gqjzcwukfzquc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/20/RNG失利之后/" data-id="cjop2jbs4000p0yzcli4hoqht" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -715,7 +776,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a>
     </div>
   </div>
 
@@ -737,6 +798,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
           </li>
         
@@ -746,14 +815,6 @@
         
           <li>
             <a href="/2018/11/15/JavaScript打乱数组/">JavaScript打乱数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/11/高程阅读知识点/">JavaScript高级程序设计知识盲区</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/09/git反向操作解决冲突/">git反向操作解决冲突</a>
           </li>
         
       </ul>

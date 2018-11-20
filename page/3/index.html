@@ -61,6 +61,119 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-关于&amp;&amp;和||返回值的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/22/关于&&和||返回值的问题/" class="article-date">
+  <time datetime="2018-07-22T15:46:04.000Z" itemprop="datePublished">2018-07-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In the simplest terms:</p>
+<p>The <code>||</code> operator returns the first truthy value, and if none are truthy, it returns the last value (which is a falsy value).</p>
+<p>The <code>&amp;&amp;</code> operator returns the first falsy value, and if none are falsy, it return the last value (which is a truthy value).</p>
+<p>最简单的方式：</p>
+<p><code>||</code>返回的是第一个为true的值，如果所有的都不为true，它返回最后一个值（转换为boolean为false）</p>
+<p><code>&amp;&amp;</code>返回的是第一个为false的值，如果所有的都不为false，它返回最后一个值（转换为boolean为true）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjop2jbtf00170yzc2j96kbwu" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-回调函数是什么" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/21/回调函数是什么/" class="article-date">
+  <time datetime="2018-07-21T15:53:42.000Z" itemprop="datePublished">2018-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/回调函数是什么/">回调函数是什么?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是回调"><a href="#什么是回调" class="headerlink" title="什么是回调?"></a>什么是回调?</h2><p><strong>简单地说:</strong> 一个回调函数，就是在另外一个函数（通常是异步的）执行完之后再执行的函数，因而被命名为——回调。</p>
+<p><strong>更进一步地说:</strong> 在JavaScript中，函数是对象。正因如此，一个函数可以被其他函数作为参数（传入），也能被其他函数作为返回值返回。这种函数（译者注：起码要满足如下条件之一：1.接受一个或多个函数作为参数，2.将一个函数作为返回值返回）被称为高阶函数。任何函数，只要它作为参数传入且随后被调用，都可称之为回调函数。</p>
+<p>看起来很复杂的样子，但别急，让我们往下看一些例子。</p>
+<h2 id="为什么需要回调函数"><a href="#为什么需要回调函数" class="headerlink" title="为什么需要回调函数?"></a>为什么需要回调函数?</h2><p>这是由于一个十分重要的原因 —— JavaScript是一门事件驱动的语言。这就意味着，JavaScript会持续监听事件且一直往下执行，而不会在事件响应前一直挂起。让我们一起看看下面这个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function first()&#123;</span><br><span class="line">  console.log(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function second()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line">second();</span><br></pre></td></tr></table></figure>
+<p>正如你所料，函数first会首先执行，函数second会在之后执行——控制台会打印如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line">// 2</span><br></pre></td></tr></table></figure>
+<p>看起来是符合我们的预期。</p>
+<p>但如果函数first包含有一些不会立即执行的代码呢？例如，我们需要发送一个请求并等待它的响应呢？我们使用<code>setTimeout</code>去模拟这种场景，<code>setTimeout</code>是原生JavaScript方法，允许你在特定时间后调用一个函数。我们通过延迟500毫秒后再执行函数来模拟发送请求。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function first()&#123;</span><br><span class="line">  // Simulate a code delay</span><br><span class="line">  setTimeout( function()&#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">  &#125;, 500 );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function second()&#123;</span><br><span class="line">  console.log(2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">first();</span><br><span class="line">second();</span><br></pre></td></tr></table></figure>
+<p>你现在不太需要立即搞懂<code>setTimeout()</code>的原理（如果你很好奇，我们有这<a href="https://www.sitepoint.com/jquery-settimeout-function-examples/" target="_blank" rel="noopener">主题相关的文章</a>）。（现在）最重要的是我们将<code>console.log(1);</code> 延迟500毫秒执行。那么，当我们执行这两个函数（<code>first</code>和<code>second</code>）时，会发生什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first();</span><br><span class="line">second();</span><br><span class="line">// 2</span><br><span class="line">// 1</span><br></pre></td></tr></table></figure>
+<p>尽管我们先调用函数first，但会先打印出<code>2</code>。</p>
+<p>这并不是JavaScript不按照我们的想法去顺序执行函数，而是JavaScript会继续执行函数second,而不是等待函数fitst执行完（再去执行函数second）。</p>
+<p>那么为何让你看这个（例子）呢？是因为你不能期望Javascript都是执行完一个函数后再去执行下一个函数。而回调函数是确保代码按次序正确执行的一种方法。</p>
+<h2 id="创造一个回调函数"><a href="#创造一个回调函数" class="headerlink" title="创造一个回调函数"></a>创造一个回调函数</h2><p>好了，让我们少啰嗦，一起来创造一个回调函数吧！</p>
+<p>首先，打开你浏览器的控制台（Windows/Linux和系统可以按下Ctrl + Shift + J，Mac则按下Cmd + Option + J）。然后把以下的函数输入到控制台内：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们创建了一个名为<code>doHomework</code>的函数。而我们的函数需要传入一个变量才能工作。可以往控制台中输入以下代码调用（该函数）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doHomework(&apos;math&apos;);</span><br><span class="line">// Alerts: Starting my math homework.</span><br></pre></td></tr></table></figure>
+<p>现在我们把回调函数添加进去吧。<code>doHomework</code>需要添加多一个参数，回调函数会作为最后一个参数传入，并在执行<code>doHomework</code>时调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject, callback) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">  callback();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doHomework(&apos;math&apos;, function() &#123;</span><br><span class="line">  alert(&apos;Finished my homework&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="试着在JS-Bin上执行上述代码"><a href="#试着在JS-Bin上执行上述代码" class="headerlink" title="试着在JS Bin上执行上述代码"></a>试着在JS Bin上执行上述代码</h3><p><a href="https://jsbin.com/xedeyuc/2/embed?js,console" target="_blank" rel="noopener">JS Bin</a></p>
+<p>正如你所看到的，当你在控制台输入上述代码后，陆续会有两个告示框弹出：首先是：‘Starting homework’，然后是‘Finished homework’。</p>
+<p>然而回调函数不一定要在函数调用时完整传入。你可以将回调函数定义在其他地方，如以下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function doHomework(subject, callback) &#123;</span><br><span class="line">  alert(`Starting my $&#123;subject&#125; homework.`);</span><br><span class="line">  callback();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function alertFinished()&#123;</span><br><span class="line">  alert(&apos;Finished my homework&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doHomework(&apos;math&apos;, alertFinished);</span><br></pre></td></tr></table></figure>
+<h3 id="在JS-Bin上执行上述例子"><a href="#在JS-Bin上执行上述例子" class="headerlink" title="在JS Bin上执行上述例子:"></a>在JS Bin上执行上述例子:</h3><p><a href="https://jsbin.com/hagaqiy/embed?js,console" target="_blank" rel="noopener">JavaScript中什么是回调函数？</a></p>
+<p>执行的结果与之前的例子是完全一致的，但代码的组织却有一点不同。正如你所见，在<code>doHomework</code>函数调用时，<code>alertFinished</code>作为它的一个参数被传入！</p>
+<h2 id="一个真实的例子"><a href="#一个真实的例子" class="headerlink" title="一个真实的例子"></a>一个真实的例子</h2><p>上星期，我发布了一篇名为<a href="https://codeburst.io/build-a-simple-twitter-bot-with-node-js-in-just-38-lines-of-code-ed92db9eb078" target="_blank" rel="noopener">《如何用38行代码创造一个推特机器人》</a>的文章。那篇文章中，代码是通过使用推特的API来工作的。当你发请求去一个API时，你必须等待响应内容返回后才能继续工作。这是一个说明如何使用回调函数的很好例子。请求API时发送的请求代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">T.get(&apos;search/tweets&apos;, params, function(err, data, response) &#123;</span><br><span class="line">  if(!err)&#123;</span><br><span class="line">    // This is where the magic will happen</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    console.log(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>T.get</code> 的意思只是往推特发送一个GET请求。</li>
+<li>当发送请求去<code>‘search/tweets’</code>时，（请求函数）接受三个参数，第一个参数是请求地址，<code>params</code>是第二个参数，代表搜索相关的参数，而最后一个则是一个匿名的回调函数。</li>
+</ul>
+<p>在这里，回调函数是十分重要的，因为我们需要等待服务器返回数据后，才能继续执行余下代码。我们并不知道我们请求API后，服务器是否成功地返回数据。因此，当我们通过GET请求请求<code>search/tweets</code>后，会等待服务器返回信息。一旦推特（的服务器）返回相应数据，我们的回调函数将会执行。推特服务器会返回一个<code>err</code> (error) 对象或一个<code>response</code>对象给我们。在我们的回调函数中，我们使用条件判断语句<code>if()</code>（判断是否有错误对象存在）来确定请求是否成功，（判断成功）之后再根据返回的数据进行下一步操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjop2jbtk001c0yzcb705mlxf" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-药丸新闻" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/19/药丸新闻/" class="article-date">
@@ -192,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjonpq0kf001nqjzc3uo6p620" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjop2jbtp001l0yzc1nh85gsh" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -301,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjonpq0js000oqjzcrf5e5ste" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjop2jbs8000v0yzcq41kyom6" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -395,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjonpq0k9001aqjzcjoh5sa3e" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjop2jbtj001b0yzcdeyjgktw" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -436,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjonpq0kd001jqjzc0no7ayk6" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjop2jbtr001p0yzc6nacjcrp" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -476,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjonpq0kg001oqjzcla45urrk" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjop2jbtr001o0yzcswqjzsd5" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -533,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjonpq0k00010qjzcnlyn9e5n" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjop2jbt900100yzctjmcz9fj" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -599,7 +712,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjonpq0jv000sqjzca7qbocw1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjop2jbtc00130yzcj88vwjpl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -648,144 +761,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjonpq0j60003qjzc63xcc1vo" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjop2jbrr00050yzcq43gxmxg" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CSS3中的transform详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/29/CSS3中的transform详解/" class="article-date">
-  <time datetime="2018-05-29T02:55:58.000Z" itemprop="datePublished">2018-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/29/CSS3中的transform详解/">CSS3中的transform详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转载自：<a href="https://www.cnblogs.com/afighter/p/5726888.html" target="_blank" rel="noopener">https://www.cnblogs.com/afighter/p/5726888.html</a></p>
-<hr>
-<p><strong>一、变形-旋转 ratate() 函数</strong></p>
-<p>通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为<strong>正值</strong>，元素相对原点中心<strong>顺时针</strong>旋转；如果这个值为<strong>负值</strong>，元素相对原点中心<strong>逆时针</strong>旋转。</p>
-<p>例：transform:rotate(-20deg) </p>
-<hr>
-<p><strong>二、变形- 扭曲 skew()函数</strong></p>
-<p>扭曲skew()函数能够让元素<strong>倾斜显示</strong>。它可以将一个对象以其中心位置围绕着<strong>X轴</strong>和<strong>Y轴</strong>按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变</p>
-<p>元素的形状。skew()函数不会旋转，而只会改变元素的形状。</p>
-<ul>
-<li>一个参数：表示水平方向的倾斜角度；</li>
-<li>两个参数：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度</li>
-</ul>
-<p>分3种情况</p>
-<p> transform:skewX(30deg) </p>
-<p> transform:skewY(10deg) </p>
-<p> transform:skew(-45deg) </p>
-<hr>
-<p> <strong>三、变形-缩放 scale() 函数</strong></p>
-<p>让元素根据中心原点对对象进行缩放。 <strong>scale()</strong>的取值默认的值为1，当值设置为<strong>0.01</strong>到<strong>0.99</strong>之间时，作用使一个元素缩小；而任何大于或等于<strong>1.01</strong>的值，作用是让元素放大。</p>
-<p>也分3种情况：</p>
-<p>transform:scale(x,y)  使元素水平方向和垂直方向同时缩放</p>
-<p>transform:scale(x)  X轴缩放</p>
-<p> transform:scale(y)  Y轴缩放</p>
-<hr>
-<p> <strong>四、变形-位移 translate() 函数</strong></p>
-<p><strong>translate()函数</strong>可以将元素向指定的方向移动，类似于position中的<strong>relative</strong>。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上</p>
-<p>的任何Web组件。</p>
-<p>分为三种情况：</p>
-<p>transform:translate(x,y)  使元素水平方向和垂直方向同时移动</p>
-<p> transform:translate(x)  使元素水平方向移动</p>
-<p> transform:translate(y)  使元素垂直方向移动</p>
-<hr>
-<p> <strong>五、变形-原点 transform-origin</strong></p>
-<p>任何一个元素都有一个中心点，默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p>
-<p>在没有重置transform-origin改变元素原点位置的情况下，CSS变形进行的旋转、位移、缩放，扭曲等操作都是<strong>以元素自己中心位置进行变形</strong>。但很多时候，我们可以通过</p>
-<p>transform-origin 来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</p>
-<p>transform-origin 取值和元素设置背景中的background-position取值类似(也可以是具体的像素值)。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjonpq0j70004qjzcemqyd036" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mac急救办法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/Mac急救办法/" class="article-date">
-  <time datetime="2018-05-25T03:03:30.000Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/Mac急救办法/">Mac急救办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>SHIFT+CTRL+OPTION+POWER十秒钟：重置系统管理控制器（SMC）</strong></p>
-<ul>
-<li>关闭电脑。</li>
-<li>将 MagSafe 电源适配器连接到电源和 Mac（如果尚未连接的话）。</li>
-<li>在内建键盘上，同时按下（左侧）Shift-Control-Option 键和电源按钮。</li>
-<li>同时松开所有键和电源按钮。</li>
-<li>按电源按钮打开电脑。</li>
-</ul>
-<p><strong>注</strong>：重置 SMC 时，MagSafe 电源适配器上的 LED 指示灯可能会更改状态或暂时关闭。</p>
-<p>在风扇、电源指示灯、系统性能、视频出现某些异常时候，可以通过上述方法进行重置来解决。具体的症状判断和说明可以参考”<a href="https://link.zhihu.com/?target=http%3A//support.apple.com/kb/HT3964%3Fviewlocale%3Dzh_CN" target="_blank" rel="noopener">基于 Intel 的 Mac：重置系统管理控制器（SMC）</a>“。</p>
-<p><strong>OPTION+CMD+R+P+POWER：重置NVRAM 或 PRAM</strong></p>
-<p>Mac 会将某些设置储存在特殊内存区域中，而且即使关机这些设置也不会丢失（除非存在电池问题）。 在基于 Intel 的 Mac 上，存储位置是称为 NVRAM 的内存；而在基于 PowerPC 的 Mac 上，存储位置则是称为 PRAM 的内存。操作步骤为：</p>
-<ul>
-<li>关闭电脑。</li>
-<li>在键盘上找到以下按键：Command、Option、P 和 R。您需要在步骤 4 中同时按下这些键。</li>
-<li>启动电脑。</li>
-<li>按住 Command-Option-P-R 键。必须在出现灰屏前按下此组合键。</li>
-<li>按住上述键，直到电脑重新启动，您会再次听到启动声。</li>
-<li>松开这些键。</li>
-</ul>
-<p>在NVRAM和PRAM中保存着很多硬件的配置，并且不会因为关机而丢失。详细的信息可以参考”<a href="https://link.zhihu.com/?target=http%3A//support.apple.com/kb/HT1379%3Fviewlocale%3Dzh_CN" target="_blank" rel="noopener">重置 Mac 的 PRAM 和 NVRAM</a>“，”<a href="https://link.zhihu.com/?target=http%3A//support.apple.com/kb/HT1895%3Fviewlocale%3Dzh_CN" target="_blank" rel="noopener">何时要重置 NVRAM 或 PRAM</a>“，”<a href="https://link.zhihu.com/?target=http%3A//support.apple.com/kb/HT1242%3Fviewlocale%3Dzh_CN" target="_blank" rel="noopener">Mac OS X：PRAM 中存储的是什么</a>“。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjonpq0jq000mqjzcqakful1b" class="article-share-link">Teilen</a>
-      
-      
     </footer>
   </div>
   
@@ -821,7 +801,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a>
+      <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a>
     </div>
   </div>
 
@@ -843,6 +823,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
           </li>
         
@@ -852,14 +840,6 @@
         
           <li>
             <a href="/2018/11/15/JavaScript打乱数组/">JavaScript打乱数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/11/高程阅读知识点/">JavaScript高级程序设计知识盲区</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/09/git反向操作解决冲突/">git反向操作解决冲突</a>
           </li>
         
       </ul>
