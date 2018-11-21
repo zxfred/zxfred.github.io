@@ -167,17 +167,21 @@
 <h2 id="提升（Hoisting）"><a href="#提升（Hoisting）" class="headerlink" title="提升（Hoisting）"></a><strong>提升（Hoisting）</strong></h2><p>很多书上只说了变量提升是将变量提至当前上下文的最顶端，却未说明原因，现在理解了执行环境的创建、激活阶段，由此也可以解释函数、变量的提升了。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> name); <span class="comment">// function</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> another); <span class="comment">// undefined</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'Abby'</span>,</span><br><span class="line">        another = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'Lucky'</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Abby'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> name); <span class="comment">// string</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> another); <span class="comment">// function</span></span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
 <p><strong>此时的创建阶段的过程是:</strong></p>
-<p>1.函数name和其引用被存入到VO之中。</p>
-<p>2.变量name发现在VO之中存在同名的属性，因此忽略。</p>
-<p>3.变量another存入到VO之中，并赋值为undefined。(这也是函数表达式不会提升的原因)</p>
+<ol>
+<li>函数name和其引用被存入到VO之中。</li>
+<li>变量name发现在VO之中存在同名的属性，因此忽略。</li>
+<li>变量another存入到VO之中，并赋值为undefined。(这也是函数表达式不会提升的原因)</li>
+</ol>
 <p><strong>此时代码从上到下执行的时候激活阶段的过程是:</strong></p>
-<p>1.console.log(typeof name); 此时name在VO中是函数。</p>
-<p>2.console.log(typeof another); 此时another在VO中的值是undefined。</p>
-<p>3.指出函数name的引用。</p>
-<p>4.将name赋值为’hello’。</p>
-<p>5.将another赋值为函数表达式的值。</p>
-<p>6.console.log(typeof name); 此时的name由于被函数被字符串赋值覆盖因此是string类型。</p>
-<p>7.console.log(typeof another); 此时的another被赋值成函数表达式因此是function类型。</p>
+<ol>
+<li>console.log(typeof name); 此时name在VO中是函数。</li>
+<li>console.log(typeof another); 此时another在VO中的值是undefined。</li>
+<li>指出函数name的引用。</li>
+<li>将name赋值为’hello’。</li>
+<li>将another赋值为函数表达式的值。</li>
+<li>console.log(typeof name); 此时的name由于被函数被字符串赋值覆盖因此是string类型。</li>
+<li>console.log(typeof another); 此时的another被赋值成函数表达式因此是function类型。</li>
+</ol>
 <p>因此理解执行环境之后也就很好理解了为什么我们能在name声明之前访问它，为什么之后的name的类型值发生了变化，为什么another第一次打印的时候是undefined等等问题了。</p>
 <hr>
 <p>参考资料：<br><a href="http://link.zhihu.com/?target=http%3A//davidshariff.com/blog/what-is-the-execution-context-in-javascript/" target="_blank" rel="noopener">what-is-the-execution-context-in-javascript</a><br><a href="http://link.zhihu.com/?target=http%3A//yanhaijing.com/javascript/2014/04/29/what-is-the-execution-context-in-javascript/" target="_blank" rel="noopener">了解JavaScript的执行上下文</a><br><a href="http://link.zhihu.com/?target=http%3A//jibbering.com/faq/notes/closures/%23clIRExSc" target="_blank" rel="noopener">Identifier Resolution, Execution Contexts and scope chains</a><br><a href="http://link.zhihu.com/?target=http%3A//www.jianshu.com/p/a6d37c77e8db" target="_blank" rel="noopener">前端基础进阶（二）：执行上下文详细图解</a></p>
