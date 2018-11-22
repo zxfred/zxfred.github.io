@@ -61,6 +61,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS文本两端对齐" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/CSS文本两端对齐/" class="article-date">
+  <time datetime="2018-07-24T11:34:55.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html" target="_blank" rel="noopener">转载自：司徒正美blog</a></p>
+<p>在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。</p>
+<p>text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：</p>
+<ul>
+<li>auto :允许浏览器用户代理确定使用的两端对齐法则</li>
+<li>inter-word :通过增加字之间的空格对齐文本。该行为是对齐所有文本行最快的方法。它的两端对齐行为对段落的最后一行无效</li>
+<li>newspaper : 通过增加或减少字或字母之间的空格对齐文本。是用于拉丁文字母表两端对齐的最精确格式</li>
+<li>distribute :处理空格很像newspaper，适用于东亚文档。尤其是泰国</li>
+<li>distribute-all-lines :两端对齐行的方式与distribute相同，也同样不包含两段对齐段落的最后一行。适用于表意字文档</li>
+<li>inter-ideograph : 为表意字文本提供完全两端对齐。他增加或减少表意字和词间的空格</li>
+</ul>
+<p>但它最早是作为IE的私有实现，像text-overflow， overflow-x等，在FF很晚才实现，换言之有严格的兼容性问题。并且FF，chrome需要手动在汉字间插入空白或软换行标签才生效，在chrome遇到的阻力就更大了。</p>
+<p>究极方案：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test1</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">text-justify</span>:distribute-all-lines;<span class="comment">/*ie6-8*/</span></span><br><span class="line">    <span class="attribute">text-align-last</span>:justify;<span class="comment">/* ie9*/</span></span><br><span class="line">    <span class="attribute">-moz-text-align-last</span>:justify;<span class="comment">/*ff*/</span></span><br><span class="line">    <span class="attribute">-webkit-text-align-last</span>:justify;<span class="comment">/*chrome 20+*/</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123;<span class="comment">/* chrome*/</span></span><br><span class="line">      <span class="selector-class">.test1</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">          <span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">          <span class="attribute">display</span>: inline-block;</span><br><span class="line">          <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">          <span class="attribute">overflow</span>:hidden;</span><br><span class="line">          <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>所 在 地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>工 作 单 位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjosl69fa00070nzclrv8xvti" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-浅析浏览器输入URL到页面输出执行流程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" class="article-date">
@@ -101,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjosl1iwt001pyvzcoqcilgcn" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjosl69gb001q0nzcsxd3wsyu" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -143,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjosl1iwk0016yvzcud4sng8x" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjosl69g100170nzc3wtrfcx9" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -214,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjosl1iwl0017yvzc5kcaadk4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjosl69g3001b0nzcx2fyb8ar" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -355,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjosl1iwu001syvzc0jfbgcqj" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjosl69gb001s0nzcpuxim3xe" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -464,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjosl1iwa000vyvzcqkwhhhya" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjosl69fs000w0nzc1l30jrdr" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -560,7 +611,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjosl1iwm001ayvzcs8d4mne1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/03/小程序开发总结（更新ing）/" data-id="cjosl69g6001g0nzcoh7ss3vo" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -601,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjosl1iws001oyvzcnundw8ns" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjosl69g9001p0nzct61x84ms" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -641,7 +692,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjosl1iwu001ryvzcqpui24s1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjosl69gc001u0nzcoihvexfx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -698,75 +749,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjosl1iwj0015yvzcm1gmo2tl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjosl69g000160nzcegjgfkmy" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-getElement和query两类获取DOM方式的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/" class="article-date">
-  <time datetime="2018-06-11T04:05:55.000Z" itemprop="datePublished">2018-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/11/getElement和query两类获取DOM方式的区别/">getElement和query两类获取DOM方式的区别</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>###获取 DOM 对象有很多种方法，将常用的分为 getElement 和 query 两类</p>
-<ul>
-<li>getElementById、getElementsByTagName、getElementsByClassName等</li>
-<li>querySelector、querySelectorAll </li>
-</ul>
-<p>####getElementsByTagName()</p>
-<ul>
-<li>是document对象特有的函数，只能通过其来调用该方法</li>
-<li>返回一个HTMLCollection集合</li>
-<li>返回元素的顺序是它们在文档中的顺序</li>
-<li>传递给 getElementsByTagName() 方法的字符串可以不区分大小写</li>
-</ul>
-<p>####getElementsByClassName()</p>
-<ul>
-<li>返回作为 NodeList 对象，代表一个有顺序的节点列表</li>
-</ul>
-<p>####querySelector() 与 querySelectorAll() </p>
-<ul>
-<li>返回匹配指定 <strong>CSS 选择器 </strong>元素</li>
-<li>该方法只返回匹配指定选择器的第一个元素。如要返回所有匹配元素，需要使用 querySelectorAll() 方法</li>
-<li>querySelector() 是按css规范来实现的，所以传入的字符串中第一个字符不能是数字</li>
-</ul>
-<p>####其他</p>
-<ul>
-<li>query方法出来的元素及元素数组是静态的，不会随着文档操作而改变</li>
-<li>getElement这类方法选出的元素是动态的</li>
-<li>getElement这类方法性能比较好，query则比较方便</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjosl1iwc000yyvzc7lkar4p7" class="article-share-link">Teilen</a>
-      
-      
     </footer>
   </div>
   
@@ -824,6 +811,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/ES6知识点合集/">ES6知识点合集</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/20/Promise中能catch到什么/">Promise中能catch到什么</a>
           </li>
         
@@ -837,10 +828,6 @@
         
           <li>
             <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/15/JavaScript获取字符长度/">JavaScript获取字符长度</a>
           </li>
         
       </ul>
