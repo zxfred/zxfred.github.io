@@ -108,6 +108,9 @@
 <p><strong>（7）输入模块的指定方法</strong></p>
 <p>加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; SourceMapConsumer, SourceNode &#125; = <span class="built_in">require</span>(<span class="string">"source-map"</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以很方便地将现有对象的方法，赋值到某个变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; log, sin, cos &#125; = <span class="built_in">Math</span>;</span><br></pre></td></tr></table></figure>
+<p>上面代码将<code>Math</code>对象的对数、正弦、余弦三个方法，赋值到对应的变量上，使用起来就会方便很多。</p>
 
       
     </div>

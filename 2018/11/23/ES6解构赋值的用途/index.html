@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/11/23/ES6解构赋值的用途/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="什么是ES6解构在ES6中添加了一个新属性：解构，允许你使用类似数组或对象字面量的语法将数组和对象的属性赋给各种变量。解构是一种打破数据结构，将其拆分为更小部分的过程，允许我们将右边的表达式看起来也像变量声明一般，然后在左边将值一一提取。 解构这种赋值语法较为简洁，比传统的属性访问更为清晰。 ES6解构赋值用途（1）交换变量的值 1[x, y] = [y, x]; 上面代码交换变量x和y的值，这样">
-<meta property="og:updated_time" content="2018-11-23T09:56:22.945Z">
+<meta property="og:updated_time" content="2018-11-23T10:01:44.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6解构赋值的用途">
 <meta name="twitter:description" content="什么是ES6解构在ES6中添加了一个新属性：解构，允许你使用类似数组或对象字面量的语法将数组和对象的属性赋给各种变量。解构是一种打破数据结构，将其拆分为更小部分的过程，允许我们将右边的表达式看起来也像变量声明一般，然后在左边将值一一提取。 解构这种赋值语法较为简洁，比传统的属性访问更为清晰。 ES6解构赋值用途（1）交换变量的值 1[x, y] = [y, x]; 上面代码交换变量x和y的值，这样">
@@ -110,6 +110,9 @@
 <p><strong>（7）输入模块的指定方法</strong></p>
 <p>加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; SourceMapConsumer, SourceNode &#125; = <span class="built_in">require</span>(<span class="string">"source-map"</span>);</span><br></pre></td></tr></table></figure>
+<p>也可以很方便地将现有对象的方法，赋值到某个变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; log, sin, cos &#125; = <span class="built_in">Math</span>;</span><br></pre></td></tr></table></figure>
+<p>上面代码将<code>Math</code>对象的对数、正弦、余弦三个方法，赋值到对应的变量上，使用起来就会方便很多。</p>
 
       
     </div>
