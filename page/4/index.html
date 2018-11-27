@@ -61,6 +61,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-二叉树与二叉查找树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/21/二叉树与二叉查找树/" class="article-date">
+  <time datetime="2018-06-21T09:43:10.000Z" itemprop="datePublished">2018-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/21/二叉树与二叉查找树/">二叉树与二叉查找树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##树</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>一棵树最上面的节点成为<strong>根节点</strong></li>
+<li>如果一个节点下面链接多个节点，那么该节点称为<strong>父节点</strong>，它下面的节点称为<strong>子节点</strong></li>
+<li>一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为<strong>叶子节点</strong></li>
+<li>一个节点到另一个节点的一组边称为<strong>路径</strong></li>
+<li>每个节点都有一个与之相关的值，称为<strong>键值</strong>或<strong>键</strong></li>
+</ul>
+<h3 id="树的层次"><a href="#树的层次" class="headerlink" title="树的层次"></a>树的层次</h3><p>根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的<strong>深度</strong></p>
+<h2 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>左节点</strong>与<strong>右节点</strong></li>
+<li>二叉查找树（BST）：较小的值保存在左节点，较大的值保存在右节点，这样查找的效率很高，对于数值型和非数值型的数据都是这样</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">data, left, right</span>) </span>&#123; <span class="comment">// 新建节点</span></span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.left = left</span><br><span class="line">    <span class="keyword">this</span>.right = right</span><br><span class="line">    <span class="keyword">this</span>.show = show</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.date</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 二叉查找树</span></span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.insert = insert</span><br><span class="line">    <span class="keyword">this</span>.inOrder = inOrder</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">data</span>) </span>&#123; <span class="comment">// 增加节点</span></span><br><span class="line">    <span class="keyword">var</span> n = <span class="keyword">new</span> Node(data, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.root = n</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.root</span><br><span class="line">        <span class="keyword">var</span> parent</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            parent = current</span><br><span class="line">            <span class="keyword">if</span> (data &lt; current.data) &#123;</span><br><span class="line">                current = current.left</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.left = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                current = current.right</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.right = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="遍历二叉查找树"><a href="#遍历二叉查找树" class="headerlink" title="遍历二叉查找树"></a>遍历二叉查找树</h3><ul>
+<li>中序遍历：按节点上的键值，以升序访问查找树上所有节点</li>
+<li>前序遍历：先访问根节点，再以同样方式访问左子树和右子树</li>
+<li>后序遍历：先访问叶子节点，从左子树到右子树，再到根节点</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjozrddh30013qzzcokva9k2h" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-getElement和query两类获取DOM方式的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/11/getElement和query两类获取DOM方式的区别/" class="article-date">
@@ -115,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjotuphp400101uzc6upun7u1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/11/getElement和query两类获取DOM方式的区别/" data-id="cjozrddh0000yqzzc4doxxntf" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -164,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjotuphoa00031uzc3sibsyqs" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中没见过的高级属性/" data-id="cjozrddge0007qzzc71zu4tcm" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -240,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjotuphob00041uzc8colcpqy" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjozrddg80003qzzcsc775ymw" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
@@ -299,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjotuphox000r1uzcmnia1np9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjozrddgt000qqzzc566ezraj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -438,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjotupho900021uzccfc7m4vv" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjozrddg40001qzzcuufow469" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -595,7 +652,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjotupho700011uzc7iz666dw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjozrddg60002qzzcldg4w6rj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -650,7 +707,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjotuphow000q1uzc62dmxk1f" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjozrddgr000oqzzcbb20owyl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -698,7 +755,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjotuphot000m1uzc8n3j9cdw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjozrddgq000mqzzckeoriur2" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -801,79 +858,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjotuphof00061uzcktpm2xr4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjozrddgd0006qzzczeh7vmzr" class="article-share-link">Teilen</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-netstat 的基本用法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/08/netstat 的基本用法/" class="article-date">
-  <time datetime="2018-05-08T02:05:22.000Z" itemprop="datePublished">2018-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/netstat 的基本用法/">netstat 的基本用法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="1-列出所有连接"><a href="#1-列出所有连接" class="headerlink" title="1. 列出所有连接"></a>1. 列出所有连接</h3><p>最简单的命令：列出所有当前的连接。使用 -a 选项即可。</p>
-<p>该命令列出 tcp, udp 和 unix 协议下的所有连接。然而这些信息还不够详细，管理员往往需要查看某个协议或端口的具体连接情况。</p>
-<h3 id="2-只列出-TCP-或-UDP-协议的连接"><a href="#2-只列出-TCP-或-UDP-协议的连接" class="headerlink" title="2. 只列出 TCP 或 UDP 协议的连接"></a>2. 只列出 TCP 或 UDP 协议的连接</h3><p>列出 TCP 协议的连接，使用 <strong>-t</strong> 选项</p>
-<p>列出 UDP 协议的连接，使用 <strong>-u</strong> 选项</p>
-<p>会同时显示 IPv4 和 IPv6 的连接</p>
-<h3 id="3-禁用反向域名解析，加快查询速度"><a href="#3-禁用反向域名解析，加快查询速度" class="headerlink" title="3. 禁用反向域名解析，加快查询速度"></a>3. 禁用反向域名解析，加快查询速度</h3><p>默认情况下 netstat 会通过反向域名解析技术查找每个 IP 地址对应的主机名。这会降低查找速度。如果你觉得 IP 地址已经足够，而没有必要知道主机名，就使用 <strong>-n</strong> 选项禁用域名解析功能。</p>
-<h3 id="4-只列出监听中的连接"><a href="#4-只列出监听中的连接" class="headerlink" title="4. 只列出监听中的连接"></a>4. 只列出监听中的连接</h3><p>任何网络服务的后台进程都会打开一个<strong>端口</strong>，用于监听接入的请求。使用 <strong>-l</strong> 选项，可以看到处于监听状态连接，如果你想查看所有监听端口，去掉 <strong>-t</strong> 选项。如果你只想查看 UDP 端口，使用 <strong>-u</strong> 选项，代替 <strong>-t</strong> 选项。</p>
-<p>注意：不要使用 <strong>-a</strong> 选项，否则 netstat 会列出所有连接，而不仅仅是监听端口。</p>
-<h3 id="5-获取进程名、进程号以及用户-ID"><a href="#5-获取进程名、进程号以及用户-ID" class="headerlink" title="5. 获取进程名、进程号以及用户 ID"></a>5. 获取进程名、进程号以及用户 ID</h3><p>查看端口和连接的信息时，能查看到它们对应的进程名和进程号对系统管理员来说是非常有帮助的。举个栗子，Apache 的 httpd 服务开启80端口，如果你要查看 http 服务是否已经启动，或者 http 服务是由 apache 还是 nginx 启动的，这时候你可以看看进程名。</p>
-<p>使用 <strong>-p</strong> 选项查看进程信息</p>
-<p>使用 <strong>-p</strong> 选项时，netstat 必须运行在 root 权限之下，不然它就不能得到运行在 root 权限下的进程名，而很多服务包括 http 和 ftp 都运行在 root 权限之下。</p>
-<p>相比进程名和进程号而言，查看进程的拥有者会更有用。使用 <strong>-ep</strong> 选项可以同时查看进程名和用户名。这些额外的信息包括用户名和进程的索引节点号。这个命令对网管来说很有用。</p>
-<p><strong>注意</strong> - 假如你将 <strong>-n</strong> 和 <strong>-e</strong> 选项一起使用，User 列的属性就是用户的 ID 号，而不是用户名。</p>
-<h3 id="6-打印统计数据"><a href="#6-打印统计数据" class="headerlink" title="6. 打印统计数据"></a>6. 打印统计数据</h3><p>netstat <strong>-s</strong> 可以打印出网络统计数据，包括某个协议下的收发包数量。</p>
-<p>如果想只打印出 TCP 或 UDP 协议的统计数据，只要加上对应的选项（<strong>-t</strong> 和 <strong>-u</strong>）即可</p>
-<h3 id="7-显示内核路由信息"><a href="#7-显示内核路由信息" class="headerlink" title="7. 显示内核路由信息"></a>7. 显示内核路由信息</h3><p>使用 <strong>-r</strong> 选项打印内核路由信息。打印出来的信息与 route 命令输出的信息一样。</p>
-<p>我们也可以使用 <strong>-n</strong> 选项禁止域名解析。</p>
-<h3 id="8-打印网络接口"><a href="#8-打印网络接口" class="headerlink" title="8. 打印网络接口"></a>8. 打印网络接口</h3><p>打印网络接口信息，使用 <strong>-i</strong> 选项</p>
-<p>上面输出的信息比较原始。将 <strong>-e</strong> 选项和 <strong>-i</strong> 选项搭配使用，可以输出用户友好的信息</p>
-<h3 id="9-netstat-持续输出"><a href="#9-netstat-持续输出" class="headerlink" title="9. netstat 持续输出"></a>9. netstat 持续输出</h3><p>我们可以使用 netstat 的 <strong>-c</strong> 选项持续输出信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -ct</span><br></pre></td></tr></table></figure>
-<p>这个命令可持续输出 TCP 协议信息。</p>
-<h3 id="10-显示多播组信息"><a href="#10-显示多播组信息" class="headerlink" title="10. 显示多播组信息"></a>10. 显示多播组信息</h3><p>选项 <strong>-g</strong> 会输出 IPv4 和 IPv6 的多播组信息</p>
-<h2 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h2><h3 id="打印-active-状态的连接"><a href="#打印-active-状态的连接" class="headerlink" title="打印 active 状态的连接"></a>打印 active 状态的连接</h3><p>active 状态的套接字连接用 “ESTABLISHED” 字段表示，所以我们可以使用 grep 命令获得 active 状态的连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -atnp | grep ESTA</span><br><span class="line">(Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.)</span><br><span class="line">tcp        0      0 192.168.1.2:49156       173.255.230.5:80        ESTABLISHED 1691/chrome     </span><br><span class="line">tcp        0      0 192.168.1.2:33324       173.194.36.117:443      ESTABLISHED 1691/chrome</span><br></pre></td></tr></table></figure>
-<p>配合 watch 命令监视 active 状态的连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch -d -n0 &quot;netstat -atnp | grep ESTA&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="查看服务是否在运行"><a href="#查看服务是否在运行" class="headerlink" title="查看服务是否在运行"></a>查看服务是否在运行</h3><p>如果你想看看 http,smtp 或 ntp 服务是否在运行，使用 grep。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo netstat -aple | grep ntp</span><br><span class="line">udp        0      0 enlightened.local:ntp   *:*                                 root       17430       1789/ntpd       </span><br><span class="line">udp        0      0 localhost:ntp           *:*                                 root       17429       1789/ntpd       </span><br><span class="line">udp        0      0 *:ntp                   *:*                                 root       17422       1789/ntpd       </span><br><span class="line">udp6       0      0 fe80::216:36ff:fef8:ntp [::]:*                              root       17432       1789/ntpd       </span><br><span class="line">udp6       0      0 ip6-localhost:ntp       [::]:*                              root       17431       1789/ntpd       </span><br><span class="line">udp6       0      0 [::]:ntp                [::]:*                              root       17423       1789/ntpd       unix  2      [ ]         DGRAM                    17418    1789/ntpd</span><br></pre></td></tr></table></figure>
-<p>从这里可以看到 ntp 服务正在运行。使用 grep 命令你可以查看 http 或 smtp 或其它任何你想查看的服务。</p>
-<hr>
-<p>来源: <a href="http://www.binarytides.com/linux-netstat-command-examples/" target="_blank" rel="noopener">http://www.binarytides.com/linux-netstat-command-examples/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjotuphp600131uzck8ussgpr" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
-
     </footer>
   </div>
   
@@ -931,6 +918,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/23/ES6解构赋值的用途/">ES6解构赋值的用途</a>
           </li>
         
@@ -944,10 +935,6 @@
         
           <li>
             <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
           </li>
         
       </ul>
