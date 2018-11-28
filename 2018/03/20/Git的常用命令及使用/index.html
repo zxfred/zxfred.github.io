@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/index.html">
 <meta property="og:site_name" content="Acidic Accident">
 <meta property="og:description" content="基本命令 git init初始化 git add &amp;lt;file&amp;gt; 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下 git commit -m 提交所有修改，后面加改动记录，commit 之后暂存区就清空了 git status 查看工作区状态，看看是否有文件修改过 git diff 查看difference，看看修改内容  时空穿梭版本回退git reset --hard">
-<meta property="og:updated_time" content="2018-11-05T12:27:56.057Z">
+<meta property="og:updated_time" content="2018-11-28T09:33:11.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git的常用命令及使用">
 <meta name="twitter:description" content="基本命令 git init初始化 git add &amp;lt;file&amp;gt; 添加文件，把要提交的所有修改放到暂存区，每次修改都要add一下 git commit -m 提交所有修改，后面加改动记录，commit 之后暂存区就清空了 git status 查看工作区状态，看看是否有文件修改过 git diff 查看difference，看看修改内容  时空穿梭版本回退git reset --hard">
@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -148,11 +148,13 @@ $ git commit -m &quot;remove test.txt&quot;
 <h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><pre><code>1. 查看分支：`git branch`
 2. 创建分支：`git branch &lt;name&gt;`
 3. 删除本地分支：git branch -D 分支名
-</code></pre>
+</code></pre><h3 id="删除gitignore缓存"><a href="#删除gitignore缓存" class="headerlink" title="删除gitignore缓存"></a>删除gitignore缓存</h3><p>针对建立了 gitignore 之后文件仍然被 track 的情况</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在项目文件夹下，清除文件追踪缓存</span><br><span class="line">git rm --cached --force ".idea/vcs.xml"</span><br><span class="line">git rm --cached --force ".idea/workspace.xml"</span><br><span class="line">git rm --cached --force ".idea/es6.iml"</span><br><span class="line">git rm --cached --force ".idea/modules.xml"</span><br><span class="line">git rm --cached --force ".idea/misc.xml"</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjozrddgj000cqzzcih5v1tr7" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjozrddgj000cqzzcih5v1tr7" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -162,7 +164,7 @@ $ git commit -m &quot;remove test.txt&quot;
 <nav id="article-nav">
   
     <a href="/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           module.exports与exports, export与export default之间的关系和区别
@@ -204,7 +206,7 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -214,7 +216,7 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
