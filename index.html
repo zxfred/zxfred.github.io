@@ -61,6 +61,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序开发总结（更新ing）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/30/小程序开发总结（更新ing）/" class="article-date">
+  <time datetime="2018-11-30T04:00:34.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>小程序开发学习过程中的一些总结：</p>
+<ol>
+<li><p>iPhone 和安卓机显示样式不同，需要在 JS 中判断设备类型并针对性解决，如商品促销标签</p>
+</li>
+<li><p>不应该频繁使用 setData ，不应该传入大量数据，否则会影响性能</p>
+</li>
+<li><p><code>scroll-view</code> 判断是否到达底部，进行数据加载，可以使用 scroll-view 的 bindscrolltolower 属性</p>
+</li>
+<li><p><code>line-height</code> 需要比字号大一些，避免整行文字显示不完整，多行文字（多用于商品标题），行高比字号大一点，安卓设备大 3-4rpx，iOS设备大 1-2rpx，文字块的高度，比两倍（或多倍）行高的和小 2rpx</p>
+</li>
+<li><p>列表第二列商品标签显示不全问题（如图），原因尚不明确，可能与微信 rpx 计算方式有关系，暂时将外部 card 宽度从 50% 改为定宽解决，应该仍有其他解决方法</p>
+</li>
+<li><p>wx.getSystemInfo API 非常有用，可以判断平台等等设备信息，微信开发者工具调试中不能模拟，需要真机调试</p>
+</li>
+<li><p>商品标签在 iPhone 6/7 和 iPhone 6p/7p 不同尺寸屏幕上，内部文字不垂直居中，可以适当增加1-2rpx 行高</p>
+</li>
+<li><p>一些 API 如 createSelectorQuery 是异步操作的，若执行在如 setData 比较大量的数据写入之后时，可能会因为 setData 有性能延迟而发生错误</p>
+</li>
+<li><p>小程序内嵌 web-view 刷新方法：小程序自带的原生API只能用于刷新小程序页面，不能刷新 web-view 页面。</p>
+<ul>
+<li><p>最好的方法：使用 wx:if 给 web-view 绑定一个 boolean 变量，利用 if 会刷新 dom 节点的性质，更新 boolean（先false再true）会使 web-view 页面刷新。</p>
+<p>问题：目前没有发现问题</p>
+</li>
+<li><p>不完美的方法：在需要刷新页面的时候，先将 url 变量变成空字符串，再重新赋值。</p>
+<p>问题：在网页模拟器上，后退会出现url为空时候的错误页，但在iOS真机上正常</p>
+</li>
+<li><p>不要使用的方法：web-view 页面会在 url 改变的时候刷新，可以通过更改url的方式（如尾部增加一个时间戳作为参数）使页面刷新。</p>
+<p>问题：iOS系统中每次后退时会回到上一个页面，多次跳转时要点击多次后退，使用体验差</p>
+</li>
+</ul>
+</li>
+<li><p>收集 formid 时若需要在内容外包一层 button 标签，应该清除这个 button 的默认样式，避免内部样式错乱</p>
+</li>
+<li><p>如何禁止页面滚动：</p>
+<p>不用下拉刷新的方法：</p>
+<ul>
+<li>整个布局用<code>&lt;scroll-view&gt;</code>作为根节点，绑定 scroll-view 的 scroll-y 属性<code>&lt;scroll-view scroll-y=&quot;false&quot;&gt;</code></li>
+<li>样式文件中设置 Page 的 overflow-y 属性值为hidden</li>
+<li>样式文件中设置 scroll-view 的 height 属性值为100%</li>
+</ul>
+<p>使用下拉刷新的方法：</p>
+<ul>
+<li>在外层添加一个view：<code>&lt;view class=&quot;page&quot; style=&quot;height: ; overflow: ;&quot;&gt;</code> 然后动态算出设备高度</li>
+</ul>
+</li>
+<li><p>【不只是小程序的问题】：JavaScript会自动取消数值类型后面无意义的0，导致解析JSON之后数值位数不一致，建议转换成字符串，或者在数据较少的时候统一toFixed</p>
+</li>
+<li><p>屏蔽触摸滑动事件：给想要屏蔽滑动的元素添加属性 catchtouchmove=”true”，目前对于 scroll-view 元素不可用。针对弹窗滑动穿透的问题，可以在弹窗显示的时候，给底部页面根元素设置改属性，弹窗隐藏时再取消</p>
+</li>
+<li><p>圆形图片设置 border 可能会在 border 内部出现锯齿，影响样式， 可以在图片外部套一个略大于图片的标签，用背景色的方法解决</p>
+</li>
+<li><p>在A页面使用 setTimeout 的时候，方法未执行前如果切换到其他 tab，方法不会被挂起而依然会被执行，开发时需要注意避免这种情况</p>
+</li>
+<li><p>iPhone 6, iOS 10.3 使用 font-weight: lighter 会出现渲染问题，字体非常细以至于失去本身的颜色，更新：iPhone 6, iOS 12+ 显示正常，推测是iOS版本问题</p>
+</li>
+<li><p>iOS的页面滑动回弹可能会引起样式bug，使用 scroll-view 并使用属性屏蔽回弹可以解决</p>
+</li>
+<li><p>原生组件 textarea 中的内容遮挡浮层的问题</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/30/小程序开发总结（更新ing）/" data-id="cjozrddha001eqzzcl5i7gwnt" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ES6使用模板字符串进行模板编译" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/27/ES6使用模板字符串进行模板编译/" class="article-date">
@@ -302,42 +400,6 @@
 
 
   
-    <article id="post-JavaScript拷贝数组" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/19/JavaScript拷贝数组/" class="article-date">
-  <time datetime="2018-11-19T09:33:59.000Z" itemprop="datePublished">2018-11-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript拷贝数组/" data-id="cjozrddgn000gqzzcu49vke0n" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-JavaScript中的with语句" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/19/JavaScript中的with语句/" class="article-date">
@@ -498,49 +560,6 @@
 
 
   
-    <article id="post-高程阅读知识点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/11/高程阅读知识点/" class="article-date">
-  <time datetime="2018-11-11T15:02:37.000Z" itemprop="datePublished">2018-11-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/11/高程阅读知识点/">JavaScript高级程序设计知识盲区</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>无序知识点，尽量简洁，目的是减少再次阅读复习的难度</p>
-<h3 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h3><ul>
-<li>按值传递而不是按引用传递</li>
-</ul>
-<h3 id="执行环境"><a href="#执行环境" class="headerlink" title="执行环境"></a>执行环境</h3><ul>
-<li>定义变量或函数有权访问的其他数据</li>
-</ul>
-<h3 id="with-语句与改变作用域链"><a href="#with-语句与改变作用域链" class="headerlink" title="with 语句与改变作用域链"></a>with 语句与改变作用域链</h3>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/11/高程阅读知识点/" data-id="cjozrddhj001tqzzchus3yxhz" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-git反向操作解决冲突" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/09/git反向操作解决冲突/" class="article-date">
@@ -570,6 +589,50 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjozrddh0000zqzzcvceecjq7" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setTimeout代替setInterval" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/07/setTimeout代替setInterval/" class="article-date">
+  <time datetime="2018-11-07T09:53:14.000Z" itemprop="datePublished">2018-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let executeTimes = 0</span><br><span class="line">let intervalTime = 300</span><br><span class="line"></span><br><span class="line">setTimeout(function repeat() &#123;</span><br><span class="line">    executeTimes++;</span><br><span class="line">    </span><br><span class="line">    // do something</span><br><span class="line">    </span><br><span class="line">    if(executeTimes &lt; 50)&#123;</span><br><span class="line">        setTimeout(repeat,intervalTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, intervalTime)</span><br></pre></td></tr></table></figure>
+<p>setInterval 有弊端，尽量避免使用</p>
+<ul>
+<li>无视代码错误</li>
+<li>无视网络延迟</li>
+<li>不保证执行</li>
+</ul>
+<p>如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给setTimeout。 不过，要注意的是JavaScript的计时器并不是非常精确[2]。因此你不可能得到绝对“平均”的延迟，即使使用setInterval也不行，原因很多（比如垃圾回收、JavaScript是单线程的，等等）。此外，当前浏览器也会将最小的超时时间固定在4ms到15ms之间。因此不要指望一点误差也没有。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjozrddh10010qzzc7rovqer3" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -629,6 +692,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
           </li>
         
@@ -642,10 +709,6 @@
         
           <li>
             <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
           </li>
         
       </ul>

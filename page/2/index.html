@@ -61,50 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-setTimeout代替setInterval" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/07/setTimeout代替setInterval/" class="article-date">
-  <time datetime="2018-11-07T09:53:14.000Z" itemprop="datePublished">2018-11-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let executeTimes = 0</span><br><span class="line">let intervalTime = 300</span><br><span class="line"></span><br><span class="line">setTimeout(function repeat() &#123;</span><br><span class="line">    executeTimes++;</span><br><span class="line">    </span><br><span class="line">    // do something</span><br><span class="line">    </span><br><span class="line">    if(executeTimes &lt; 50)&#123;</span><br><span class="line">        setTimeout(repeat,intervalTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, intervalTime)</span><br></pre></td></tr></table></figure>
-<p>setInterval 有弊端，尽量避免使用</p>
-<ul>
-<li>无视代码错误</li>
-<li>无视网络延迟</li>
-<li>不保证执行</li>
-</ul>
-<p>如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给setTimeout。 不过，要注意的是JavaScript的计时器并不是非常精确[2]。因此你不可能得到绝对“平均”的延迟，即使使用setInterval也不行，原因很多（比如垃圾回收、JavaScript是单线程的，等等）。此外，当前浏览器也会将最小的超时时间固定在4ms到15ms之间。因此不要指望一点误差也没有。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjozrddh10010qzzc7rovqer3" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-彻底理解JavaScript中的require、import与export" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/25/彻底理解JavaScript中的require、import与export/" class="article-date">
@@ -1086,6 +1042,57 @@
 
 
   
+    <article id="post-CSS文本两端对齐" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/24/CSS文本两端对齐/" class="article-date">
+  <time datetime="2018-07-24T11:34:55.000Z" itemprop="datePublished">2018-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/24/CSS文本两端对齐/">CSS文本两端对齐</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html" target="_blank" rel="noopener">转载自：司徒正美blog</a></p>
+<p>在做表单时我们经常遇到让上下两个字段对齐的情况，比如姓名， 手机号码， 出生地。这样我们就要用到 text-align， text-justify样式了。</p>
+<p>text-align直接设为justify就行了，text-justify的情况就复杂了，可能有人对它还不熟悉。IE的取值如下：</p>
+<ul>
+<li>auto :允许浏览器用户代理确定使用的两端对齐法则</li>
+<li>inter-word :通过增加字之间的空格对齐文本。该行为是对齐所有文本行最快的方法。它的两端对齐行为对段落的最后一行无效</li>
+<li>newspaper : 通过增加或减少字或字母之间的空格对齐文本。是用于拉丁文字母表两端对齐的最精确格式</li>
+<li>distribute :处理空格很像newspaper，适用于东亚文档。尤其是泰国</li>
+<li>distribute-all-lines :两端对齐行的方式与distribute相同，也同样不包含两段对齐段落的最后一行。适用于表意字文档</li>
+<li>inter-ideograph : 为表意字文本提供完全两端对齐。他增加或减少表意字和词间的空格</li>
+</ul>
+<p>但它最早是作为IE的私有实现，像text-overflow， overflow-x等，在FF很晚才实现，换言之有严格的兼容性问题。并且FF，chrome需要手动在汉字间插入空白或软换行标签才生效，在chrome遇到的阻力就更大了。</p>
+<p>究极方案：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test1</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>:justify;</span><br><span class="line">    <span class="attribute">text-justify</span>:distribute-all-lines;<span class="comment">/*ie6-8*/</span></span><br><span class="line">    <span class="attribute">text-align-last</span>:justify;<span class="comment">/* ie9*/</span></span><br><span class="line">    <span class="attribute">-moz-text-align-last</span>:justify;<span class="comment">/*ff*/</span></span><br><span class="line">    <span class="attribute">-webkit-text-align-last</span>:justify;<span class="comment">/*chrome 20+*/</span></span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (-webkit-min-device-pixel-ratio:<span class="number">0</span>)&#123;<span class="comment">/* chrome*/</span></span><br><span class="line">      <span class="selector-class">.test1</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">          <span class="attribute">content</span>:<span class="string">"."</span>;</span><br><span class="line">          <span class="attribute">display</span>: inline-block;</span><br><span class="line">          <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">          <span class="attribute">overflow</span>:hidden;</span><br><span class="line">          <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 姓 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>姓 名 名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>所 在 地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test1"</span>&gt;</span>工 作 单 位<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjozrddgf0008qzzcx2srv23n" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -1136,6 +1143,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
           </li>
         
@@ -1149,10 +1160,6 @@
         
           <li>
             <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
           </li>
         
       </ul>

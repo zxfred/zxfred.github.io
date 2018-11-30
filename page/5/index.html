@@ -61,123 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
-  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/小程序嵌入Vue项目问题总结/">小程序嵌入Vue项目问题总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
-<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
-<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
-<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
-<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
-<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
-<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
-<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
-<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
-<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjozrddh8001cqzzc73v0r6wh" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-彻底理解JavaScript里的闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/02/彻底理解JavaScript里的闭包/" class="article-date">
-  <time datetime="2018-04-02T14:56:00.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/彻底理解JavaScript里的闭包/">彻底理解JavaScript里的闭包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h2><p>闭包创建一个词法作用域，这个作用域里面的变量被引用之后可以在这个词法作用域外面被自由访问，是一个函数和声明该函数的词法环境的组合。</p>
-<p>还有一种说法，闭包就是引用了自由变量的函数，这个自由变量与函数一同存在，即使脱离了创建它的环境。所以你常看到的说闭包就是绑定了上下文环境的函数。</p>
-<p>在下面的介绍中，我还是比较偏向闭包是一个函数和声明该函数的词法环境的组合这种解释，所以也会基于这种解释去阐述。</p>
-<h2 id="JS里面的闭包"><a href="#JS里面的闭包" class="headerlink" title="JS里面的闭包"></a>JS里面的闭包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  function say() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">  return say;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myHello = sayHello(&apos;abby&apos;);</span><br><span class="line">myHello(); // Hello,abby</span><br></pre></td></tr></table></figure>
-<p>上面这段代码，其实就形成了一个闭包，其中在 sayHello 这个函数里面定义的函数 say 和其声明它的词法环境就形成了一个闭包，因为它引用了sayHello 里面定义的一个变量 str，并且将 say 这个函数 return 了出去，这样在 sayHello 这个函数的外面也能访问它里面定义的变量 str，就好像 say 这个函数和这个变量绑定了一样。</p>
-<p>看到这里可能会疑问为什么在外部还能访问到这个变量呢，因为在有些语言中，一般认为函数的局部变量只在函数的执行期间可访问。说到这里又不得不说到执行环境，其实当执行到<code>let myHello = sayHello(&#39;fred&#39;);</code>这段代码的时候按理会销毁掉 sayHello()的执行环境，但是这里却没有，原因是因为 sayHello() 返回的是一个函数，这个函数里面的 str 引用了外部的变量 str,如果销毁了就找不到了，因此 sayHello() 这个函数的执行环境会一直在内存中，所以闭包会增加内存开销。</p>
-<p><strong>例子1: 闭包并不是一定需要 return 某个函数</strong></p>
-<p>虽然常见的闭包都是 return 出来一个函数，但是闭包并不一定非要 return，return 出一个函数只是为了能在作用域范围之外访问一个变量，我们用另一种方式也能做到，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let say;</span><br><span class="line">function sayHello(name) &#123;</span><br><span class="line">  let str = `Hello,$&#123;name&#125;`;</span><br><span class="line">  say = function() &#123;</span><br><span class="line">    console.log(str);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myHello = sayHello(&apos;fred&apos;);</span><br><span class="line">say(); // Hello,fred</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，say和声明它的词法环境其实也形成了一个闭包，在它的作用域里面持有了 sayHello 这个函数里面定义的 str 变量的引用，因此也能在 str 变量定义的作用域之外访问它。只要弄清楚闭包的本质即可。</p>
-<p>但是在 JS 里面，最常用的形成闭包的方式便是在一个函数里面嵌套另一个函数，另一个函数持有父作用域里面定义的变量。</p>
-<p><strong>例子2: 同一个调用函数生成同一个闭包环境，在里面声明的所有函数同时具有这个环境里面自由变量的引用。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">let get, up, down</span><br><span class="line">function setUp() &#123;</span><br><span class="line">  let number = 20</span><br><span class="line">  get = function() &#123;</span><br><span class="line">    console.log(number);</span><br><span class="line">  &#125;</span><br><span class="line">  up = function() &#123;</span><br><span class="line">    number += 3</span><br><span class="line">  &#125;</span><br><span class="line">  down = function() &#123;</span><br><span class="line">    number -=2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">setUp();</span><br><span class="line">get(); // 20</span><br><span class="line">up();</span><br><span class="line">down();</span><br><span class="line">get(); // 21</span><br></pre></td></tr></table></figure>
-<p>在这个例子里面，我们用setUp这个函数生成了一个闭包环境，在这个环境里面的三个函数共享了这个环境里面的 number 变量的引用，因此都可以对 number 进行操作。</p>
-<p><strong>例子3: 每一个调用函数都会创建不同的闭包环境。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  let array = [1, 2];</span><br><span class="line">  return function(num) &#123;</span><br><span class="line">    array.push(num);</span><br><span class="line">    console.log(`array:$&#123;array&#125;`);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let myClosure = newClosure();</span><br><span class="line">let yourClosure = newClosure();</span><br><span class="line">myClosure(3); // array:1,2,3</span><br><span class="line">yourClosure(4); // array:1,2,4</span><br><span class="line">myClosure(5); // array:1,2,3,5</span><br></pre></td></tr></table></figure>
-<p>上面这个例子里面， myClosure 和 yourClosure 的赋值语句，也就是 newClosure 这个函数被调用了两次，因此创建了两个不同的闭包环境，因此里面的变量是互不影响的。</p>
-<p><strong>例子4: 在循环里面创建闭包</strong></p>
-<p>在 let 被引入之前，一个常见的错误就是在循环中创建闭包，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">      console.log(i);</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 5个5</span><br></pre></td></tr></table></figure>
-<p>打印的结果大家也知道是5个5，因为 setTimeout 里面的函数保持对 i 的引用，在setTimeout的回调函数被执行的时候这个循环早已经执行完成。</p>
-<p>如何才能得到我们想要的01234，在这里有两种做法。</p>
-<p>一种是 <strong>创建一个新的闭包对象，这样每个闭包对象里面的变量就互不影响</strong>。例如下面的代码种每次 log(i)都会创建不同的闭包对象，所有的回调函数不会指向同一个环境。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function log(i) &#123;</span><br><span class="line">  return function() &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    setTimeout(log(i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>另一种做法就是使用自执行函数，外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是不会被循环改变的。写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function newClosure() &#123;</span><br><span class="line">  for(var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">    (function(e) &#123;</span><br><span class="line">      setTimeout(function() &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)(i)  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">newClosure(); // 0 1 2 3 4</span><br></pre></td></tr></table></figure>
-<p>还是 <code>let</code> 省事，所以赶紧拥抱 es6 吧。</p>
-<p>本文转载自知乎专栏：<a href="https://zhuanlan.zhihu.com/luckyabby" target="_blank" rel="noopener">一只萌媛的自我修炼</a></p>
-<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/31864924" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31864924</a> </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjozrddhb001gqzzcho83mvdx" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/01/URL的组成部分/" class="article-date">
@@ -660,6 +543,10 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
+            <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
           </li>
         
@@ -673,10 +560,6 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript拷贝数组/">JavaScript拷贝数组</a>
           </li>
         
       </ul>
