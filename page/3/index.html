@@ -61,56 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-浅析浏览器输入URL到页面输出执行流程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" class="article-date">
-  <time datetime="2018-07-23T10:31:13.000Z" itemprop="datePublished">2018-07-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/23/浅析浏览器输入URL到页面输出执行流程/">浅析浏览器输入URL到页面输出执行流程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="概念速览"><a href="#概念速览" class="headerlink" title="概念速览"></a>概念速览</h3><p>URL(uniform resource location) : 统一资源定位符,用来作为互联网上各种资源的标识符，可理解为 身份证号 。</p>
-<p>URL的基本结构: 协议名称 :// 服务器所在域名或者IP地址 : 端口号 / 所要访问的文件路径</p>
-<p>注意点:浏览器为了保证安全性,设定了跨域保护策略, 即窗口之间的通信必须满足使用相同协议, 相同域或者子域, 相同端口, 因此深入理解URL各组成部分的含义有助于我们判断两个窗口之间是否能互相通信。</p>
-<p>IP(Internet Protocol) :互联网中设备间进行通信都要遵从的一种协议,它规定了每台设备都要有且唯一的IP地址,用来标识自己在互联网中的地址。格式通常为<a href="https://link.zhihu.com/?target=http%3A//XXX.XXX.XXX.XXX" target="_blank" rel="noopener">http://XXX.XXX.XXX.XXX</a>，不同网段下IP地址的范围也不同。如有兴趣者,请自行百度。</p>
-<p>域名(Domain Name) :由于IP协议规定的纯数字IP地址在日常中难以记忆,因此人们便产生使用更加常见,好记的字符标识设备的地址,域名应运而生。一个域名就是一个更加容易记忆的目标主机的地址标识符。例如:百度的域名就为<a href="https://link.zhihu.com/?target=http%3A//www.baidu.com" target="_blank" rel="noopener">百度一下，你就知道</a>,实际对应的IP地址为119.75.217.109</p>
-<p>DNS(Domain Name System): 互联网中实际定位设备时还是使用IP地址来定位,因此产生了DNS,一种专门用来将域名转换为IP地址的协议,提供该协议服务的服务器就叫DNS服务器。</p>
-<p>HTTP(HyberText Transfer Protocol) : 超文本传输协议，万维网中传输超文本都要遵从的一个协议,可以理解为HTML文件的传输就是靠它。</p>
-<h2 id="解答部分"><a href="#解答部分" class="headerlink" title="解答部分"></a>解答部分</h2><h3 id="地址解析阶段"><a href="#地址解析阶段" class="headerlink" title="地址解析阶段"></a>地址解析阶段</h3><p>用户在浏览器端输入URL后,浏览器先做第一件事情就是找到目标域名的IP地址,大致经过以下几个阶段:</p>
-<p>1.查询 浏览器端的DNS缓存 中是否有目标域名的相关信息。<br>2.查询 本机的host文件 中是否有目标域名的信息。<br>3.查询本地的 路由器中的DNS缓存 中是否有目标域名的信息。<br>4.查询 ISP(互联网服务提供商,例如电信,移动)中的DNS服务器 中是否有目标域名的信息。<br>5.查询 根域名服务器 是否有目标域名的信息,如果没有,则传至 子域名服务器 进行查询， 以此递推 。<br>6.查询到目标IP地址后,则开始建立 TCP 三次握手 ,与目标服务器建立连接。<br>7.通过 HTTP 协议向目标主机发送请求。</p>
-<h3 id="请求处理及响应阶段"><a href="#请求处理及响应阶段" class="headerlink" title="请求处理及响应阶段"></a>请求处理及响应阶段</h3><p>1.服务器端接受到请求后,根据路由将url中的地址进行重定向到服务器程序上的目标文件。</p>
-<p>2.此处涉及到后台的MVC架构,大致如下:<br>URL中的文件地址部分经过服务器上的路由程序重定向到对应的控制器(controller)对象,控制器对象根据URL中指定的操作执行相关的逻辑并调用目标数据的模型(Model)对象,模型对象与数据库交互完成目标操作后,控制器将模型中反馈的数据填充到视图中。</p>
-<p>3.视图部分(通常是HTML页面)作为HTTP响应发送到浏览器端。</p>
-<h3 id="视图解析阶段"><a href="#视图解析阶段" class="headerlink" title="视图解析阶段"></a>视图解析阶段</h3><p>1.浏览器开始解析目标HTML文件,执行流的顺序为自上而下。<br>2.HTML解析器将HTML结构转换为基础的DOM(文档对象模型),构建DOM树完成后,触发DomContendLoaded事件。<br>3.CSS解析器将CSS解析为CSSOM(层叠样式表对象模型),一棵仅含有样式信息的树。<br>4.CSSOM和DOM开始合并构成渲染树,每个节点开始包含具体的样式信息。<br>5.计算渲染树中个各个节点的位置信息,即布局阶段。<br>6.将布局后的渲染树显示到界面上。</p>
-<p>注:图片等外部资源在解析阶段被加载，加载完毕后触发load事件</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjozrddhh001qqzzchkb48fvy" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-关于&amp;&amp;和||返回值的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/07/22/关于&&和||返回值的问题/" class="article-date">
@@ -727,6 +677,82 @@
 
 
   
+    <article id="post-CSS3中的transform详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/CSS3中的transform详解/" class="article-date">
+  <time datetime="2018-05-29T02:55:58.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/CSS3中的transform详解/">CSS3中的transform详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载自：<a href="https://www.cnblogs.com/afighter/p/5726888.html" target="_blank" rel="noopener">https://www.cnblogs.com/afighter/p/5726888.html</a></p>
+<hr>
+<p><strong>一、变形-旋转 ratate() 函数</strong></p>
+<p>通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为<strong>正值</strong>，元素相对原点中心<strong>顺时针</strong>旋转；如果这个值为<strong>负值</strong>，元素相对原点中心<strong>逆时针</strong>旋转。</p>
+<p>例：transform:rotate(-20deg) </p>
+<hr>
+<p><strong>二、变形- 扭曲 skew()函数</strong></p>
+<p>扭曲skew()函数能够让元素<strong>倾斜显示</strong>。它可以将一个对象以其中心位置围绕着<strong>X轴</strong>和<strong>Y轴</strong>按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变</p>
+<p>元素的形状。skew()函数不会旋转，而只会改变元素的形状。</p>
+<ul>
+<li>一个参数：表示水平方向的倾斜角度；</li>
+<li>两个参数：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度</li>
+</ul>
+<p>分3种情况</p>
+<p> transform:skewX(30deg) </p>
+<p> transform:skewY(10deg) </p>
+<p> transform:skew(-45deg) </p>
+<hr>
+<p> <strong>三、变形-缩放 scale() 函数</strong></p>
+<p>让元素根据中心原点对对象进行缩放。 <strong>scale()</strong>的取值默认的值为1，当值设置为<strong>0.01</strong>到<strong>0.99</strong>之间时，作用使一个元素缩小；而任何大于或等于<strong>1.01</strong>的值，作用是让元素放大。</p>
+<p>也分3种情况：</p>
+<p>transform:scale(x,y)  使元素水平方向和垂直方向同时缩放</p>
+<p>transform:scale(x)  X轴缩放</p>
+<p> transform:scale(y)  Y轴缩放</p>
+<hr>
+<p> <strong>四、变形-位移 translate() 函数</strong></p>
+<p><strong>translate()函数</strong>可以将元素向指定的方向移动，类似于position中的<strong>relative</strong>。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上</p>
+<p>的任何Web组件。</p>
+<p>分为三种情况：</p>
+<p>transform:translate(x,y)  使元素水平方向和垂直方向同时移动</p>
+<p> transform:translate(x)  使元素水平方向移动</p>
+<p> transform:translate(y)  使元素垂直方向移动</p>
+<hr>
+<p> <strong>五、变形-原点 transform-origin</strong></p>
+<p>任何一个元素都有一个中心点，默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p>
+<p>在没有重置transform-origin改变元素原点位置的情况下，CSS变形进行的旋转、位移、缩放，扭曲等操作都是<strong>以元素自己中心位置进行变形</strong>。但很多时候，我们可以通过</p>
+<p>transform-origin 来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</p>
+<p>transform-origin 取值和元素设置背景中的background-position取值类似(也可以是具体的像素值)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjozrddg80003qzzcsc775ymw" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -789,11 +815,11 @@
           </li>
         
           <li>
-            <a href="/2018/11/20/Promise中能catch到什么/">Promise中能catch到什么</a>
+            <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
           </li>
         
           <li>
-            <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
+            <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
           </li>
         
       </ul>
