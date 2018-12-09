@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,82 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-CSS3中的transform详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/CSS3中的transform详解/" class="article-date">
+  <time datetime="2018-05-29T02:55:58.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/29/CSS3中的transform详解/">CSS3中的transform详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载自：<a href="https://www.cnblogs.com/afighter/p/5726888.html" target="_blank" rel="noopener">https://www.cnblogs.com/afighter/p/5726888.html</a></p>
+<hr>
+<p><strong>一、变形-旋转 ratate() 函数</strong></p>
+<p>通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为<strong>正值</strong>，元素相对原点中心<strong>顺时针</strong>旋转；如果这个值为<strong>负值</strong>，元素相对原点中心<strong>逆时针</strong>旋转。</p>
+<p>例：transform:rotate(-20deg) </p>
+<hr>
+<p><strong>二、变形- 扭曲 skew()函数</strong></p>
+<p>扭曲skew()函数能够让元素<strong>倾斜显示</strong>。它可以将一个对象以其中心位置围绕着<strong>X轴</strong>和<strong>Y轴</strong>按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变</p>
+<p>元素的形状。skew()函数不会旋转，而只会改变元素的形状。</p>
+<ul>
+<li>一个参数：表示水平方向的倾斜角度；</li>
+<li>两个参数：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度</li>
+</ul>
+<p>分3种情况</p>
+<p> transform:skewX(30deg) </p>
+<p> transform:skewY(10deg) </p>
+<p> transform:skew(-45deg) </p>
+<hr>
+<p> <strong>三、变形-缩放 scale() 函数</strong></p>
+<p>让元素根据中心原点对对象进行缩放。 <strong>scale()</strong>的取值默认的值为1，当值设置为<strong>0.01</strong>到<strong>0.99</strong>之间时，作用使一个元素缩小；而任何大于或等于<strong>1.01</strong>的值，作用是让元素放大。</p>
+<p>也分3种情况：</p>
+<p>transform:scale(x,y)  使元素水平方向和垂直方向同时缩放</p>
+<p>transform:scale(x)  X轴缩放</p>
+<p> transform:scale(y)  Y轴缩放</p>
+<hr>
+<p> <strong>四、变形-位移 translate() 函数</strong></p>
+<p><strong>translate()函数</strong>可以将元素向指定的方向移动，类似于position中的<strong>relative</strong>。或以简单的理解为，使用translate()函数，可以把元素从原来的位置移动，而不影响在X、Y轴上</p>
+<p>的任何Web组件。</p>
+<p>分为三种情况：</p>
+<p>transform:translate(x,y)  使元素水平方向和垂直方向同时移动</p>
+<p> transform:translate(x)  使元素水平方向移动</p>
+<p> transform:translate(y)  使元素垂直方向移动</p>
+<hr>
+<p> <strong>五、变形-原点 transform-origin</strong></p>
+<p>任何一个元素都有一个中心点，默认情况之下，其中心点是居于元素X轴和Y轴的50%处。</p>
+<p>在没有重置transform-origin改变元素原点位置的情况下，CSS变形进行的旋转、位移、缩放，扭曲等操作都是<strong>以元素自己中心位置进行变形</strong>。但很多时候，我们可以通过</p>
+<p>transform-origin 来对元素进行原点位置改变，使元素原点不在元素的中心位置，以达到需要的原点位置。</p>
+<p>transform-origin 取值和元素设置背景中的background-position取值类似(也可以是具体的像素值)。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/29/CSS3中的transform详解/" data-id="cjph28cay00074qzcpvajukgs" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Mac急救办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -108,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjozrddgt000qqzzc566ezraj" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/25/Mac急救办法/" data-id="cjph28cbe000s4qzcxb9gs4ye" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -247,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjozrddg40001qzzcuufow469" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-设计模式/" data-id="cjph28cas00024qzc208bvs68" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -404,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjozrddg60002qzzcldg4w6rj" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/75team-服务器与HTTP基础/" data-id="cjph28cat00034qzctwnh81dw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -459,7 +535,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjozrddgr000oqzzcbb20owyl" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/21/Linux命令基础/" data-id="cjph28cba000k4qzcnjyz9pfa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -507,7 +583,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjozrddgq000mqzzckeoriur2" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/JavaScript获取时间戳/" data-id="cjph28cbc000o4qzcrqifiw5j" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -610,7 +686,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjozrddgd0006qzzczeh7vmzr" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjph28cb100094qzcq82dof1j" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -678,7 +754,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjozrddh30012qzzciowql3bk" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjph28cbl00114qzcv8lvhimg" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -728,7 +804,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjozrddh8001cqzzc73v0r6wh" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjph28cbu001e4qzceo405i6f" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
@@ -795,7 +871,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjozrddhb001gqzzcho83mvdx" class="article-share-link">Share</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjph28cbw001h4qzckspvd2ew" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -807,57 +883,11 @@
 
 
   
-    <article id="post-URL的组成部分" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/01/URL的组成部分/" class="article-date">
-  <time datetime="2018-04-01T10:58:34.000Z" itemprop="datePublished">2018-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/01/URL的组成部分/">URL的组成部分</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个完整的URL包括以下几部分：</p>
-<ol>
-<li>协议部分（protocol/Scheme）：该URL的协议部分为“http：”，这代表网页使用的是HTTP协议。在Internet中可以使用多种协议，如HTTP，HTTPS等等。在”HTTP”后面的“//”为分隔符。</li>
-<li>域名部分（Host）：一个URL中，也可以使用IP地址作为域名使用。</li>
-<li>端口部分（Port）：跟在域名后面的是端口，域名和端口之间使用“:”作为分隔符。端口不是一个URL必须的部分，如果省略端口部分，将采用默认端口。</li>
-<li>虚拟目录部分（Path）：从域名后的第一个“/”开始到最后一个“/”为止，是虚拟目录部分。虚拟目录也不是一个URL必须的部分。</li>
-<li>文件名部分：从域名后的最后一个“/”开始到“？”为止，是文件名部分，如果没有“?”,则是从域名后的最后一个“/”开始到“#”为止，是文件部分，如果没有“？”和“#”，那么从域名后的最后一个“/”开始到结束，都是文件名部分。文件名部分也不是一个URL必须的部分，如果省略该部分，则使用默认的文件名。</li>
-<li>锚部分（Query）：从“#”开始到最后，都是锚部分。锚部分也不是一个URL必须的部分。</li>
-<li>参数部分（Hash）：从“？”开始到“#”为止之间的部分为参数部分，又称搜索部分、查询部分。参数可以允许有多个参数，参数与参数之间用“&amp;”作为分隔符。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjozrddgy000vqzzclbv9da31" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">weiter &raquo;</a>
   </nav>
 
 </section>
@@ -888,9 +918,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -898,9 +928,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/09/2018年终总结/">2018年终总结</a>
+          </li>
         
           <li>
             <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
@@ -916,10 +950,6 @@
         
           <li>
             <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript中的with语句/">JavaScript中的with语句</a>
           </li>
         
       </ul>
