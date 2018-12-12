@@ -5,15 +5,18 @@
   
 
   
-  <title>console用法合集 | Acidic Accident</title>
+  <title>console的各种用法 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="console用法合集">
+  <meta name="description" content="1. 打印12345console.log(&apos;log&apos;)console.info(&apos;info&apos;)console.warn(&apos;warn&apos;)console.error(&apos;error&apos;)console.debug(&apos;debug&apos;) 2. 分组123456789console.group(&apos;第一组信息&apos;)console.log(&apos;第一条&apos;)console.log(&apos;第二条&apos;)console.groupEn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="console的各种用法">
 <meta property="og:url" content="http://zxfred.github.io/2018/12/12/console用法合集/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:updated_time" content="2018-12-12T06:57:44.965Z">
+<meta property="og:description" content="1. 打印12345console.log(&apos;log&apos;)console.info(&apos;info&apos;)console.warn(&apos;warn&apos;)console.error(&apos;error&apos;)console.debug(&apos;debug&apos;) 2. 分组123456789console.group(&apos;第一组信息&apos;)console.log(&apos;第一条&apos;)console.log(&apos;第二条&apos;)console.groupEn">
+<meta property="og:updated_time" content="2018-12-12T11:05:36.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="console用法合集">
+<meta name="twitter:title" content="console的各种用法">
+<meta name="twitter:description" content="1. 打印12345console.log(&apos;log&apos;)console.info(&apos;info&apos;)console.warn(&apos;warn&apos;)console.error(&apos;error&apos;)console.debug(&apos;debug&apos;) 2. 分组123456789console.group(&apos;第一组信息&apos;)console.log(&apos;第一条&apos;)console.log(&apos;第二条&apos;)console.groupEn">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -51,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -74,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      console用法合集
+      console的各种用法
     </h1>
   
 
@@ -82,11 +85,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="1-打印"><a href="#1-打印" class="headerlink" title="1. 打印"></a>1. 打印</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'log'</span>)</span><br><span class="line"><span class="built_in">console</span>.info(<span class="string">'info'</span>)</span><br><span class="line"><span class="built_in">console</span>.warn(<span class="string">'warn'</span>)</span><br><span class="line"><span class="built_in">console</span>.error(<span class="string">'error'</span>)</span><br><span class="line"><span class="built_in">console</span>.debug(<span class="string">'debug'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2-分组"><a href="#2-分组" class="headerlink" title="2. 分组"></a>2. 分组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.group(<span class="string">'第一组信息'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第一条'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第二条'</span>)</span><br><span class="line"><span class="built_in">console</span>.groupEnd()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.group(<span class="string">'第二组信息'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第一条'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第二条'</span>)</span><br><span class="line"><span class="built_in">console</span>.groupEnd()</span><br></pre></td></tr></table></figure>
+<h2 id="3-详细信息"><a href="#3-详细信息" class="headerlink" title="3. 详细信息"></a>3. 详细信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可打印对象和函数的信息</span></span><br><span class="line"><span class="built_in">console</span>.dir(object)</span><br><span class="line"><span class="built_in">console</span>.dir(<span class="function"><span class="keyword">function</span>)</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-表格"><a href="#4-表格" class="headerlink" title="4. 表格"></a>4. 表格</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [&#123;</span><br><span class="line">    <span class="string">'姓名'</span>: <span class="string">'Fred'</span>, </span><br><span class="line">    <span class="string">'性别'</span>: <span class="string">'男'</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="string">'姓名'</span>: <span class="string">'Carol'</span>,</span><br><span class="line">    <span class="string">'性别'</span>: <span class="string">'女'</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数为数组</span></span><br><span class="line"><span class="built_in">console</span>.table(data)</span><br></pre></td></tr></table></figure>
+<h2 id="5-性能测试"><a href="#5-性能测试" class="headerlink" title="5. 性能测试"></a>5. 性能测试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="string">"任务1"</span>)</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> sum = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> flog = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                flog += i</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="built_in">console</span>.timeEnd(<span class="string">"任务1"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="6-某节点中的html代码"><a href="#6-某节点中的html代码" class="headerlink" title="6. 某节点中的html代码"></a>6. 某节点中的html代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = <span class="built_in">document</span>.getElementById(<span class="string">'person'</span>);</span><br><span class="line"><span class="built_in">console</span>.dirxml(person)；</span><br></pre></td></tr></table></figure>
+<h4 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h4><p>雷军粑粑老是喜欢说：“不服？跑个分。”有时候，我们也需要对代码跑个分。这个时候，我们可以使用<code>console.time</code>和<code>console.timeEnd</code>，他们可以记录代码运行所花费的时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.time(&quot;神机妙算&quot;);</span><br><span class="line">(function () &#123;</span><br><span class="line">    for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        var sum = (function () &#123;</span><br><span class="line">            var flog = 0;</span><br><span class="line">            for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">                flog+=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">console.timeEnd(&quot;神机妙算&quot;);</span><br></pre></td></tr></table></figure>
+<p>啊咧咧？你这个顶多就是 <code>计时器</code> 怎么能说是 <code>性能测试</code> 。客官别急，我们这还有一个叫做 <code>console.profile</code> 和 <code>console.profileEnd</code> 姐妹呢~~</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">console.profile(&quot;神机妙算&quot;);</span><br><span class="line">(function () &#123;</span><br><span class="line">    for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        var sum = (function () &#123;</span><br><span class="line">            var flog = 0;</span><br><span class="line">            for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">                flog+=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">console.profileEnd(&quot;神机妙算&quot;);</span><br></pre></td></tr></table></figure>
+<p>输出会显示在 <code>profile</code></p>
+<p>什么还是不够？你还想知道运行时的结果栈？可以可以，我们这还有一位 <code>console.trace</code> 哦。他可以看透大爷你的一局一动哦。<br>代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> &lt; num) &#123;</span><br><span class="line">        <span class="built_in">console</span>.trace(<span class="string">"现在num的值为"</span>, num);</span><br><span class="line">        <span class="keyword">return</span> num + add(num - <span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a =<span class="number">3</span>;</span><br><span class="line">add(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="判断真假"><a href="#判断真假" class="headerlink" title="判断真假"></a>判断真假</h4><p>平时我们在写代码是时候，经常需要判断一下当前值的真假情况，使用if或者三元表达式来达到目的。我们现在也可以使用 <code>console.assert</code> 来判断，该方法会在条件为错误时，返回一个 <code>console.error</code> 的输出。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.assert(<span class="number">1</span> == <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.assert(<span class="number">1</span> == <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.assert(!(<span class="number">1</span> == <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="统计次数"><a href="#统计次数" class="headerlink" title="统计次数"></a>统计次数</h4><p>有时候我们需要统计一个函数或者被调用了几次，我们通常会增加一个变量 <code>count</code> 来记录，然后在控制台中查看。这样相当的麻烦，我们可以使用 <code>console.count</code> 函数来帮忙我们记录次数，并输出。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hi</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.count(name);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hi "</span> + name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">4</span>) &#123;</span><br><span class="line">        hi(<span class="string">"person"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        hi(<span class="string">"god"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/12/console用法合集/" data-id="cjpktp0qf000xbqzchh9t0oc1" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/12/console用法合集/" data-id="cjpktp0qf000xbqzchh9t0oc1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -97,7 +117,7 @@
   
   
     <a href="/2018/11/30/小程序开发总结（更新ing）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">小程序开发总结（更新ing）</div>
     </a>
   
@@ -134,7 +154,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -144,12 +164,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2018/12/12/console用法合集/">console用法合集</a>
+            <a href="/2018/12/12/console用法合集/">console的各种用法</a>
           </li>
         
           <li>
