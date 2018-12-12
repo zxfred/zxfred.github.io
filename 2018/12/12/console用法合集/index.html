@@ -5,19 +5,15 @@
   
 
   
-  <title>小程序嵌入Vue项目问题总结 | Acidic Accident</title>
+  <title>console用法合集 | Acidic Accident</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转 安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表 安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1p">
-<meta name="keywords" content="微信小程序 Vue">
-<meta property="og:type" content="article">
-<meta property="og:title" content="小程序嵌入Vue项目问题总结">
-<meta property="og:url" content="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="console用法合集">
+<meta property="og:url" content="http://zxfred.github.io/2018/12/12/console用法合集/index.html">
 <meta property="og:site_name" content="Acidic Accident">
-<meta property="og:description" content="安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转 安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表 安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1p">
-<meta property="og:updated_time" content="2018-07-03T04:01:59.065Z">
+<meta property="og:updated_time" content="2018-12-12T06:57:44.965Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小程序嵌入Vue项目问题总结">
-<meta name="twitter:description" content="安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转 安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表 安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1p">
+<meta name="twitter:title" content="console用法合集">
   
     <link rel="alternate" href="/atom.xml" title="Acidic Accident" type="application/atom+xml">
   
@@ -64,10 +60,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-console用法合集" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
-  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
+    <a href="/2018/12/12/console用法合集/" class="article-date">
+  <time datetime="2018-12-12T06:57:44.000Z" itemprop="datePublished">2018-12-12</time>
 </a>
     
   </div>
@@ -78,7 +74,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      小程序嵌入Vue项目问题总结
+      console用法合集
     </h1>
   
 
@@ -86,46 +82,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
-<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
-<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
-<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
-<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
-<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
-<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
-<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
-<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
-<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
-</ol>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjpktp0qp001dbqzc2xrpcp1s" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/12/console用法合集/" data-id="cjpktp0qf000xbqzchh9t0oc1" class="article-share-link">Teilen</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/05/08/netstat 的基本用法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          netstat 的基本用法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/02/彻底理解JavaScript里的闭包/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/11/30/小程序开发总结（更新ing）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">彻底理解JavaScript里的闭包</div>
+      <div class="article-nav-title">小程序开发总结（更新ing）</div>
     </a>
   
 </nav>
