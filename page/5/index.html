@@ -61,6 +61,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/27/小程序嵌入Vue项目问题总结/" class="article-date">
+  <time datetime="2018-04-27T03:05:38.000Z" itemprop="datePublished">2018-04-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/小程序嵌入Vue项目问题总结/">小程序嵌入Vue项目问题总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>安卓点击单品图片跳转到单品页时图片会放大（尝试阻止事件冒泡、捕获、事件默认属性也不好使）最后用一个透明的div覆盖了图片，点击div跳转</li>
+<li>安卓手动刷新页面不生效（vue的$router.go(0)  window.location.href都不生效），最后重新调了接口渲染列表</li>
+<li>安卓使用onepx_around时 border-radius:50%时，圆圈下方会有个缺口，使用原生border:1px即可</li>
+<li>使用window.scrollTop（0,0）返回顶部，安卓不生效 最后用的a标签 锚链接</li>
+<li>Eslint有很多代码规范，要严格遵守，不然会报很多错误（这个我觉得还挺坑的）有些提示对象未定义（比如小程序跳转时用wx.）时要在js里引入注释来忽略这个错误</li>
+<li>还有很多安卓和ios的样式问题就和小程序里遇到的是一样的啦比如字体垂直居中在安卓上就会靠上</li>
+<li>web-view 只支持 1.6.0 以上的小程序版本，使用 web-view 需要进行版本判断，用 canIUse 或者 getSystemInfo 的 API 都可以</li>
+<li>使用rem是有计算精度误差的，所以两栏布局时不要定宽，使用圣杯布局或双飞燕布局</li>
+<li>mintUI 进行本地化样式修改的时候，应该把 style 标签中的 scoped 去掉，因为有 scoped 的时候，框架会给每个 class 增加一串随机 id，优先级高于自己指定的代码</li>
+<li>和用户相关的页面要增加登录判断，基本逻辑是，请求数据之前检验登录状态，一般使用 cust_id 判断，如果返回 96 则调用接口进行登录，如还是不成功显示错误页</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjpmmr5ja001gc1zcsycbt429" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-彻底理解JavaScript里的闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/02/彻底理解JavaScript里的闭包/" class="article-date">
@@ -116,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjpktp0qr001hbqzcb8x0f108" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjpmmr5jd001kc1zcl30lgnas" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -164,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjpktp0qe000wbqzc796d7j60" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjpmmr5ix000wc1zcqpscpb4r" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -259,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjpktp0qn001bbqzc3337c7z2" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjpmmr5j9001dc1zcf9kr3myr" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -319,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjpktp0qa000obqzchl87x30s" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjpmmr5ir000lc1zc94yjr1p4" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -395,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjpktp0qt001nbqzcynfn2sse" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjpmmr5jc001jc1zc4q0clmis" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -449,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjpktp0qj0012bqzcs2prskvr" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjpmmr5j40013c1zc2r9avr3f" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -550,7 +600,7 @@ $ git commit -m &quot;remove test.txt&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjpktp0q4000dbqzcwj566pij" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjpmmr5il000dc1zc9rw51h6d" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -610,6 +660,10 @@ $ git commit -m &quot;remove test.txt&quot;
       <ul>
         
           <li>
+            <a href="/2018/12/13/mac下通过端口查询进程并杀死/">mac下通过端口查询进程并杀死</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/12/console用法合集/">console的各种用法</a>
           </li>
         
@@ -623,10 +677,6 @@ $ git commit -m &quot;remove test.txt&quot;
         
           <li>
             <a href="/2018/11/23/ES6解构赋值的用途/">ES6解构赋值的用途</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/19/JavaScript中的执行环境/">JavaScript中的执行环境</a>
           </li>
         
       </ul>
