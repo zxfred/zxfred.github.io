@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,227 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-如何快速上手 vim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/01/如何快速上手 vim/" class="article-date">
+  <time datetime="2018-08-01T07:01:40.000Z" itemprop="datePublished">2018-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/如何快速上手 vim/">如何快速上手 vim</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>公司业务，需要 ssh 连接测试服务器修改上面的 php 文件，用 vim 打开是最方便快捷的方案，但是作为一名前端小白，仅仅只会几个简单的命令，于是找到下面的文章开始学习：</p>
+<p>如何快速学会 vim 呢？<strong>默认编辑器设为 vim，删掉其他一切编辑器，明天上线。</strong></p>
+<p>以下是能够在零配置下快速使用 vim 的一系列步骤，只需要多加练习，便能快速熟练使用 vim。 <strong>无他，唯手熟尔。</strong></p>
+<h2 id="快速移动"><a href="#快速移动" class="headerlink" title="快速移动"></a>快速移动</h2><p><strong>快速移动是 vim 的重中之重，比一切插件都要重要</strong>。也是下编辑和修改的基础。</p>
+<ul>
+<li><p><strong>上(k)下(j)左(h)右(l)</strong> 移动，需要注意，禁止使用上下左右箭头 如果需要移动数行，可以在操作前加数字。如 <code>10j</code> 代表往下移动十行。 <strong>通过数字与操作结合，这是 vim 的思想。</strong></p>
+</li>
+<li><p>减少上一步的左右移动，效率太低，使用 <code>b, B, w, W</code> 代替 <code>b</code> 指 back a word，退回一个单词。<code>w</code> 指 forward a word，前进一个单词。 <code>B</code> 指 back a WORD，退回一个大单词。<code>w</code> 指 forward a WORD，前进一个大单词。</p>
+<blockquote>
+<p>其中，word 以及 WORD 的区别，以一个示例说明。 hello.world 有三个 word (‘hello’, ‘.’, ‘world’)，却只有一个 WORD。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>f, F, t, T</code> 进行更为精细的左右移动控制 <code>f</code> 指 find a character，快速移动到下一个字符的位置，<code>F</code> 指向前查找。结合 <code>b, w</code> 实现快速左右移动。 <code>t</code> 指 tail a character，快速移动到下一个字符位置的前一个字符，<code>T</code> 指向前查找。</p>
+</li>
+<li><p>使用 <code>0, $</code> 进行行首行尾移动</p>
+</li>
+<li><p>使用 <code>%</code> 快速移动到配对字符 如从左括号快速移动到右括号，左引号快速移动到右引号，在编码中最为常用！</p>
+</li>
+<li><p>使用 <code>&lt;Ctrl-d&gt;，&lt;Ctrl-u&gt;</code> 进行大范围上下移动 <code>&lt;Ctrl-d&gt;</code> 往下移动半页，<code>&lt;Ctrl-u&gt;</code> 往上移动半页。</p>
+<blockquote>
+<p>也可以使用 <code>&lt;Ctrl-f&gt;, &lt;Ctrl-b&gt;</code> 进行整页移动。</p>
+</blockquote>
+</li>
+<li><p>使用 <code>gg, G</code> 进行首行尾行移动</p>
+</li>
+<li><p><code>:128</code> 表示快速定位到 128 行</p>
+</li>
+</ul>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><p>vim 的编辑在 <code>Insert Mode</code>，以上的快速移动是在 <code>Normal Mode</code>。编辑文本需要首先进入 <code>Insert Mode</code>。</p>
+<p><code>i, I, a, A, o, O</code> 进入 <code>Insert Mode</code>。</p>
+<p><code>i</code> 指 insert text，在该光标前进行编辑，<code>I</code> 指在行首进行编辑。 <code>a</code> 指 append text，在该光标后进行编辑，<code>A</code> 指在行尾进行编辑。 <code>o</code> 指 append text，在该光标后一行进行编辑，<code>O</code> 指在光标前一行进行编辑。</p>
+<p>个人习惯，<code>i, A, o, O</code> 用的多一些，<code>I, a</code> 基本不用。</p>
+<p><code>Esc</code> 以及 <code>&lt;Ctrl-[&gt;</code> 都可以退出 <code>Insert Mode</code>。</p>
+<p>个人习惯使用 <code>&lt;Ctrl-[&gt;</code>，一来 <code>Esc</code> 过远，二来在一些编辑器中 <code>Esc</code> 容易与其它热键冲突。</p>
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><p>删除也可以在 <code>Insert Mode</code> 使用 <code>delete</code> 键进行手动删除，不过效率太低，建议一般在 <code>Normal Mode</code> 进行删除，刚进入 vim 的状态便是 <code>Normal Mode</code>。</p>
+<ul>
+<li><p>使用 <code>x(dl)</code> 删除特定字符 可以结合 <code>x</code> 以及上述所讲的快速移动，删掉光标下的特定字符</p>
+<p>在括号里标注 <code>l</code>，意指 <code>x</code> 为 <code>dl</code> 的简写。</p>
+<p><strong>d 指 delete，表示删除，是所有修改操作的基础。dl 由 d 和 l 两个操作组成，代表删掉光标右侧的字符，同理，dh 代表删掉光标左侧的字符，这是所有删除的基本形式，也是 vim 的核心思想。</strong></p>
+</li>
+<li><p>使用 <code>daw</code> 删除特定单词</p>
+<p><code>daw</code> 指 <code>delete a word</code>，表示删除特定单词。同样也可以使用 <code>db, dw</code> 来删除单词。</p>
+</li>
+<li><p>使用 <code>dt, df</code> 加特定字符，删掉字符前的文本</p>
+</li>
+<li><p>使用 <code>di(, da(</code> 删除特定符号内的文本，如删除括号，引号中的文本</p>
+<p><code>di(</code> 指 <code>delete in (</code>，不会删掉括号。<code>da(</code> 指 <code>delete a (</code>，会连同括号一同删掉。同理还有 <code>di&#39;</code>，<code>di&quot;</code> 等，在编码中最为常用！</p>
+</li>
+<li><p>使用 <code>D (d$)</code> 删除掉该字符以后的所有文本</p>
+</li>
+<li><p>使用 <code>dd</code> 删掉整行</p>
+</li>
+<li><p><strong>把以上操作的所有 d 替换为 c，表示删除后进入编辑模式</strong></p>
+<p><code>c</code> 指 <code>change</code>，表示删除，如 <code>d</code> 一样，是 vim 的基本动词</p>
+</li>
+<li><p>使用 <code>r</code> 加特定字符，表示使用特定字符代替原有字符</p>
+</li>
+</ul>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul>
+<li><p>使用 <code>:Ex (Explore)</code> 浏览目录</p>
+<p>定位到文件所在行，回车进入指定文件</p>
+</li>
+<li><p>使用 <code>ls</code> 列出缓冲列表</p>
+<p>缓冲列表中保存最近使用文件，行头有标号</p>
+</li>
+<li><p>使用 <code>bn</code> 进入最近使用文件</p>
+<p><code>bn</code> 指 <code>buffer next</code>，进入缓冲列表的下个缓冲，即最近一次使用文件</p>
+</li>
+<li><p>使用 <code>b [N]</code> 进入缓冲列表中标号为 N 的文件</p>
+<p><code>b 10</code> 指 <code>buffer 10</code>，进入缓冲列表，即最近一次使用文件</p>
+</li>
+<li><p>使用 <code>sbn, vbn</code> 在新窗口打开最近使用文件</p>
+<p><code>s</code> 指 <code>split</code>，水平方向。 <code>v</code> 指 <code>vertical</code>，垂直方向。</p>
+</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>基本操作指查找，替换，撤销，重做，复制，粘贴，保存等</p>
+<ul>
+<li><p><code>/{pattern}</code> 查找 <code>/</code> 后加需要查找的词或者正则表达式进行查询，<code>n</code> 向下查询，<code>N</code> 向上查询。</p>
+</li>
+<li><p><code>:s/aa/bb/g</code> 替换 <code>s</code> 指 <code>substitute</code> 的缩写，替换，<code>g</code> 代表全局替换。</p>
+</li>
+<li><p><code>u</code> 撤销 <code>u</code> 指 <code>undo</code> 的缩写，撤销。可与数字结合进行多次撤销。</p>
+</li>
+<li><p><code>&lt;Ctrl-r&gt;</code> 重做</p>
+</li>
+<li><p><code>yy</code> 复制整行 <code>y</code> 指 <code>yank</code>，复制。使 <code>y</code> 与快速移动结合起来，可以使用多种情况的复制，如复制括号中内容，复制引号中内容。</p>
+<p>复制时，会把当前内容置入寄存器，使用 <code>:reg</code> 查看寄存器列表。</p>
+</li>
+<li><p><code>p</code> 粘贴 <code>p</code> 指 <code>paste</code>，粘贴。</p>
+</li>
+<li><p><code>&quot;*y</code> 复制内容至系统剪切板</p>
+<p><code>:reg</code> 会列出寄存器列表，<code>&quot;*</code> 寄存器代表系统剪切板()，所以以上就是把内容放到系统剪切板。</p>
+<p>如果寄存器列表中没有该寄存器，则 vim 不支持系统剪切板，也可以使用命令 <code>vim --version | grep clipboard</code>。</p>
+</li>
+<li><p><code>&quot;*p</code> 粘贴系统剪切板中内容</p>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>关于配置，推荐一下 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Famix%2Fvimrc" target="_blank" rel="noopener">amix/vimrc</a> ，在 github 上超过一万四千颗星。</p>
+<p>另外，再推荐下作者的配置 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fshfshanyue%2Fvim-config" target="_blank" rel="noopener">shfshanyue/vim-config</a>，其中有一些插件，如 <code>emmet</code> 和 <code>typescript</code>非常适合前端开发。</p>
+<hr>
+<p>转载自：<a href="https://juejin.im/post/5b602e1951882569fd288446" target="_blank" rel="noopener">https://juejin.im/post/5b602e1951882569fd288446</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjpthsita001g3xzclwxxvvqy" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-20个强大的正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/31/20个强大的正则表达式/" class="article-date">
+  <time datetime="2018-07-31T07:23:14.000Z" itemprop="datePublished">2018-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/31/20个强大的正则表达式/">20个强大的正则表达式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>正则表达式，一个十分古老而又强大的文本处理工具，仅仅用一段非常简短的表达式语句，便能够快速实现一个非常复杂的业务逻辑。熟练地掌握正则表达式的话，能够使你的开发效率得到极大的提升。</p>
+<p>正则表达式经常被用于字段或任意字符串的校验，如下面这段校验基本日期格式的JavaScript代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var reg = /^(\\d&#123;1,4&#125;)(-|\\/)(\\d&#123;1,2&#125;)\\2(\\d&#123;1,2&#125;)$/; </span><br><span class="line">var r = fieldValue.match(reg);             </span><br><span class="line">if(r==null)alert(&apos;Date format error!&apos;);</span><br></pre></td></tr></table></figure>
+<p>下面是<strong>技匠</strong>整理的，在前端开发中经常使用到的<strong>20</strong>个正则表达式。</p>
+<hr>
+<h4 id="1-校验密码强度"><a href="#1-校验密码强度" class="headerlink" title="1 . 校验密码强度"></a><strong>1 . 校验密码强度</strong></h4><p>密码的强度必须是包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$</span><br></pre></td></tr></table></figure>
+<h4 id="2-校验中文"><a href="#2-校验中文" class="headerlink" title="2. 校验中文"></a><strong>2. 校验中文</strong></h4><p>字符串仅能是中文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[\\u4e00-\\u9fa5]&#123;0,&#125;$</span><br></pre></td></tr></table></figure>
+<h4 id="3-由数字、26个英文字母或下划线组成的字符串"><a href="#3-由数字、26个英文字母或下划线组成的字符串" class="headerlink" title="3. 由数字、26个英文字母或下划线组成的字符串"></a><strong>3. 由数字、26个英文字母或下划线组成的字符串</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\\w+$</span><br></pre></td></tr></table></figure>
+<h4 id="4-校验E-Mail-地址"><a href="#4-校验E-Mail-地址" class="headerlink" title="4. 校验E-Mail 地址"></a><strong>4. 校验E-Mail 地址</strong></h4><p>同密码一样，下面是E-mail地址合规性的正则检查语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[\\w!#$%&amp;&apos;*+/=?^_`&#123;|&#125;~-]+(?:\\.[\\w!#$%&amp;&apos;*+/=?^_`&#123;|&#125;~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?</span><br></pre></td></tr></table></figure>
+<h4 id="5-校验身份证号码"><a href="#5-校验身份证号码" class="headerlink" title="5. 校验身份证号码"></a><strong>5. 校验身份证号码</strong></h4><p>下面是身份证号码的正则校验。15 或 18位。</p>
+<p>15位：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[1-9]\\d&#123;7&#125;((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d&#123;3&#125;$</span><br></pre></td></tr></table></figure>
+<p>18位：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[1-9]\\d&#123;5&#125;[1-9]\\d&#123;3&#125;((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d&#123;3&#125;([0-9]|X)$</span><br></pre></td></tr></table></figure>
+<h4 id="6-校验日期"><a href="#6-校验日期" class="headerlink" title="6. 校验日期"></a><strong>6. 校验日期</strong></h4><p>“yyyy-mm-dd“ 格式的日期校验，已考虑平闰年。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(?:(?!0000)[0-9]&#123;4&#125;-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]&#123;2&#125;(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$</span><br></pre></td></tr></table></figure>
+<h4 id="7-校验金额"><a href="#7-校验金额" class="headerlink" title="7. 校验金额"></a><strong>7. 校验金额</strong></h4><p>金额校验，精确到2位小数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^[0-9]+(.[0-9]&#123;2&#125;)?$</span><br></pre></td></tr></table></figure>
+<h4 id="8-校验手机号"><a href="#8-校验手机号" class="headerlink" title="8. 校验手机号"></a><strong>8. 校验手机号</strong></h4><p>下面是国内 13、15、18开头的手机号正则表达式。（可根据目前国内收集号扩展前两位开头号码）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d&#123;8&#125;$</span><br></pre></td></tr></table></figure>
+<h4 id="9-判断IE的版本"><a href="#9-判断IE的版本" class="headerlink" title="9. 判断IE的版本"></a><strong>9. 判断IE的版本</strong></h4><p>IE目前还没被完全取代，很多页面还是需要做版本兼容，下面是IE版本检查的表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^.*MSIE [5-8](?:\\.[0-9]+)?(?!.*Trident\\/[5-9]\\.0).*$</span><br></pre></td></tr></table></figure>
+<h4 id="10-校验IP-v4地址"><a href="#10-校验IP-v4地址" class="headerlink" title="10. 校验IP-v4地址"></a><strong>10. 校验IP-v4地址</strong></h4><p>IP4 正则语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.)&#123;3&#125;(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b</span><br></pre></td></tr></table></figure>
+<h4 id="11-校验IP-v6地址"><a href="#11-校验IP-v6地址" class="headerlink" title="11. 校验IP-v6地址"></a><strong>11. 校验IP-v6地址</strong></h4><p>IP6 正则语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(([0-9a-fA-F]&#123;1,4&#125;:)&#123;7,7&#125;[0-9a-fA-F]&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,7&#125;:|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,6&#125;:[0-9a-fA-F]&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,5&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,2&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,4&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,3&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,3&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,2&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,5&#125;|[0-9a-fA-F]&#123;1,4&#125;:((:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,6&#125;)|:((:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,7&#125;|:)|fe80:(:[0-9a-fA-F]&#123;0,4&#125;)&#123;0,4&#125;%[0-9a-zA-Z]&#123;1,&#125;|::(ffff(:0&#123;1,4&#125;)&#123;0,1&#125;:)&#123;0,1&#125;((25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9])\\.)&#123;3,3&#125;(25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9])|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,4&#125;:((25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9])\\.)&#123;3,3&#125;(25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9]))</span><br></pre></td></tr></table></figure>
+<h4 id="12-检查URL的前缀"><a href="#12-检查URL的前缀" class="headerlink" title="12. 检查URL的前缀"></a><strong>12. 检查URL的前缀</strong></h4><p>应用开发中很多时候需要区分请求是HTTPS还是HTTP，通过下面的表达式可以取出一个url的前缀然后再逻辑判断。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!s.match(/^[a-zA-Z]+:\\/\\//))</span><br><span class="line">&#123;</span><br><span class="line">    s = &apos;http://&apos; + s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="13-提取URL链接"><a href="#13-提取URL链接" class="headerlink" title="13. 提取URL链接"></a><strong>13. 提取URL链接</strong></h4><p>下面的这个表达式可以筛选出一段文本中的URL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(f|ht)&#123;1&#125;(tp|tps):\\/\\/([\\w-]+\\.)+[\\w-]+(\\/[\\w- ./?%&amp;=]*)?</span><br></pre></td></tr></table></figure>
+<h4 id="14-文件路径及扩展名校验"><a href="#14-文件路径及扩展名校验" class="headerlink" title="14. 文件路径及扩展名校验"></a><strong>14. 文件路径及扩展名校验</strong></h4><p>验证windows下文件路径和扩展名（下面的例子中为.txt文件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^([a-zA-Z]\\:|\\\\)\\\\([^\\\\]+\\\\)*[^\\/:*?&quot;&lt;&gt;|]+\\.txt(l)?$</span><br></pre></td></tr></table></figure>
+<h4 id="15-提取Color-Hex-Codes"><a href="#15-提取Color-Hex-Codes" class="headerlink" title="15. 提取Color Hex  Codes"></a><strong>15. 提取Color Hex  Codes</strong></h4><p>有时需要抽取网页中的颜色代码，可以使用下面的表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^#([A-Fa-f0-9]&#123;6&#125;|[A-Fa-f0-9]&#123;3&#125;)$</span><br></pre></td></tr></table></figure>
+<h4 id="16-提取网页图片"><a href="#16-提取网页图片" class="headerlink" title="16. 提取网页图片"></a><strong>16. 提取网页图片</strong></h4><p>假若你想提取网页中所有图片信息，可以利用下面的表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\&lt; *[img][^\\\\&gt;]*[src] *= *[\\&quot;\\&apos;]&#123;0,1&#125;([^\\&quot;\\&apos;\\ &gt;]*)</span><br></pre></td></tr></table></figure>
+<h4 id="17-提取页面超链接"><a href="#17-提取页面超链接" class="headerlink" title="17. 提取页面超链接"></a><strong>17. 提取页面超链接</strong></h4><p>提取html中的超链接。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&lt;a\\s*(?!.*\\brel=)[^&gt;]*)(href=&quot;https?:\\/\\/)((?!(?:(?:www\\.)?&apos;.implode(&apos;|(?:www\\.)?&apos;, $follow_list).&apos;))[^&quot;]+)&quot;((?!.*\\brel=)[^&gt;]*)(?:[^&gt;]*)&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="18-查找CSS属性"><a href="#18-查找CSS属性" class="headerlink" title="18. 查找CSS属性"></a><strong>18. 查找CSS属性</strong></h4><p>通过下面的表达式，可以搜索到相匹配的CSS属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^\\s*[a-zA-Z\\-]+\\s*[:]&#123;1&#125;\\s[a-zA-Z0-9\\s.#]+[;]&#123;1&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="19-抽取注释"><a href="#19-抽取注释" class="headerlink" title="19. 抽取注释"></a><strong>19. 抽取注释</strong></h4><p>如果你需要移除HMTL中的注释，可以使用如下的表达式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--(.*?)--&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="20-匹配HTML标签"><a href="#20-匹配HTML标签" class="headerlink" title="20. 匹配HTML标签"></a><strong>20. 匹配HTML标签</strong></h4><p>通过下面的表达式可以匹配出HTML中的标签属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;\\/?\\w+((\\s+\\w+(\\s*=\\s*(?:&quot;.*?&quot;|&apos;.*?&apos;|[\\^&apos;&quot;&gt;\\s]+))?)+\\s*|\\s*)\\/?&gt;</span><br></pre></td></tr></table></figure>
+<p>转载自简书：<a href="https://www.jianshu.com/p/e7bb97218946" target="_blank" rel="noopener">https://www.jianshu.com/p/e7bb97218946</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjpthsis000003xzc18hvet54" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Promise解读" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -160,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjpr2k72a000stkzcguksxt2p" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjpthsist000t3xzcdzz2qwr7" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -211,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjpr2k71s0007tkzcmldyq9r5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjpthsisb00063xzcsgtdyh88" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -261,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjpr2k72x001stkzcy364l7uz" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjpthsitj001t3xzc8l2ehbks" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -303,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjpr2k72p001ctkzc36ubluqu" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjpthsit700193xzc4f0lxw0i" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -374,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjpr2k72o001btkzcjvt5h1a0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/21/回调函数是什么/" data-id="cjpthsit8001c3xzcwlytzku8" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -515,7 +736,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjpr2k72y001utkzcexneph59" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/19/药丸新闻/" data-id="cjpthsith001q3xzcknvqlhr6" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -624,7 +845,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjpr2k72b000utkzcc3z74fny" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/05/React-Native-环境搭建/" data-id="cjpthsisu000u3xzciy80q18a" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -663,104 +884,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjpr2k72u001ntkzcndpfpm05" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-队列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/22/队列/" class="article-date">
-  <time datetime="2018-06-22T13:11:29.000Z" itemprop="datePublished">2018-06-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/22/队列/">队列</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>队列是一种列表，不同的是队列只能在队尾插入元素，在队首删除元素。</p>
-<p>队列用于存储按 顺序排列的数据，先进先出，这点和栈不一样，在栈中，最后入栈的元素反而被优先处理。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/22/队列/" data-id="cjpr2k72z001vtkzcfh8dmepo" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-二叉树与二叉查找树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/06/21/二叉树与二叉查找树/" class="article-date">
-  <time datetime="2018-06-21T09:43:10.000Z" itemprop="datePublished">2018-06-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/21/二叉树与二叉查找树/">二叉树与二叉查找树</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##树</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
-<li>一棵树最上面的节点成为<strong>根节点</strong></li>
-<li>如果一个节点下面链接多个节点，那么该节点称为<strong>父节点</strong>，它下面的节点称为<strong>子节点</strong></li>
-<li>一个节点可以有0个、1个或多个子节点，没有任何子节点的节点称为<strong>叶子节点</strong></li>
-<li>一个节点到另一个节点的一组边称为<strong>路径</strong></li>
-<li>每个节点都有一个与之相关的值，称为<strong>键值</strong>或<strong>键</strong></li>
-</ul>
-<h3 id="树的层次"><a href="#树的层次" class="headerlink" title="树的层次"></a>树的层次</h3><p>根节点是第0层，它的子节点是第1层，子节点的子节点是第2层，以此类推。树的层数就是树的<strong>深度</strong></p>
-<h2 id="二叉树与二叉查找树"><a href="#二叉树与二叉查找树" class="headerlink" title="二叉树与二叉查找树"></a>二叉树与二叉查找树</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li><strong>左节点</strong>与<strong>右节点</strong></li>
-<li>二叉查找树（BST）：较小的值保存在左节点，较大的值保存在右节点，这样查找的效率很高，对于数值型和非数值型的数据都是这样</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">data, left, right</span>) </span>&#123; <span class="comment">// 新建节点</span></span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.left = left</span><br><span class="line">    <span class="keyword">this</span>.right = right</span><br><span class="line">    <span class="keyword">this</span>.show = show</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.date</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BST</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 二叉查找树</span></span><br><span class="line">    <span class="keyword">this</span>.root = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.insert = insert</span><br><span class="line">    <span class="keyword">this</span>.inOrder = inOrder</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insert</span>(<span class="params">data</span>) </span>&#123; <span class="comment">// 增加节点</span></span><br><span class="line">    <span class="keyword">var</span> n = <span class="keyword">new</span> Node(data, <span class="literal">null</span>, <span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.root == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.root = n</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> current = <span class="keyword">this</span>.root</span><br><span class="line">        <span class="keyword">var</span> parent</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            parent = current</span><br><span class="line">            <span class="keyword">if</span> (data &lt; current.data) &#123;</span><br><span class="line">                current = current.left</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.left = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                current = current.right</span><br><span class="line">                <span class="keyword">if</span> (current == <span class="literal">null</span>) &#123;</span><br><span class="line">                    parent.right = n</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="遍历二叉查找树"><a href="#遍历二叉查找树" class="headerlink" title="遍历二叉查找树"></a>遍历二叉查找树</h3><ul>
-<li>中序遍历：按节点上的键值，以升序访问查找树上所有节点</li>
-<li>前序遍历：先访问根节点，再以同样方式访问左子树和右子树</li>
-<li>后序遍历：先访问叶子节点，从左子树到右子树，再到根节点</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/06/21/二叉树与二叉查找树/" data-id="cjpr2k72m0018tkzc5a8vmznn" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/06/22/栈/" data-id="cjpthsiti001s3xzc9unv21oy" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -776,7 +900,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Previo</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Siguiente &raquo;</a>
   </nav>
 
 </section>
@@ -798,7 +922,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a>
     </div>
@@ -807,7 +931,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -817,9 +941,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/18/package-json解读/">package.json解读</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/npm入门/">npm入门</a>
+          </li>
         
           <li>
             <a href="/2018/12/16/HIIT动作-已加入计划/">HIIT动作-已加入计划</a>
@@ -830,15 +962,7 @@
           </li>
         
           <li>
-            <a href="/2018/12/12/console用法合集/">console的各种用法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
+            <a href="/2018/12/12/console的各种用法/">console的各种用法</a>
           </li>
         
       </ul>
@@ -854,7 +978,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Fred Zhang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

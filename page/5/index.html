@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -60,6 +60,179 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-CSS3新特性兼容方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/09/CSS3新特性兼容方法/" class="article-date">
+  <time datetime="2018-05-09T02:09:00.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/CSS3新特性兼容方法/">CSS3新特性兼容方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###边框</p>
+<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><p>低版本的chrome:<code>-webkit-border-radius:10px;</code><br>低版本的firefox:<code>-moz-border-radius:10px;</code><br>IE6/7/8:引入ie-css3兼容文件,不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius" target="_blank" rel="noopener">border-radius</a></p>
+<h4 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h4><p>低版本的chrome:<code>-webkit-box-shadow:10px 10px 5px #888;</code><br>低版本的firefox:<code>-moz-box-shadow:10px 10px 5px #888;</code><br>IE6/7/8:</p>
+<ul>
+<li><p>方法一:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:dXImageTransform.Microsoft.DropShadow(color=#888888,offX=10,offY=10,positives=true);</span><br></pre></td></tr></table></figure>
+<p>缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.Shadow(color=&apos;#0099ff&apos;, Direction=&apos;120&apos;, Strength=&apos;10&apos;);</span><br></pre></td></tr></table></figure>
+<p>类似于投影效果，缺点：阴影不能边缘模糊</p>
+</li>
+<li><p>方法三(推荐)、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc)</code><br>缺点：不支持除了黑色(#000)以外的其他颜色<br>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a><br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank" rel="noopener">box-shadow</a></p>
+</li>
+</ul>
+<h4 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h4><p>低版本的chrome:<code>-webkit-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的firefox:<code>-moz-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>低版本的Opera:<code>-o-border-image:url(&quot;http://www.w3school.com.cn/i/border.png&quot;) 30 30 stretch;</code><br>IE未解决<br>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-image" target="_blank" rel="noopener">border-image</a>,<a href="http://www.360doc.com/content/14/1016/13/2792772_417403574.shtml" target="_blank" rel="noopener">border-image</a></p>
+<p>###背景</p>
+<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><p>低版本的chrome:<code>-webkit-background-size:10px 10px 5px #888; //不支持background简写</code><br>低版本的firefox:<code>-moz-background-size:10px 10px 5px #888;</code><br>IE8：</p>
+<ul>
+<li><p>方法一(推荐)、引入backgroundsize.min.htc兼容文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.size &#123;</span><br><span class="line">width: 400px;</span><br><span class="line">height: 400px;</span><br><span class="line">margin: 20px auto 0;</span><br><span class="line">background:  green url(img/1.jpg) no-repeat scroll center 0;</span><br><span class="line">background-size: cover;</span><br><span class="line">-ms-behavior: url(js/backgroundsize.min.htc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二、针对IE8的hack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if IE 8]&gt;</span><br><span class="line">    &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">    .size&#123;</span><br><span class="line">        -ms-filter: &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(src=&apos;img/1.jpg&apos;, sizingMethod=&apos;scale&apos;)&quot;;</span><br><span class="line">    &#125;  </span><br><span class="line">    //该函数只能模仿cover值,IE8下效果与IE9/10稍有不同,图片占满背景大小且不超出</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size" target="_blank" rel="noopener">background-size</a></p>
+</li>
+</ul>
+<h4 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h4><p>firefox4.0以下：<code>-moz-background-origin:padding | border; //没有content</code><br>IE8下background-origin默认为padding-box</p>
+<p>详情参阅<a href="http://www.jb51.net/css/34219.html" target="_blank" rel="noopener">background-origin</a></p>
+<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><p>firefox4.0以下：<code>-moz-background-clip:padding | border; //没有content</code><br>IE8下background-clip默认为padding-box</p>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h4 id="text-shadow"><a href="#text-shadow" class="headerlink" title="text-shadow"></a>text-shadow</h4><p>低版本的chrome:<code>-webkit-text-shadow:1px 1px 1px #000;</code><br>低版本的firefox:<code>-moz-text-shadow:1px 1px 1px #000;</code><br>IE6/7/8:</p>
+<ul>
+<li>方法一、引入ie-css3兼容文件<code>behavior:url(ie-css3.htc);</code></li>
+<li>方法二、 <code>filter:shadow(color=blue,direction=225)</code>,direction表示投影角度</li>
+</ul>
+<p>详情参阅<a href="http://www.zhangxinxu.com/wordpress/2010/04/%E8%AE%A9ie6ie7ie8%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81css3%E5%B1%9E%E6%80%A7/" target="_blank" rel="noopener">让IE6/IE7/IE8浏览器支持CSS3属性</a></p>
+<h4 id="word-wrap"><a href="#word-wrap" class="headerlink" title="word-wrap"></a>word-wrap</h4><p>现代浏览器几乎都支持</p>
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><h4 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-font-face" target="_blank" rel="noopener">@font-face</a></p>
+<h3 id="2D3D转换"><a href="#2D3D转换" class="headerlink" title="2D3D转换"></a>2D3D转换</h3><h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.transform&#123;</span><br><span class="line">    -webkit-transform: x,y;</span><br><span class="line">    -moz-transform: x,y;</span><br><span class="line">    -ms-transform: x,y;</span><br><span class="line">    -o-transform: x,y;</span><br><span class="line">    transform: x,y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE8及以下：用IE滤镜</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    filter:fliph;//水平翻转相当于transform:rotateY(180deg)</span><br><span class="line">    filter:flipv;//垂直翻转相当于transform:rotateX(180deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-transform" target="_blank" rel="noopener">transform</a></p>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><h4 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">  -webkit-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -moz-transition: all .5s ease-in-out 1s;</span><br><span class="line">  -o-transition: all .5s ease-in-out 1s;</span><br><span class="line">  transition: all .5s ease-in-out 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IE9以及更早的版本，不支持 transition 属性。<br>详情参阅<a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="noopener">transition</a></p>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><h4 id="animation-keyframes"><a href="#animation-keyframes" class="headerlink" title="animation \ @keyframes"></a>animation \ @keyframes</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下不支持<br>详情参阅<a href="http://www.w3cplus.com/content/css3-animation" target="_blank" rel="noopener">animation</a></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><h4 id="linear-gradient-radial-gradient"><a href="#linear-gradient-radial-gradient" class="headerlink" title="linear-gradient radial-gradient"></a>linear-gradient radial-gradient</h4><p>低版本的chrome:-webkit-<br>低版本的firefox：-moz-<br>IE9及以下可使用 IE 滤镜处理:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=&apos;#000000&apos;,endColorstr=&apos;#ffffff&apos;);</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.w3cplus.com/content/css3-gradient" target="_blank" rel="noopener">gradient</a></p>
+<h4 id="rgba-r-g-b-a"><a href="#rgba-r-g-b-a" class="headerlink" title="rgba(r,g,b,a)"></a>rgba(r,g,b,a)</h4><p>IE6/7/8不支持使用 rgba 模式实现透明度，可使用 IE 滤镜处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);</span><br></pre></td></tr></table></figure>
+<p>使用后我们又发现了个小问题，IE9下颜色更深一点，仔细研究发现在IE9下rgba颜色和IE滤镜都能被识别，所以被覆盖了颜色就更深一点<br>解决办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7fff0000,endColorstr=#7fff0000);&#125;</span><br><span class="line">:root .demo&#123;filter:none;background-color:rgba(255,0,0,.2);&#125;//IE8及以下不识别</span><br></pre></td></tr></table></figure>
+<p>详情参阅<a href="http://www.cnblogs.com/jesse131/p/4771611.html" target="_blank" rel="noopener">IE8下兼容rgba颜色的半透明背景</a></p>
+<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><h4 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h4><p>低版本的chrome:-webkit- 或者 -webkit-box-flex<br>低版本的firefox：-moz-box-flex:1;<br>IE10:-ms-flex:1;<br>box-flex效果类似于过渡版本和新版本的flex属性；<br>详情参阅<a href="http://www.webclks.com/archives/3035" target="_blank" rel="noopener">flex</a></p>
+<h4 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h4><p>可以通过box-orient:horizontal + box-direction:normal 达到新版本 flex-direction:row 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:row-reverse 的效果；<br>可以通过box-orient:vertical + box-direction:normal 达到新版本 flex-direction:column 的效果；<br>可以通过box-orient:horizontal + box-direction:reverse 达到新版本 flex-direction:column-reverse 的效果；<br>box-lines效果类似于过渡版本和新版本的flex-wrap属性</p>
+<h4 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h4><p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">justify-content</a></p>
+<h4 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h4><p>低版本的chrome：-webkit-</p>
+<p>box-pack效果等同于过渡版本的flex-pack属性和新版本的justify-content属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-content</a></p>
+<h4 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h4><p>低版本的chrome：-webkit-</p>
+<p>box-align效果等同于过渡版本的flex-align属性和新版本的align-items属性；</p>
+<p>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-items</a></p>
+<h4 id="align-self"><a href="#align-self" class="headerlink" title="align-self"></a>align-self</h4><p>低版本的chrome：-webkit-<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">align-self</a></p>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>低版本的chrome：-webkit-</p>
+<p>box-oridinal-group效果等同于过渡版本的flex-order属性和新版本的order属性；<br>详情参阅<a href="http://www.webclks.com/archives/3016" target="_blank" rel="noopener">order</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="box-sizing"><a href="#box-sizing" class="headerlink" title="box-sizing"></a>box-sizing</h4><p>详情参阅<a href="http://www.w3cplus.com/content/css3-box-sizing" target="_blank" rel="noopener">box-sizing</a></p>
+<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h4><p>IE全不兼容</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/09/CSS3新特性兼容方法/" data-id="cjpthsisd000a3xzc0c1z0vvm" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-netstat 的基本用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/08/netstat 的基本用法/" class="article-date">
+  <time datetime="2018-05-08T02:05:22.000Z" itemprop="datePublished">2018-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/netstat 的基本用法/">netstat 的基本用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="1-列出所有连接"><a href="#1-列出所有连接" class="headerlink" title="1. 列出所有连接"></a>1. 列出所有连接</h3><p>最简单的命令：列出所有当前的连接。使用 -a 选项即可。</p>
+<p>该命令列出 tcp, udp 和 unix 协议下的所有连接。然而这些信息还不够详细，管理员往往需要查看某个协议或端口的具体连接情况。</p>
+<h3 id="2-只列出-TCP-或-UDP-协议的连接"><a href="#2-只列出-TCP-或-UDP-协议的连接" class="headerlink" title="2. 只列出 TCP 或 UDP 协议的连接"></a>2. 只列出 TCP 或 UDP 协议的连接</h3><p>列出 TCP 协议的连接，使用 <strong>-t</strong> 选项</p>
+<p>列出 UDP 协议的连接，使用 <strong>-u</strong> 选项</p>
+<p>会同时显示 IPv4 和 IPv6 的连接</p>
+<h3 id="3-禁用反向域名解析，加快查询速度"><a href="#3-禁用反向域名解析，加快查询速度" class="headerlink" title="3. 禁用反向域名解析，加快查询速度"></a>3. 禁用反向域名解析，加快查询速度</h3><p>默认情况下 netstat 会通过反向域名解析技术查找每个 IP 地址对应的主机名。这会降低查找速度。如果你觉得 IP 地址已经足够，而没有必要知道主机名，就使用 <strong>-n</strong> 选项禁用域名解析功能。</p>
+<h3 id="4-只列出监听中的连接"><a href="#4-只列出监听中的连接" class="headerlink" title="4. 只列出监听中的连接"></a>4. 只列出监听中的连接</h3><p>任何网络服务的后台进程都会打开一个<strong>端口</strong>，用于监听接入的请求。使用 <strong>-l</strong> 选项，可以看到处于监听状态连接，如果你想查看所有监听端口，去掉 <strong>-t</strong> 选项。如果你只想查看 UDP 端口，使用 <strong>-u</strong> 选项，代替 <strong>-t</strong> 选项。</p>
+<p>注意：不要使用 <strong>-a</strong> 选项，否则 netstat 会列出所有连接，而不仅仅是监听端口。</p>
+<h3 id="5-获取进程名、进程号以及用户-ID"><a href="#5-获取进程名、进程号以及用户-ID" class="headerlink" title="5. 获取进程名、进程号以及用户 ID"></a>5. 获取进程名、进程号以及用户 ID</h3><p>查看端口和连接的信息时，能查看到它们对应的进程名和进程号对系统管理员来说是非常有帮助的。举个栗子，Apache 的 httpd 服务开启80端口，如果你要查看 http 服务是否已经启动，或者 http 服务是由 apache 还是 nginx 启动的，这时候你可以看看进程名。</p>
+<p>使用 <strong>-p</strong> 选项查看进程信息</p>
+<p>使用 <strong>-p</strong> 选项时，netstat 必须运行在 root 权限之下，不然它就不能得到运行在 root 权限下的进程名，而很多服务包括 http 和 ftp 都运行在 root 权限之下。</p>
+<p>相比进程名和进程号而言，查看进程的拥有者会更有用。使用 <strong>-ep</strong> 选项可以同时查看进程名和用户名。这些额外的信息包括用户名和进程的索引节点号。这个命令对网管来说很有用。</p>
+<p><strong>注意</strong> - 假如你将 <strong>-n</strong> 和 <strong>-e</strong> 选项一起使用，User 列的属性就是用户的 ID 号，而不是用户名。</p>
+<h3 id="6-打印统计数据"><a href="#6-打印统计数据" class="headerlink" title="6. 打印统计数据"></a>6. 打印统计数据</h3><p>netstat <strong>-s</strong> 可以打印出网络统计数据，包括某个协议下的收发包数量。</p>
+<p>如果想只打印出 TCP 或 UDP 协议的统计数据，只要加上对应的选项（<strong>-t</strong> 和 <strong>-u</strong>）即可</p>
+<h3 id="7-显示内核路由信息"><a href="#7-显示内核路由信息" class="headerlink" title="7. 显示内核路由信息"></a>7. 显示内核路由信息</h3><p>使用 <strong>-r</strong> 选项打印内核路由信息。打印出来的信息与 route 命令输出的信息一样。</p>
+<p>我们也可以使用 <strong>-n</strong> 选项禁止域名解析。</p>
+<h3 id="8-打印网络接口"><a href="#8-打印网络接口" class="headerlink" title="8. 打印网络接口"></a>8. 打印网络接口</h3><p>打印网络接口信息，使用 <strong>-i</strong> 选项</p>
+<p>上面输出的信息比较原始。将 <strong>-e</strong> 选项和 <strong>-i</strong> 选项搭配使用，可以输出用户友好的信息</p>
+<h3 id="9-netstat-持续输出"><a href="#9-netstat-持续输出" class="headerlink" title="9. netstat 持续输出"></a>9. netstat 持续输出</h3><p>我们可以使用 netstat 的 <strong>-c</strong> 选项持续输出信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -ct</span><br></pre></td></tr></table></figure>
+<p>这个命令可持续输出 TCP 协议信息。</p>
+<h3 id="10-显示多播组信息"><a href="#10-显示多播组信息" class="headerlink" title="10. 显示多播组信息"></a>10. 显示多播组信息</h3><p>选项 <strong>-g</strong> 会输出 IPv4 和 IPv6 的多播组信息</p>
+<h2 id="更多用法"><a href="#更多用法" class="headerlink" title="更多用法"></a>更多用法</h2><h3 id="打印-active-状态的连接"><a href="#打印-active-状态的连接" class="headerlink" title="打印 active 状态的连接"></a>打印 active 状态的连接</h3><p>active 状态的套接字连接用 “ESTABLISHED” 字段表示，所以我们可以使用 grep 命令获得 active 状态的连接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -atnp | grep ESTA</span><br><span class="line">(Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.)</span><br><span class="line">tcp        0      0 192.168.1.2:49156       173.255.230.5:80        ESTABLISHED 1691/chrome     </span><br><span class="line">tcp        0      0 192.168.1.2:33324       173.194.36.117:443      ESTABLISHED 1691/chrome</span><br></pre></td></tr></table></figure>
+<p>配合 watch 命令监视 active 状态的连接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ watch -d -n0 &quot;netstat -atnp | grep ESTA&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="查看服务是否在运行"><a href="#查看服务是否在运行" class="headerlink" title="查看服务是否在运行"></a>查看服务是否在运行</h3><p>如果你想看看 http,smtp 或 ntp 服务是否在运行，使用 grep。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo netstat -aple | grep ntp</span><br><span class="line">udp        0      0 enlightened.local:ntp   *:*                                 root       17430       1789/ntpd       </span><br><span class="line">udp        0      0 localhost:ntp           *:*                                 root       17429       1789/ntpd       </span><br><span class="line">udp        0      0 *:ntp                   *:*                                 root       17422       1789/ntpd       </span><br><span class="line">udp6       0      0 fe80::216:36ff:fef8:ntp [::]:*                              root       17432       1789/ntpd       </span><br><span class="line">udp6       0      0 ip6-localhost:ntp       [::]:*                              root       17431       1789/ntpd       </span><br><span class="line">udp6       0      0 [::]:ntp                [::]:*                              root       17423       1789/ntpd       unix  2      [ ]         DGRAM                    17418    1789/ntpd</span><br></pre></td></tr></table></figure>
+<p>从这里可以看到 ntp 服务正在运行。使用 grep 命令你可以查看 http 或 smtp 或其它任何你想查看的服务。</p>
+<hr>
+<p>来源: <a href="http://www.binarytides.com/linux-netstat-command-examples/" target="_blank" rel="noopener">http://www.binarytides.com/linux-netstat-command-examples/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/05/08/netstat 的基本用法/" data-id="cjpthsit300143xzcn6yulfrs" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-小程序嵌入Vue项目问题总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -99,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjpr2k72q001dtkzch14chdpz" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/27/小程序嵌入Vue项目问题总结/" data-id="cjpthsit9001e3xzcpu23udkf" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序-Vue/">微信小程序 Vue</a></li></ul>
@@ -166,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjpr2k72s001itkzc8sguyc0g" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/02/彻底理解JavaScript里的闭包/" data-id="cjpthsitc001j3xzctthmwdt0" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -214,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjpr2k72c000vtkzchi1z4z0w" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/04/01/URL的组成部分/" data-id="cjpthsisv000v3xzckhxozv2z" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -309,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjpr2k72q001ftkzcmf9wtpb5" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/外边距折叠的几种情况与解决办法/" data-id="cjpthsit9001d3xzc23o0t6wz" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -369,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjpr2k725000ktkzclhxdmrls" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/30/Javascript 中的 this/" data-id="cjpthsisp000n3xzcy4ltl9hl" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -445,7 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjpr2k72v001ptkzc72duneea" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/28/我使用的Mac软件/" data-id="cjpthsitc001k3xzcx3dc49dq" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -499,7 +672,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjpr2k72e000ztkzcwh384t54" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/27/module-exports与exports-export与export-default之间的关系和区别/" data-id="cjpthsit200123xzc6df4iahx" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -600,7 +773,7 @@ $ git commit -m &quot;remove test.txt&quot;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjpr2k720000etkzcqohmzrlt" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/03/20/Git的常用命令及使用/" data-id="cjpthsise000b3xzcbq4a8xig" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -614,7 +787,7 @@ $ git commit -m &quot;remove test.txt&quot;
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; zurück</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Previo</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
   </nav>
 
 </section>
@@ -636,7 +809,7 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
       <a href="/tags/CSS/" style="font-size: 13.33px;">CSS</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/微信小程序-Vue/" style="font-size: 10px;">微信小程序 Vue</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a>
     </div>
@@ -645,7 +818,7 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -655,9 +828,17 @@ $ git commit -m &quot;remove test.txt&quot;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/18/package-json解读/">package.json解读</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/npm入门/">npm入门</a>
+          </li>
         
           <li>
             <a href="/2018/12/16/HIIT动作-已加入计划/">HIIT动作-已加入计划</a>
@@ -668,15 +849,7 @@ $ git commit -m &quot;remove test.txt&quot;
           </li>
         
           <li>
-            <a href="/2018/12/12/console用法合集/">console的各种用法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/30/小程序开发总结（更新ing）/">小程序开发总结（更新ing）</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/27/ES6使用模板字符串进行模板编译/">ES6使用模板字符串进行模板编译</a>
+            <a href="/2018/12/12/console的各种用法/">console的各种用法</a>
           </li>
         
       </ul>
@@ -692,7 +865,7 @@ $ git commit -m &quot;remove test.txt&quot;
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 Fred Zhang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
