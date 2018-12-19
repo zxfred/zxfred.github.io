@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zxfred.github.io"></form>
@@ -83,115 +83,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="npm-参考手册"><a href="#npm-参考手册" class="headerlink" title="npm - 参考手册"></a>npm - 参考手册</h1><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ul>
-<li>权限<ul>
-<li>t/team 组织成员管理</li>
-<li>access 包访问控制</li>
-<li>adduser/login 用户登录</li>
-<li>logout 注销</li>
-<li>owner 所有者管理</li>
-<li>whoami 查看用户信息</li>
-</ul>
-</li>
-<li>包仓储<ul>
-<li>s/se/search 仓储查找包</li>
-<li>publish 发布</li>
-<li>unpublish 取消发布</li>
-<li>deprecate 弃用</li>
-<li>stars 我喜欢的包</li>
-<li>star 喜欢</li>
-<li>unstar 取消喜欢</li>
-</ul>
-</li>
-<li>包本地<ul>
-<li>init 初始化package.json</li>
-<li>i/install 安装</li>
-<li>un/uninstall 删除</li>
-<li>dedupe/ddp 清除重复包</li>
-<li>dist-tags 标签管理</li>
-<li>version 更新包的版本信息</li>
-<li>it/install-test 运行npm install &amp;&amp; npm test</li>
-<li>ln/link 安装链接</li>
-<li>ls/list 列出包</li>
-<li>update/up 更新并安装遗漏的包</li>
-<li>outdated 检测过期</li>
-<li>pack 打包tarball文件</li>
-<li>prune 清理外来包</li>
-<li>shrinkwrap 锁定依赖包版本</li>
-<li>cache 缓存管理</li>
-</ul>
-</li>
-<li>脚本<ul>
-<li>run/run-script 运行脚本</li>
-<li>start 运行start脚本</li>
-<li>stop 运行stop脚本</li>
-<li>tst/test 运行test脚本</li>
-<li>rb/rebuild 重新编译本地包</li>
-<li>restart 顺序执行重启相关的一系列脚本</li>
-</ul>
-</li>
-<li>配置<ul>
-<li>c/config 配置管理</li>
-<li>get 列出配置</li>
-<li>set 设置配置</li>
-</ul>
-</li>
-<li>查看<ul>
-<li>root 包根目录</li>
-<li>prefix 打印prefix配置</li>
-<li>v/view 查看仓储信息</li>
-<li>bin 查看bin目录</li>
-<li>bugs/issue 浏览器查看bugs</li>
-<li>docs/home 浏览器查看帮助文档</li>
-<li>repo 浏览器查看仓储</li>
-<li>help 查看帮助</li>
-<li>help-search 帮助中搜索关键字</li>
-</ul>
-</li>
-<li>其他<ul>
-<li>completion shell插补</li>
-<li>doctor 环境检测</li>
-<li>edit 进入包目录并启动编辑器</li>
-<li>explore 进入包目录并运行命令</li>
-<li>ping 检查仓储是否可用</li>
-</ul>
-</li>
-</ul>
-<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>npm允许通过scope组织私有包，通过team细化权限控制.</p>
+        <p>[TOC]</p>
+<h2 id="一-权限操作"><a href="#一-权限操作" class="headerlink" title="一 权限操作"></a>一 权限操作</h2><p>npm允许通过scope组织私有包，通过team细化权限控制</p>
 <p>npm官方仓储有两种类型的包，普通包和scope包</p>
 <p>普通包特征: - 只能公有，谁都可以下载使用 - 仅可以通过所有者(owner)进行权限控制，如果要允许某个用户修改或发布包，必须将该用户添加到包的所有者列表。添加到包所有者列表的用户具备所有的权限.</p>
 <p>scope包特征:<br>- 包名有两部组成，@scope/name, @后的为scope名,/后的才是具体的包名 - 可以控制公有和私有 - 细化的权限控制，比如可以创建团队,并赋予团队对包只读/修改的权限</p>
-<h4 id="owner"><a href="#owner" class="headerlink" title="owner"></a>owner</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm owner add &lt;user&gt; [&lt;@scope&gt;/]&lt;pkg&gt; # 将用户添加到包的所有者列表  </span><br><span class="line">npm owner rm &lt;user&gt; [&lt;@scope&gt;/]&lt;pkg&gt; # 从包的所有这列表中删除用户  </span><br><span class="line">npm owner ls [&lt;@scope&gt;/]&lt;pkg&gt; # 列出包的所有者</span><br></pre></td></tr></table></figure>
+<h3 id="1-owner"><a href="#1-owner" class="headerlink" title="1. owner"></a>1. owner</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm owner add &lt;user&gt; [&lt;@scope&gt;/]&lt;pkg&gt; # 将用户添加到包的所有者列表  </span><br><span class="line">npm owner rm &lt;user&gt; [&lt;@scope&gt;/]&lt;pkg&gt; # 从包的所有这列表中删除用户  </span><br><span class="line">npm owner ls [&lt;@scope&gt;/]&lt;pkg&gt; # 列出包的所有者</span><br></pre></td></tr></table></figure>
 <p>成为包的所有者的用户，将能够修改元数据(如标记弃用)，发布新版本,添加其他用户到包的所有者列表</p>
-<h4 id="t-team"><a href="#t-team" class="headerlink" title="t/team"></a>t/team</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm team create &lt;scope:team&gt; # 创建团队  </span><br><span class="line">npm team destroy &lt;scope:team&gt; # 删除团队</span><br><span class="line"></span><br><span class="line">npm team add &lt;scope:team&gt; &lt;user&gt; # 添加用户到团队  </span><br><span class="line">npm team rm &lt;scope:team&gt; &lt;user&gt; # 从团队中移除用户 </span><br><span class="line"></span><br><span class="line">npm team ls &lt;scope&gt;|&lt;scope:team&gt; 列出团队/成员</span><br><span class="line"></span><br><span class="line">npm team edit &lt;scope:team&gt;  用编辑器编辑团队信息</span><br></pre></td></tr></table></figure>
-<h4 id="access"><a href="#access" class="headerlink" title="access"></a>access</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm access public [&lt;package&gt;]  # 设置包开放  </span><br><span class="line">npm access restricted [&lt;package&gt;] # 设置包私有</span><br><span class="line"></span><br><span class="line">npm access grant &lt;read-only|read-write&gt; &lt;scope:team&gt; [&lt;package&gt;] # 设置团队对包可以只读/允许修改  </span><br><span class="line">npm access revoke &lt;scope:team&gt; [&lt;package&gt;] # 从团队中收回包权限</span><br><span class="line"></span><br><span class="line">npm access ls-packages [&lt;user&gt;|&lt;scope&gt;|&lt;scope:team&gt;]  # 列出用户/域/团队能够访问的包  </span><br><span class="line">npm access ls-collaborators [&lt;package&gt; [&lt;user&gt;]] # 列出包的权限信息  </span><br><span class="line">npm access edit [&lt;package&gt;] # 用编辑器编辑包权限</span><br></pre></td></tr></table></figure>
-<h4 id="adduser-login"><a href="#adduser-login" class="headerlink" title="adduser/login"></a>adduser/login</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm adduser [--registry=url] [--scope=@orgname] [--always-auth]</span><br></pre></td></tr></table></figure>
+<h3 id="2-t-team"><a href="#2-t-team" class="headerlink" title="2. t/team"></a>2. t/team</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm team create &lt;scope:team&gt; # 创建团队  </span><br><span class="line">npm team destroy &lt;scope:team&gt; # 删除团队</span><br><span class="line"></span><br><span class="line">npm team add &lt;scope:team&gt; &lt;user&gt; # 添加用户到团队  </span><br><span class="line">npm team rm &lt;scope:team&gt; &lt;user&gt; # 从团队中移除用户 </span><br><span class="line"></span><br><span class="line">npm team ls &lt;scope&gt;|&lt;scope:team&gt; 列出团队/成员</span><br><span class="line"></span><br><span class="line">npm team edit &lt;scope:team&gt;  用编辑器编辑团队信息</span><br></pre></td></tr></table></figure>
+<h3 id="3-access"><a href="#3-access" class="headerlink" title="3. access"></a>3. access</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm access public [&lt;package&gt;]  # 设置包开放  </span><br><span class="line">npm access restricted [&lt;package&gt;] # 设置包私有</span><br><span class="line"></span><br><span class="line">npm access grant &lt;read-only|read-write&gt; &lt;scope:team&gt; [&lt;package&gt;] # 设置团队对包可以只读/允许修改  </span><br><span class="line">npm access revoke &lt;scope:team&gt; [&lt;package&gt;] # 从团队中收回包权限</span><br><span class="line"></span><br><span class="line">npm access ls-packages [&lt;user&gt;|&lt;scope&gt;|&lt;scope:team&gt;]  # 列出用户/域/团队能够访问的包  </span><br><span class="line">npm access ls-collaborators [&lt;package&gt; [&lt;user&gt;]] # 列出包的权限信息  </span><br><span class="line">npm access edit [&lt;package&gt;] # 用编辑器编辑包权限</span><br></pre></td></tr></table></figure>
+<h3 id="4-adduser-login"><a href="#4-adduser-login" class="headerlink" title="4. adduser/login"></a>4. adduser/login</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm adduser [--registry=url] [--scope=@orgname] [--always-auth]</span><br></pre></td></tr></table></figure>
 <p>提示输入username, password, email，进行登录校验，返回token保存到.npmrc</p>
-<h4 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm logout [--registry=&lt;url&gt;] [--scope=&lt;@scope&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="5-logout"><a href="#5-logout" class="headerlink" title="5. logout"></a>5. logout</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm logout [--registry=&lt;url&gt;] [--scope=&lt;@scope&gt;]</span><br></pre></td></tr></table></figure>
 <p>请求仓储服务将当前token失效</p>
-<h4 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm whoami [--registry &lt;registry&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="6-whoami"><a href="#6-whoami" class="headerlink" title="6. whoami"></a>6. whoami</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm whoami [--registry &lt;registry&gt;]</span><br></pre></td></tr></table></figure>
 <p>列出用户在npmjs.org上的用户名</p>
-<h3 id="包仓储"><a href="#包仓储" class="headerlink" title="包仓储"></a>包仓储</h3><h4 id="s-se-search"><a href="#s-se-search" class="headerlink" title="s/se/search"></a>s/se/search</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm search [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]</span><br></pre></td></tr></table></figure>
+<h2 id="二-远程操作"><a href="#二-远程操作" class="headerlink" title="二 远程操作"></a>二 远程操作</h2><h3 id="1-s-se-search"><a href="#1-s-se-search" class="headerlink" title="1. s/se/search"></a>1. s/se/search</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm search [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>-l|–long: 展示出全部的DESCRIPTION栏信息</li>
 <li>–no-description: 不显示DESCRIPTION栏信息</li>
 </ul>
-<h4 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish [&lt;tarball&gt;|&lt;folder&gt;] [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="2-publish"><a href="#2-publish" class="headerlink" title="2. publish"></a>2. publish</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish [&lt;tarball&gt;|&lt;folder&gt;] [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>–tag: 带上tag信息发布,之后包可以通过<code>npm install &lt;name&gt;@&lt;tag&gt;</code>安装</li>
 <li>–access: 仅适用于scope包,默认为restricted</li>
 </ul>
-<h4 id="unpublish"><a href="#unpublish" class="headerlink" title="unpublish"></a>unpublish</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="3-unpublish"><a href="#3-unpublish" class="headerlink" title="3. unpublish"></a>3. unpublish</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
 <p>从仓储中删除包,该操作会破坏依赖，不推荐适用，如果是为了鼓励用户适用新版本，可以使用deprecate命令</p>
-<h4 id="deprecate"><a href="#deprecate" class="headerlink" title="deprecate"></a>deprecate</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;[@&lt;version&gt;] &lt;message&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-deprecate"><a href="#4-deprecate" class="headerlink" title="4. deprecate"></a>4. deprecate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;[@&lt;version&gt;] &lt;message&gt;</span><br></pre></td></tr></table></figure>
 <p>标记包弃用，用户在安装时npm会有警告</p>
-<h4 id="stars"><a href="#stars" class="headerlink" title="stars"></a>stars</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm stars [&lt;user&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="5-stars"><a href="#5-stars" class="headerlink" title="5. stars"></a>5. stars</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm stars [&lt;user&gt;]</span><br></pre></td></tr></table></figure>
 <p>查看用户喜欢的包</p>
-<h4 id="star-unstart"><a href="#star-unstart" class="headerlink" title="star/unstart"></a>star/unstart</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm star [&lt;pkg&gt;...]  </span><br><span class="line">npm unstar [&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
+<h3 id="6-star-unstart"><a href="#6-star-unstart" class="headerlink" title="6. star/unstart"></a>6. star/unstart</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm star [&lt;pkg&gt;...]  </span><br><span class="line">npm unstar [&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
 <p>标记喜欢/取消喜欢标记</p>
-<h3 id="包本地"><a href="#包本地" class="headerlink" title="包本地"></a>包本地</h3><h4 id="init"><a href="#init" class="headerlink" title="init"></a>init</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init [-f|--force|-y|--yes]</span><br></pre></td></tr></table></figure>
+<h2 id="三-本地操作"><a href="#三-本地操作" class="headerlink" title="三 本地操作"></a>三 本地操作</h2><h3 id="1-init"><a href="#1-init" class="headerlink" title="1. init"></a>1. init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init [-f|--force|-y|--yes]</span><br></pre></td></tr></table></figure>
 <p>初始化package.json, 默认会有很多输入提示，可以通过<code>-f|--force|-y|--yes</code>选项创建默认配置的package.json 已经存在package.json后再次运行<code>npm init</code>不会破坏已有配置,只会变更你真正改动的部分</p>
-<h4 id="i-install"><a href="#i-install" class="headerlink" title="i/install"></a>i/install</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install (with no args, in package dir) # 读取package.json安装  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt; # 默认安装标签为latest  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;tag&gt; # 指定标签  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version&gt; # 指定版本  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version range&gt; # 指定版本范围  </span><br><span class="line">npm install &lt;tarball file&gt;  # 通过tarball文件安装  </span><br><span class="line">npm install &lt;tarball url&gt; # 通过tarball文件url链接安装  </span><br><span class="line">npm install &lt;git remote url&gt; # 通过git安装包, url格式为&lt;protocol&gt;://[&lt;user&gt;[:&lt;password&gt;]@]&lt;hostname&gt;[:&lt;port&gt;][:][/]&lt;path&gt;[#&lt;commit-ish&gt;]  </span><br><span class="line">npm install &lt;folder&gt; 通过包所在的文件夹安装</span><br></pre></td></tr></table></figure>
+<h3 id="2-i-install"><a href="#2-i-install" class="headerlink" title="2. i/install"></a>2. i/install</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install (with no args, in package dir) # 读取package.json安装  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt; # 默认安装标签为latest  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;tag&gt; # 指定标签  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version&gt; # 指定版本  </span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;name&gt;@&lt;version range&gt; # 指定版本范围  </span><br><span class="line">npm install &lt;tarball file&gt;  # 通过tarball文件安装  </span><br><span class="line">npm install &lt;tarball url&gt; # 通过tarball文件url链接安装  </span><br><span class="line">npm install &lt;git remote url&gt; # 通过git安装包, url格式为&lt;protocol&gt;://[&lt;user&gt;[:&lt;password&gt;]@]&lt;hostname&gt;[:&lt;port&gt;][:][/]&lt;path&gt;[#&lt;commit-ish&gt;]  </span><br><span class="line">npm install &lt;folder&gt; 通过包所在的文件夹安装</span><br></pre></td></tr></table></figure>
 <ul>
 <li>–registry: 从指定仓储中下载安装包</li>
 <li>-S/–save: 安装并保存包信息到package.json的dependencies区</li>
@@ -203,21 +130,21 @@
 <li>–link: 链接全局安装的包的本地</li>
 <li>–no-shrinkwrap: 安装时忽略shrinkwrap</li>
 </ul>
-<h4 id="un-uninstall"><a href="#un-uninstall" class="headerlink" title="un/uninstall"></a>un/uninstall</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]... [-S|--save|-D|--save-dev]</span><br></pre></td></tr></table></figure>
+<h3 id="3-un-uninstall"><a href="#3-un-uninstall" class="headerlink" title="3. un/uninstall"></a>3. un/uninstall</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]... [-S|--save|-D|--save-dev]</span><br></pre></td></tr></table></figure>
 <ul>
 <li>-S/–save: 删除包并移除包在package.json的dependencies区的信息</li>
 <li>-D/–save-dev: 删除包并移除包在package.json的devDependencies区的信息</li>
 </ul>
-<h4 id="ddp-dedupe"><a href="#ddp-dedupe" class="headerlink" title="ddp/dedupe"></a>ddp/dedupe</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dedupe</span><br></pre></td></tr></table></figure>
+<h3 id="4-ddp-dedupe"><a href="#4-ddp-dedupe" class="headerlink" title="4. ddp/dedupe"></a>4. ddp/dedupe</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dedupe</span><br></pre></td></tr></table></figure>
 <p>npm检查包依赖树并清除不要的包</p>
-<h4 id="dist-tags"><a href="#dist-tags" class="headerlink" title="dist-tags"></a>dist-tags</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;] # 添加标签  </span><br><span class="line">npm dist-tag rm &lt;pkg&gt; &lt;tag&gt; # 移除标签  </span><br><span class="line">npm dist-tag ls [&lt;pkg&gt;] # 列出包所包含的标签</span><br></pre></td></tr></table></figure>
+<h3 id="5-dist-tags"><a href="#5-dist-tags" class="headerlink" title="5. dist-tags"></a>5. dist-tags</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;] # 添加标签  </span><br><span class="line">npm dist-tag rm &lt;pkg&gt; &lt;tag&gt; # 移除标签  </span><br><span class="line">npm dist-tag ls [&lt;pkg&gt;] # 列出包所包含的标签</span><br></pre></td></tr></table></figure>
 <p>常见标签有latest, next, lts等</p>
 <p>可以在发布和下载包是带上标签</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm publish # 默认标签latest  </span><br><span class="line">npm publish --tag next  # 发布next标签  </span><br><span class="line">npm install npm # 默认标签latest  </span><br><span class="line">npm install npm@next  </span><br><span class="line">npm install --tag next</span><br></pre></td></tr></table></figure>
 <ul>
 <li>–registry: 发布包到指定仓储</li>
 </ul>
-<h4 id="v-version"><a href="#v-version" class="headerlink" title="v/version"></a>v/version</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm version [&lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]</span><br></pre></td></tr></table></figure>
+<h3 id="6-v-version"><a href="#6-v-version" class="headerlink" title="6. v/version"></a>6. v/version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm version [&lt;newversion&gt; | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]</span><br></pre></td></tr></table></figure>
 <p>该命令执行步骤 1. 检查git工作目录 </p>
 <ol>
 <li>运行preversion脚本, 可以写些触发测试的脚本 </li>
@@ -230,10 +157,10 @@
 <li>git提交并打标签 </li>
 <li>运行postversion脚本</li>
 </ol>
-<h4 id="it-install-test"><a href="#it-install-test" class="headerlink" title="it/install-test"></a>it/install-test</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm it  </span><br><span class="line">npm install-test</span><br></pre></td></tr></table></figure>
+<h3 id="7-it-install-test"><a href="#7-it-install-test" class="headerlink" title="7. it/install-test"></a>7. it/install-test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm it  </span><br><span class="line">npm install-test</span><br></pre></td></tr></table></figure>
 <p>相当于运行npm install &amp;&amp; npm test</p>
-<h4 id="ln-link"><a href="#ln-link" class="headerlink" title="ln/link"></a>ln/link</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm link  # 在全局node_modules下创建当前文件夹的超链接  </span><br><span class="line">npm link [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;] # 将全局安装的包链接到本地node_modules中</span><br></pre></td></tr></table></figure>
-<h4 id="ls-list"><a href="#ls-list" class="headerlink" title="ls/list"></a>ls/list</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls [[&lt;@scope&gt;/]&lt;pkg&gt; ...]</span><br></pre></td></tr></table></figure>
+<h3 id="8-ln-link"><a href="#8-ln-link" class="headerlink" title="8. ln/link"></a>8. ln/link</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm link  # 在全局node_modules下创建当前文件夹的超链接  </span><br><span class="line">npm link [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;] # 将全局安装的包链接到本地node_modules中</span><br></pre></td></tr></table></figure>
+<h3 id="9-ls-list"><a href="#9-ls-list" class="headerlink" title="9. ls/list"></a>9. ls/list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls [[&lt;@scope&gt;/]&lt;pkg&gt; ...]</span><br></pre></td></tr></table></figure>
 <p>打印依赖树</p>
 <ul>
 <li>–json: 已json格式输出</li>
@@ -244,14 +171,14 @@
 <li>–prod/production: 仅显示package.json里dependencies包的依赖</li>
 <li>–dev: 仅显示package.json里devDependencies包的依赖</li>
 </ul>
-<h4 id="up-update"><a href="#up-update" class="headerlink" title="up/update"></a>up/update</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update [-g] [&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
+<h3 id="10-up-update"><a href="#10-up-update" class="headerlink" title="10. up/update"></a>10. up/update</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update [-g] [&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
 <p>更新包到包的semver所允许的最新版本, 并安装遗漏的包</p>
 <ul>
 <li>–save: 更新并保存更新到package.json</li>
 <li>–dev: 同时更新devDependencies中的包</li>
 <li>–depth: 默认情况下仅更新顶层(–depth=0)为0的包,如果想更新所有包，可以指定–depth=9999</li>
 </ul>
-<h4 id="outdated"><a href="#outdated" class="headerlink" title="outdated"></a>outdated</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated [[&lt;@scope&gt;/]&lt;pkg&gt; ...]</span><br></pre></td></tr></table></figure>
+<h3 id="11-outdated"><a href="#11-outdated" class="headerlink" title="11. outdated"></a>11. outdated</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated [[&lt;@scope&gt;/]&lt;pkg&gt; ...]</span><br></pre></td></tr></table></figure>
 <p>.e.g</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Package        Current  Wanted  Latest  Location  </span><br><span class="line">ajv              4.8.2  4.11.8   5.0.1  example  </span><br><span class="line">async            2.1.2   2.4.0   2.4.0  example  </span><br><span class="line">body-parser     1.15.2  1.17.1  1.17.1  example</span><br></pre></td></tr></table></figure>
 <p>列表栏</p>
@@ -269,14 +196,14 @@
 <li>–global: 显示全局安装的包的依赖树</li>
 <li>–depth: 树层级,默认0</li>
 </ul>
-<h4 id="pack"><a href="#pack" class="headerlink" title="pack"></a>pack</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm pack [[&lt;@scope&gt;/]&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
+<h3 id="12-pack"><a href="#12-pack" class="headerlink" title="12. pack"></a>12. pack</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm pack [[&lt;@scope&gt;/]&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
 <p>从包生成名为<code>&lt;name&gt;-&lt;version&gt;.tgz</code>的tarball,并缓存</p>
-<h4 id="prune"><a href="#prune" class="headerlink" title="prune"></a>prune</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm prune [[&lt;@scope&gt;/]&lt;pkg&gt;...] [--production]</span><br></pre></td></tr></table></figure>
+<h3 id="13-prune"><a href="#13-prune" class="headerlink" title="13. prune"></a>13. prune</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm prune [[&lt;@scope&gt;/]&lt;pkg&gt;...] [--production]</span><br></pre></td></tr></table></figure>
 <p>清理不在package.json生成的依赖树中的包</p>
 <ul>
 <li>–production: 移除devDependencies中的包</li>
 </ul>
-<h4 id="shrinkwrap"><a href="#shrinkwrap" class="headerlink" title="shrinkwrap"></a>shrinkwrap</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm shrinkwrap</span><br></pre></td></tr></table></figure>
+<h3 id="14-shrinkwrap"><a href="#14-shrinkwrap" class="headerlink" title="14. shrinkwrap"></a>14. shrinkwrap</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm shrinkwrap</span><br></pre></td></tr></table></figure>
 <p>shrinkwrap用来锁定依赖包的版本</p>
 <p>包A的package.json</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">    &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;B&quot;: &quot;&lt;0.1.0&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -289,64 +216,64 @@
 <p>该命令会生成npm-shrinkwrap.json, 其内容如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;A&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;0.1.0&quot;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;B&quot;: &#123;</span><br><span class="line">      &quot;version&quot;: &quot;0.0.1&quot;,</span><br><span class="line">      &quot;from&quot;: &quot;B@^0.0.1&quot;,</span><br><span class="line">      &quot;resolved&quot;: &quot;https://registry.npmjs.org/B/-/B-0.0.1.tgz&quot;,</span><br><span class="line">      &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;C&quot;: &#123;</span><br><span class="line">          &quot;version&quot;: &quot;0.0.1&quot;,</span><br><span class="line">          &quot;from&quot;: &quot;org/C#v0.0.1&quot;,</span><br><span class="line">          &quot;resolved&quot;: &quot;git://github.com/org/C.git#5c380ae319fc4efe9e7f2d9c78b0faa588fd99b4&quot;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行<code>npm install</code>时如果存在npm-shrinkwrap.json, npm在安装包时会根据shrinkwrap.json锁定依赖包的版本</p>
-<h4 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm cache add &lt;tarball file&gt; # 添加到缓存  </span><br><span class="line">npm cache add &lt;folder&gt;  </span><br><span class="line">npm cache add &lt;tarball url&gt;  </span><br><span class="line">npm cache add &lt;name&gt;@&lt;version&gt; </span><br><span class="line"></span><br><span class="line">npm cache ls [&lt;path&gt;]  # 缓存明细</span><br><span class="line"></span><br><span class="line">npm cache clean [&lt;path&gt;] # 清除缓存</span><br></pre></td></tr></table></figure>
+<h3 id="15-cache"><a href="#15-cache" class="headerlink" title="15. cache"></a>15. cache</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm cache add &lt;tarball file&gt; # 添加到缓存  </span><br><span class="line">npm cache add &lt;folder&gt;  </span><br><span class="line">npm cache add &lt;tarball url&gt;  </span><br><span class="line">npm cache add &lt;name&gt;@&lt;version&gt; </span><br><span class="line"></span><br><span class="line">npm cache ls [&lt;path&gt;]  # 缓存明细</span><br><span class="line"></span><br><span class="line">npm cache clean [&lt;path&gt;] # 清除缓存</span><br></pre></td></tr></table></figure>
 <p>缓存路径可以通过<code>npm config get cache</code>获取</p>
-<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><p>package.json的scripts区可以用来定义自定义脚本</p>
-<h4 id="run-run-script"><a href="#run-run-script" class="headerlink" title="run/run-script"></a>run/run-script</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run &lt;command&gt; [-- &lt;args&gt;...]</span><br></pre></td></tr></table></figure>
+<h2 id="四-脚本"><a href="#四-脚本" class="headerlink" title="四 脚本"></a>四 脚本</h2><p>package.json的scripts区可以用来定义自定义脚本</p>
+<h3 id="1-run-run-script"><a href="#1-run-run-script" class="headerlink" title="1. run/run-script"></a>1. run/run-script</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run &lt;command&gt; [-- &lt;args&gt;...]</span><br></pre></td></tr></table></figure>
 <p>运行package.json的scripts中定义的命令</p>
 <p>npm run会自动将<code>node_modules/.bin</code>添加到环境变量PATH中。如果本地安装过mocha, 可以这样编写<code>&quot;scripts&quot;: {&quot;test&quot;: &quot;mocha test/\*.js&quot;}</code>而不需要<code>&quot;scripts&quot;: {&quot;test&quot;: &quot;node_modules/.bin/tap test/\*.js&quot;}</code></p>
-<h4 id="start"><a href="#start" class="headerlink" title="start"></a>start</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="2-start"><a href="#2-start" class="headerlink" title="2. start"></a>2. start</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
 <p>等同与<code>npm run start [-- &lt;args&gt;]</code></p>
-<h4 id="stop"><a href="#stop" class="headerlink" title="stop"></a>stop</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm stop [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="3-stop"><a href="#3-stop" class="headerlink" title="3. stop"></a>3. stop</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm stop [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
 <p>等同与<code>npm run stop [-- &lt;args&gt;]</code></p>
-<h4 id="tst-test"><a href="#tst-test" class="headerlink" title="tst/test"></a>tst/test</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm test [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="4-tst-test"><a href="#4-tst-test" class="headerlink" title="4. tst/test"></a>4. tst/test</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm test [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
 <p>等同与<code>npm run test [-- &lt;args&gt;]</code></p>
-<h4 id="rb-rebuild"><a href="#rb-rebuild" class="headerlink" title="rb/rebuild"></a>rb/rebuild</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm rebuild [[&lt;@scope&gt;/&lt;name&gt;]...]</span><br></pre></td></tr></table></figure>
+<h3 id="5-rb-rebuild"><a href="#5-rb-rebuild" class="headerlink" title="5. rb/rebuild"></a>5. rb/rebuild</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm rebuild [[&lt;@scope&gt;/&lt;name&gt;]...]</span><br></pre></td></tr></table></figure>
 <p>运行指定包中的build脚本,适用于更新node版本后，重新编译C++包</p>
-<h4 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm restart [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="6-restart"><a href="#6-restart" class="headerlink" title="6. restart"></a>6. restart</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm restart [-- &lt;args&gt;]</span><br></pre></td></tr></table></figure>
 <p>循序执行<code>1. prerestart 2. prestop 3. stop 4. poststop 5. restart 6. prestart 7. start 8. poststart 9. postrestart</code></p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="c-config"><a href="#c-config" class="headerlink" title="c/config"></a>c/config</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm config set &lt;key&gt; &lt;value&gt; [-g|--global] # 添加或更新  </span><br><span class="line">npm config get &lt;key&gt; # 获取  </span><br><span class="line">npm config delete &lt;key&gt; # 删除  </span><br><span class="line">npm config list #  配置明细  </span><br><span class="line">npm config edit # 编辑器编辑</span><br></pre></td></tr></table></figure>
+<h2 id="五-配置"><a href="#五-配置" class="headerlink" title="五 配置"></a>五 配置</h2><h3 id="1-c-config"><a href="#1-c-config" class="headerlink" title="1. c/config"></a>1. c/config</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm config set &lt;key&gt; &lt;value&gt; [-g|--global] # 添加或更新  </span><br><span class="line">npm config get &lt;key&gt; # 获取  </span><br><span class="line">npm config delete &lt;key&gt; # 删除  </span><br><span class="line">npm config list #  配置明细  </span><br><span class="line">npm config edit # 编辑器编辑</span><br></pre></td></tr></table></figure>
 <ul>
 <li>–global: 全局配置</li>
 </ul>
-<h4 id="get"><a href="#get" class="headerlink" title="get"></a>get</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm get &lt;key&gt; # 同npm config get</span><br></pre></td></tr></table></figure>
-<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm set &lt;key&gt; &lt;value&gt; [-g|--global] #同npm config set</span><br></pre></td></tr></table></figure>
-<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><h4 id="root"><a href="#root" class="headerlink" title="root"></a>root</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm root # 打印本地node_modules目录  </span><br><span class="line">npm root -g # 打印全局node_modules目录</span><br></pre></td></tr></table></figure>
-<h4 id="prefix"><a href="#prefix" class="headerlink" title="prefix"></a>prefix</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm prefix # 打印包含package.json最近父目录  </span><br><span class="line">npm prefix -g # 打印全局配置prefix的值</span><br></pre></td></tr></table></figure>
-<h4 id="view"><a href="#view" class="headerlink" title="view"></a>view</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm view [&lt;@scope&gt;/]&lt;name&gt;[@&lt;version&gt;] [&lt;field&gt;[.&lt;subfield&gt;]...]</span><br></pre></td></tr></table></figure>
+<h3 id="2-get"><a href="#2-get" class="headerlink" title="2. get"></a>2. get</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm get &lt;key&gt; # 同npm config get</span><br></pre></td></tr></table></figure>
+<h3 id="3-set"><a href="#3-set" class="headerlink" title="3. set"></a>3. set</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm set &lt;key&gt; &lt;value&gt; [-g|--global] #同npm config set</span><br></pre></td></tr></table></figure>
+<h2 id="六-查看"><a href="#六-查看" class="headerlink" title="六 查看"></a>六 查看</h2><h3 id="1-root"><a href="#1-root" class="headerlink" title="1. root"></a>1. root</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm root # 打印本地node_modules目录  </span><br><span class="line">npm root -g # 打印全局node_modules目录</span><br></pre></td></tr></table></figure>
+<h3 id="2-prefix"><a href="#2-prefix" class="headerlink" title="2. prefix"></a>2. prefix</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm prefix # 打印包含package.json最近父目录  </span><br><span class="line">npm prefix -g # 打印全局配置prefix的值</span><br></pre></td></tr></table></figure>
+<h3 id="3-view"><a href="#3-view" class="headerlink" title="3. view"></a>3. view</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm view [&lt;@scope&gt;/]&lt;name&gt;[@&lt;version&gt;] [&lt;field&gt;[.&lt;subfield&gt;]...]</span><br></pre></td></tr></table></figure>
 <p>查看仓储信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">npm view compact</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#  打印</span><br><span class="line">&#123; name: &apos;compact&apos;,</span><br><span class="line">  description: &apos;A JavaScript compacting middleware for express&apos;,</span><br><span class="line">  &apos;dist-tags&apos;: &#123; latest: &apos;0.1.2&apos; &#125;,</span><br><span class="line">  maintainers: [ &apos;serby &lt;paul@serby.net&gt;&apos; ],</span><br><span class="line">  time: </span><br><span class="line">   &#123; modified: &apos;2017-03-28T12:49:48.000Z&apos;,</span><br><span class="line">     created: &apos;2012-02-06T01:39:50.261Z&apos;,</span><br><span class="line">     &apos;0.1.2&apos;: &apos;2012-09-04T11:19:17.618Z&apos;,</span><br><span class="line">     &apos;0.1.1&apos;: &apos;2012-08-29T08:18:12.345Z&apos;,</span><br><span class="line">     &apos;0.1.0&apos;: &apos;2012-07-09T14:40:56.751Z&apos;,</span><br><span class="line">     &apos;0.0.7&apos;: &apos;2012-07-04T17:14:01.593Z&apos;,</span><br><span class="line">     &apos;0.0.6&apos;: &apos;2012-06-29T14:29:04.847Z&apos;,</span><br><span class="line">     &apos;0.0.5&apos;: &apos;2012-05-23T10:10:15.010Z&apos;,</span><br><span class="line">     &apos;0.0.4&apos;: &apos;2012-03-31T09:05:40.450Z&apos;,</span><br><span class="line">     &apos;0.0.3&apos;: &apos;2012-03-23T15:25:18.289Z&apos;,</span><br><span class="line">     &apos;0.0.2&apos;: &apos;2012-03-21T18:15:24.718Z&apos;,</span><br><span class="line">     &apos;0.0.1&apos;: &apos;2012-02-06T01:39:50.261Z&apos; &#125;,</span><br><span class="line">  users: &#123; serby: true &#125;,</span><br><span class="line">  author: &apos;Paul Serby &lt;paul@serby.net&gt;&apos;,</span><br><span class="line">  repository: &#123; type: &apos;git&apos;, url: &apos;git://github.com/serby/compact.git&apos; &#125;,</span><br><span class="line">  versions: </span><br><span class="line">   [ &apos;0.0.1&apos;,</span><br><span class="line">     &apos;0.0.2&apos;,</span><br><span class="line">     &apos;0.0.3&apos;,</span><br><span class="line">     &apos;0.0.4&apos;,</span><br><span class="line">     &apos;0.0.5&apos;,</span><br><span class="line">     &apos;0.0.6&apos;,</span><br><span class="line">     &apos;0.0.7&apos;,</span><br><span class="line">     &apos;0.1.0&apos;,</span><br><span class="line">     &apos;0.1.1&apos;,</span><br><span class="line">     &apos;0.1.2&apos; ],</span><br><span class="line">  version: &apos;0.1.2&apos;,</span><br><span class="line">  main: &apos;./lib/compact.js&apos;,</span><br><span class="line">  scripts: &#123; test: &apos;mocha -r should -R spec&apos; &#125;,</span><br><span class="line">  engines: &#123; node: &apos;&gt;=0.8&apos; &#125;,</span><br><span class="line">  dependencies: </span><br><span class="line">   &#123; lodash: &apos;~0.3&apos;,</span><br><span class="line">     async: &apos;~0.1&apos;,</span><br><span class="line">     &apos;uglify-js&apos;: &apos;~1.3&apos;,</span><br><span class="line">     mkdirp: &apos;~0.3&apos; &#125;,</span><br><span class="line">  devDependencies: &#123; mocha: &apos;*&apos;, should: &apos;~1.1&apos;, async: &apos;~0.1&apos;, asyncjs: &apos;~0.0&apos; &#125;,</span><br><span class="line">  optionalDependencies: &#123;&#125;,</span><br><span class="line">  dist: </span><br><span class="line">   &#123; shasum: &apos;66361e17108185bf261d42aff6a91b925e473139&apos;,</span><br><span class="line">     size: 7603,</span><br><span class="line">     noattachment: false,</span><br><span class="line">     tarball: &apos;http://registry.npm.taobao.org/compact/download/compact-0.1.2.tgz&apos; &#125;,</span><br><span class="line">  directories: &#123;&#125;,</span><br><span class="line">  publish_time: 1346757557618 &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm view compact@0.1.2 dependencies</span><br><span class="line"></span><br><span class="line"># 打印</span><br><span class="line">&#123; lodash: &apos;~0.3&apos;,</span><br><span class="line">  async: &apos;~0.1&apos;,</span><br><span class="line">  &apos;uglify-js&apos;: &apos;~1.3&apos;,</span><br><span class="line">  mkdirp: &apos;~0.3&apos; &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="bin"><a href="#bin" class="headerlink" title="bin"></a>bin</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm bin # 打印包含npm bin目录, 通常为node_modules/.bin/  </span><br><span class="line">npm prefix -g # 打印全局npm bin目录</span><br></pre></td></tr></table></figure>
-<h4 id="bugs-issue"><a href="#bugs-issue" class="headerlink" title="bugs/issue"></a>bugs/issue</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm bugs [&lt;packagename&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="4-bin"><a href="#4-bin" class="headerlink" title="4. bin"></a>4. bin</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm bin # 打印包含npm bin目录, 通常为node_modules/.bin/  </span><br><span class="line">npm prefix -g # 打印全局npm bin目录</span><br></pre></td></tr></table></figure>
+<h3 id="5-bugs-issue"><a href="#5-bugs-issue" class="headerlink" title="5. bugs/issue"></a>5. bugs/issue</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm bugs [&lt;packagename&gt;]</span><br></pre></td></tr></table></figure>
 <p>打开包bug追踪url</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm bugs npm # 浏览器打开https://github.com/npm/npm/issues</span><br></pre></td></tr></table></figure>
-<h4 id="docs-home"><a href="#docs-home" class="headerlink" title="docs/home"></a>docs/home</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm docs [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]  </span><br><span class="line">npm docs .  </span><br><span class="line">npm home [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]  </span><br><span class="line">npm home .</span><br></pre></td></tr></table></figure>
+<h3 id="6-docs-home"><a href="#6-docs-home" class="headerlink" title="6. docs/home"></a>6. docs/home</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm docs [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]  </span><br><span class="line">npm docs .  </span><br><span class="line">npm home [&lt;pkgname&gt; [&lt;pkgname&gt; ...]]  </span><br><span class="line">npm home .</span><br></pre></td></tr></table></figure>
 <p>打开文档url</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm docs npm #浏览器打开https://docs.npmjs.com/</span><br></pre></td></tr></table></figure>
-<h4 id="repo"><a href="#repo" class="headerlink" title="repo"></a>repo</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm repo [&lt;pkg&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="7-repo"><a href="#7-repo" class="headerlink" title="7. repo"></a>7. repo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm repo [&lt;pkg&gt;]</span><br></pre></td></tr></table></figure>
 <p>打开git url</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm repo npm #浏览器打开https://github.com/npm/npm</span><br></pre></td></tr></table></figure>
-<h4 id="help"><a href="#help" class="headerlink" title="help"></a>help</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm help &lt;term&gt; [&lt;terms..&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="8-help"><a href="#8-help" class="headerlink" title="8. help"></a>8. help</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm help &lt;term&gt; [&lt;terms..&gt;]</span><br></pre></td></tr></table></figure>
 <p>打印特定术语或命令的帮助</p>
-<h4 id="help-search"><a href="#help-search" class="headerlink" title="help-search"></a>help-search</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm help-search &lt;text&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-help-search"><a href="#9-help-search" class="headerlink" title="9. help-search"></a>9. help-search</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm help-search &lt;text&gt;</span><br></pre></td></tr></table></figure>
 <p>从npm官方markdown文档中搜索词条</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="completion"><a href="#completion" class="headerlink" title="completion"></a>completion</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm completion &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h2 id="七-其他"><a href="#七-其他" class="headerlink" title="七 其他"></a>七 其他</h2><h3 id="1-completion"><a href="#1-completion" class="headerlink" title="1. completion"></a>1. completion</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm completion &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>npm命令插补脚本</p>
-<h4 id="doctor"><a href="#doctor" class="headerlink" title="doctor"></a>doctor</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm doctor</span><br></pre></td></tr></table></figure>
+<h3 id="2-doctor"><a href="#2-doctor" class="headerlink" title="2. doctor"></a>2. doctor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm doctor</span><br></pre></td></tr></table></figure>
 <p>环境检测 - npm能调用node和git命令 - registry能够访问 - 本地和全局node_modules可写 - 缓存存在且tarball文件健全</p>
-<h4 id="edit"><a href="#edit" class="headerlink" title="edit"></a>edit</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm edit &lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="3-edit"><a href="#3-edit" class="headerlink" title="3. edit"></a>3. edit</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm edit &lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
 <p>进入包目录并启动编辑器</p>
-<h4 id="explore"><a href="#explore" class="headerlink" title="explore"></a>explore</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm explore &lt;pkg&gt; [-- &lt;cmd&gt;]</span><br></pre></td></tr></table></figure>
+<h3 id="4-explore"><a href="#4-explore" class="headerlink" title="4. explore"></a>4. explore</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm explore &lt;pkg&gt; [-- &lt;cmd&gt;]</span><br></pre></td></tr></table></figure>
 <p>进入包目录并运行命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm explore connect -- ls</span><br><span class="line"></span><br><span class="line"># 打印</span><br><span class="line">HISTORY.md  index.js  LICENSE  node_modules  package.json  README.md</span><br></pre></td></tr></table></figure>
-<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ping [--registry &lt;registry&gt;]  </span><br><span class="line">npm ping --registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<h3 id="5-ping"><a href="#5-ping" class="headerlink" title="5. ping"></a>5. ping</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm ping [--registry &lt;registry&gt;]  </span><br><span class="line">npm ping --registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
 <p>检查仓储是否可用</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/19/npm参考手册/" data-id="cjpuyxkq700134tzchwcsq2vp" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/19/npm参考手册/" data-id="cjpuyxkq700134tzchwcsq2vp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -562,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/18/package-json解读/" data-id="cjpuyxkqd001b4tzc5ep1tzow" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/18/package-json解读/" data-id="cjpuyxkqd001b4tzc5ep1tzow" class="article-share-link">Share</a>
       
       
     </footer>
@@ -629,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/18/npm常用命令/" data-id="cjpuyxkq800144tzcoin675q9" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/18/npm常用命令/" data-id="cjpuyxkq800144tzcoin675q9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -674,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/16/HIIT动作-已加入计划/" data-id="cjpuyxkpm000c4tzcx4f663xc" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/16/HIIT动作-已加入计划/" data-id="cjpuyxkpm000c4tzcx4f663xc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -717,7 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/13/mac杀掉相应端口进程/" data-id="cjpuyxkq500104tzcw9g2912b" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/13/mac杀掉相应端口进程/" data-id="cjpuyxkq500104tzcw9g2912b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -762,7 +689,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/12/12/console的各种用法/" data-id="cjpuyxkq600124tzcxq4040p7" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/12/12/console的各种用法/" data-id="cjpuyxkq600124tzcxq4040p7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -865,7 +792,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/30/小程序开发总结（更新ing）/" data-id="cjpuyxkqj001o4tzc6jalwlee" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/30/小程序开发总结（更新ing）/" data-id="cjpuyxkqj001o4tzc6jalwlee" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -904,7 +831,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/27/ES6使用模板字符串进行模板编译/" data-id="cjpuyxkpj00094tzcy6ji9y64" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/27/ES6使用模板字符串进行模板编译/" data-id="cjpuyxkpj00094tzcy6ji9y64" class="article-share-link">Share</a>
       
       
     </footer>
@@ -968,7 +895,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/23/ES6解构赋值的用途/" data-id="cjpuyxkpk000a4tzccrdw51ci" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/23/ES6解构赋值的用途/" data-id="cjpuyxkpk000a4tzccrdw51ci" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1004,7 +931,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/21/我的2018年度总结/" data-id="cjpuyxkqi001m4tzcdntvb90h" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/21/我的2018年度总结/" data-id="cjpuyxkqi001m4tzcdntvb90h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1018,7 +945,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1049,7 +976,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -1059,7 +986,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
