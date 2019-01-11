@@ -61,6 +61,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-setTimeout代替setInterval" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/07/setTimeout代替setInterval/" class="article-date">
+  <time datetime="2018-11-07T09:53:14.000Z" itemprop="datePublished">2018-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let executeTimes = 0</span><br><span class="line">let intervalTime = 300</span><br><span class="line"></span><br><span class="line">setTimeout(function repeat() &#123;</span><br><span class="line">    executeTimes++;</span><br><span class="line">    </span><br><span class="line">    // do something</span><br><span class="line">    </span><br><span class="line">    if(executeTimes &lt; 50)&#123;</span><br><span class="line">        setTimeout(repeat,intervalTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, intervalTime)</span><br></pre></td></tr></table></figure>
+<p>setInterval 有弊端，尽量避免使用</p>
+<ul>
+<li>无视代码错误</li>
+<li>无视网络延迟</li>
+<li>不保证执行</li>
+</ul>
+<p>如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给setTimeout。 不过，要注意的是JavaScript的计时器并不是非常精确[2]。因此你不可能得到绝对“平均”的延迟，即使使用setInterval也不行，原因很多（比如垃圾回收、JavaScript是单线程的，等等）。此外，当前浏览器也会将最小的超时时间固定在4ms到15ms之间。因此不要指望一点误差也没有。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjqrqgjv00017jubt94jikz22" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-彻底理解JavaScript中的require、import与export" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/25/彻底理解JavaScript中的require、import与export/" class="article-date">
@@ -278,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjql9mzdj00225tbtpdy4f70d" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/25/彻底理解JavaScript中的require、import与export/" data-id="cjqrqgjvv0023jubtoydisvwa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -316,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/18/VSCode中vue文件不能Emmet解决方法/" data-id="cjql9mzcg000v5tbtuan8b1go" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/18/VSCode中vue文件不能Emmet解决方法/" data-id="cjqrqgjur000wjubt5a2xu8oq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -549,7 +593,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/10/08/HTTP状态码详解/" data-id="cjql9mzc5000e5tbtj0ofamg3" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/10/08/HTTP状态码详解/" data-id="cjqrqgjuf000fjubtz96fylql" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -624,7 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjql9mzci000x5tbtok4jq58z" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/14/app新单品详情页踩坑总结/" data-id="cjqrqgjus000xjubt4uw7g04r" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -761,7 +805,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjql9mzcv001h5tbt2rhqujua" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/08/01/如何快速上手 vim/" data-id="cjqrqgjv4001fjubtgxta3oav" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -845,7 +889,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjql9mzbq00015tbtam999k1m" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/31/20个强大的正则表达式/" data-id="cjqrqgjtu0000jubtpvr2bo2p" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -954,7 +998,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjql9mzdh00205tbtadss87c0" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/27/Promise解读/" data-id="cjqrqgjvt0021jubtyt3mpl7y" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1005,7 +1049,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjql9mzby00075tbtx1hp6z31" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/24/CSS文本两端对齐/" data-id="cjqrqgju8000ajubtl1skitm8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1055,49 +1099,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjql9mzd0001s5tbt4fo0bfry" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-关于&amp;&amp;和||返回值的问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/22/关于&&和||返回值的问题/" class="article-date">
-  <time datetime="2018-07-22T15:46:04.000Z" itemprop="datePublished">2018-07-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/22/关于&&和||返回值的问题/">关于&amp;&amp;和||返回值的问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In the simplest terms:</p>
-<p>The <code>||</code> operator returns the first truthy value, and if none are truthy, it returns the last value (which is a falsy value).</p>
-<p>The <code>&amp;&amp;</code> operator returns the first falsy value, and if none are falsy, it return the last value (which is a truthy value).</p>
-<p>最简单的方式：</p>
-<p><code>||</code>返回的是第一个为true的值，如果所有的都不为true，它返回最后一个值（转换为boolean为false）</p>
-<p><code>&amp;&amp;</code>返回的是第一个为false的值，如果所有的都不为false，它返回最后一个值（转换为boolean为true）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/07/22/关于&&和||返回值的问题/" data-id="cjql9mzcs001d5tbtyy1njv1z" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/07/23/浅析浏览器输入URL到页面输出执行流程/" data-id="cjqrqgjvc001tjubt3unz3gky" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -1157,6 +1159,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/antd需要注意的点/">antd需要注意的点</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/07/nextjs页面间传参/">nextjs页面间传参</a>
           </li>
         
@@ -1170,10 +1176,6 @@
         
           <li>
             <a href="/2018/12/27/vscode环境变量/">vscode环境变量</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/npm参考手册/">npm参考手册</a>
           </li>
         
       </ul>

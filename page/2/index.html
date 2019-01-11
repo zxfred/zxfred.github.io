@@ -61,6 +61,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-console的各种用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/12/console的各种用法/" class="article-date">
+  <time datetime="2018-12-12T06:57:44.000Z" itemprop="datePublished">2018-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/12/console的各种用法/">console的各种用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-打印"><a href="#1-打印" class="headerlink" title="1. 打印"></a>1. 打印</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'log'</span>)</span><br><span class="line"><span class="built_in">console</span>.info(<span class="string">'info'</span>)</span><br><span class="line"><span class="built_in">console</span>.warn(<span class="string">'warn'</span>)</span><br><span class="line"><span class="built_in">console</span>.error(<span class="string">'error'</span>)</span><br><span class="line"><span class="built_in">console</span>.debug(<span class="string">'debug'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="2-分组"><a href="#2-分组" class="headerlink" title="2. 分组"></a>2. 分组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.group(<span class="string">'第一组信息'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第一条'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第二条'</span>)</span><br><span class="line"><span class="built_in">console</span>.groupEnd()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.group(<span class="string">'第二组信息'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第一条'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'第二条'</span>)</span><br><span class="line"><span class="built_in">console</span>.groupEnd()</span><br></pre></td></tr></table></figure>
+<h2 id="3-详细信息"><a href="#3-详细信息" class="headerlink" title="3. 详细信息"></a>3. 详细信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可打印对象和函数的信息</span></span><br><span class="line"><span class="built_in">console</span>.dir(object)</span><br><span class="line"><span class="built_in">console</span>.dir(<span class="function"><span class="keyword">function</span>)</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-表格"><a href="#4-表格" class="headerlink" title="4. 表格"></a>4. 表格</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [&#123;</span><br><span class="line">    <span class="string">'姓名'</span>: <span class="string">'Fred'</span>, </span><br><span class="line">    <span class="string">'性别'</span>: <span class="string">'男'</span></span><br><span class="line">&#125;,&#123;</span><br><span class="line">    <span class="string">'姓名'</span>: <span class="string">'Carol'</span>,</span><br><span class="line">    <span class="string">'性别'</span>: <span class="string">'女'</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数为数组</span></span><br><span class="line"><span class="built_in">console</span>.table(data)</span><br></pre></td></tr></table></figure>
+<h2 id="5-某节点中的html代码"><a href="#5-某节点中的html代码" class="headerlink" title="5. 某节点中的html代码"></a>5. 某节点中的html代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = <span class="built_in">document</span>.getElementById(<span class="string">'person'</span>);</span><br><span class="line"><span class="built_in">console</span>.dirxml(person)；</span><br></pre></td></tr></table></figure>
+<h2 id="6-性能分析"><a href="#6-性能分析" class="headerlink" title="6. 性能分析"></a>6. 性能分析</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.profile 和 console.profileEnd </span></span><br><span class="line"><span class="built_in">console</span>.profile(<span class="string">"任务"</span>);</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> sum = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> flog = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                flog+=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.profileEnd(<span class="string">"任务"</span>);<span class="string">`</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-判断真假"><a href="#7-判断真假" class="headerlink" title="7. 判断真假"></a>7. 判断真假</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.assert(<span class="number">1</span> == <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.assert(<span class="number">1</span> == <span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.assert(!(<span class="number">1</span> == <span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="8-统计次数"><a href="#8-统计次数" class="headerlink" title="8. 统计次数"></a>8. 统计次数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统计一个函数或者变量被调用了几次</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hi</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.count(name);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hi "</span> + name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">4</span>) &#123;</span><br><span class="line">        hi(<span class="string">"person"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        hi(<span class="string">"god"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-查看运行时的结果栈"><a href="#9-查看运行时的结果栈" class="headerlink" title="9. 查看运行时的结果栈"></a>9. 查看运行时的结果栈</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.trace</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">0</span> &lt; num) &#123;</span><br><span class="line">        <span class="built_in">console</span>.trace(<span class="string">"现在num的值为"</span>, num);</span><br><span class="line">        <span class="keyword">return</span> num + add(num - <span class="number">1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a =<span class="number">3</span>;</span><br><span class="line">add(<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zxfred.github.io/2018/12/12/console的各种用法/" data-id="cjqrqgjuw0011jubt131sicpk" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-小程序开发总结（更新ing）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/30/小程序开发总结（更新ing）/" class="article-date">
@@ -154,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/30/小程序开发总结（更新ing）/" data-id="cjql9mzcz001q5tbth478lzw4" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/30/小程序开发总结（更新ing）/" data-id="cjqrqgjv6001ijubtzb3zfc30" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
@@ -193,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/27/ES6使用模板字符串进行模板编译/" data-id="cjql9mzbz00085tbt2rs3jlj7" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/27/ES6使用模板字符串进行模板编译/" data-id="cjqrqgju50007jubth6bf367c" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -257,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/23/ES6解构赋值的用途/" data-id="cjql9mzc2000b5tbtrwu2u7s8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/23/ES6解构赋值的用途/" data-id="cjqrqgjub000bjubtcr1yrefb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -303,7 +348,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/21/我的2018年度总结/" data-id="cjql9mzcx001m5tbtfet8fxyw" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/21/我的2018年度总结/" data-id="cjqrqgjvb001rjubt2yt23jth" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -405,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的执行环境/" data-id="cjql9mzc7000g5tbte4d36zi8" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的执行环境/" data-id="cjqrqgjuh000hjubtb9lv1h1w" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -459,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的with语句/" data-id="cjql9mzc7000h5tbt7djclwrm" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/19/JavaScript中的with语句/" data-id="cjqrqgjug000gjubtc5bvft55" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -508,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjql9mzcb000o5tbtzzurs0bl" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript获取字符长度/" data-id="cjqrqgjun000pjubt7f2mkpdk" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -565,7 +610,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjql9mzc8000j5tbtkivp4jok" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/15/JavaScript打乱数组/" data-id="cjqrqgjui000jjubtynawzgqh" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
@@ -605,51 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjql9mzck00105tbtmgswlxwm" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-setTimeout代替setInterval" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/07/setTimeout代替setInterval/" class="article-date">
-  <time datetime="2018-11-07T09:53:14.000Z" itemprop="datePublished">2018-11-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/07/setTimeout代替setInterval/">setTimeout代替setInterval</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let executeTimes = 0</span><br><span class="line">let intervalTime = 300</span><br><span class="line"></span><br><span class="line">setTimeout(function repeat() &#123;</span><br><span class="line">    executeTimes++;</span><br><span class="line">    </span><br><span class="line">    // do something</span><br><span class="line">    </span><br><span class="line">    if(executeTimes &lt; 50)&#123;</span><br><span class="line">        setTimeout(repeat,intervalTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, intervalTime)</span><br></pre></td></tr></table></figure>
-<p>setInterval 有弊端，尽量避免使用</p>
-<ul>
-<li>无视代码错误</li>
-<li>无视网络延迟</li>
-<li>不保证执行</li>
-</ul>
-<p>如果确实要保证事件“匀速”被触发，那可以用希望的延迟减去上次调用所花时间，然后将得到的差值作为延迟动态指定给setTimeout。 不过，要注意的是JavaScript的计时器并不是非常精确[2]。因此你不可能得到绝对“平均”的延迟，即使使用setInterval也不行，原因很多（比如垃圾回收、JavaScript是单线程的，等等）。此外，当前浏览器也会将最小的超时时间固定在4ms到15ms之间。因此不要指望一点误差也没有。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zxfred.github.io/2018/11/07/setTimeout代替setInterval/" data-id="cjql9mzcp00175tbter2d5oqd" class="article-share-link">Teilen</a>
+      <a data-url="http://zxfred.github.io/2018/11/09/git反向操作解决冲突/" data-id="cjqrqgjuv0010jubtxhlunf6h" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -709,6 +710,10 @@
       <ul>
         
           <li>
+            <a href="/2019/01/11/antd需要注意的点/">antd需要注意的点</a>
+          </li>
+        
+          <li>
             <a href="/2019/01/07/nextjs页面间传参/">nextjs页面间传参</a>
           </li>
         
@@ -722,10 +727,6 @@
         
           <li>
             <a href="/2018/12/27/vscode环境变量/">vscode环境变量</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/npm参考手册/">npm参考手册</a>
           </li>
         
       </ul>
